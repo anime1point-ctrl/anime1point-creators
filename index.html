@@ -11,6 +11,17 @@
 </head>
 <body>
 
+<!-- VIDEO MODAL OVERLAY -->
+<div id="video-modal" class="video-modal-overlay" onclick="closeModal(event)">
+  <div class="video-modal-box">
+    <button class="video-modal-close" onclick="closeVideoModal()">&#10005;</button>
+    <div class="video-modal-title" id="modal-title"></div>
+    <div class="video-modal-frame">
+      <iframe id="modal-iframe" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    </div>
+  </div>
+</div>
+
 <nav class="navbar">
 <div class="nav-logo">
 <span class="logo-icon">&#9654;</span>
@@ -52,7 +63,6 @@
 <div class="section-tag">&#11088; Official Channel</div>
 <h2 class="section-title">Featured: <span class="highlight">Anime1Point</span></h2>
 <p class="section-subtitle">Our flagship YouTube channel &mdash; where deep anime breakdowns, manga analysis and story reviews come to life.</p>
-
 <div class="channel-card featured">
 <div class="channel-card-header">
 <div class="channel-avatar">A1</div>
@@ -87,10 +97,8 @@
 <section class="videos-section">
 <div class="section-tag">&#128293; Top Picks</div>
 <h2 class="section-title">Most Watched Videos</h2>
-<p class="section-subtitle">Our highest-viewed content &mdash; the videos that got everyone talking.</p>
-<div id="yt-popular" class="videos-grid">
-<div class="video-card-loading">Loading popular videos&#8230;</div>
-</div>
+<p class="section-subtitle">Our highest-viewed content &mdash; hover to preview, click to watch right here.</p>
+<div id="yt-popular" class="videos-grid"></div>
 <div class="see-all-wrap">
 <a href="https://www.youtube.com/@anime1point/videos" target="_blank" class="btn-outline">&#9654; See All Videos on YouTube</a>
 </div>
@@ -100,10 +108,8 @@
 <section class="videos-section videos-section-alt">
 <div class="section-tag">&#128241; Fresh Content</div>
 <h2 class="section-title">Latest Published Videos <span class="live-badge">LIVE</span></h2>
-<p class="section-subtitle">Straight from our channel &mdash; the newest uploads, updated in real time.</p>
-<div id="yt-latest" class="videos-grid">
-<div class="video-card-loading">Loading latest videos&#8230;</div>
-</div>
+<p class="section-subtitle">Straight from our channel &mdash; hover to preview, click to watch right here.</p>
+<div id="yt-latest" class="videos-grid"></div>
 <div class="see-all-wrap">
 <a href="https://www.youtube.com/@anime1point" target="_blank" class="btn-outline">&#9654; Subscribe on YouTube</a>
 </div>
@@ -180,43 +186,124 @@
 <script>
 var YT_CHANNEL_ID = 'UCXbs_3dDTMTwjsHGSxDdOAQ';
 var YT_API_KEY = 'AIzaSyD1gE2M8TqfE8U-jtMrYXhQ0fPh4BUcuZ8';
+var hoverTimer = null;
 
-function buildVideoCard(vid, title, thumb, date) {
-  var a = document.createElement('a');
-  a.className = 'video-card';
-  a.href = 'https://www.youtube.com/watch?v=' + vid;
-  a.target = '_blank';
-  var safeTitle = title.replace(/"/g, '');
-  a.innerHTML =
-    '<div class="video-thumb"><img src="' + thumb + '" alt="' + safeTitle + '" loading="lazy"></div>' +
-    '<div class="video-info"><p class="video-title">' + title + '</p><p class="video-meta">Anime1Point &bull; ' + date + '</p></div>';
-  return a;
+/* ---- MODAL LOGIC ---- */
+function openVideoModal(vid, title) {
+  var modal = document.getElementById('video-modal');
+  var iframe = document.getElementById('modal-iframe');
+  var titleEl = document.getElementById('modal-title');
+  iframe.src = 'https://www.youtube.com/embed/' + vid + '?autoplay=1&rel=0&modestbranding=1';
+  titleEl.textContent = title;
+  modal.classList.add('active');
+  document.body.style.overflow = 'hidden';
 }
 
-function showFallback(container, label) {
-  var videos = [
-    'Tensura Season 4 — Episode Review',
-    'Rimuru vs Demon Lords — Full Breakdown',
-    'Manga vs Anime: What Changed?',
-    'Top 10 Strongest Characters in Tensura',
-    'One Piece Chapter Review',
-    'Dragon Ball — Power Levels Explained'
-  ];
-  container.innerHTML = '';
-  for (var i = 0; i < videos.length; i++) {
-    var a = document.createElement('a');
-    a.className = 'video-card';
-    a.href = 'https://www.youtube.com/@anime1point/videos';
-    a.target = '_blank';
-    a.innerHTML =
-      '<div class="video-thumb"><div class="thumb-fallback">&#9654;</div></div>' +
-      '<div class="video-info"><p class="video-title">' + videos[i] + '</p><p class="video-meta">Anime1Point &bull; ' + label + '</p></div>';
-    container.appendChild(a);
+function closeVideoModal() {
+  var modal = document.getElementById('video-modal');
+  var iframe = document.getElementById('modal-iframe');
+  modal.classList.remove('active');
+  iframe.src = '';
+  document.body.style.overflow = '';
+}
+
+function closeModal(e) {
+  if (e.target === document.getElementById('video-modal')) {
+    closeVideoModal();
   }
 }
 
-function loadVideos(containerId, order, label) {
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeVideoModal();
+});
+
+/* ---- VIDEO CARD BUILDER ---- */
+function buildVideoCard(vid, title, thumb) {
+  var card = document.createElement('div');
+  card.className = 'vc-card';
+  card.setAttribute('data-vid', vid);
+  card.setAttribute('data-title', title);
+
+  var thumbDiv = document.createElement('div');
+  thumbDiv.className = 'vc-thumb';
+
+  var img = document.createElement('img');
+  img.src = thumb;
+  img.alt = title;
+  img.loading = 'lazy';
+  img.className = 'vc-img';
+
+  var iframeWrap = document.createElement('div');
+  iframeWrap.className = 'vc-preview-wrap';
+
+  var overlay = document.createElement('div');
+  overlay.className = 'vc-play-overlay';
+  overlay.innerHTML = '<span class="vc-play-btn">&#9654;</span>';
+
+  thumbDiv.appendChild(img);
+  thumbDiv.appendChild(iframeWrap);
+  thumbDiv.appendChild(overlay);
+
+  var info = document.createElement('div');
+  info.className = 'vc-info';
+  info.innerHTML = '<p class="vc-title">' + title + '</p><p class="vc-meta">Anime1Point</p>';
+
+  card.appendChild(thumbDiv);
+  card.appendChild(info);
+
+  /* HOVER: start preview after 400ms */
+  card.addEventListener('mouseenter', function() {
+    hoverTimer = setTimeout(function() {
+      img.style.opacity = '0';
+      overlay.style.opacity = '0';
+      iframeWrap.innerHTML = '<iframe src="https://www.youtube.com/embed/' + vid + '?autoplay=1&mute=1&controls=0&loop=1&playlist=' + vid + '&modestbranding=1&rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
+    }, 400);
+  });
+
+  /* LEAVE: remove preview */
+  card.addEventListener('mouseleave', function() {
+    clearTimeout(hoverTimer);
+    iframeWrap.innerHTML = '';
+    img.style.opacity = '1';
+    overlay.style.opacity = '1';
+  });
+
+  /* CLICK: open full modal */
+  card.addEventListener('click', function() {
+    clearTimeout(hoverTimer);
+    iframeWrap.innerHTML = '';
+    img.style.opacity = '1';
+    overlay.style.opacity = '1';
+    openVideoModal(vid, title);
+  });
+
+  return card;
+}
+
+/* ---- FALLBACK CARDS ---- */
+function showFallback(container) {
+  var fallbacks = [
+    { id: 'dQw4w9WgXcQ', title: 'Tensura Season 4 — Episode Review' },
+    { id: 'dQw4w9WgXcQ', title: 'Rimuru vs Demon Lords — Full Breakdown' },
+    { id: 'dQw4w9WgXcQ', title: 'Manga vs Anime: What Changed?' },
+    { id: 'dQw4w9WgXcQ', title: 'Top 10 Strongest Characters in Tensura' },
+    { id: 'dQw4w9WgXcQ', title: 'One Piece Chapter Review' },
+    { id: 'dQw4w9WgXcQ', title: 'Dragon Ball — Power Levels Explained' }
+  ];
+  container.innerHTML = '';
+  for (var i = 0; i < fallbacks.length; i++) {
+    container.appendChild(buildVideoCard(
+      fallbacks[i].id,
+      fallbacks[i].title,
+      'https://i.ytimg.com/vi/' + fallbacks[i].id + '/mqdefault.jpg'
+    ));
+  }
+}
+
+/* ---- FETCH VIDEOS ---- */
+function loadVideos(containerId, order) {
   var container = document.getElementById(containerId);
+  container.innerHTML = '<div class="video-card-loading">Loading videos&#8230;</div>';
   fetch(
     'https://www.googleapis.com/youtube/v3/search?key=' + YT_API_KEY +
     '&channelId=' + YT_CHANNEL_ID +
@@ -224,26 +311,22 @@ function loadVideos(containerId, order, label) {
   )
   .then(function(res) { return res.json(); })
   .then(function(data) {
-    if (!data.items || data.items.length === 0) {
-      showFallback(container, label);
-      return;
-    }
+    if (!data.items || data.items.length === 0) { showFallback(container); return; }
     container.innerHTML = '';
     for (var i = 0; i < data.items.length; i++) {
       var item = data.items[i];
       var vid = item.id.videoId;
       var title = item.snippet.title;
       var thumb = item.snippet.thumbnails.medium.url;
-      var date = new Date(item.snippet.publishedAt).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
-      container.appendChild(buildVideoCard(vid, title, thumb, date));
+      container.appendChild(buildVideoCard(vid, title, thumb));
     }
   })
-  .catch(function() { showFallback(container, label); });
+  .catch(function() { showFallback(container); });
 }
 
 window.addEventListener('load', function() {
-  loadVideos('yt-popular', 'viewCount', 'Popular');
-  loadVideos('yt-latest', 'date', 'New');
+  loadVideos('yt-popular', 'viewCount');
+  loadVideos('yt-latest', 'date');
 });
 </script>
 </body>
