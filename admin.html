@@ -10,7 +10,6 @@
 </head>
 <body>
 
-<!-- LOGIN SCREEN -->
 <div id="login-screen" class="admin-login-wrap">
   <div class="admin-login-box">
     <div class="admin-login-logo">
@@ -31,109 +30,65 @@
   </div>
 </div>
 
-<!-- ADMIN DASHBOARD (hidden until login) -->
 <div id="admin-dashboard" style="display:none;">
-
-  <!-- Admin Nav -->
   <nav class="admin-nav">
     <div class="nav-logo">
       <span class="logo-icon">&#9654;</span>
       <span class="logo-text">Anime1Point <span class="logo-sub" style="color:var(--accent);">Admin</span></span>
     </div>
     <div class="admin-nav-links">
-      <a href="#applications" onclick="showTab('applications')">&#128221; Applications</a>
-      <a href="#creators" onclick="showTab('creators')">&#128225; Creators</a>
-      <a href="#viewers" onclick="showTab('viewers')">&#128065; Viewers</a>
+      <a href="#" onclick="showTab('applications'); return false;">&#128221; Applications</a>
+      <a href="#" onclick="showTab('creators'); return false;">&#128225; Creators</a>
+      <a href="#" onclick="showTab('viewers'); return false;">&#128065; Viewers</a>
       <a href="index.html" target="_blank">&#127760; View Site</a>
       <button onclick="logout()" class="admin-logout-btn">&#128682; Logout</button>
     </div>
   </nav>
 
-  <!-- Stats Bar -->
   <div class="admin-stats-bar">
-    <div class="admin-stat-card">
-      <span class="admin-stat-num" id="stat-pending">3</span>
-      <span class="admin-stat-label">Pending Applications</span>
-    </div>
-    <div class="admin-stat-card">
-      <span class="admin-stat-num" id="stat-approved">6</span>
-      <span class="admin-stat-label">Approved Creators</span>
-    </div>
-    <div class="admin-stat-card">
-      <span class="admin-stat-num" id="stat-viewers">0</span>
-      <span class="admin-stat-label">Registered Viewers</span>
-    </div>
-    <div class="admin-stat-card">
-      <span class="admin-stat-num" id="stat-comments">3</span>
-      <span class="admin-stat-label">Comments</span>
-    </div>
+    <div class="admin-stat-card"><span class="admin-stat-num" id="stat-pending">3</span><span class="admin-stat-label">Pending</span></div>
+    <div class="admin-stat-card"><span class="admin-stat-num" id="stat-approved">7</span><span class="admin-stat-label">Approved Creators</span></div>
+    <div class="admin-stat-card"><span class="admin-stat-num" id="stat-viewers">0</span><span class="admin-stat-label">Viewers</span></div>
+    <div class="admin-stat-card"><span class="admin-stat-num" id="stat-comments">3</span><span class="admin-stat-label">Comments</span></div>
   </div>
 
-  <!-- APPLICATIONS TAB -->
   <div id="tab-applications" class="admin-tab">
     <div class="admin-section-header">
       <h2 class="admin-section-title">&#128221; Pending Creator Applications</h2>
-      <p style="color:var(--text-secondary);">Review and approve or reject new creator registrations.</p>
+      <p style="color:var(--text-secondary);">Review and approve or reject new creator registrations below.</p>
     </div>
-
     <div id="applications-list" class="admin-cards"></div>
   </div>
 
-  <!-- CREATORS TAB -->
   <div id="tab-creators" class="admin-tab" style="display:none;">
     <div class="admin-section-header">
       <h2 class="admin-section-title">&#128225; Approved Creators</h2>
-      <p style="color:var(--text-secondary);">All live creators on the platform. Click a creator to view their profile.</p>
+      <p style="color:var(--text-secondary);">All live creators on the platform.</p>
     </div>
     <div id="creators-list" class="admin-cards"></div>
   </div>
 
-  <!-- VIEWERS TAB -->
   <div id="tab-viewers" class="admin-tab" style="display:none;">
     <div class="admin-section-header">
       <h2 class="admin-section-title">&#128065; Registered Viewers</h2>
       <p style="color:var(--text-secondary);">All viewer accounts registered on the platform.</p>
     </div>
-    <div class="info-box" style="max-width:600px; margin:2rem auto;">
-      <h4>&#128101; Viewer Registrations</h4>
-      <p>Viewer accounts are managed here. As viewers sign up through the platform, their accounts will appear for review and moderation.</p>
-    </div>
-    <div class="admin-cards" id="viewers-list">
-      <p style="text-align:center; color:var(--text-secondary); padding:3rem;">No viewer accounts yet. Viewers will appear here once they register.</p>
+    <div class="admin-cards">
+      <p style="text-align:center; color:var(--text-secondary); padding:3rem;">No viewer accounts yet. Viewers appear here once they register.</p>
     </div>
   </div>
-
 </div>
 
 <script>
-const ADMIN_PASSWORD = 'anime1point2026';
+var ADMIN_PASSWORD = 'anime1point2026';
 
-// Sample pending applications
-let applications = [
-  {
-    id: 'app1', name: 'Sakura Reviews', email: 'sakura@example.com',
-    channel: 'Sakura Anime Reviews', url: 'https://youtube.com/@sakurareviews',
-    cat: 'Anime', genres: 'Shoujo, Romance, Slice of Life',
-    bio: 'I cover underrated shoujo anime and romance series that don't get enough attention. Weekly videos every Saturday.',
-    ref: 'Anime1Point YouTube Channel', date: '2026-05-20', status: 'pending'
-  },
-  {
-    id: 'app2', name: 'Kei Takahashi', email: 'kei@example.com',
-    channel: 'Manga with Kei', url: 'https://youtube.com/@mangawithkei',
-    cat: 'Manga', genres: 'Seinen, Psychological, Attack on Titan',
-    bio: 'Deep psychological manga analysis. I focus on the narrative structure and themes in seinen manga. Currently covering Attack on Titan and Berserk.',
-    ref: 'Friend / Word of Mouth', date: '2026-05-19', status: 'pending'
-  },
-  {
-    id: 'app3', name: 'LightNovelLord', email: 'lnlord@example.com',
-    channel: 'Light Novel Lord', url: 'https://youtube.com/@lightnovellord',
-    cat: 'Light Novels', genres: 'Fantasy, Isekai, Overlord, Re:Zero',
-    bio: 'I read every light novel before the anime airs and review the source material. Spoiler-free and spoiler versions available. Currently covering Overlord and Re:Zero.',
-    ref: 'Google Search', date: '2026-05-18', status: 'pending'
-  }
+var applications = [
+  { id: 'app1', name: 'Sakura Reviews', email: 'sakura@example.com', channel: 'Sakura Anime Reviews', url: 'https://youtube.com/@sakurareviews', cat: 'Anime', genres: 'Shoujo, Romance, Slice of Life', bio: 'I cover underrated shoujo anime and romance series. Weekly videos every Saturday.', ref: 'Anime1Point YouTube Channel', date: '2026-05-20', status: 'pending' },
+  { id: 'app2', name: 'Kei Takahashi', email: 'kei@example.com', channel: 'Manga with Kei', url: 'https://youtube.com/@mangawithkei', cat: 'Manga', genres: 'Seinen, Psychological, Attack on Titan', bio: 'Deep psychological manga analysis. Narrative structure and themes in seinen manga. Currently covering Attack on Titan and Berserk.', ref: 'Friend / Word of Mouth', date: '2026-05-19', status: 'pending' },
+  { id: 'app3', name: 'LightNovelLord', email: 'lnlord@example.com', channel: 'Light Novel Lord', url: 'https://youtube.com/@lightnovellord', cat: 'Novels', genres: 'Fantasy, Isekai, Overlord, Re:Zero', bio: 'I read every light novel before the anime airs and review the source material. Currently covering Overlord and Re:Zero.', ref: 'Google Search', date: '2026-05-18', status: 'pending' }
 ];
 
-let approvedCreators = [
+var approvedCreators = [
   { id: 'anime1point', name: 'Anime1Point', handle: '@anime1point', cat: 'Anime/Manga', rating: 5.0, official: true },
   { id: 'tensura-daily', name: 'TensuraDaily', handle: '@tensura_daily', cat: 'Anime', rating: 4.2 },
   { id: 'manga-sensei', name: 'MangaSensei', handle: '@manga_sensei', cat: 'Manga', rating: 4.1 },
@@ -144,7 +99,7 @@ let approvedCreators = [
 ];
 
 function checkLogin() {
-  const pass = document.getElementById('admin-pass').value;
+  var pass = document.getElementById('admin-pass').value;
   if (pass === ADMIN_PASSWORD) {
     document.getElementById('login-screen').style.display = 'none';
     document.getElementById('admin-dashboard').style.display = 'block';
@@ -164,88 +119,93 @@ function logout() {
 }
 
 function showTab(tab) {
-  ['applications','creators','viewers'].forEach(t => {
-    document.getElementById('tab-' + t).style.display = t === tab ? 'block' : 'none';
-  });
+  var tabs = ['applications', 'creators', 'viewers'];
+  for (var i = 0; i < tabs.length; i++) {
+    document.getElementById('tab-' + tabs[i]).style.display = tabs[i] === tab ? 'block' : 'none';
+  }
 }
 
 function renderApplications() {
-  const pending = applications.filter(a => a.status === 'pending');
+  var pending = applications.filter(function(a) { return a.status === 'pending'; });
   document.getElementById('stat-pending').textContent = pending.length;
-  const container = document.getElementById('applications-list');
+  var container = document.getElementById('applications-list');
   if (pending.length === 0) {
-    container.innerHTML = '<div class="info-box" style="max-width:600px; margin:2rem auto; text-align:center;"><h4>&#10003; All Clear</h4><p>No pending applications. All submissions have been reviewed.</p></div>';
+    container.innerHTML = '<div class="info-box" style="max-width:600px; margin:2rem auto; text-align:center;"><h4>All Clear</h4><p>No pending applications.</p></div>';
     return;
   }
-  container.innerHTML = pending.map(app => `
-    <div class="admin-app-card" id="card-${app.id}">
-      <div class="admin-app-header">
-        <div>
-          <h3 class="admin-app-name">${app.channel}</h3>
-          <p class="admin-app-meta">By <strong>${app.name}</strong> &bull; ${app.email} &bull; Applied: ${app.date}</p>
-          <span class="admin-app-cat ${app.cat.toLowerCase().replace('/','').replace(' ','')}">${app.cat}</span>
-        </div>
-        <div class="admin-app-actions">
-          <button onclick="approveApp('${app.id}')" class="admin-btn-approve">&#10003; Approve</button>
-          <button onclick="rejectApp('${app.id}')" class="admin-btn-reject">&#10005; Reject</button>
-        </div>
-      </div>
-      <div class="admin-app-details">
-        <p><strong style="color:var(--text-secondary);">YouTube URL:</strong> <a href="${app.url}" target="_blank" style="color:var(--accent2);">${app.url}</a></p>
-        <p><strong style="color:var(--text-secondary);">Genres / Series:</strong> ${app.genres}</p>
-        <p><strong style="color:var(--text-secondary);">About:</strong> ${app.bio}</p>
-        <p><strong style="color:var(--text-secondary);">Referral:</strong> ${app.ref}</p>
-      </div>
-    </div>
-  `).join('');
+  var html = '';
+  for (var i = 0; i < pending.length; i++) {
+    var app = pending[i];
+    html += '<div class="admin-app-card" id="card-' + app.id + '">';
+    html += '<div class="admin-app-header">';
+    html += '<div><h3 class="admin-app-name">' + app.channel + '</h3>';
+    html += '<p class="admin-app-meta">By <strong>' + app.name + '</strong> &bull; ' + app.email + ' &bull; Applied: ' + app.date + '</p>';
+    html += '<span class="admin-app-cat">' + app.cat + '</span></div>';
+    html += '<div class="admin-app-actions">';
+    html += '<button onclick="approveApp('' + app.id + '')" class="admin-btn-approve">&#10003; Approve</button>';
+    html += '<button onclick="rejectApp('' + app.id + '')" class="admin-btn-reject">&#10005; Reject</button>';
+    html += '</div></div>';
+    html += '<div class="admin-app-details">';
+    html += '<p><strong style="color:var(--text-secondary);">YouTube URL:</strong> <a href="' + app.url + '" target="_blank" style="color:var(--accent2);">' + app.url + '</a></p>';
+    html += '<p><strong style="color:var(--text-secondary);">Genres:</strong> ' + app.genres + '</p>';
+    html += '<p><strong style="color:var(--text-secondary);">About:</strong> ' + app.bio + '</p>';
+    html += '<p><strong style="color:var(--text-secondary);">Referral:</strong> ' + app.ref + '</p>';
+    html += '</div></div>';
+  }
+  container.innerHTML = html;
 }
 
 function renderCreators() {
   document.getElementById('stat-approved').textContent = approvedCreators.length;
-  const container = document.getElementById('creators-list');
-  container.innerHTML = approvedCreators.map(c => `
-    <div class="admin-creator-card">
-      <div style="display:flex; align-items:center; gap:1rem; flex-wrap:wrap;">
-        <div style="font-family:Orbitron,sans-serif; font-weight:900; color:var(--accent); font-size:1.2rem;">${c.name}</div>
-        ${c.official ? '<span class="channel-badge-official" style="font-size:0.65rem;">OFFICIAL</span>' : ''}
-        <span class="admin-app-cat">${c.cat}</span>
-        <span style="color:var(--accent2); font-size:0.9rem;">&#9733; ${c.rating.toFixed(1)}</span>
-      </div>
-      <p style="color:var(--text-secondary); font-size:0.9rem; margin:6px 0;">${c.handle}</p>
-      <div style="display:flex; gap:0.75rem; margin-top:0.75rem; flex-wrap:wrap;">
-        <a href="creator-profile.html?id=${c.id}" target="_blank" class="btn-outline" style="padding:6px 16px; font-size:0.8rem;">View Profile</a>
-        ${!c.official ? '<button onclick="removeCreator(\'' + c.id + '\')" class="admin-btn-reject" style="padding:6px 16px; font-size:0.8rem;">Remove</button>' : ''}
-      </div>
-    </div>
-  `).join('');
+  var container = document.getElementById('creators-list');
+  var html = '';
+  for (var i = 0; i < approvedCreators.length; i++) {
+    var c = approvedCreators[i];
+    html += '<div class="admin-creator-card">';
+    html += '<div style="display:flex; align-items:center; gap:1rem; flex-wrap:wrap;">';
+    html += '<div style="font-family:Orbitron,sans-serif; font-weight:900; color:var(--accent); font-size:1.1rem;">' + c.name + '</div>';
+    if (c.official) html += '<span class="channel-badge-official" style="font-size:0.65rem;">OFFICIAL</span>';
+    html += '<span class="admin-app-cat">' + c.cat + '</span>';
+    html += '<span style="color:var(--accent2); font-size:0.9rem;">&#9733; ' + c.rating.toFixed(1) + '</span></div>';
+    html += '<p style="color:var(--text-secondary); font-size:0.9rem; margin:6px 0;">' + c.handle + '</p>';
+    html += '<div style="display:flex; gap:0.75rem; margin-top:0.75rem; flex-wrap:wrap;">';
+    html += '<a href="creator-profile.html?id=' + c.id + '" target="_blank" class="btn-outline" style="padding:6px 16px; font-size:0.8rem;">View Profile</a>';
+    if (!c.official) html += '<button onclick="removeCreator('' + c.id + '')" class="admin-btn-reject" style="padding:6px 16px; font-size:0.8rem;">Remove</button>';
+    html += '</div></div>';
+  }
+  container.innerHTML = html;
 }
 
 function approveApp(id) {
-  const app = applications.find(a => a.id === id);
+  var app = null;
+  for (var i = 0; i < applications.length; i++) {
+    if (applications[i].id === id) { app = applications[i]; break; }
+  }
   if (!app) return;
   app.status = 'approved';
-  document.getElementById('card-' + id).style.opacity = '0.5';
-  document.getElementById('card-' + id).innerHTML += '<div style="color:var(--accent2); font-weight:700; padding:1rem 0;">&#10003; Application approved! Creator will go live.</div>';
-  setTimeout(() => {
-    document.getElementById('card-' + id).remove();
-    renderApplications();
-    renderCreators();
-  }, 1800);
+  var card = document.getElementById('card-' + id);
+  card.style.opacity = '0.5';
+  card.innerHTML += '<div style="color:var(--accent2); font-weight:700; padding:1rem 0;">&#10003; Application approved! Creator will go live on the platform.</div>';
+  setTimeout(function() { card.remove(); renderApplications(); renderCreators(); }, 1800);
 }
 
 function rejectApp(id) {
   if (!confirm('Reject this application? The creator will be notified.')) return;
-  const app = applications.find(a => a.id === id);
+  var app = null;
+  for (var i = 0; i < applications.length; i++) {
+    if (applications[i].id === id) { app = applications[i]; break; }
+  }
   if (!app) return;
   app.status = 'rejected';
-  document.getElementById('card-' + id).style.opacity = '0.4';
-  document.getElementById('card-' + id).innerHTML += '<div style="color:var(--accent); font-weight:700; padding:1rem 0;">&#10005; Application rejected.</div>';
-  setTimeout(() => { document.getElementById('card-' + id).remove(); renderApplications(); }, 1800);
+  var card = document.getElementById('card-' + id);
+  card.style.opacity = '0.4';
+  card.innerHTML += '<div style="color:var(--accent); font-weight:700; padding:1rem 0;">&#10005; Application rejected.</div>';
+  setTimeout(function() { card.remove(); renderApplications(); }, 1800);
 }
 
 function removeCreator(id) {
   if (!confirm('Remove this creator from the platform?')) return;
-  approvedCreators = approvedCreators.filter(c => c.id !== id);
+  approvedCreators = approvedCreators.filter(function(c) { return c.id !== id; });
   renderCreators();
 }
 </script>
