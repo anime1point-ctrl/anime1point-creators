@@ -3,13 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Anime1Point Creators Hub | Discover New Anime, Manga & Novel Creators</title>
-<meta name="description" content="Anime1Point Creators Hub - A platform connecting new Anime, Manga and Novel content creators with passionate audiences.">
+<title>Anime1Point Creators Hub | Discover New Anime, Manga &amp; Novel Creators</title>
+<meta name="description" content="Anime1Point Creators Hub - A platform connecting new Anime, Manga and Novel YouTube creators with passionate audiences.">
 <link rel="stylesheet" href="style.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+
 <nav class="navbar">
   <div class="nav-logo">
     <span class="logo-icon">&#9654;</span>
@@ -18,20 +19,22 @@
   <ul class="nav-links">
     <li><a href="index.html" class="active">Home</a></li>
     <li><a href="about.html">How It Works</a></li>
+    <li><a href="directory.html">Browse Creators</a></li>
     <li><a href="creators.html">Join as Creator</a></li>
     <li><a href="viewers.html">Join as Viewer</a></li>
     <li><a href="https://www.youtube.com/@anime1point" target="_blank" class="nav-yt">&#9654; YouTube</a></li>
   </ul>
 </nav>
 
+<!-- HERO -->
 <section class="hero">
   <div class="hero-bg-overlay"></div>
   <div class="hero-content">
     <div class="hero-badge">&#127820; Powered by Anime1Point</div>
     <h1 class="hero-title">Discover the Next Big<br><span class="highlight">Anime Creator</span></h1>
-    <p class="hero-desc">New content creators covering Anime, Manga &amp; Novels deserve an audience. We bridge that gap &mdash; find rising stars before everyone else does.</p>
+    <p class="hero-desc">New YouTube creators covering Anime, Manga &amp; Novels deserve an audience. We bridge that gap &mdash; find rising stars before everyone else does.</p>
     <div class="hero-buttons">
-      <a href="viewers.html" class="btn-primary">&#128269; Explore Creators</a>
+      <a href="directory.html" class="btn-primary">&#128269; Browse Creators</a>
       <a href="creators.html" class="btn-secondary">&#128225; Join as Creator</a>
     </div>
     <div class="hero-stats">
@@ -44,10 +47,12 @@
   </div>
 </section>
 
+<!-- FEATURED CHANNEL: ANIME1POINT -->
 <section class="featured-channel">
   <div class="section-tag">&#11088; Official Channel</div>
   <h2 class="section-title">Featured: <span class="highlight">Anime1Point</span></h2>
-  <p class="section-subtitle">Our flagship YouTube channel &mdash; where deep anime breakdowns, manga analysis and story reviews come to life.</p>
+  <p class="section-subtitle">Our flagship YouTube channel &mdash; where deep anime breakdowns, manga analysis and story reviews come to life. The gold standard of this platform.</p>
+
   <div class="channel-card featured">
     <div class="channel-card-header">
       <div class="channel-avatar">A1</div>
@@ -59,81 +64,70 @@
           <span class="tag">Manga Analysis</span>
           <span class="tag">Tensura S4</span>
           <span class="tag">Deep Dives</span>
+          <span class="tag">YouTube</span>
         </div>
       </div>
       <div class="channel-badge-official">OFFICIAL</div>
     </div>
-    <p class="channel-desc">Anime breakdown &amp; explained channel. Specialising in That Time I Got Reincarnated as a Slime (Tensura) Season 4, One Piece, Dragon Ball and more. Episode reviews, manga lore, character analysis and story breakdowns &mdash; all in one place.</p>
+    <p class="channel-desc">Anime breakdown &amp; explained channel on YouTube. Specialising in That Time I Got Reincarnated as a Slime (Tensura) Season 4, One Piece, Dragon Ball and more. Episode reviews, manga lore, character analysis and story breakdowns &mdash; all in one place.</p>
     <div class="channel-links">
       <a href="https://www.youtube.com/@anime1point" target="_blank" class="btn-yt">&#9654; Watch on YouTube</a>
       <a href="https://anime1point-ctrl.github.io" target="_blank" class="btn-site">&#127760; Visit Main Website</a>
     </div>
   </div>
-  <div class="latest-videos-title">&#127916; Latest from Anime1Point</div>
-  <div class="videos-grid">
-    <a class="video-card" href="https://www.youtube.com/@anime1point/videos" target="_blank">
-      <div class="video-thumb"><div class="thumb-fallback">&#9654;</div></div>
-      <div class="video-info">
-        <p class="video-title">Tensura Season 4 &mdash; Latest Episode Review</p>
-        <p class="video-meta">Anime1Point &bull; New</p>
-      </div>
-    </a>
-    <a class="video-card" href="https://www.youtube.com/@anime1point/videos" target="_blank">
-      <div class="video-thumb"><div class="thumb-fallback">&#9654;</div></div>
-      <div class="video-info">
-        <p class="video-title">Manga Analysis &amp; Breakdown</p>
-        <p class="video-meta">Anime1Point &bull; Deep Dive</p>
-      </div>
-    </a>
-    <a class="video-card" href="https://www.youtube.com/@anime1point/videos" target="_blank">
-      <div class="video-thumb"><div class="thumb-fallback">&#9654;</div></div>
-      <div class="video-info">
-        <p class="video-title">Anime Lore Explained</p>
-        <p class="video-meta">Anime1Point &bull; Lore</p>
-      </div>
-    </a>
+
+  <!-- LIVE YouTube Videos via API -->
+  <div class="latest-videos-title">&#127916; Latest from Anime1Point <span class="live-badge">LIVE</span></div>
+  <div id="yt-videos" class="videos-grid">
+    <div class="video-card-loading">Loading latest videos&#8230;</div>
   </div>
   <div class="see-all-wrap">
     <a href="https://www.youtube.com/@anime1point" target="_blank" class="btn-outline">&#9654; See All Videos on YouTube</a>
   </div>
 </section>
 
+<!-- CATEGORIES -->
 <section class="categories">
   <div class="section-tag">&#128194; Content Categories</div>
-  <h2 class="section-title">What We Cover</h2>
+  <h2 class="section-title">What Creators Cover</h2>
+  <p class="section-subtitle">Every creator on this platform shares their content through their YouTube channel &mdash; whether they focus on anime, manga or novels.</p>
   <div class="categories-grid">
-    <div class="cat-card">
+    <div class="cat-card" onclick="window.location='directory.html?cat=anime'">
       <div class="cat-icon">&#127820;</div>
       <h3>Anime</h3>
-      <p>Episode breakdowns, reviews, character analysis, filler guides and seasonal coverage from creators who live and breathe anime.</p>
+      <p>Episode breakdowns, reviews, character analysis and seasonal coverage. All delivered through the creator's YouTube channel.</p>
+      <span class="cat-link">Browse Anime Creators &rarr;</span>
     </div>
-    <div class="cat-card">
+    <div class="cat-card" onclick="window.location='directory.html?cat=manga'">
       <div class="cat-icon">&#128214;</div>
       <h3>Manga</h3>
-      <p>Chapter reviews, panel analysis, art breakdowns, story arc comparisons and manga-to-anime adaptation discussions.</p>
+      <p>Chapter reviews, panel analysis, story arc comparisons and manga-to-anime discussions &mdash; all on YouTube.</p>
+      <span class="cat-link">Browse Manga Creators &rarr;</span>
     </div>
-    <div class="cat-card">
+    <div class="cat-card" onclick="window.location='directory.html?cat=novels'">
       <div class="cat-icon">&#128218;</div>
       <h3>Light Novels</h3>
-      <p>Light novel and web novel reviews, world-building analysis and comparisons between source material and adaptations.</p>
+      <p>Light novel and web novel reviews, world-building deep dives and source material comparisons on YouTube.</p>
+      <span class="cat-link">Browse Novel Creators &rarr;</span>
     </div>
   </div>
 </section>
 
+<!-- TWO WAYS TO JOIN -->
 <section class="how-teaser">
   <div class="section-tag">&#9889; Get Started</div>
   <h2 class="section-title">Two Ways to Join</h2>
   <div class="roles-grid">
     <div class="role-card creator-role">
       <div class="role-icon">&#128225;</div>
-      <h3>Content Creator?</h3>
-      <p>Connect your YouTube channel, share your content with our community and grow your audience. We help new creators find the viewers they deserve.</p>
+      <h3>YouTube Creator?</h3>
+      <p>Connect your YouTube channel &mdash; whether you cover anime, manga or novels. Share your content with our community and grow your audience organically.</p>
       <a href="creators.html" class="btn-primary">Join as Creator &rarr;</a>
     </div>
     <div class="role-card viewer-role">
       <div class="role-icon">&#128065;</div>
       <h3>Anime Fan?</h3>
-      <p>Create a free account to discover new creators, rate their content and leave comments. Help build the next generation of anime content creators.</p>
+      <p>Create a free account to discover new YouTube creators, rate their content and leave comments. Help build the next generation of anime content creators.</p>
       <a href="viewers.html" class="btn-secondary">Join as Viewer &rarr;</a>
     </div>
   </div>
@@ -148,8 +142,9 @@
     <div class="footer-links">
       <a href="index.html">Home</a>
       <a href="about.html">How It Works</a>
-      <a href="creators.html">Creators</a>
-      <a href="viewers.html">Viewers</a>
+      <a href="directory.html">Browse Creators</a>
+      <a href="creators.html">Join as Creator</a>
+      <a href="viewers.html">Join as Viewer</a>
       <a href="https://www.youtube.com/@anime1point" target="_blank">YouTube</a>
     </div>
   </div>
@@ -158,5 +153,71 @@
     <p class="footer-sub">A platform by Anime1Point for the anime community</p>
   </div>
 </footer>
+
+<script>
+// YouTube Data API v3 - Live video fetch for Anime1Point
+const YT_CHANNEL_ID = 'UCXbs_3dDTMTwjsHGSxDdOAQ';
+const YT_API_KEY = 'AIzaSyD1gE2M8TqfE8U-jtMrYXhQ0fPh4BUcuZ8';
+
+async function loadYouTubeVideos() {
+  const container = document.getElementById('yt-videos');
+  try {
+    const res = await fetch(
+      'https://www.googleapis.com/youtube/v3/search?key=' + YT_API_KEY +
+      '&channelId=' + YT_CHANNEL_ID +
+      '&part=snippet&order=date&maxResults=6&type=video'
+    );
+    const data = await res.json();
+
+    if (!data.items || data.items.length === 0) {
+      showFallbackVideos(container);
+      return;
+    }
+
+    container.innerHTML = '';
+    data.items.forEach(item => {
+      const vid = item.id.videoId;
+      const title = item.snippet.title;
+      const thumb = item.snippet.thumbnails.medium.url;
+      const date = new Date(item.snippet.publishedAt).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+
+      const card = document.createElement('a');
+      card.className = 'video-card';
+      card.href = 'https://www.youtube.com/watch?v=' + vid;
+      card.target = '_blank';
+      card.innerHTML =
+        '<div class="video-thumb"><img src="' + thumb + '" alt="' + title.replace(/"/g,'') + '" loading="lazy"></div>' +
+        '<div class="video-info"><p class="video-title">' + title + '</p><p class="video-meta">Anime1Point &bull; ' + date + '</p></div>';
+      container.appendChild(card);
+    });
+  } catch (e) {
+    showFallbackVideos(container);
+  }
+}
+
+function showFallbackVideos(container) {
+  const videos = [
+    { title: 'Tensura Season 4 — Latest Episode Review', meta: 'Anime1Point • New' },
+    { title: 'Rimuru vs Demon Lords — Full Breakdown', meta: 'Anime1Point • Deep Dive' },
+    { title: 'Manga vs Anime: What Changed?', meta: 'Anime1Point • Analysis' },
+    { title: 'Top 10 Strongest Characters in Tensura', meta: 'Anime1Point • Rankings' },
+    { title: 'One Piece Chapter Review', meta: 'Anime1Point • Manga' },
+    { title: 'Dragon Ball — Power Levels Explained', meta: 'Anime1Point • Lore' }
+  ];
+  container.innerHTML = '';
+  videos.forEach(v => {
+    const card = document.createElement('a');
+    card.className = 'video-card';
+    card.href = 'https://www.youtube.com/@anime1point/videos';
+    card.target = '_blank';
+    card.innerHTML =
+      '<div class="video-thumb"><div class="thumb-fallback">&#9654;</div></div>' +
+      '<div class="video-info"><p class="video-title">' + v.title + '</p><p class="video-meta">' + v.meta + '</p></div>';
+    container.appendChild(card);
+  });
+}
+
+document.addEventListener('DOMContentLoaded', loadYouTubeVideos);
+</script>
 </body>
 </html>
