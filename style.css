@@ -982,3 +982,195 @@ section { padding: 5rem 2rem; }
     font-size: 1.35rem;
   }
 }
+
+
+/* =============================================
+   VIDEO CARD — Hover Preview + Click Modal
+   ============================================= */
+.vc-card {
+  position: relative;
+  background: #0e0e1a;
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+.vc-card:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 12px 36px rgba(0,0,0,0.55);
+  border-color: rgba(220,40,40,0.5);
+}
+
+/* Thumbnail area */
+.vc-thumb {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 */
+  overflow: hidden;
+  background: #050510;
+}
+.vc-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.25s;
+}
+
+/* Hover iframe preview */
+.vc-preview-wrap {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+.vc-preview-wrap iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  pointer-events: none;
+}
+
+/* Play button overlay */
+.vc-play-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.28);
+  transition: opacity 0.25s, background 0.25s;
+}
+.vc-card:hover .vc-play-overlay {
+  background: rgba(0,0,0,0.12);
+}
+.vc-play-btn {
+  width: 52px;
+  height: 52px;
+  background: rgba(200,20,20,0.9);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  color: #fff;
+  padding-left: 4px;
+  transition: transform 0.2s, background 0.2s;
+  box-shadow: 0 4px 16px rgba(200,20,20,0.5);
+}
+.vc-card:hover .vc-play-btn {
+  transform: scale(1.12);
+  background: rgba(230,20,20,1);
+}
+
+/* Info below thumbnail */
+.vc-info {
+  padding: 0.75rem 0.9rem 0.85rem;
+}
+.vc-title {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #e8e8f0;
+  margin: 0 0 0.25rem;
+  line-height: 1.35;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.vc-meta {
+  font-size: 0.75rem;
+  color: #6a6a88;
+  margin: 0;
+  font-family: 'Rajdhani', sans-serif;
+}
+
+/* =============================================
+   VIDEO MODAL
+   ============================================= */
+.video-modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0,0,0,0.88);
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  animation: modalFadeIn 0.2s ease;
+}
+.video-modal-overlay.active {
+  display: flex;
+}
+@keyframes modalFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.video-modal-box {
+  position: relative;
+  width: 100%;
+  max-width: 880px;
+  background: #0a0a18;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(220,40,40,0.35);
+  box-shadow: 0 24px 80px rgba(0,0,0,0.8);
+  animation: modalSlideUp 0.25s ease;
+}
+@keyframes modalSlideUp {
+  from { transform: translateY(30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+.video-modal-close {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  z-index: 10;
+  background: rgba(200,20,20,0.85);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, transform 0.2s;
+}
+.video-modal-close:hover {
+  background: #e81212;
+  transform: scale(1.1);
+}
+.video-modal-title {
+  padding: 0.9rem 3rem 0.4rem 1.1rem;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #dde;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.video-modal-frame {
+  position: relative;
+  padding-top: 56.25%;
+  background: #000;
+}
+.video-modal-frame iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+@media (max-width: 600px) {
+  .video-modal-box { border-radius: 8px; }
+  .video-modal-title { font-size: 0.85rem; }
+}
