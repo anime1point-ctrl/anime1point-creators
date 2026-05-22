@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Browse Creators | Anime1Point Creators Hub</title>
+<meta name="description" content="Browse new anime, manga and novel YouTube creators on Anime1Point Creators Hub. Filter by category and discover your next favourite channel.">
+<link rel="stylesheet" href="style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="nav-logo">
+    <span class="logo-icon">&#9654;</span>
+    <span class="logo-text">Anime1Point <span class="logo-sub">Creators Hub</span></span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">How It Works</a></li>
+    <li><a href="directory.html" class="active">Browse Creators</a></li>
+    <li><a href="creators.html">Join as Creator</a></li>
+    <li><a href="viewers.html">Join as Viewer</a></li>
+    <li><a href="https://www.youtube.com/@anime1point" target="_blank" class="nav-yt">&#9654; YouTube</a></li>
+  </ul>
+</nav>
+
+<div class="page-hero">
+  <div class="section-tag">&#128269; Creator Directory</div>
+  <h1>Browse <span class="highlight">Creators</span></h1>
+  <p>Discover new YouTube creators covering Anime, Manga and Novels. All creators are hand-picked and approved by the Anime1Point team.</p>
+</div>
+
+<!-- FEATURED OFFICIAL -->
+<section style="padding:3rem 2rem 2rem; text-align:center; background:var(--bg-card);">
+  <div class="section-tag">&#11088; Official Channel</div>
+  <h2 class="section-title" style="margin-bottom:1.5rem;">Start With <span class="highlight">Anime1Point</span></h2>
+  <div class="dir-featured-card">
+    <div class="dir-avatar official-avatar">A1</div>
+    <div class="dir-info">
+      <div style="display:flex; align-items:center; gap:12px; flex-wrap:wrap; margin-bottom:6px;">
+        <h3 class="dir-name">Anime1Point</h3>
+        <span class="official-tag">&#11088; OFFICIAL</span>
+        <span class="dir-cat-tag anime">Anime</span>
+        <span class="dir-cat-tag manga">Manga</span>
+      </div>
+      <p class="dir-handle">@anime1point</p>
+      <p class="dir-bio">The flagship channel. Anime breakdowns, manga analysis and Tensura Season 4 deep dives. The gold standard of anime content creation on this platform.</p>
+      <div class="dir-rating">
+        <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+        <span class="rating-count">Platform Standard</span>
+      </div>
+    </div>
+    <div class="dir-actions">
+      <a href="https://www.youtube.com/@anime1point" target="_blank" class="btn-yt">&#9654; YouTube</a>
+      <a href="creator-profile.html?id=anime1point" class="btn-outline" style="margin-top:0.5rem; display:block; text-align:center;">View Profile</a>
+    </div>
+  </div>
+</section>
+
+<!-- FILTER BAR -->
+<section style="padding:2rem; background:var(--bg-dark); position:sticky; top:64px; z-index:100; border-bottom:1px solid var(--border);">
+  <div class="filter-bar">
+    <div class="filter-left">
+      <span class="filter-label">Filter by:</span>
+      <div class="filter-buttons">
+        <button class="filter-btn active" data-cat="all">All Creators</button>
+        <button class="filter-btn" data-cat="anime">&#127820; Anime</button>
+        <button class="filter-btn" data-cat="manga">&#128214; Manga</button>
+        <button class="filter-btn" data-cat="novels">&#128218; Novels</button>
+        <button class="filter-btn" data-cat="mixed">&#127381; Mixed</button>
+      </div>
+    </div>
+    <div class="filter-right">
+      <input type="text" id="search-input" class="search-box" placeholder="&#128269; Search creators...">
+    </div>
+  </div>
+  <div class="results-count"><span id="count">6</span> creators found</div>
+</section>
+
+<!-- CREATOR GRID -->
+<section style="padding:3rem 2rem; background:var(--bg-dark);">
+  <div id="creator-grid" class="dir-grid">
+
+    <!-- CREATOR 1 -->
+    <div class="dir-card" data-cat="anime" data-name="tensura daily">
+      <div class="dir-card-top">
+        <div class="dir-avatar" style="background:linear-gradient(135deg,#e63946,#7b2fff);">TD</div>
+        <div>
+          <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
+            <h3 class="dir-name">TensuraDaily</h3>
+            <span class="dir-cat-tag anime">Anime</span>
+          </div>
+          <p class="dir-handle">@tensura_daily</p>
+          <div class="dir-rating"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span><span class="rating-count">(24 ratings)</span></div>
+        </div>
+      </div>
+      <p class="dir-bio">Daily Tensura content &mdash; episode reactions, manga comparisons, character spotlights and lore deep dives all on YouTube.</p>
+      <div class="dir-tags"><span class="tag">Tensura</span><span class="tag">Isekai</span><span class="tag">Daily</span></div>
+      <div class="dir-card-actions">
+        <a href="creator-profile.html?id=tensura-daily" class="btn-primary" style="flex:1; text-align:center; padding:10px;">View Profile</a>
+        <a href="https://youtube.com" target="_blank" class="btn-yt" style="padding:10px 16px;">&#9654;</a>
+      </div>
+    </div>
+
+    <!-- CREATOR 2 -->
+    <div class="dir-card" data-cat="manga" data-name="manga sensei">
+      <div class="dir-card-top">
+        <div class="dir-avatar" style="background:linear-gradient(135deg,#f4a261,#e63946);">MS</div>
+        <div>
+          <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
+            <h3 class="dir-name">MangaSensei</h3>
+            <span class="dir-cat-tag manga">Manga</span>
+          </div>
+          <p class="dir-handle">@manga_sensei</p>
+          <div class="dir-rating"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span><span class="rating-count">(18 ratings)</span></div>
+        </div>
+      </div>
+      <p class="dir-bio">Weekly manga chapter breakdowns on YouTube. Covers One Piece, Bleach, Black Clover and seasonal manga with detailed panel-by-panel analysis.</p>
+      <div class="dir-tags"><span class="tag">One Piece</span><span class="tag">Bleach</span><span class="tag">Weekly</span></div>
+      <div class="dir-card-actions">
+        <a href="creator-profile.html?id=manga-sensei" class="btn-primary" style="flex:1; text-align:center; padding:10px;">View Profile</a>
+        <a href="https://youtube.com" target="_blank" class="btn-yt" style="padding:10px 16px;">&#9654;</a>
+      </div>
+    </div>
+
+    <!-- CREATOR 3 -->
+    <div class="dir-card" data-cat="novels" data-name="novel nexus">
+      <div class="dir-card-top">
+        <div class="dir-avatar" style="background:linear-gradient(135deg,#2ec4b6,#7b2fff);">NN</div>
+        <div>
+          <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
+            <h3 class="dir-name">NovelNexus</h3>
+            <span class="dir-cat-tag novels">Novels</span>
+          </div>
+          <p class="dir-handle">@novel_nexus</p>
+          <div class="dir-rating"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="rating-count">(31 ratings)</span></div>
+        </div>
+      </div>
+      <p class="dir-bio">Light novel and web novel reviews on YouTube. Explores how source material differs from anime adaptations &mdash; great for fans who want to go deeper.</p>
+      <div class="dir-tags"><span class="tag">Light Novels</span><span class="tag">Web Novels</span><span class="tag">Analysis</span></div>
+      <div class="dir-card-actions">
+        <a href="creator-profile.html?id=novel-nexus" class="btn-primary" style="flex:1; text-align:center; padding:10px;">View Profile</a>
+        <a href="https://youtube.com" target="_blank" class="btn-yt" style="padding:10px 16px;">&#9654;</a>
+      </div>
+    </div>
+
+    <!-- CREATOR 4 -->
+    <div class="dir-card" data-cat="anime" data-name="shonen spotlight">
+      <div class="dir-card-top">
+        <div class="dir-avatar" style="background:linear-gradient(135deg,#ffd700,#e63946);">SS</div>
+        <div>
+          <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
+            <h3 class="dir-name">ShonenSpotlight</h3>
+            <span class="dir-cat-tag anime">Anime</span>
+          </div>
+          <p class="dir-handle">@shonen_spotlight</p>
+          <div class="dir-rating"><span class="stars">&#9733;&#9733;&#9733;&#9734;&#9734;</span><span class="rating-count">(9 ratings)</span></div>
+        </div>
+      </div>
+      <p class="dir-bio">New channel focusing on Shonen anime. Weekly episode reviews of Dragon Ball, Naruto and seasonal picks. Fresh perspective, growing fast.</p>
+      <div class="dir-tags"><span class="tag">Shonen</span><span class="tag">Dragon Ball</span><span class="tag">New Creator</span></div>
+      <div class="dir-card-actions">
+        <a href="creator-profile.html?id=shonen-spotlight" class="btn-primary" style="flex:1; text-align:center; padding:10px;">View Profile</a>
+        <a href="https://youtube.com" target="_blank" class="btn-yt" style="padding:10px 16px;">&#9654;</a>
+      </div>
+    </div>
+
+    <!-- CREATOR 5 -->
+    <div class="dir-card" data-cat="mixed" data-name="isekai insider">
+      <div class="dir-card-top">
+        <div class="dir-avatar" style="background:linear-gradient(135deg,#7b2fff,#2ec4b6);">II</div>
+        <div>
+          <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
+            <h3 class="dir-name">IsekaiInsider</h3>
+            <span class="dir-cat-tag mixed">Mixed</span>
+          </div>
+          <p class="dir-handle">@isekai_insider</p>
+          <div class="dir-rating"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span><span class="rating-count">(15 ratings)</span></div>
+        </div>
+      </div>
+      <p class="dir-bio">Everything isekai &mdash; anime episodes, manga chapters and light novel reviews all in one YouTube channel. The go-to channel for isekai fans.</p>
+      <div class="dir-tags"><span class="tag">Isekai</span><span class="tag">Mixed</span><span class="tag">Fantasy</span></div>
+      <div class="dir-card-actions">
+        <a href="creator-profile.html?id=isekai-insider" class="btn-primary" style="flex:1; text-align:center; padding:10px;">View Profile</a>
+        <a href="https://youtube.com" target="_blank" class="btn-yt" style="padding:10px 16px;">&#9654;</a>
+      </div>
+    </div>
+
+    <!-- CREATOR 6 -->
+    <div class="dir-card" data-cat="manga" data-name="panel by panel">
+      <div class="dir-card-top">
+        <div class="dir-avatar" style="background:linear-gradient(135deg,#e63946,#f4a261);">PP</div>
+        <div>
+          <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
+            <h3 class="dir-name">PanelByPanel</h3>
+            <span class="dir-cat-tag manga">Manga</span>
+          </div>
+          <p class="dir-handle">@panel_by_panel</p>
+          <div class="dir-rating"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span><span class="rating-count">(22 ratings)</span></div>
+        </div>
+      </div>
+      <p class="dir-bio">Dedicated to manga art analysis on YouTube. Goes panel-by-panel through iconic chapters explaining the artwork, symbolism and storytelling techniques.</p>
+      <div class="dir-tags"><span class="tag">Art Analysis</span><span class="tag">Symbolism</span><span class="tag">Technique</span></div>
+      <div class="dir-card-actions">
+        <a href="creator-profile.html?id=panel-by-panel" class="btn-primary" style="flex:1; text-align:center; padding:10px;">View Profile</a>
+        <a href="https://youtube.com" target="_blank" class="btn-yt" style="padding:10px 16px;">&#9654;</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- EMPTY STATE -->
+  <div id="empty-state" style="display:none; text-align:center; padding:4rem 2rem;">
+    <div style="font-size:3rem; margin-bottom:1rem;">&#128269;</div>
+    <h3 style="font-family:'Orbitron',sans-serif; margin-bottom:0.75rem;">No creators found</h3>
+    <p style="color:var(--text-secondary);">Try a different filter or search term.</p>
+  </div>
+
+  <!-- CTA TO JOIN -->
+  <div style="text-align:center; margin-top:3rem; padding-top:2rem; border-top:1px solid var(--border);">
+    <p style="color:var(--text-secondary); margin-bottom:1rem;">Are you a YouTube creator covering Anime, Manga or Novels?</p>
+    <a href="creators.html" class="btn-primary">&#128225; Join as a Creator &rarr;</a>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <span class="logo-icon">&#9654;</span>
+      <span class="logo-text">Anime1Point Creators Hub</span>
+    </div>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">How It Works</a>
+      <a href="directory.html">Browse Creators</a>
+      <a href="creators.html">Join as Creator</a>
+      <a href="viewers.html">Join as Viewer</a>
+      <a href="https://www.youtube.com/@anime1point" target="_blank">YouTube</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 Anime1Point (Anime One Point) &mdash; All Rights Reserved</p>
+    <p class="footer-sub">A platform by Anime1Point for the anime community</p>
+  </div>
+</footer>
+
+<script>
+// Filter & Search
+const cards = document.querySelectorAll('.dir-card');
+const countEl = document.getElementById('count');
+const emptyState = document.getElementById('empty-state');
+const grid = document.getElementById('creator-grid');
+
+function updateDisplay() {
+  const activeBtn = document.querySelector('.filter-btn.active');
+  const cat = activeBtn ? activeBtn.dataset.cat : 'all';
+  const q = document.getElementById('search-input').value.toLowerCase();
+  let visible = 0;
+  cards.forEach(card => {
+    const matchCat = cat === 'all' || card.dataset.cat === cat;
+    const matchSearch = q === '' || card.dataset.name.includes(q) || card.textContent.toLowerCase().includes(q);
+    const show = matchCat && matchSearch;
+    card.style.display = show ? '' : 'none';
+    if (show) visible++;
+  });
+  countEl.textContent = visible;
+  emptyState.style.display = visible === 0 ? 'block' : 'none';
+  grid.style.display = visible === 0 ? 'none' : '';
+}
+
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    updateDisplay();
+  });
+});
+
+document.getElementById('search-input').addEventListener('input', updateDisplay);
+
+// Check URL param
+const urlCat = new URLSearchParams(window.location.search).get('cat');
+if (urlCat) {
+  const targetBtn = document.querySelector('[data-cat="' + urlCat + '"]');
+  if (targetBtn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    targetBtn.classList.add('active');
+    updateDisplay();
+  }
+}
+</script>
+</body>
+</html>
