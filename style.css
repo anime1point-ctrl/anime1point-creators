@@ -869,3 +869,116 @@ section { padding: 5rem 2rem; }
   .admin-nav { flex-direction: column; height:auto; padding:1rem; gap:0.5rem; }
   .admin-stats-bar { flex-direction: column; }
 }
+
+/* =============================================
+   CHANNEL CTA ROW — Big YouTube Link Button
+   ============================================= */
+.channel-cta-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+}
+
+.btn-yt-large {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.9rem;
+  background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%);
+  color: #fff;
+  text-decoration: none;
+  padding: 0.85rem 1.6rem;
+  border-radius: 10px;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+  box-shadow: 0 4px 18px rgba(255, 0, 0, 0.35);
+}
+.btn-yt-large:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(255, 0, 0, 0.5);
+  background: linear-gradient(135deg, #ff2222 0%, #dd0000 100%);
+}
+.yt-play-icon {
+  font-size: 1.4rem;
+  line-height: 1;
+}
+.btn-yt-label {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+.btn-yt-sub {
+  display: block;
+  font-size: 0.72rem;
+  opacity: 0.85;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+}
+
+/* =============================================
+   VIDEO SECTIONS — Most Watched + Latest
+   ============================================= */
+.videos-section {
+  padding: 4rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.videos-section-alt {
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 16px;
+  padding: 3.5rem 2rem;
+  margin: 0 auto 2rem auto;
+}
+.videos-section .section-tag,
+.videos-section-alt .section-tag {
+  display: inline-block;
+  background: rgba(255,60,60,0.12);
+  color: var(--accent);
+  border: 1px solid rgba(255,60,60,0.3);
+  border-radius: 20px;
+  padding: 0.3rem 1rem;
+  font-size: 0.78rem;
+  font-family: 'Orbitron', sans-serif;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 0.8rem;
+}
+.videos-section .section-title,
+.videos-section-alt .section-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+.videos-section .section-subtitle,
+.videos-section-alt .section-subtitle {
+  color: var(--text-muted);
+  font-size: 1rem;
+  margin-bottom: 2rem;
+  max-width: 600px;
+}
+
+@media (max-width: 600px) {
+  .channel-cta-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .btn-yt-large {
+    width: 100%;
+    justify-content: center;
+  }
+  .videos-section .section-title,
+  .videos-section-alt .section-title {
+    font-size: 1.35rem;
+  }
+}
