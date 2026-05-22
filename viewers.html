@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Join as Viewer | Anime1Point Creators Hub</title>
+<meta name="description" content="Create a free viewer account on Anime1Point Creators Hub. Discover new anime creators, rate their content and join the community.">
+<link rel="stylesheet" href="style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="nav-logo">
+    <span class="logo-icon">&#9654;</span>
+    <span class="logo-text">Anime1Point <span class="logo-sub">Creators Hub</span></span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">How It Works</a></li>
+    <li><a href="creators.html">Join as Creator</a></li>
+    <li><a href="viewers.html" class="active">Join as Viewer</a></li>
+    <li><a href="https://www.youtube.com/@anime1point" target="_blank" class="nav-yt">&#9654; YouTube</a></li>
+  </ul>
+</nav>
+
+<div class="page-hero">
+  <div class="section-tag">&#128065; For Anime Fans</div>
+  <h1>Join as a <span class="highlight">Viewer</span></h1>
+  <p>Create a free account to discover new anime creators, rate their videos and be part of a growing community of anime, manga and novel fans.</p>
+</div>
+
+<!-- WHAT VIEWERS CAN DO -->
+<section style="background: var(--bg-card); text-align: center; padding: 4rem 2rem;">
+  <div class="section-tag">&#9989; Viewer Privileges</div>
+  <h2 class="section-title">What You Can Do</h2>
+  <div class="categories-grid" style="max-width: 1000px; margin: 0 auto;">
+    <div class="cat-card">
+      <div class="cat-icon">&#128269;</div>
+      <h3>Discover Creators</h3>
+      <p>Browse new and upcoming anime content creators sorted by category, genre and ratings. Find your next favourite channel before it blows up.</p>
+    </div>
+    <div class="cat-card">
+      <div class="cat-icon">&#11088;</div>
+      <h3>Rate Content</h3>
+      <p>Give star ratings to creators and their videos. Your ratings help surface the best content and reward great creators.</p>
+    </div>
+    <div class="cat-card">
+      <div class="cat-icon">&#128172;</div>
+      <h3>Comment &amp; Engage</h3>
+      <p>Leave comments on creator profiles and videos. Share your thoughts, recommendations and help build the anime content community.</p>
+    </div>
+    <div class="cat-card">
+      <div class="cat-icon">&#128276;</div>
+      <h3>Get Notified</h3>
+      <p>Follow your favourite new creators and get notified when they post new content. Never miss an upload from a rising star.</p>
+    </div>
+    <div class="cat-card">
+      <div class="cat-icon">&#128081;</div>
+      <h3>Earn Recognition</h3>
+      <p>Active viewers earn badges and recognition in the community. Top reviewers get featured on the platform.</p>
+    </div>
+    <div class="cat-card">
+      <div class="cat-icon">&#127920;</div>
+      <h3>It's Free</h3>
+      <p>Viewer accounts are completely free. No subscriptions, no paywalls. Just pure anime content discovery.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED CHANNEL REMINDER -->
+<section style="text-align: center; padding: 3rem 2rem; background: linear-gradient(135deg, #0d0d1a, #1a0a2e);">
+  <div class="section-tag">&#11088; Don't Miss</div>
+  <h2 class="section-title">Start with <span class="highlight">Anime1Point</span></h2>
+  <p style="color: var(--text-secondary); max-width: 600px; margin: 0 auto 2rem;">While you explore new creators, make sure to check out the platform's flagship channel &mdash; Anime1Point on YouTube. The gold standard for anime breakdowns.</p>
+  <a href="https://www.youtube.com/@anime1point" target="_blank" class="btn-yt" style="display:inline-block;">&#9654; Visit Anime1Point on YouTube</a>
+</section>
+
+<!-- VIEWER REGISTRATION FORM -->
+<section style="background: var(--bg-card); padding: 4rem 2rem;">
+  <div class="section-tag" style="display: block; text-align: center;">&#128221; Create Account</div>
+  <h2 class="section-title" style="text-align: center;">Create Your Viewer Account</h2>
+  <p style="text-align: center; color: var(--text-secondary); margin-bottom: 2.5rem;">Free to join. Takes less than 2 minutes. Start discovering new creators today.</p>
+
+  <div class="form-section">
+    <div class="form-card">
+      <form id="viewerForm" onsubmit="submitViewerForm(event)">
+        <div class="form-group">
+          <label>Username *</label>
+          <input type="text" placeholder="Choose a display name (visible to others)" required minlength="3">
+          <p class="form-hint">This is the name other users will see when you comment or rate.</p>
+        </div>
+        <div class="form-group">
+          <label>Email Address *</label>
+          <input type="email" placeholder="your@email.com" required>
+          <p class="form-hint">We'll only use this for account-related notifications.</p>
+        </div>
+        <div class="form-group">
+          <label>Password *</label>
+          <input type="password" placeholder="Create a strong password" required minlength="8">
+        </div>
+        <div class="form-group">
+          <label>Confirm Password *</label>
+          <input type="password" placeholder="Repeat your password" required minlength="8">
+        </div>
+        <div class="form-group">
+          <label>Favourite Anime Genre</label>
+          <select>
+            <option value="">Optional &mdash; helps us recommend creators</option>
+            <option>Isekai</option>
+            <option>Shonen</option>
+            <option>Shojo</option>
+            <option>Seinen</option>
+            <option>Mecha</option>
+            <option>Romance</option>
+            <option>Horror / Dark Fantasy</option>
+            <option>Action / Adventure</option>
+            <option>Slice of Life</option>
+            <option>Sports</option>
+            <option>Manga Adaptation</option>
+            <option>Light Novel Adaptation</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Favourite Anime / Series</label>
+          <input type="text" placeholder="e.g. That Time I Got Reincarnated as a Slime, One Piece...">
+          <p class="form-hint">Optional. Helps us personalise your creator feed.</p>
+        </div>
+        <div class="form-group" style="display: flex; align-items: flex-start; gap: 10px;">
+          <input type="checkbox" id="terms" required style="width: auto; margin-top: 4px; accent-color: var(--accent);">
+          <label for="terms" style="text-transform: none; letter-spacing: 0; font-size: 0.9rem; color: var(--text-secondary);">
+            I agree to the community guidelines and understand that I must be respectful when rating and commenting on creator content. *
+          </label>
+        </div>
+        <button type="submit" class="form-submit">&#128065; Create My Viewer Account</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- COMMUNITY GUIDELINES TEASER -->
+<section style="padding: 3rem 2rem; max-width: 700px; margin: 0 auto;">
+  <div class="info-box">
+    <h4>&#128214; Community Guidelines</h4>
+    <ul>
+      <li>Be respectful and constructive in your comments and ratings.</li>
+      <li>Rate content honestly based on quality, effort and creativity.</li>
+      <li>No spam, harassment or hate speech of any kind.</li>
+      <li>Support new creators &mdash; remember, everyone starts from zero.</li>
+      <li>Content must relate to Anime, Manga or Light Novels.</li>
+    </ul>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <span class="logo-icon">&#9654;</span>
+      <span class="logo-text">Anime1Point Creators Hub</span>
+    </div>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">How It Works</a>
+      <a href="creators.html">Creators</a>
+      <a href="viewers.html">Viewers</a>
+      <a href="https://www.youtube.com/@anime1point" target="_blank">YouTube</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 Anime1Point (Anime One Point) &mdash; All Rights Reserved</p>
+    <p class="footer-sub">A platform by Anime1Point for the anime community</p>
+  </div>
+</footer>
+
+<script>
+function submitViewerForm(e) {
+  e.preventDefault();
+  alert('Welcome to Anime1Point Creators Hub! Your account has been created. Start exploring new anime creators now!');
+}
+</script>
+</body>
+</html>
