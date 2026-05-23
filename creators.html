@@ -81,18 +81,25 @@
         <div class="step-num">2</div>
         <div class="step-content">
           <h3>Your YouTube Channel</h3>
-          <p>Your YouTube channel URL and channel name. We use this to link viewers directly to your channel. Simple as that.</p>
+          <p>Your YouTube channel URL, channel name and Channel ID. We use this to link viewers directly to your channel.</p>
         </div>
       </div>
       <div class="step-card">
         <div class="step-num">3</div>
+        <div class="step-content">
+          <h3>Your YouTube API Key</h3>
+          <p>A YouTube Data API v3 key so we can display your latest uploads and video thumbnails in real time on your creator profile. Your key is stored securely and only used to fetch your public video data.</p>
+        </div>
+      </div>
+      <div class="step-card">
+        <div class="step-num">4</div>
         <div class="step-content">
           <h3>Your Content Focus</h3>
           <p>Tell us whether your channel focuses on Anime, Manga or Novels &mdash; and which genres or series you cover. This helps us match you with the right viewers.</p>
         </div>
       </div>
       <div class="step-card">
-        <div class="step-num">4</div>
+        <div class="step-num">5</div>
         <div class="step-content">
           <h3>Admin Approval</h3>
           <p>Our admin team reviews your application within 2&ndash;3 business days. Once approved, your channel goes live on the platform.</p>
@@ -132,6 +139,24 @@
         <div class="form-group">
           <label>YouTube Channel Name *</label>
           <input type="text" id="f-channel" placeholder="Your channel name as shown on YouTube" required>
+        </div>
+        <div class="form-group">
+          <label>YouTube Channel ID *</label>
+          <input type="text" id="f-channel-id" placeholder="e.g. UCxxxxxxxxxxxxxxxxxxxxxx" required>
+          <p class="form-hint">Find your Channel ID at <a href="https://www.youtube.com/account_advanced" target="_blank" rel="noopener" style="color:var(--accent2);">YouTube &rarr; Settings &rarr; Advanced settings</a>. It starts with <strong>UC</strong>.</p>
+        </div>
+        <div class="form-group">
+          <label>YouTube Data API Key *</label>
+          <input type="text" id="f-api-key" placeholder="AIzaSy..." required>
+          <p class="form-hint">
+            &#128273; We use this to show your latest video uploads and thumbnails on your creator profile in real time. Your key is stored securely and only used to fetch your public YouTube data.
+            <br><br>
+            <strong>How to get a free API key:</strong><br>
+            1. Go to <a href="https://console.cloud.google.com/" target="_blank" rel="noopener" style="color:var(--accent2);">Google Cloud Console</a> and create a free project.<br>
+            2. Enable the <strong>YouTube Data API v3</strong>.<br>
+            3. Go to <strong>Credentials &rarr; Create Credentials &rarr; API Key</strong>.<br>
+            4. (Optional but recommended) Restrict the key to YouTube Data API v3 only.
+          </p>
         </div>
         <div class="form-group">
           <label>Content Focus *</label>
