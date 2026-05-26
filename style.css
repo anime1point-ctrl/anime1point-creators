@@ -1174,3 +1174,55 @@ section { padding: 5rem 2rem; }
   .video-modal-box { border-radius: 8px; }
   .video-modal-title { font-size: 0.85rem; }
 }
+
+
+/* =============================================
+   VIDEO SECTION CATEGORY TABS
+   Phase 1: Anime / Manga / Novel tab switcher
+   for Most Watched and Latest Published sections
+============================================= */
+.vid-tabs {
+  display: flex;
+  gap: 0.6rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.vid-tab {
+  background: var(--bg-card2);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  padding: 9px 22px;
+  border-radius: 50px;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.92rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.2s;
+  outline: none;
+}
+
+.vid-tab:hover {
+  border-color: var(--accent2);
+  color: var(--accent2);
+}
+
+.vid-tab.active {
+  background: linear-gradient(135deg, var(--accent) 0%, #c62836 100%);
+  border-color: var(--accent);
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(230,57,70,0.35);
+}
+
+/* Panels shown/hidden by JS; active-panel just marks current */
+.vid-panel { animation: panelFadeIn 0.22s ease; }
+@keyframes panelFadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 600px) {
+  .vid-tabs { gap: 0.4rem; }
+  .vid-tab  { padding: 7px 14px; font-size: 0.82rem; }
+}
