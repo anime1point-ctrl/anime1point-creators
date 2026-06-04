@@ -6,17 +6,18 @@ import { CATEGORY_MAP } from '../data/categories'
 import { getHomeSections } from '../data/homeSections'
 import { useVideoModal } from '../context/VideoModalContext'
 
-// YouTube only has real thumbnails for real video IDs (11-char alphanumeric+dash+underscore)
-// Placeholder IDs like 'tdaily_vid_01' use underscores in a specific pattern
-function isRealYouTubeId(id) {
-  return /^[A-Za-z0-9_\-]{11}$/.test(id) && !id.includes('_vid_')
+// Returns true only for real 11-char YouTube video IDs (not placeholder IDs like tdaily_vid_01)
+function hasRealThumbnail(videoId) {
+  if (!videoId) return false
+  if (videoId.includes('_vid_')) return false
+  return /^[A-Za-z0-9_\-]{11}$/.test(videoId)
 }
 
 function VideoCard({ video, priority = false }) {
   const { openModal } = useVideoModal()
   const creator = CREATOR_MAP[video.creatorId]
   const [imgError, setImgError] = useState(false)
-  const hasRealThumb = isRealYouTubeId(video.id) && !imgError
+  const showThumb = hasRealThumbnail(video.id) && !imgError
 
   return (
     <div
@@ -24,7 +25,7 @@ function VideoCard({ video, priority = false }) {
       onClick={() => openModal(video.id, video.title, creator ? creator.name : '')}
     >
       <div className="relative mb-3 rounded-lg overflow-hidden aspect-video bg-black">
-        {hasRealThumb ? (
+        {showThumb ? (
           <img
             src={`https://i.ytimg.com/vi/${video.id}/${priority ? 'hqdefault' : 'mqdefault'}.jpg`}
             alt={video.title}
@@ -41,6 +42,7 @@ function VideoCard({ video, priority = false }) {
             {creator && (
               <span className="text-white text-xs font-orbitron font-black opacity-80 truncate max-w-full">{creator.name}</span>
             )}
+            <span className="text-white text-xs opacity-50">Video Coming Soon</span>
           </div>
         )}
         <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all flex items-center justify-center">
