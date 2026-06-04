@@ -7,6 +7,13 @@ import { useVideoModal } from '../context/VideoModalContext'
 
 const PAGE_SIZE = 6
 
+// Creator status badge config
+const STATUS_BADGE = {
+  'anime1point': { label: 'ANIME1POINT CREATOR', className: 'text-xs px-2.5 py-1 rounded-full font-semibold bg-gradient-to-r from-purple/30 to-accent/30 text-accent border border-accent/40' },
+  'featured':    { label: 'FEATURED CREATOR',    className: 'text-xs px-2.5 py-1 rounded-full font-semibold bg-gold/20 text-gold border border-gold/30' },
+  'rising':      { label: 'RISING CREATOR',      className: 'text-xs px-2.5 py-1 rounded-full font-semibold bg-green-500/20 text-green-400 border border-green-500/30' },
+}
+
 function isRealYouTubeId(id) {
   return /^[A-Za-z0-9_\-]{11}$/.test(id) && !id.includes('_vid_')
 }
@@ -73,6 +80,7 @@ export default function CreatorProfile() {
     )
   }
 
+  const badge = STATUS_BADGE[creator.creatorStatus]
   const allVideos = VIDEOS.filter(v => v.creatorId === id)
   const shown = allVideos.slice(0, page * PAGE_SIZE)
   const hasMore = shown.length < allVideos.length
@@ -93,13 +101,14 @@ export default function CreatorProfile() {
               {creator.avatar}
             </div>
             <div className="flex-1">
+              {/* Status badge — prominent, above name */}
+              {badge && (
+                <div className="mb-2">
+                  <span className={badge.className}>{badge.label}</span>
+                </div>
+              )}
               <div className="flex items-center gap-3 flex-wrap mb-2">
                 <h1 className="font-orbitron font-black text-2xl text-text-primary">{creator.name}</h1>
-                {creator.official && (
-                  <span className="text-xs px-2 py-0.5 bg-gold/20 text-gold border border-gold/30 rounded-full font-semibold">
-                    OFFICIAL
-                  </span>
-                )}
                 <span className={`badge-${creator.category}`}>
                   {CATEGORY_MAP[creator.category]?.label || creator.category}
                 </span>
