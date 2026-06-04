@@ -1,13 +1,13 @@
 import { createContext, useContext, useState, useCallback } from 'react'
+import { CREATOR_MAP } from '../data/creators'
 const VideoModalContext = createContext(null)
 
-// Real Anime1Point video IDs that can be embedded
-const REAL_VIDEO_IDS = new Set([
-  'ZVmqQk1GbqE', 'OCzmKRgsRag', 'UeLgwcrGVnk', 'jEiEpR3w4Ek', 'B74XQSfhW1g',
-  'bN534x05wBU', 'wvxjzpJW8aE', 'nyJ_8jVKJKc',
-  'ommA4DBy5RQ', '3izJIv1NrW8', 'o_PazOqPg0I', 'mG9X9EZPCj0', '7E77-vVSgW4',
-  'oIUdlnnaLdk', 'NUYvbNzmtdA', 'n1WpP7iowLc', 'RcFaNSxkCMg', 'Q8Lf3ywlwWo',
-])
+// hasRealThumbnail — true for valid 11-char YouTube IDs (not placeholder IDs)
+function hasRealYouTubeId(videoId) {
+  if (!videoId) return false
+  if (videoId.includes('_vid_')) return false
+  return /^[A-Za-z0-9_\-]{11}$/.test(videoId)
+}
 
 export function VideoModalProvider({ children }) {
   const [modal, setModal] = useState(null)
@@ -20,7 +20,9 @@ export function VideoModalProvider({ children }) {
     document.body.style.overflow = ''
   }, [])
 
-  const isEmbeddable = modal ? REAL_VIDEO_IDS.has(modal.videoId) : false
+  // All real YouTube IDs are embeddable — use hasRealYouTubeId to gate embeds
+  const isEmbeddable = modal ? hasRealYouTubeId(modal.videoId) : false
+  const creator = modal ? CREATOR_MAP[Object.keys(CREATOR_MAP).find(k => CREATOR_MAP[k].name === modal.creatorName)] : null
 
   return (
     <VideoModalContext.Provider value={{ modal, openModal, closeModal }}>
@@ -32,7 +34,17 @@ export function VideoModalProvider({ children }) {
         >
           <div className="relative w-full max-w-3xl mx-4 bg-bg-card rounded-xl overflow-hidden shadow-2xl">
             <div className="flex items-center justify-between px-4 py-3 border-b border-border-dim">
-              <p className="text-sm font-semibold text-text-primary truncate pr-4">{modal.title}</p>
+              <div className="flex items-center gap-2 min-w-0 pr-4">
+                {creator && (
+                  <div
+                    className="w-6 h-6 rounded-full flex items-center justify-center text-xs font-black font-orbitron text-white shrink-0"
+                    style={{ background: creator.avatarGradient }}
+                  >
+                    {creator.avatar[0]}
+                  </div>
+                )}
+                <p className="text-sm font-semibold text-text-primary truncate">{modal.title}</p>
+              </div>
               <button
                 onClick={closeModal}
                 className="shrink-0 text-text-secondary hover:text-text-primary text-xl"
@@ -62,7 +74,7 @@ export function VideoModalProvider({ children }) {
                       <p className="text-text-secondary text-sm mb-4">by {modal.creatorName}</p>
                     )}
                     <p className="text-text-secondary text-sm mb-6 max-w-sm mx-auto">
-                      This creator has not yet linked their YouTube video. Visit their channel to watch.
+                      Visit the creator's YouTube channel to watch this video.
                     </p>
                     <a
                       href={`https://www.youtube.com/results?search_query=${encodeURIComponent(modal.title)}`}
@@ -76,6 +88,34 @@ export function VideoModalProvider({ children }) {
                 </div>
               )}
             </div>
+            {/* Attribution footer — always visible */}
+            {modal.creatorName && (
+              <div className="flex items-center justify-between px-4 py-2 bg-bg-card2 border-t border-border-dim">
+                <div className="flex items-center gap-2">
+                  {creator && (
+                    <div
+                      className="w-5 h-5 rounded-full flex items-center justify-center text-xs font-black font-orbitron text-white shrink-0"
+                      style={{ background: creator.avatarGradient }}
+                    >
+                      {creator.avatar[0]}
+                    </div>
+                  )}
+                  <span className="text-xs text-text-secondary">
+                    by <span className="text-text-primary font-semibold">{modal.creatorName}</span>
+                  </span>
+                </div>
+                {creator && (
+                  <a
+                    href={creator.youtubeUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-yt text-xs py-1 px-3"
+                  >
+                    &#9654; Subscribe
+                  </a>
+                )}
+              </div>
+            )}
           </div>
         </div>
       )}
