@@ -6,12 +6,9 @@
  *   'anime1point' — Official platform creator
  *   'featured'    — Established public YouTube creator (curated)
  *   'rising'      — Smaller growing creator (future use)
- *
- * Shape: id, name, handle, creatorStatus, category, avatar, avatarGradient,
- *        bio, tags, youtubeUrl, youtubeChannelId, status, featured
  */
 export const CREATORS = [
-  // ── Platform Creator ──────────────────────────────────────────
+  // Platform Creator
   {
     id: 'anime1point',
     name: 'Anime1Point',
@@ -20,15 +17,14 @@ export const CREATORS = [
     category: 'anime',
     avatar: 'A1',
     avatarGradient: 'linear-gradient(135deg,#e63946,#7b2fff)',
-    bio: 'The flagship Anime1Point channel. Focused on That Time I Got Reincarnated as a Slime (Tensura) Season 4 — episode reviews, English Dub reactions, manga breakdowns, character analysis and lore deep dives.',
+    bio: "The flagship Anime1Point channel. Focused on That Time I Got Reincarnated as a Slime (Tensura) Season 4 — episode reviews, English Dub reactions, manga breakdowns, character analysis and lore deep dives.",
     tags: ['Tensura Season 4', 'Episode Reviews', 'English Dub', 'Manga Breakdown', 'Lore Deep Dives'],
     youtubeUrl: 'https://www.youtube.com/@anime1point',
     youtubeChannelId: 'UCXbs_3dDTMTwjsHGSxDdOAQ',
     status: 'approved',
     featured: true,
   },
-
-  // ── Featured Creators — Anime ──────────────────────────────────
+  // Gigguk
   {
     id: 'gigguk',
     name: 'Gigguk',
@@ -37,13 +33,14 @@ export const CREATORS = [
     category: 'anime',
     avatar: 'GG',
     avatarGradient: 'linear-gradient(135deg,#ff6b35,#f7c948)',
-    bio: 'One of YouTube's biggest anime commentators. Known for seasonal nutshells, deep dives into anime culture, and long-form essays that make anime fans see their favourite shows differently.',
+    bio: "One of YouTube's biggest anime commentators. Known for seasonal nutshells, deep dives into anime culture, and long-form essays that make anime fans see their favourite shows differently.",
     tags: ['Seasonal Reviews', 'Anime Essays', 'Nutshell Series', 'Anime Culture', 'Top Lists'],
     youtubeUrl: 'https://www.youtube.com/@gigguk',
     youtubeChannelId: 'UC7dF9qfBMXrjNEqHsxNbm0g',
     status: 'approved',
     featured: true,
   },
+  // The Anime Man
   {
     id: 'theanimeman',
     name: 'The Anime Man',
@@ -52,13 +49,14 @@ export const CREATORS = [
     category: 'anime',
     avatar: 'AM',
     avatarGradient: 'linear-gradient(135deg,#1a1a2e,#e94560)',
-    bio: 'Half-Japanese creator living in Tokyo with deep insight into anime, manga, and Japanese culture. Combines personal experience with critical analysis across all genres and mediums.',
+    bio: "Half-Japanese creator living in Tokyo with deep insight into anime, manga, and Japanese culture. Combines personal experience with critical analysis across all genres and mediums.",
     tags: ['Anime Reviews', 'Japan Culture', 'Manga', 'Light Novels', 'Industry Deep Dives'],
     youtubeUrl: 'https://www.youtube.com/@TheAnimeMan',
     youtubeChannelId: 'UC_9I_ZACNqJtMlFhIUQGVcg',
     status: 'approved',
     featured: true,
   },
+  // Mother's Basement
   {
     id: 'mothersbasement',
     name: "Mother's Basement",
@@ -67,13 +65,14 @@ export const CREATORS = [
     category: 'anime',
     avatar: 'MB',
     avatarGradient: 'linear-gradient(135deg,#0f3460,#533483)',
-    bio: 'Deep analysis of anime openings, endings, and storytelling. Geoff Thew breaks down what makes anime great with technical precision — from sakuga animation to narrative structure and symbolism.',
+    bio: "Deep analysis of anime openings, endings, and storytelling. Geoff Thew breaks down what makes anime great with technical precision — from sakuga animation to narrative structure and symbolism.",
     tags: ['OP/ED Analysis', 'Anime Analysis', 'Storytelling', 'Sakuga', 'Seasonal Coverage'],
     youtubeUrl: 'https://www.youtube.com/@mothersbasement',
     youtubeChannelId: 'UCBs2Y3i14e1NWQxOGliatmg',
     status: 'approved',
     featured: true,
   },
+  // Glass Reflection
   {
     id: 'glassreflection',
     name: 'Glass Reflection',
@@ -82,13 +81,14 @@ export const CREATORS = [
     category: 'anime',
     avatar: 'GR',
     avatarGradient: 'linear-gradient(135deg,#2193b0,#6dd5ed)',
-    bio: 'Arkada delivers balanced, spoiler-conscious seasonal anime reviews with over a decade of consistency. Known for watching every seasonal premiere and giving honest recommendations for all types of anime fans.',
+    bio: "Arkada delivers balanced, spoiler-conscious seasonal anime reviews with over a decade of consistency. Known for watching every seasonal premiere and giving honest recommendations for all types of anime fans.",
     tags: ['Seasonal Reviews', 'Anime Recommendations', 'Spoiler-Free', 'First Impressions', 'Top 10'],
     youtubeUrl: 'https://www.youtube.com/@GlassReflection',
     youtubeChannelId: 'UCmAFOAkBiGeDGmHOCAwQntA',
     status: 'approved',
     featured: true,
   },
+  // AH Brandon Reviews
   {
     id: 'ahbrandon',
     name: 'AH Brandon Reviews',
@@ -97,13 +97,14 @@ export const CREATORS = [
     category: 'anime',
     avatar: 'AB',
     avatarGradient: 'linear-gradient(135deg,#11998e,#38ef7d)',
-    bio: 'Weekly episode-by-episode reactions and reviews covering the biggest seasonal anime. Brandon's genuine enthusiasm and emotional responses make every episode breakdown feel like watching with a friend.',
+    bio: "Weekly episode-by-episode reactions and reviews covering the biggest seasonal anime. Brandon's genuine enthusiasm and emotional responses make every episode breakdown feel like watching with a friend.",
     tags: ['Episode Reviews', 'Seasonal Anime', 'Reactions', 'Tensura', 'Re:Zero'],
     youtubeUrl: 'https://www.youtube.com/@AHBrandonReviews',
     youtubeChannelId: 'UCqbncBKBFDtFGz_JdEfyopQ',
     status: 'approved',
     featured: true,
   },
+  // Chibi Reviews
   {
     id: 'chibireviewsyt',
     name: 'Chibi Reviews',
@@ -112,15 +113,14 @@ export const CREATORS = [
     category: 'anime',
     avatar: 'CR',
     avatarGradient: 'linear-gradient(135deg,#f953c6,#b91d73)',
-    bio: 'Covering the latest anime news, controversies, and industry commentary. Chibi Reviews keeps the anime community informed and engaged with fast-paced, opinionated takes on what's happening right now.',
+    bio: "Covering the latest anime news, controversies, and industry commentary. Chibi Reviews keeps the anime community informed with fast-paced, opinionated takes on what is happening right now.",
     tags: ['Anime News', 'Industry Commentary', 'Crunchyroll', 'Community', 'Seasonal Updates'],
     youtubeUrl: 'https://www.youtube.com/@ChibiReviews',
     youtubeChannelId: 'UCsAifHRSMPlDFwMRrT-jFVw',
     status: 'approved',
     featured: false,
   },
-
-  // ── Featured Creators — Manga ──────────────────────────────────
+  // RealLifeRyan
   {
     id: 'realliferyan',
     name: 'RealLifeRyan',
@@ -129,13 +129,14 @@ export const CREATORS = [
     category: 'manga',
     avatar: 'RR',
     avatarGradient: 'linear-gradient(135deg,#373B44,#4286f4)',
-    bio: 'In-depth manga reading vlogs and chapter reviews. Best known for the Berserk Revisited series — a volume-by-volume journey through one of manga's greatest masterpieces alongside film and pop culture analysis.',
+    bio: "In-depth manga reading vlogs and chapter reviews. Best known for the Berserk Revisited series — a volume-by-volume journey through one of manga's greatest masterpieces alongside film and pop culture analysis.",
     tags: ['Berserk', 'Manga Reviews', 'Reading Vlogs', 'Chapter Analysis', 'Classic Manga'],
     youtubeUrl: 'https://www.youtube.com/@RealLifeRyan',
     youtubeChannelId: 'UCTbLbMFjEPInxbR0W5NvQFg',
     status: 'approved',
     featured: true,
   },
+  // Totally Not Mark
   {
     id: 'totallynotmark',
     name: 'Totally Not Mark',
@@ -144,15 +145,14 @@ export const CREATORS = [
     category: 'manga',
     avatar: 'TM',
     avatarGradient: 'linear-gradient(135deg,#f7971e,#ffd200)',
-    bio: 'Long-form anime and manga reviews with meticulous research and genuine passion. Mark's comprehensive breakdowns of series like Dragon Ball, JJK, and Chainsaw Man set the standard for serious manga criticism on YouTube.',
+    bio: "Long-form anime and manga reviews with meticulous research and genuine passion. Comprehensive breakdowns of Dragon Ball, JJK, and Chainsaw Man set the standard for manga criticism on YouTube.",
     tags: ['Manga Analysis', 'Dragon Ball', 'Chainsaw Man', 'JJK', 'Long-Form Reviews'],
     youtubeUrl: 'https://www.youtube.com/@TotallyNotMark',
     youtubeChannelId: 'UCnKCBRMkVa9cGgdFNREJ8bw',
     status: 'approved',
     featured: true,
   },
-
-  // ── Featured Creators — Anime Lore & Story Analysis ───────────
+  // Anime Balls Deep
   {
     id: 'animeballsdeep',
     name: 'Anime Balls Deep',
@@ -161,15 +161,14 @@ export const CREATORS = [
     category: 'anime',
     avatar: 'BD',
     avatarGradient: 'linear-gradient(135deg,#141E30,#243B55)',
-    bio: 'The deepest lore dives on YouTube. Covering the complete stories behind Tensura, One Piece, Naruto, and more — including light novel content beyond the anime. Essential viewing for fans who want the full picture.',
+    bio: "The deepest lore dives on YouTube. Covering the complete stories behind Tensura, One Piece, Naruto, and more — including light novel content beyond the anime. Essential viewing for fans who want the full picture.",
     tags: ['Tensura Lore', 'One Piece', 'Story Analysis', 'Light Novel Spoilers', 'Complete Story'],
     youtubeUrl: 'https://www.youtube.com/@AnimeBallsDeep',
     youtubeChannelId: 'UC_pGPEPpDdD7QwRFAMBF7jQ',
     status: 'approved',
     featured: true,
   },
-
-  // ── Featured Creators — Hidden Gems ───────────────────────────
+  // BobSamurai
   {
     id: 'bobsamurai',
     name: 'BobSamurai',
@@ -178,7 +177,7 @@ export const CREATORS = [
     category: 'anime',
     avatar: 'BS',
     avatarGradient: 'linear-gradient(135deg,#4a0000,#cc0000)',
-    bio: 'Champion of overlooked and classic anime. BobSamurai digs through decades of anime history to surface hidden gems most fans have never heard of — from 1960s classics to underrated 2000s series.',
+    bio: "Champion of overlooked and classic anime. BobSamurai digs through decades of anime history to surface hidden gems most fans have never heard of — from 1960s classics to underrated 2000s series.",
     tags: ['Hidden Gems', 'Classic Anime', 'Overlooked Series', 'Retro Anime', 'Anime History'],
     youtubeUrl: 'https://www.youtube.com/@BobSamurai',
     youtubeChannelId: 'UCmpkbRBaHGMNrNQy7UqXuUQ',
