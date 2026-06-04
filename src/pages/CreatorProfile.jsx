@@ -1,18 +1,21 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { CREATOR_MAP } from '../data/creators'
 import { VIDEOS } from '../data/videos'
 import { CATEGORY_MAP } from '../data/categories'
 import { useVideoModal } from '../context/VideoModalContext'
+import { Analytics } from '../utils/analytics'
 
 const PAGE_SIZE = 6
 
-// Creator status badge config
 const STATUS_BADGE = {
   'anime1point': { label: 'ANIME1POINT CREATOR', className: 'text-xs px-2.5 py-1 rounded-full font-semibold bg-gradient-to-r from-purple/30 to-accent/30 text-accent border border-accent/40' },
   'featured':    { label: 'FEATURED CREATOR',    className: 'text-xs px-2.5 py-1 rounded-full font-semibold bg-gold/20 text-gold border border-gold/30' },
   'rising':      { label: 'RISING CREATOR',      className: 'text-xs px-2.5 py-1 rounded-full font-semibold bg-green-500/20 text-green-400 border border-green-500/30' },
 }
+
+// Google Form URL for creator claim — replace with your actual form URL
+const CLAIM_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSf_placeholder/viewform'
 
 function isRealYouTubeId(id) {
   return /^[A-Za-z0-9_\-]{11}$/.test(id) && !id.includes('_vid_')
@@ -23,11 +26,13 @@ function VideoCard({ video, creatorName, creatorGradient }) {
   const [imgError, setImgError] = useState(false)
   const hasRealThumb = isRealYouTubeId(video.id) && !imgError
 
+  function handleClick() {
+    Analytics.videoOpened(video.id, video.title, creatorName)
+    openModal(video.id, video.title, creatorName)
+  }
+
   return (
-    <div
-      className="card card-hover group cursor-pointer"
-      onClick={() => openModal(video.id, video.title, creatorName)}
-    >
+    <div className="card card-hover group cursor-pointer" onClick={handleClick}>
       <div className="relative mb-3 rounded-lg overflow-hidden aspect-video bg-black">
         {hasRealThumb ? (
           <img
@@ -51,7 +56,7 @@ function VideoCard({ video, creatorName, creatorGradient }) {
         <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all flex items-center justify-center">
           <span className="text-white text-3xl opacity-0 group-hover:opacity-100 transition-opacity drop-shadow-lg">&#9654;</span>
         </div>
-        <span className={`absolute top-2 left-2 badge-${video.category}`}>
+        <span className={`absolute top-2 left-2 badge-${video.category === 'light-novel' ? 'novels' : video.category}`}>
           {CATEGORY_MAP[video.category]?.label || video.category}
         </span>
       </div>
@@ -63,10 +68,63 @@ function VideoCard({ video, creatorName, creatorGradient }) {
   )
 }
 
+// Featured Video Hero — shows the first featuredVideoId as a large hero embed
+function FeaturedVideoHero({ creator, videoId }) {
+  const { openModal } = useVideoModal()
+  const video = VIDEOS.find(v => v.id === videoId)
+  const [imgError, setImgError] = useState(false)
+  const showThumb = isRealYouTubeId(videoId) && !imgError
+  if (!videoId) return null
+
+  return (
+    <div className="mb-8">
+      <p className="text-xs font-semibold text-text-secondary uppercase tracking-wider mb-3">Featured Video</p>
+      <div
+        className="relative rounded-xl overflow-hidden aspect-video bg-black cursor-pointer group"
+        onClick={() => {
+          Analytics.videoOpened(videoId, video?.title || '', creator.name)
+          openModal(videoId, video?.title || creator.name, creator.name)
+        }}
+      >
+        {showThumb ? (
+          <img
+            src={`https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`}
+            alt={video?.title || 'Featured video'}
+            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+            onError={() => setImgError(true)}
+          />
+        ) : (
+          <div
+            className="w-full h-full flex items-center justify-center"
+            style={{ background: creator.avatarGradient }}
+          >
+            <span className="text-white text-6xl opacity-60">&#9654;</span>
+          </div>
+        )}
+        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all flex items-center justify-center">
+          <div className="w-16 h-16 rounded-full bg-white/20 backdrop-blur flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+            <span className="text-white text-2xl ml-1">&#9654;</span>
+          </div>
+        </div>
+        {video && (
+          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
+            <p className="text-white font-semibold text-sm line-clamp-2">{video.title}</p>
+          </div>
+        )}
+      </div>
+    </div>
+  )
+}
+
 export default function CreatorProfile() {
   const { id } = useParams()
   const creator = CREATOR_MAP[id]
   const [page, setPage] = useState(1)
+
+  // Fire analytics on mount
+  useEffect(() => {
+    if (creator) Analytics.creatorProfileViewed(id, creator.name)
+  }, [id, creator])
 
   if (!creator) {
     return (
@@ -84,6 +142,8 @@ export default function CreatorProfile() {
   const allVideos = VIDEOS.filter(v => v.creatorId === id)
   const shown = allVideos.slice(0, page * PAGE_SIZE)
   const hasMore = shown.length < allVideos.length
+  const featuredVideoId = creator.featuredVideoIds?.[0] || null
+  const isExternalCreator = creator.creatorStatus === 'featured' || creator.creatorStatus === 'rising'
 
   return (
     <div className="min-h-screen">
@@ -101,7 +161,6 @@ export default function CreatorProfile() {
               {creator.avatar}
             </div>
             <div className="flex-1">
-              {/* Status badge — prominent, above name */}
               {badge && (
                 <div className="mb-2">
                   <span className={badge.className}>{badge.label}</span>
@@ -123,12 +182,30 @@ export default function CreatorProfile() {
                 ))}
               </div>
               <div className="flex flex-wrap gap-3">
-                <a href={creator.youtubeUrl} target="_blank" rel="noopener noreferrer" className="btn-yt">
+                <a
+                  href={creator.youtubeUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-yt"
+                  onClick={() => Analytics.youtubeClicked(id, creator.name)}
+                >
                   &#9654; Watch on YouTube
                 </a>
                 <Link to={`/category/${creator.category}`} className="btn-outline">
                   More {CATEGORY_MAP[creator.category]?.label} &rarr;
                 </Link>
+                {/* Claim Profile — only shown for external featured/rising creators */}
+                {isExternalCreator && (
+                  <a
+                    href={`${CLAIM_FORM_URL}?usp=pp_url&entry.creatorId=${encodeURIComponent(creator.name)}&entry.channelUrl=${encodeURIComponent(creator.youtubeUrl)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs px-3 py-2 border border-border-dim rounded-lg text-text-secondary hover:text-text-primary hover:border-purple/40 transition-all"
+                    onClick={() => Analytics.claimProfileClicked(id, creator.name)}
+                  >
+                    &#9998; Claim Profile
+                  </a>
+                )}
               </div>
             </div>
           </div>
@@ -137,6 +214,11 @@ export default function CreatorProfile() {
 
       {/* Videos */}
       <div className="max-w-5xl mx-auto px-4 py-8">
+        {/* Featured Video Hero */}
+        {featuredVideoId && (
+          <FeaturedVideoHero creator={creator} videoId={featuredVideoId} />
+        )}
+
         <div className="flex items-center justify-between mb-6">
           <h2 className="font-orbitron text-lg font-black text-text-primary">
             Videos <span className="text-text-secondary text-sm font-rajdhani font-normal ml-2">({allVideos.length})</span>
