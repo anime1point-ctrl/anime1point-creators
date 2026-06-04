@@ -6,10 +6,17 @@ import { CATEGORY_MAP } from '../data/categories'
 import { getHomeSections } from '../data/homeSections'
 import { useVideoModal } from '../context/VideoModalContext'
 
+// YouTube only has real thumbnails for real video IDs (11-char alphanumeric+dash+underscore)
+// Placeholder IDs like 'tdaily_vid_01' use underscores in a specific pattern
+function isRealYouTubeId(id) {
+  return /^[A-Za-z0-9_\-]{11}$/.test(id) && !id.includes('_vid_')
+}
+
 function VideoCard({ video, priority = false }) {
   const { openModal } = useVideoModal()
   const creator = CREATOR_MAP[video.creatorId]
   const [imgError, setImgError] = useState(false)
+  const hasRealThumb = isRealYouTubeId(video.id) && !imgError
 
   return (
     <div
@@ -17,14 +24,7 @@ function VideoCard({ video, priority = false }) {
       onClick={() => openModal(video.id, video.title, creator ? creator.name : '')}
     >
       <div className="relative mb-3 rounded-lg overflow-hidden aspect-video bg-black">
-        {imgError ? (
-          <div
-            className="w-full h-full flex items-center justify-center"
-            style={{ background: creator ? creator.avatarGradient : 'linear-gradient(135deg,#1a0a2e,#0d0d1a)' }}
-          >
-            <span className="text-white text-4xl opacity-60">&#9654;</span>
-          </div>
-        ) : (
+        {hasRealThumb ? (
           <img
             src={`https://i.ytimg.com/vi/${video.id}/${priority ? 'hqdefault' : 'mqdefault'}.jpg`}
             alt={video.title}
@@ -32,6 +32,16 @@ function VideoCard({ video, priority = false }) {
             className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
             onError={() => setImgError(true)}
           />
+        ) : (
+          <div
+            className="w-full h-full flex flex-col items-center justify-center gap-2 px-4 text-center"
+            style={{ background: creator ? creator.avatarGradient : 'linear-gradient(135deg,#1a0a2e,#0d0d1a)' }}
+          >
+            <span className="text-white text-4xl opacity-70">&#9654;</span>
+            {creator && (
+              <span className="text-white text-xs font-orbitron font-black opacity-80 truncate max-w-full">{creator.name}</span>
+            )}
+          </div>
         )}
         <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all flex items-center justify-center">
           <span className="text-white text-3xl opacity-0 group-hover:opacity-100 transition-opacity drop-shadow-lg">&#9654;</span>
