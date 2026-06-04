@@ -2,10 +2,10 @@ import { useState, useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import { APPROVED_CREATORS } from '../data/creators'
 import { VIDEOS } from '../data/videos'
-import { CATEGORIES, CATEGORY_MAP } from '../data/categories'
+import { CATEGORIES_UI, CATEGORY_MAP } from '../data/categories'
 
 const ALL_FILTER = { id: 'all', label: 'All Creators', icon: '\u2605' }
-const FILTERS = [ALL_FILTER, ...CATEGORIES]
+const FILTERS = [ALL_FILTER, ...CATEGORIES_UI]
 
 // Creator status badge config
 const STATUS_BADGE = {
