@@ -7,17 +7,32 @@ import { useVideoModal } from '../context/VideoModalContext'
 
 const PAGE_SIZE = 6
 
-function VideoCard({ video }) {
+function VideoCard({ video, creatorName, creatorGradient }) {
   const { openModal } = useVideoModal()
+  const [imgError, setImgError] = useState(false)
+
   return (
-    <div className="card card-hover group cursor-pointer" onClick={() => openModal(video.id, video.title)}>
+    <div
+      className="card card-hover group cursor-pointer"
+      onClick={() => openModal(video.id, video.title, creatorName)}
+    >
       <div className="relative mb-3 rounded-lg overflow-hidden aspect-video bg-black">
-        <img
-          src={`https://i.ytimg.com/vi/${video.id}/mqdefault.jpg`}
-          alt={video.title}
-          loading="lazy"
-          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-        />
+        {imgError ? (
+          <div
+            className="w-full h-full flex items-center justify-center"
+            style={{ background: creatorGradient || 'linear-gradient(135deg,#1a0a2e,#0d0d1a)' }}
+          >
+            <span className="text-white text-4xl opacity-60">&#9654;</span>
+          </div>
+        ) : (
+          <img
+            src={`https://i.ytimg.com/vi/${video.id}/mqdefault.jpg`}
+            alt={video.title}
+            loading="lazy"
+            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+            onError={() => setImgError(true)}
+          />
+        )}
         <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all flex items-center justify-center">
           <span className="text-white text-3xl opacity-0 group-hover:opacity-100 transition-opacity drop-shadow-lg">&#9654;</span>
         </div>
@@ -114,7 +129,14 @@ export default function CreatorProfile() {
         {allVideos.length > 0 ? (
           <>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-8">
-              {shown.map(v => <VideoCard key={v.id + v.creatorId} video={v} />)}
+              {shown.map(v => (
+                <VideoCard
+                  key={v.id + v.creatorId}
+                  video={v}
+                  creatorName={creator.name}
+                  creatorGradient={creator.avatarGradient}
+                />
+              ))}
             </div>
             {hasMore && (
               <div className="text-center">
