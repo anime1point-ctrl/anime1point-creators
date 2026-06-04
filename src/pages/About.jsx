@@ -22,7 +22,7 @@ const HOW_IT_WORKS = [
   {
     step: '04',
     title: 'Watch & Support',
-    desc: 'Click any video to watch it on our site or go directly to the creator's YouTube channel to subscribe.',
+    desc: 'Click any video to watch it here or go directly to the YouTube channel to subscribe.',
     color: 'text-accent2',
   },
 ]
@@ -36,7 +36,6 @@ const CATEGORIES_INFO = [
 export default function About() {
   return (
     <div className="min-h-screen">
-      {/* Hero */}
       <div className="page-hero">
         <span className="section-tag">How It Works</span>
         <h1 className="font-orbitron">
@@ -47,7 +46,6 @@ export default function About() {
         </p>
       </div>
 
-      {/* Mission */}
       <section className="py-14 border-b border-border-dim">
         <div className="max-w-3xl mx-auto px-4 text-center">
           <span className="section-tag">Our Mission</span>
@@ -55,14 +53,13 @@ export default function About() {
             Discovery First
           </h2>
           <p className="text-text-secondary leading-relaxed text-base">
-            Anime1Point Creators Hub exists to amplify YouTube creators who are producing quality
-            content on Anime, Manga and Light Novels. Every creator listed here has been reviewed
-            by the Anime1Point team. No spam, no low-effort channels &mdash; just genuine content.
+            Anime1Point Creators Hub exists to amplify YouTube creators producing quality content
+            on Anime, Manga and Light Novels. Every creator listed here has been reviewed by the
+            Anime1Point team. No spam, no low-effort channels &mdash; just genuine content.
           </p>
         </div>
       </section>
 
-      {/* How it works */}
       <section className="py-14 border-b border-border-dim">
         <div className="max-w-5xl mx-auto px-4">
           <div className="text-center mb-10">
@@ -81,7 +78,6 @@ export default function About() {
         </div>
       </section>
 
-      {/* Categories */}
       <section className="py-14 border-b border-border-dim bg-bg-card">
         <div className="max-w-5xl mx-auto px-4">
           <div className="text-center mb-10">
@@ -100,15 +96,10 @@ export default function About() {
         </div>
       </section>
 
-      {/* CTA */}
       <section className="py-16 text-center">
         <div className="max-w-xl mx-auto px-4">
-          <h2 className="font-orbitron font-black text-2xl text-text-primary mb-4">
-            Ready to Explore?
-          </h2>
-          <p className="text-text-secondary mb-8">
-            Browse all approved creators or jump straight into the latest videos.
-          </p>
+          <h2 className="font-orbitron font-black text-2xl text-text-primary mb-4">Ready to Explore?</h2>
+          <p className="text-text-secondary mb-8">Browse all approved creators or jump straight into the latest videos.</p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Link to="/creators" className="btn-primary">Browse Creators</Link>
             <Link to="/" className="btn-outline">Explore Videos</Link>
