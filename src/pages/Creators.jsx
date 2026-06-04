@@ -7,8 +7,16 @@ import { CATEGORIES, CATEGORY_MAP } from '../data/categories'
 const ALL_FILTER = { id: 'all', label: 'All Creators', icon: '\u2605' }
 const FILTERS = [ALL_FILTER, ...CATEGORIES]
 
+// Creator status badge config
+const STATUS_BADGE = {
+  'anime1point': { label: 'ANIME1POINT CREATOR', className: 'text-xs px-2 py-0.5 rounded font-semibold shrink-0 bg-gradient-to-r from-purple/30 to-accent/30 text-accent border border-accent/40' },
+  'featured':    { label: 'FEATURED CREATOR',    className: 'text-xs px-2 py-0.5 rounded font-semibold shrink-0 bg-gold/20 text-gold border border-gold/30' },
+  'rising':      { label: 'RISING CREATOR',      className: 'text-xs px-2 py-0.5 rounded font-semibold shrink-0 bg-green-500/20 text-green-400 border border-green-500/30' },
+}
+
 function CreatorCard({ creator }) {
   const videoCount = VIDEOS.filter(v => v.creatorId === creator.id).length
+  const badge = STATUS_BADGE[creator.creatorStatus]
   return (
     <Link to={`/creator/${creator.id}`} className="card card-hover group flex flex-col gap-4 focus:outline-none focus:ring-2 focus:ring-purple/60">
       <div className="flex items-start gap-4">
@@ -16,14 +24,14 @@ function CreatorCard({ creator }) {
           {creator.avatar}
         </div>
         <div className="flex-1 min-w-0">
-          <div className="flex items-center gap-2 flex-wrap">
+          <div className="flex items-center gap-2 flex-wrap mb-1">
             <h3 className="font-orbitron font-black text-sm text-text-primary truncate group-hover:text-accent transition-colors">
               {creator.name}
             </h3>
-            {creator.official && (
-              <span className="text-xs px-1.5 py-0.5 bg-gold/20 text-gold border border-gold/30 rounded font-semibold shrink-0">OFFICIAL</span>
-            )}
           </div>
+          {badge && (
+            <span className={`${badge.className} inline-block mb-1`}>{badge.label}</span>
+          )}
           <p className="text-text-secondary text-xs mt-0.5">{creator.handle}</p>
           <span className={`badge-${creator.category} mt-1 inline-block`}>{CATEGORY_MAP[creator.category]?.label || creator.category}</span>
         </div>
