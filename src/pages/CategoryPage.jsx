@@ -10,15 +10,30 @@ const PAGE_SIZE = 6
 function VideoCard({ video }) {
   const { openModal } = useVideoModal()
   const creator = CREATOR_MAP[video.creatorId]
+  const [imgError, setImgError] = useState(false)
+
   return (
-    <div className="card card-hover group flex flex-col cursor-pointer" onClick={() => openModal(video.id, video.title)}>
+    <div
+      className="card card-hover group flex flex-col cursor-pointer"
+      onClick={() => openModal(video.id, video.title, creator ? creator.name : '')}
+    >
       <div className="relative mb-3 rounded-lg overflow-hidden aspect-video bg-black">
-        <img
-          src={`https://i.ytimg.com/vi/${video.id}/mqdefault.jpg`}
-          alt={video.title}
-          loading="lazy"
-          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-        />
+        {imgError ? (
+          <div
+            className="w-full h-full flex items-center justify-center"
+            style={{ background: creator ? creator.avatarGradient : 'linear-gradient(135deg,#1a0a2e,#0d0d1a)' }}
+          >
+            <span className="text-white text-4xl opacity-60">&#9654;</span>
+          </div>
+        ) : (
+          <img
+            src={`https://i.ytimg.com/vi/${video.id}/mqdefault.jpg`}
+            alt={video.title}
+            loading="lazy"
+            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+            onError={() => setImgError(true)}
+          />
+        )}
         <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all flex items-center justify-center">
           <span className="text-white text-3xl opacity-0 group-hover:opacity-100 transition-opacity drop-shadow-lg">&#9654;</span>
         </div>
@@ -26,10 +41,17 @@ function VideoCard({ video }) {
       <h3 className="text-sm font-semibold text-text-primary line-clamp-2 group-hover:text-accent transition-colors mb-2">{video.title}</h3>
       {creator && (
         <div className="flex items-center gap-2 mt-auto pt-2 border-t border-border-dim">
-          <div className="w-5 h-5 rounded-full flex items-center justify-center text-xs font-black font-orbitron text-white shrink-0" style={{ background: creator.avatarGradient }}>
+          <div
+            className="w-5 h-5 rounded-full flex items-center justify-center text-xs font-black font-orbitron text-white shrink-0"
+            style={{ background: creator.avatarGradient }}
+          >
             {creator.avatar[0]}
           </div>
-          <Link to={`/creator/${creator.id}`} className="text-xs text-text-secondary hover:text-accent transition-colors truncate" onClick={e => e.stopPropagation()}>
+          <Link
+            to={`/creator/${creator.id}`}
+            className="text-xs text-text-secondary hover:text-accent transition-colors truncate"
+            onClick={e => e.stopPropagation()}
+          >
             {creator.name}
           </Link>
           <span className="text-xs text-text-secondary ml-auto shrink-0">{video.publishedAt}</span>
