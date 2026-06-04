@@ -1,12 +1,12 @@
 import { useState, useMemo } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { TRENDING_VIDEOS, LATEST_VIDEOS, HIDDEN_GEM_VIDEOS } from '../data/videos'
+import { TRENDING_VIDEOS, LATEST_VIDEOS, HIDDEN_GEM_VIDEOS, FEATURED_VIDEOS } from '../data/videos'
 import { CREATOR_MAP, APPROVED_CREATORS } from '../data/creators'
 import { CATEGORY_MAP } from '../data/categories'
 import { getHomeSections } from '../data/homeSections'
 import { useVideoModal } from '../context/VideoModalContext'
 
-// Returns true only for real 11-char YouTube video IDs (not placeholder IDs like tdaily_vid_01)
+// Returns true only for real 11-char YouTube video IDs (not placeholder IDs)
 function hasRealThumbnail(videoId) {
   if (!videoId) return false
   if (videoId.includes('_vid_')) return false
@@ -18,6 +18,9 @@ function VideoCard({ video, priority = false }) {
   const creator = CREATOR_MAP[video.creatorId]
   const [imgError, setImgError] = useState(false)
   const showThumb = hasRealThumbnail(video.id) && !imgError
+  // Resolve both 'novels' and 'light-novel' to the same label
+  const categoryLabel = CATEGORY_MAP[video.category]?.label || video.category
+  const badgeCategory = video.category === 'light-novel' ? 'novels' : video.category
 
   return (
     <div
@@ -48,8 +51,8 @@ function VideoCard({ video, priority = false }) {
         <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all flex items-center justify-center">
           <span className="text-white text-3xl opacity-0 group-hover:opacity-100 transition-opacity drop-shadow-lg">&#9654;</span>
         </div>
-        <span className={`absolute top-2 left-2 badge-${video.category}`}>
-          {CATEGORY_MAP[video.category]?.label || video.category}
+        <span className={`absolute top-2 left-2 badge-${badgeCategory}`}>
+          {categoryLabel}
         </span>
       </div>
       <h3 className="text-sm font-semibold text-text-primary line-clamp-2 group-hover:text-accent transition-colors mb-2">
@@ -72,7 +75,9 @@ function VideoCard({ video, priority = false }) {
 }
 
 function VideoSection({ section, videos }) {
-  const filtered = section.categoryFilter ? videos.filter(v => v.category === section.categoryFilter) : videos
+  const filtered = section.categoryFilter
+    ? videos.filter(v => v.category === section.categoryFilter || (section.categoryFilter === 'novels' && v.category === 'light-novel'))
+    : videos
   const items = filtered.slice(0, section.maxItems || 6)
   if (!items.length) return null
   return (
@@ -93,8 +98,9 @@ function VideoSection({ section, videos }) {
   )
 }
 
-function FeaturedCreatorsSection({ maxItems = 4 }) {
-  const creators = APPROVED_CREATORS.slice(0, maxItems)
+function FeaturedCreatorsSection({ maxItems = 6 }) {
+  // Show featured creators (exclude anime1point from this section to avoid duplicate — it already has its own content)
+  const creators = APPROVED_CREATORS.filter(c => c.featured).slice(0, maxItems)
   return (
     <section className="py-12 bg-bg-card border-y border-border-dim">
       <div className="max-w-7xl mx-auto px-4">
@@ -102,7 +108,7 @@ function FeaturedCreatorsSection({ maxItems = 4 }) {
           <span className="section-tag">Spotlight</span>
           <h2 className="font-orbitron font-black text-xl text-text-primary ml-1">Featured Creators</h2>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {creators.map(c => (
             <Link key={c.id} to={`/creator/${c.id}`} className="card card-hover group text-center flex flex-col items-center gap-3">
               <div
@@ -142,13 +148,13 @@ function Hero() {
         <div className="absolute -bottom-32 -right-32 w-96 h-96 bg-accent/10 rounded-full blur-3xl" />
       </div>
       <div className="relative max-w-4xl mx-auto px-4 py-20 text-center">
-        <span className="section-tag mb-4">Powered by Anime1Point</span>
+        <span className="section-tag mb-4">Anime · Manga · Light Novels</span>
         <h1 className="font-orbitron font-black text-3xl sm:text-4xl md:text-5xl text-text-primary mb-4 leading-tight">
-          Discover the Next Big<br />
-          <span className="highlight">Anime Creator</span>
+          The Best Anime Content<br />
+          <span className="highlight">All In One Place</span>
         </h1>
         <p className="text-text-secondary text-base md:text-lg max-w-xl mx-auto mb-8">
-          New YouTube creators covering Anime, Manga and Novels deserve an audience. We bridge that gap.
+          Curated videos from the top Anime, Manga, and Light Novel creators on YouTube — discovered, organised, and ready to watch.
         </p>
         <form onSubmit={handleSearch} className="flex gap-2 max-w-lg mx-auto mb-8">
           <input type="search" value={q} onChange={e => setQ(e.target.value)} placeholder="Search creators..." className="form-input flex-1" />
@@ -167,12 +173,15 @@ function Hero() {
 
 export default function Home() {
   const sections = getHomeSections().filter(s => s.enabled).sort((a, b) => a.order - b.order)
+  const allVideos = useMemo(() => [...TRENDING_VIDEOS, ...LATEST_VIDEOS, ...HIDDEN_GEM_VIDEOS, ...FEATURED_VIDEOS], [])
   const sectionVideos = useMemo(() => ({
     trending: TRENDING_VIDEOS,
     latest: LATEST_VIDEOS,
     'hidden-gem': HIDDEN_GEM_VIDEOS,
     featured: TRENDING_VIDEOS,
-  }), [])
+    'light-novel-spotlight': allVideos.filter(v => v.category === 'light-novel' || v.category === 'novels'),
+    'manga-deep-dives': allVideos.filter(v => v.category === 'manga'),
+  }), [allVideos])
   return (
     <div className="min-h-screen">
       <Hero />
