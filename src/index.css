@@ -1,0 +1,95 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    *, *::before, *::after {
+          box-sizing: border-box;
+          margin: 0;
+          padding: 0;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+          background-color: #0d0d1a;
+          color: #f0f0ff;
+          font-family: 'Rajdhani', sans-serif;
+          font-size: 16px;
+          line-height: 1.6;
+          -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+          font-family: 'Orbitron', sans-serif;
+          font-weight: 700;
+          line-height: 1.2;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #0d0d1a; }
+    ::-webkit-scrollbar-thumb { background: #2a2a50; border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: #7b2fff; }
+}
+
+@layer components {
+    .section-tag {
+          @apply inline-block text-xs font-semibold tracking-widest uppercase
+                       px-3 py-1 rounded-full mb-3 bg-purple/20 text-purple border border-purple/30;
+    }
+
+    .btn-primary {
+          @apply inline-flex items-center gap-2 px-5 py-2.5 rounded-lg font-semibold
+                       text-sm tracking-wide transition-all duration-200
+                       bg-gradient-to-r from-accent to-purple text-white
+                       hover:opacity-90 hover:scale-[1.02] active:scale-[0.98];
+    }
+
+    .btn-outline {
+          @apply inline-flex items-center gap-2 px-5 py-2.5 rounded-lg font-semibold
+                       text-sm tracking-wide transition-all duration-200
+                       border border-border-dim text-text-secondary
+                       hover:border-purple hover:text-text-primary;
+    }
+
+    .btn-yt {
+          @apply inline-flex items-center gap-2 px-5 py-2.5 rounded-lg font-semibold
+                       text-sm tracking-wide transition-all duration-200 bg-yt-red text-white hover:bg-red-700;
+    }
+
+    .card {
+          @apply bg-bg-card border border-border-dim rounded-xl p-5 transition-all duration-200;
+    }
+    .card-hover {
+          @apply hover:border-purple/50 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-purple/10;
+    }
+
+    .badge-anime  { @apply px-2.5 py-0.5 rounded-full text-xs font-semibold bg-accent/20  text-accent  border border-accent/30; }
+    .badge-manga  { @apply px-2.5 py-0.5 rounded-full text-xs font-semibold bg-accent2/20 text-accent2 border border-accent2/30; }
+    .badge-novels { @apply px-2.5 py-0.5 rounded-full text-xs font-semibold bg-teal/20    text-teal    border border-teal/30; }
+    .badge-mixed  { @apply px-2.5 py-0.5 rounded-full text-xs font-semibold bg-purple/20  text-purple  border border-purple/30; }
+
+    .page-hero {
+          @apply text-center py-16 px-4 border-b border-border-dim;
+          background: linear-gradient(135deg, #0d0d1a 0%, #1a0a2e 50%, #0d0d1a 100%);
+    }
+    .page-hero h1 { @apply text-3xl md:text-5xl font-black mb-4; }
+    .page-hero p  { @apply text-text-secondary text-base md:text-lg max-w-2xl mx-auto; }
+
+    .highlight {
+          @apply bg-gradient-to-r from-accent to-purple bg-clip-text text-transparent;
+    }
+
+    .form-input {
+          @apply w-full bg-bg-card2 border border-border-dim rounded-lg px-4 py-3
+                       text-text-primary placeholder:text-text-secondary
+                                    focus:outline-none focus:border-purple focus:ring-1 focus:ring-purple/50
+                                                 transition-colors duration-150;
+    }
+    .form-label {
+          @apply block text-xs font-semibold tracking-widest uppercase text-text-secondary mb-1.5;
+    }
+}
