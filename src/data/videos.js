@@ -1,3 +1,4 @@
+// v2 - unique video IDs per creator, gradient placeholders for unlinked videos
 export const VIDEOS = [
   // ── anime1point (Official) ── REAL YouTube video IDs ──
   { id: 'ZVmqQk1GbqE', title: 'Tensura S4E6 - Rimuru vs Ivarage Full Breakdown', creatorId: 'anime1point', category: 'anime', section: 'trending', publishedAt: '2026-05-28' },
