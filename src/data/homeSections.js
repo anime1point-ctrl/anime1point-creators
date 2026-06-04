@@ -1,25 +1,21 @@
 /**
- * HOME SECTIONS — configurable homepage section layout.
+ * HOME SECTIONS — Configurable homepage section layout.
  *
- * Each section has:
- *   id       — unique key (matches video 'section' field in videos.js)
- *   title    — display heading
- *   tag      — small section badge
- *   enabled  — show/hide on homepage (admin-toggleable)
- *   order    — render order (lower = higher on page)
- *   maxItems — how many videos to show
- *   liveBadge — show a LIVE badge next to the title
+ * Each section maps to a video pool in Home.jsx:
+ *   'trending'   → TRENDING_VIDEOS
+ *   'latest'     → LATEST_VIDEOS
+ *   'hidden-gem' → HIDDEN_GEM_VIDEOS
+ *   'featured'   → FeaturedCreatorsSection (special render, no videos)
  *
- * In Phase 2 this config is stored in the database and edited via
- * the Admin > Homepage Sections panel. For Phase 1 it is a static
- * JS module that the admin panel reads and writes via localStorage.
+ * In Phase 2, this config lives in the database and is editable via
+ * the Admin > Homepage Sections panel. For Phase 1 it reads/writes via localStorage.
  */
 
 export const HOME_SECTIONS_DEFAULT = [
   {
     id: 'trending',
-    title: 'Trending Now',
-    tag: 'Fire Top Picks',
+    title: 'Trending Discussions',
+    tag: '🔥 Most Watched',
     enabled: true,
     order: 1,
     maxItems: 6,
@@ -28,8 +24,8 @@ export const HOME_SECTIONS_DEFAULT = [
   },
   {
     id: 'latest',
-    title: 'Latest Published',
-    tag: 'Fresh Content',
+    title: 'Latest Uploads',
+    tag: '⚡ Just Dropped',
     enabled: true,
     order: 2,
     maxItems: 6,
@@ -37,9 +33,9 @@ export const HOME_SECTIONS_DEFAULT = [
     categoryFilter: null,
   },
   {
-    id: 'hidden-gem',
-    title: 'Hidden Gems',
-    tag: 'Underrated Picks',
+    id: 'featured',
+    title: 'Featured Creators',
+    tag: '✦ Spotlight',
     enabled: true,
     order: 3,
     maxItems: 6,
@@ -47,12 +43,12 @@ export const HOME_SECTIONS_DEFAULT = [
     categoryFilter: null,
   },
   {
-    id: 'featured',
-    title: 'Featured Creators',
-    tag: 'Spotlight',
+    id: 'hidden-gem',
+    title: 'Hidden Gems',
+    tag: '💎 Underrated Picks',
     enabled: true,
     order: 4,
-    maxItems: 4,
+    maxItems: 6,
     liveBadge: false,
     categoryFilter: null,
   },
