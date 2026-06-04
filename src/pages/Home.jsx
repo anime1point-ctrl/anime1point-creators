@@ -5,6 +5,7 @@ import { CREATOR_MAP, APPROVED_CREATORS } from '../data/creators'
 import { CATEGORY_MAP } from '../data/categories'
 import { getHomeSections } from '../data/homeSections'
 import { useVideoModal } from '../context/VideoModalContext'
+import { Analytics } from '../utils/analytics'
 
 // Returns true only for real 11-char YouTube video IDs (not placeholder IDs)
 function hasRealThumbnail(videoId) {
@@ -18,15 +19,16 @@ function VideoCard({ video, priority = false }) {
   const creator = CREATOR_MAP[video.creatorId]
   const [imgError, setImgError] = useState(false)
   const showThumb = hasRealThumbnail(video.id) && !imgError
-  // Resolve both 'novels' and 'light-novel' to the same label
   const categoryLabel = CATEGORY_MAP[video.category]?.label || video.category
   const badgeCategory = video.category === 'light-novel' ? 'novels' : video.category
 
+  function handleOpen() {
+    Analytics.videoOpened(video.id, video.title, creator ? creator.name : '')
+    openModal(video.id, video.title, creator ? creator.name : '')
+  }
+
   return (
-    <div
-      className="card card-hover group flex flex-col cursor-pointer"
-      onClick={() => openModal(video.id, video.title, creator ? creator.name : '')}
-    >
+    <div className="card card-hover group flex flex-col cursor-pointer" onClick={handleOpen}>
       <div className="relative mb-3 rounded-lg overflow-hidden aspect-video bg-black">
         {showThumb ? (
           <img
@@ -51,9 +53,7 @@ function VideoCard({ video, priority = false }) {
         <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all flex items-center justify-center">
           <span className="text-white text-3xl opacity-0 group-hover:opacity-100 transition-opacity drop-shadow-lg">&#9654;</span>
         </div>
-        <span className={`absolute top-2 left-2 badge-${badgeCategory}`}>
-          {categoryLabel}
-        </span>
+        <span className={`absolute top-2 left-2 badge-${badgeCategory}`}>{categoryLabel}</span>
       </div>
       <h3 className="text-sm font-semibold text-text-primary line-clamp-2 group-hover:text-accent transition-colors mb-2">
         {video.title}
@@ -99,7 +99,6 @@ function VideoSection({ section, videos }) {
 }
 
 function FeaturedCreatorsSection({ maxItems = 6 }) {
-  // Show featured creators (exclude anime1point from this section to avoid duplicate — it already has its own content)
   const creators = APPROVED_CREATORS.filter(c => c.featured).slice(0, maxItems)
   return (
     <section className="py-12 bg-bg-card border-y border-border-dim">
@@ -139,7 +138,10 @@ function Hero() {
   const [q, setQ] = useState('')
   function handleSearch(e) {
     e.preventDefault()
-    if (q.trim()) navigate(`/creators?q=${encodeURIComponent(q.trim())}`)
+    if (q.trim()) {
+      Analytics.searchPerformed(q.trim(), 0, 0)
+      navigate(`/search?q=${encodeURIComponent(q.trim())}`)
+    }
   }
   return (
     <div className="relative overflow-hidden" style={{ background: 'linear-gradient(135deg,#0d0d1a 0%,#1a0a2e 50%,#0d0d1a 100%)' }}>
@@ -148,7 +150,7 @@ function Hero() {
         <div className="absolute -bottom-32 -right-32 w-96 h-96 bg-accent/10 rounded-full blur-3xl" />
       </div>
       <div className="relative max-w-4xl mx-auto px-4 py-20 text-center">
-        <span className="section-tag mb-4">Anime · Manga · Light Novels</span>
+        <span className="section-tag mb-4">Anime &middot; Manga &middot; Light Novels</span>
         <h1 className="font-orbitron font-black text-3xl sm:text-4xl md:text-5xl text-text-primary mb-4 leading-tight">
           The Best Anime Content<br />
           <span className="highlight">All In One Place</span>
@@ -157,7 +159,7 @@ function Hero() {
           Curated videos from the top Anime, Manga, and Light Novel creators on YouTube — discovered, organised, and ready to watch.
         </p>
         <form onSubmit={handleSearch} className="flex gap-2 max-w-lg mx-auto mb-8">
-          <input type="search" value={q} onChange={e => setQ(e.target.value)} placeholder="Search creators..." className="form-input flex-1" />
+          <input type="search" value={q} onChange={e => setQ(e.target.value)} placeholder="Search videos, series, creators..." className="form-input flex-1" />
           <button type="submit" className="btn-primary shrink-0">Search</button>
         </form>
         <div className="flex flex-wrap gap-2 justify-center">
@@ -191,4 +193,4 @@ export default function Home() {
       })}
     </div>
   )
-}
+                          }
