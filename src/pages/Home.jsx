@@ -9,15 +9,30 @@ import { useVideoModal } from '../context/VideoModalContext'
 function VideoCard({ video, priority = false }) {
   const { openModal } = useVideoModal()
   const creator = CREATOR_MAP[video.creatorId]
+  const [imgError, setImgError] = useState(false)
+
   return (
-    <div className="card card-hover group flex flex-col cursor-pointer" onClick={() => openModal(video.id, video.title)}>
+    <div
+      className="card card-hover group flex flex-col cursor-pointer"
+      onClick={() => openModal(video.id, video.title, creator ? creator.name : '')}
+    >
       <div className="relative mb-3 rounded-lg overflow-hidden aspect-video bg-black">
-        <img
-          src={`https://i.ytimg.com/vi/${video.id}/${priority ? 'hqdefault' : 'mqdefault'}.jpg`}
-          alt={video.title}
-          loading={priority ? 'eager' : 'lazy'}
-          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-        />
+        {imgError ? (
+          <div
+            className="w-full h-full flex items-center justify-center"
+            style={{ background: creator ? creator.avatarGradient : 'linear-gradient(135deg,#1a0a2e,#0d0d1a)' }}
+          >
+            <span className="text-white text-4xl opacity-60">&#9654;</span>
+          </div>
+        ) : (
+          <img
+            src={`https://i.ytimg.com/vi/${video.id}/${priority ? 'hqdefault' : 'mqdefault'}.jpg`}
+            alt={video.title}
+            loading={priority ? 'eager' : 'lazy'}
+            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+            onError={() => setImgError(true)}
+          />
+        )}
         <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all flex items-center justify-center">
           <span className="text-white text-3xl opacity-0 group-hover:opacity-100 transition-opacity drop-shadow-lg">&#9654;</span>
         </div>
@@ -30,7 +45,10 @@ function VideoCard({ video, priority = false }) {
       </h3>
       {creator && (
         <div className="flex items-center gap-2 mt-auto pt-2 border-t border-border-dim">
-          <div className="w-5 h-5 rounded-full flex items-center justify-center text-xs font-black font-orbitron text-white shrink-0" style={{ background: creator.avatarGradient }}>
+          <div
+            className="w-5 h-5 rounded-full flex items-center justify-center text-xs font-black font-orbitron text-white shrink-0"
+            style={{ background: creator.avatarGradient }}
+          >
             {creator.avatar[0]}
           </div>
           <span className="text-xs text-text-secondary truncate">{creator.name}</span>
@@ -75,7 +93,10 @@ function FeaturedCreatorsSection({ maxItems = 4 }) {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {creators.map(c => (
             <Link key={c.id} to={`/creator/${c.id}`} className="card card-hover group text-center flex flex-col items-center gap-3">
-              <div className="w-16 h-16 rounded-full flex items-center justify-center text-lg font-black font-orbitron text-white transition-transform group-hover:scale-110" style={{ background: c.avatarGradient }}>
+              <div
+                className="w-16 h-16 rounded-full flex items-center justify-center text-lg font-black font-orbitron text-white transition-transform group-hover:scale-110"
+                style={{ background: c.avatarGradient }}
+              >
                 {c.avatar}
               </div>
               <div>
