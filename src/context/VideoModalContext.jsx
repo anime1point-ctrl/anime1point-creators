@@ -23,7 +23,7 @@ function getRelatedVideos(current, limit = 3) {
     .map(v => {
       let score = 0
       if (v.creatorId === current.creatorId) score += 5
-      if (v.category === current.category) score += 3
+      if (v.franchise && v.franchise !== 'multi' && v.franchise === current.franchise) score += 4; if (v.category === current.category) score += 3; (v.tags||[]).forEach(t=>{if((current.tags||[]).includes(t)) score += 2})
       if (v.section === current.section) score += 1
       return { ...v, _score: score }
     })
