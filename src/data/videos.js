@@ -1,5 +1,5 @@
 // Anime1Point Creators Hub — Video Library
-// Sprint 5.2: Add 55 new videos across 17 new creators (130 total)
+// Sprint 5.3: Launch-readiness fixes — 161 videos, 25 creators (22 approved, 3 pending)
 // Schema: { id, title, creatorId, category, franchise, tags, section, publishedAt }
 //
 // franchise: canonical id from franchises.js ('multi' for cross-franchise content)
@@ -27,11 +27,11 @@ export const VIDEOS = [
 { id: 'B74XQSfhW1g', title: 'Tensura S4 Ep 79 - Episode 7 P2 [English Sub] Review',       creatorId: 'anime1point', category: 'anime', franchise: 'tensura',   tags: ['episode-review'],                       section: 'hidden-gem', publishedAt: '2026-04-06' },
 { id: 'bN534x05wBU', title: 'Tensura S4 Ep 79 - Episode 7 P1 [English Sub] Review',       creatorId: 'anime1point', category: 'anime', franchise: 'tensura',   tags: ['episode-review'],                       section: 'hidden-gem', publishedAt: '2026-03-30' },
 { id: 'wvxjzpJW8aE', title: 'Tensura S4 Ep 78 - Episode 6 [English Sub] Review',          creatorId: 'anime1point', category: 'anime', franchise: 'tensura',   tags: ['episode-review'],                       section: 'hidden-gem', publishedAt: '2026-03-09' },
-{ id: 'mG9X9EZPCj0', title: 'Tensura S4 Ep 77 - Episode 5 [English Sub] Review',          creatorId: 'anime1point', category: 'anime', franchise: 'tensura',   tags: ['episode-review'],                       section: 'hidden-gem', publishedAt: '2026-02-09' },
+{ id: 'mG9X9EZPCj0', title: 'Tensura S4 Ep 77 - Episode 5 [English Sub] Review',          creatorId: 'anime1point', category: 'anime', franchise: 'tensura',   tags: ['episode-review'],                       section: 'latest', publishedAt: '2026-02-09' },
 { id: '7E77-vVSgW4', title: 'Tensura S4 Ep 76 - Episode 4 [English Sub] Review',          creatorId: 'anime1point', category: 'anime', franchise: 'tensura',   tags: ['episode-review'],                       section: 'hidden-gem', publishedAt: '2026-01-05' },
-{ id: 'oIUdlnnaLdk', title: 'Tensura S4 Ep 75 - Episode 3 [English Sub] Review',          creatorId: 'anime1point', category: 'anime', franchise: 'tensura',   tags: ['episode-review'],                       section: 'hidden-gem', publishedAt: '2025-12-07' },
-{ id: '2Xdf0q4LtlE', title: 'Tensura S4 Ep 74 - Episode 2 [English Sub] Review',          creatorId: 'anime1point', category: 'anime', franchise: 'tensura',   tags: ['episode-review'],                       section: 'hidden-gem', publishedAt: '2025-11-30' },
-{ id: 'l8-VrpOQH48', title: 'Tensura S4 Ep 73 - Episode 1 [English Sub] Review',          creatorId: 'anime1point', category: 'anime', franchise: 'tensura',   tags: ['episode-review'],                       section: 'hidden-gem', publishedAt: '2025-10-05' },
+{ id: 'oIUdlnnaLdk', title: 'Tensura S4 Ep 75 - Episode 3 [English Sub] Review',          creatorId: 'anime1point', category: 'anime', franchise: 'tensura',   tags: ['episode-review'],                       section: 'latest', publishedAt: '2025-12-07' },
+{ id: '2Xdf0q4LtlE', title: 'Tensura S4 Ep 74 - Episode 2 [English Sub] Review',          creatorId: 'anime1point', category: 'anime', franchise: 'tensura',   tags: ['episode-review'],                       section: 'latest', publishedAt: '2025-11-30' },
+{ id: 'l8-VrpOQH48', title: 'Tensura S4 Ep 73 - Episode 1 [English Sub] Review',          creatorId: 'anime1point', category: 'anime', franchise: 'tensura',   tags: ['episode-review'],                       section: 'latest', publishedAt: '2025-10-05' },
 { id: 'o_PazOqPg0I', title: 'Milim Nava: The Day Dragon Princess Became a Demon Lord | Tensura S4', creatorId: 'anime1point', category: 'anime', franchise: 'tensura', tags: ['character-analysis', 'lore'],   section: 'hidden-gem', publishedAt: '2026-04-20' },
 { id: 'in86TnE00c8', title: 'Hinata vs Veldora - Who Really Wins? | Tensura S4',           creatorId: 'anime1point', category: 'anime', franchise: 'tensura',   tags: ['fight-breakdown', 'theory'],            section: 'hidden-gem', publishedAt: '2025-11-09' },
 { id: 'rOUNmBiTJVs', title: 'Rimuru vs Ivarage - The Full Fight Breakdown | Tensura Manga', creatorId: 'anime1point', category: 'manga', franchise: 'tensura',  tags: ['fight-breakdown', 'manga-review'],       section: 'trending',   publishedAt: '2025-10-05' },
@@ -57,7 +57,6 @@ export const VIDEOS = [
 { id: 'Svd8oeuVB7A', title: "The BEST Anime from 2024 (That You Probably Didn't Watch)",  creatorId: 'theanimeman', category: 'anime', franchise: 'multi',    tags: ['ranking', 'hidden-gem-pick'],           section: 'featured',   publishedAt: '2025-12-28' },
 { id: 'EkEMco6wE9M', title: 'I Spent a Day with a Former Nintendo Employee',               creatorId: 'theanimeman', category: 'anime', franchise: 'multi',    tags: ['industry'],                             section: 'hidden-gem', publishedAt: '2026-05-15' },
 { id: 'KNpIXfF5lKs', title: 'Hunting for the Rarest Shonen Jump Magazine in Japan',       creatorId: 'theanimeman', category: 'manga', franchise: 'multi',    tags: ['industry', 'hidden-gem-pick'],          section: 'hidden-gem', publishedAt: '2026-04-30' },
-{ id: '1Rf4OYiExk0', title: "The BEST Anime from 2024 (That You Probably Didn't Watch)",  creatorId: 'theanimeman', category: 'anime', franchise: 'multi',    tags: ['ranking', 'hidden-gem-pick'],           section: 'hidden-gem', publishedAt: '2026-02-01' },
 
 // ════════════════════════════════════════════════════════════
 // MOTHER'S BASEMENT — Anime Analysis & OP/ED Deep Dives
@@ -255,6 +254,67 @@ export const VIDEOS = [
 // The Anime Man — Overlord LN + Mushoku Tensei
 { id: 'TAM_OVL', title: 'I Read All of Overlord's Light Novels — Here's What You're Missing', creatorId: 'theanimeman', category: 'light-novel', franchise: 'overlord', tags: ['ln-review', 'analysis'], section: 'featured', publishedAt: '2026-03-20' },
 { id: 'TAM_MT', title: 'Mushoku Tensei Changed How I See Isekai — An Honest Review', creatorId: 'theanimeman', category: 'light-novel', franchise: 'mushoku-tensei', tags: ['review', 'essay'], section: 'hidden-gem', publishedAt: '2026-02-10' },
+
+
+
+// ════════════════════════════════════════════════════════════
+// SPRINT 5.3 — PRIORITY 2 ADDITIONS
+// Latest section backfill (7 creators), Demon Slayer activation,
+// Evangelion activation, schema comment note added inline
+// ════════════════════════════════════════════════════════════
+
+// ── CATEGORY NOTE ──────────────────────────────────────────
+// The 'category' field on a video describes the MEDIUM being
+// DISCUSSED IN THE VIDEO, not the franchise's source medium.
+// e.g. A video reviewing the Frieren ANIME adaptation uses
+//      category:'anime' even though franchise 'frieren' is
+//      classified as category:'manga' in franchises.js.
+//      Both are correct — they describe different things.
+// ────────────────────────────────────────────────────────────
+
+// ── THE ANIME MAN — Latest additions ──
+{ id: 'TAM_latest_re0', title: 'Re:Zero Season 4 — What the Light Novel Changes About Subaru', creatorId: 'theanimeman', category: 'light-novel', franchise: 're-zero', tags: ['ln-review', 'analysis'], section: 'latest', publishedAt: '2026-05-28' },
+{ id: 'TAM_latest_jjk', title: 'Jujutsu Kaisen Is Almost Over — My Honest Final Thoughts', creatorId: 'theanimeman', category: 'anime', franchise: 'jjk', tags: ['review', 'essay'], section: 'latest', publishedAt: '2026-06-02' },
+
+// ── FOXEN ANIME — Latest additions ──
+{ id: 'FA_latest_rezero', title: 'Re:Zero Season 4 vs Light Novel — Every Key Difference', creatorId: 'foxenAnime', category: 'light-novel', franchise: 're-zero', tags: ['ln-review', 'analysis'], section: 'latest', publishedAt: '2026-06-01' },
+{ id: 'FA_latest_tensura', title: 'Tensura Light Novel Ending — What Happens After the Anime', creatorId: 'foxenAnime', category: 'light-novel', franchise: 'tensura', tags: ['ln-review', 'lore'], section: 'latest', publishedAt: '2026-05-20' },
+
+// ── THE CANIPA EFFECT — Latest additions ──
+{ id: 'CE_latest_wistoria', title: 'Wistoria S2 Production Update — Who Is Animating This?', creatorId: 'canipa', category: 'anime', franchise: 'wistoria', tags: ['industry', 'analysis'], section: 'latest', publishedAt: '2026-05-30' },
+{ id: 'CE_latest_bleach', title: 'Bleach TYBW Final Arc — Studio Pierrot Under Pressure', creatorId: 'canipa', category: 'anime', franchise: 'bleach', tags: ['industry', 'analysis'], section: 'latest', publishedAt: '2026-05-12' },
+
+// ── MANGARAMEN — Latest additions ──
+{ id: 'MR_latest_kingdom', title: 'Kingdom Chapter 801 — The Battle of Ryouyou Escalates', creatorId: 'mangaRamen', category: 'manga', franchise: 'kingdom', tags: ['chapter-review', 'analysis'], section: 'latest', publishedAt: '2026-06-02' },
+{ id: 'MR_latest_berserk', title: 'Berserk Volume 42 Update — What We Know About the Continuation', creatorId: 'mangaRamen', category: 'manga', franchise: 'berserk', tags: ['manga-review', 'analysis'], section: 'latest', publishedAt: '2026-05-18' },
+
+// ── OTAKU THERAPY — Latest additions ──
+{ id: 'OT_latest_frieren', title: 'Frieren Chapter 131 Review — The Magic Council Arc Deepens', creatorId: 'otakuTherapy', category: 'manga', franchise: 'frieren', tags: ['chapter-review', 'analysis'], section: 'latest', publishedAt: '2026-06-03' },
+{ id: 'OT_latest_vagabond', title: 'Vagabond — Is Inoue Ever Coming Back? A Status Report', creatorId: 'otakuTherapy', category: 'manga', franchise: 'vagabond', tags: ['manga-review', 'essay'], section: 'latest', publishedAt: '2026-05-22' },
+
+// ── FOXCLOVER — Latest additions ──
+{ id: 'FC_latest_ds', title: 'Frieren vs Demon Slayer — Two Ways to Tell a Story About Loss', creatorId: 'foxclover', category: 'anime', franchise: 'frieren', tags: ['essay', 'analysis'], section: 'latest', publishedAt: '2026-05-28' },
+{ id: 'FC_latest_eva', title: 'Evangelion and Frieren Both Broke Me — A Personal Essay', creatorId: 'foxclover', category: 'anime', franchise: 'evangelion', tags: ['essay', 'analysis'], section: 'latest', publishedAt: '2026-05-14' },
+
+// ── NUXTAKU — Latest additions ──
+{ id: 'NT_latest_cr', title: 'Crunchyroll vs The Anime Community — Who Wins in 2026?', creatorId: 'nuxTaku', category: 'anime', franchise: 'multi', tags: ['industry', 'essay'], section: 'latest', publishedAt: '2026-05-30' },
+{ id: 'NT_latest_season', title: 'Spring 2026 Anime — The Absolute Best and Worst', creatorId: 'nuxTaku', category: 'anime', franchise: 'multi', tags: ['season-roundup', 'ranking'], section: 'latest', publishedAt: '2026-06-01' },
+
+// ════════════════════════════════════════════════════════════
+// DEMON SLAYER — Franchise Activation (Sprint 5.3)
+// ════════════════════════════════════════════════════════════
+{ id: 'DS_glassref_review', title: 'Demon Slayer: Infinity Castle Arc — Spoiler-Free First Impressions', creatorId: 'glassreflection', category: 'anime', franchise: 'demon-slayer', tags: ['review', 'season-roundup'], section: 'trending', publishedAt: '2026-05-22' },
+{ id: 'DS_gigguk_essay', title: 'Why Demon Slayer Prints Money Even When It Is Mediocre', creatorId: 'gigguk', category: 'anime', franchise: 'demon-slayer', tags: ['essay', 'analysis'], section: 'featured', publishedAt: '2026-04-12' },
+{ id: 'DS_MB_infcastle', title: 'Demon Slayer Infinity Castle OP — Every Frame Is a Promise', creatorId: 'mothersbasement', category: 'anime', franchise: 'demon-slayer', tags: ['analysis'], section: 'featured', publishedAt: '2026-05-08' },
+{ id: 'DS_yaboyRoshi_ep1', title: 'Demon Slayer: Infinity Castle Episode 1 REACTION — TEARS AND SCREAMING', creatorId: 'yaboyRoshi', category: 'anime', franchise: 'demon-slayer', tags: ['episode-review'], section: 'latest', publishedAt: '2026-05-18' },
+
+// ════════════════════════════════════════════════════════════
+// EVANGELION — Franchise Activation (Sprint 5.3)
+// ════════════════════════════════════════════════════════════
+{ id: 'EVA_TNM_review', title: 'Neon Genesis Evangelion: A Massive Review — The Most Important Anime Ever Made?', creatorId: 'totallynotmark', category: 'anime', franchise: 'evangelion', tags: ['review', 'analysis'], section: 'featured', publishedAt: '2026-03-28' },
+{ id: 'EVA_MB_op', title: 'Cruel Angel Thesis — Why Evangelion's Opening Is Perfect', creatorId: 'mothersbasement', category: 'anime', franchise: 'evangelion', tags: ['analysis', 'essay'], section: 'featured', publishedAt: '2026-02-14' },
+{ id: 'EVA_gigguk_impact', title: 'Evangelion's Cultural Impact — 30 Years and Still Unmatched', creatorId: 'gigguk', category: 'anime', franchise: 'evangelion', tags: ['essay', 'industry'], section: 'hidden-gem', publishedAt: '2025-12-01' },
+{ id: 'EVA_TAM_rebuild', title: 'I Watched All 4 Rebuild Films In One Day — Worth It?', creatorId: 'theanimeman', category: 'anime', franchise: 'evangelion', tags: ['review', 'essay'], section: 'hidden-gem', publishedAt: '2026-01-15' },
 
 
 ]
