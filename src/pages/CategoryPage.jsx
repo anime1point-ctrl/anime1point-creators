@@ -1,8 +1,9 @@
-import { useState } from 'react'
+import { useState, useMemo } from 'react'
 import { useParams, Link, Navigate } from 'react-router-dom'
 import { VIDEOS } from '../data/videos'
 import { CATEGORY_MAP } from '../data/categories'
 import { CREATOR_MAP } from '../data/creators'
+import { FRANCHISE_MAP } from '../data/franchises'
 import { useVideoModal } from '../context/VideoModalContext'
 
 const PAGE_SIZE = 6
@@ -45,6 +46,11 @@ function VideoCard({ video }) {
         <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all flex items-center justify-center">
           <span className="text-white text-3xl opacity-0 group-hover:opacity-100 transition-opacity drop-shadow-lg">&#9654;</span>
         </div>
+        {video.franchise && video.franchise !== 'multi' && FRANCHISE_MAP[video.franchise] && (
+          <span className="absolute bottom-1.5 right-1.5 text-xs bg-black/70 text-white px-1.5 py-0.5 rounded font-semibold">
+            {FRANCHISE_MAP[video.franchise].shortLabel}
+          </span>
+        )}
       </div>
       <h3 className="text-sm font-semibold text-text-primary line-clamp-2 group-hover:text-accent transition-colors mb-2">{video.title}</h3>
       {creator && (
@@ -72,13 +78,38 @@ function VideoCard({ video }) {
 export default function CategoryPage() {
   const { slug } = useParams()
   const [page, setPage] = useState(1)
+  const [activeFranchise, setActiveFranchise] = useState(null)
 
   const category = CATEGORY_MAP[slug]
   if (!category) return <Navigate to="/" replace />
 
-  const allVideos = VIDEOS.filter(v => v.category === slug)
-  const shown = allVideos.slice(0, page * PAGE_SIZE)
-  const hasMore = shown.length < allVideos.length
+  const categoryVideos = VIDEOS.filter(v => v.category === slug)
+
+  // Derive franchises that actually have videos in this category (sorted by count)
+  const franchisesInCategory = useMemo(() => {
+    const counts = {}
+    categoryVideos.forEach(v => {
+      if (v.franchise && v.franchise !== 'multi') {
+        counts[v.franchise] = (counts[v.franchise] || 0) + 1
+      }
+    })
+    return Object.entries(counts)
+      .sort((a, b) => b[1] - a[1])
+      .map(([id, count]) => ({ id, count, ...(FRANCHISE_MAP[id] || { shortLabel: id }) }))
+  }, [categoryVideos])
+
+  const filteredVideos = useMemo(() => {
+    if (!activeFranchise) return categoryVideos
+    return categoryVideos.filter(v => v.franchise === activeFranchise)
+  }, [categoryVideos, activeFranchise])
+
+  const shown = filteredVideos.slice(0, page * PAGE_SIZE)
+  const hasMore = shown.length < filteredVideos.length
+
+  function handleFranchiseClick(id) {
+    setActiveFranchise(prev => prev === id ? null : id)
+    setPage(1)
+  }
 
   return (
     <div className="min-h-screen">
@@ -93,9 +124,14 @@ export default function CategoryPage() {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 py-10">
-        <div className="flex items-center justify-between mb-6">
-          <p className="text-text-secondary text-sm">{allVideos.length} videos</p>
-          <div className="flex gap-2">
+        {/* Category nav tabs */}
+        <div className="flex items-center justify-between mb-6 flex-wrap gap-3">
+          <p className="text-text-secondary text-sm">
+            {activeFranchise
+              ? `${filteredVideos.length} videos · ${FRANCHISE_MAP[activeFranchise]?.label || activeFranchise}`
+              : `${categoryVideos.length} videos`}
+          </p>
+          <div className="flex gap-2 flex-wrap">
             {Object.values(CATEGORY_MAP).map(cat => (
               <Link
                 key={cat.id}
@@ -112,7 +148,40 @@ export default function CategoryPage() {
           </div>
         </div>
 
-        {allVideos.length > 0 ? (
+        {/* Franchise filter pills — only shown when 2+ franchises exist */}
+        {franchisesInCategory.length >= 2 && (
+          <div className="mb-7">
+            <p className="text-text-secondary text-xs mb-2 font-semibold uppercase tracking-wider">Filter by Franchise</p>
+            <div className="flex flex-wrap gap-2">
+              <button
+                onClick={() => { setActiveFranchise(null); setPage(1) }}
+                className={`text-xs px-3 py-1.5 rounded-full border font-semibold transition-all ${
+                  !activeFranchise
+                    ? 'bg-accent/20 text-accent border-accent/40'
+                    : 'border-border-dim text-text-secondary hover:border-accent/30'
+                }`}
+              >
+                All
+              </button>
+              {franchisesInCategory.map(f => (
+                <button
+                  key={f.id}
+                  onClick={() => handleFranchiseClick(f.id)}
+                  className={`text-xs px-3 py-1.5 rounded-full border font-semibold transition-all ${
+                    activeFranchise === f.id
+                      ? 'bg-accent/20 text-accent border-accent/40'
+                      : 'border-border-dim text-text-secondary hover:border-accent/30'
+                  }`}
+                >
+                  {f.emoji && <span className="mr-1">{f.emoji}</span>}{f.shortLabel}
+                  <span className="ml-1 opacity-60">({f.count})</span>
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {filteredVideos.length > 0 ? (
           <>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-8">
               {shown.map(v => <VideoCard key={v.id + v.creatorId} video={v} />)}
@@ -123,12 +192,12 @@ export default function CategoryPage() {
                   onClick={() => setPage(p => p + 1)}
                   className="btn-outline px-8"
                 >
-                  Load More ({allVideos.length - shown.length} remaining)
+                  Load More ({filteredVideos.length - shown.length} remaining)
                 </button>
               </div>
             )}
-            {!hasMore && allVideos.length > PAGE_SIZE && (
-              <p className="text-center text-text-secondary text-sm py-4">All {allVideos.length} videos loaded</p>
+            {!hasMore && filteredVideos.length > PAGE_SIZE && (
+              <p className="text-center text-text-secondary text-sm py-4">All {filteredVideos.length} videos loaded</p>
             )}
           </>
         ) : (
