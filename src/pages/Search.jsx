@@ -118,7 +118,7 @@ export default function Search() {
     const q = query.toLowerCase()
     return VIDEOS.filter(v =>
       v.title.toLowerCase().includes(q) ||
-      v.category.toLowerCase().includes(q) ||
+      v.category.toLowerCase().includes(q) || (v.franchise||"").toLowerCase().includes(q) || (v.tags||[]).some(t=>t.toLowerCase().includes(q)) ||
       (CREATOR_MAP[v.creatorId]?.name || "").toLowerCase().includes(q)
     )
   }, [query])
