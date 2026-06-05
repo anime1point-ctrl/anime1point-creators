@@ -76,7 +76,7 @@ function VideoCard({ video, priority = false }) {
 
 function VideoSection({ section, videos }) {
   const filtered = section.categoryFilter
-    ? videos.filter(v => v.category === section.categoryFilter || (section.categoryFilter === 'novels' && v.category === 'light-novel'))
+    ? videos.filter(v => v.category === section.categoryFilter)
     : videos
   const items = filtered.slice(0, section.maxItems || 6)
   if (!items.length) return null
@@ -119,7 +119,7 @@ function FeaturedCreatorsSection({ maxItems = 6 }) {
               <div>
                 <p className="font-orbitron font-black text-sm text-text-primary group-hover:text-accent transition-colors">{c.name}</p>
                 <p className="text-text-secondary text-xs mt-0.5">{c.handle}</p>
-                <span className={`badge-${c.category} mt-2 inline-block`}>{CATEGORY_MAP[c.category]?.label || c.category}</span>
+                <span className={`badge-${c.category==='light-novel'?'novels':c.category} mt-2 inline-block`}>{CATEGORY_MAP[c.category]?.label || c.category}</span>
               </div>
               <p className="text-text-secondary text-xs line-clamp-2 leading-relaxed">{c.bio.slice(0, 80)}...</p>
             </Link>
@@ -165,7 +165,7 @@ function Hero() {
         <div className="flex flex-wrap gap-2 justify-center">
           <Link to="/category/anime" className="btn-outline text-sm">Anime</Link>
           <Link to="/category/manga" className="btn-outline text-sm">Manga</Link>
-          <Link to="/category/novels" className="btn-outline text-sm">Light Novels</Link>
+          <Link to="/category/light-novel" className="btn-outline text-sm">Light Novels</Link>
           <Link to="/creators" className="btn-primary text-sm">Browse All Creators</Link>
         </div>
       </div>
@@ -181,7 +181,7 @@ export default function Home() {
     latest: LATEST_VIDEOS,
     'hidden-gem': HIDDEN_GEM_VIDEOS,
     featured: TRENDING_VIDEOS,
-    'light-novel-spotlight': allVideos.filter(v => v.category === 'light-novel' || v.category === 'novels'),
+    'light-novel-spotlight': allVideos.filter(v => v.category === 'light-novel'),
     'manga-deep-dives': allVideos.filter(v => v.category === 'manga'),
   }), [allVideos])
   return (
