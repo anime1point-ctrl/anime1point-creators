@@ -1,6 +1,6 @@
 /**
  * CREATORS — Anime1Point Creators Hub
- * Sprint 5.2: Expand roster to 28 creators
+ * Sprint 5.3: Launch-readiness fixes — creator status, flags, channel IDs
  *
  * creatorStatus: "anime1point" | "featured" | "rising"
  * featuredVideoIds: array — first entry shown as hero on profile page
@@ -120,11 +120,11 @@ export const CREATORS = [
       avatarGradient: 'linear-gradient(135deg,#f953c6,#b91d73)',
       bio: "Covering the latest anime news, controversies, and industry commentary. Chibi Reviews keeps the anime community informed with fast-paced, opinionated takes on what is happening right now.",
       tags: ['Anime News', 'Industry Commentary', 'Crunchyroll', 'Community', 'Seasonal Updates'],
-      featuredVideoIds: ['SeGTseOKl4A', 'Steb4F40jAQ'],
+      featuredVideoIds: ['SeGTseOKl4A', 'Steb4F40jAQ', 'KYXQqwbIIJs'],
       youtubeUrl: 'https://www.youtube.com/@ChibiReviews',
       youtubeChannelId: 'UCsAifHRSMPlDFwMRrT-jFVw',
       status: 'approved',
-      featured: false,
+      featured: true,
   },
   {
       id: 'realliferyan',
@@ -288,7 +288,7 @@ export const CREATORS = [
       youtubeUrl: 'https://www.youtube.com/@NuxTaku',
       youtubeChannelId: 'UCOjqEDCGFNMhIXXcQE-HVCA',
       status: 'approved',
-      featured: false,
+      featured: true,
   },
   {
       id: 'animeUproar',
@@ -338,7 +338,7 @@ export const CREATORS = [
       tags: ['Frieren', 'JoJo', 'Manga Analysis', 'Storytelling', 'Literary Manga'],
       featuredVideoIds: ['OT_FR_ch130', 'OT_FR_full', 'OT_JOJO_SBR'],
       youtubeUrl: 'https://www.youtube.com/@OtakuTherapy',
-      youtubeChannelId: '',
+      youtubeChannelId: 'NEEDS_VERIFICATION',
       status: 'approved',
       featured: false,
   },
@@ -354,8 +354,8 @@ export const CREATORS = [
       tags: ['Lore', 'Theory', 'Naruto', 'Dragon Ball', 'Bleach'],
       featuredVideoIds: [],
       youtubeUrl: 'https://www.youtube.com/@AnimeExplained',
-      youtubeChannelId: '',
-      status: 'approved',
+      youtubeChannelId: 'NEEDS_VERIFICATION',
+      status: 'pending',
       featured: false,
   },
   {
@@ -370,7 +370,7 @@ export const CREATORS = [
       tags: ['Frieren', 'Slice of Life', 'Anime Essays', 'Fantasy', 'Character Studies'],
       featuredVideoIds: ['FC_FR_elf', 'FC_FR_anime'],
       youtubeUrl: 'https://www.youtube.com/@Foxclover',
-      youtubeChannelId: '',
+      youtubeChannelId: 'NEEDS_VERIFICATION',
       status: 'approved',
       featured: false,
   },
@@ -386,7 +386,7 @@ export const CREATORS = [
       tags: ['Light Novels', 'Isekai', 'Overlord', 'Mushoku Tensei', 'Re:Zero LN'],
       featuredVideoIds: ['IE_OVL_ainz', 'IE_MT_powers', 'IE_REZERO_ln'],
       youtubeUrl: 'https://www.youtube.com/@IsekaiExplained',
-      youtubeChannelId: '',
+      youtubeChannelId: 'NEEDS_VERIFICATION',
       status: 'approved',
       featured: false,
   },
@@ -402,8 +402,8 @@ export const CREATORS = [
       tags: ['Anime News', 'First Impressions', 'Seasonal Preview', 'Trailers', 'Announcements'],
       featuredVideoIds: [],
       youtubeUrl: 'https://www.youtube.com/@AnimeSenpai',
-      youtubeChannelId: '',
-      status: 'approved',
+      youtubeChannelId: 'NEEDS_VERIFICATION',
+      status: 'pending',
       featured: false,
   },
   {
@@ -418,8 +418,8 @@ export const CREATORS = [
       tags: ['Shojo', 'Josei', 'Romance Anime', 'Anime Reviews', 'Underrepresented Genres'],
       featuredVideoIds: [],
       youtubeUrl: 'https://www.youtube.com/@PedaFan',
-      youtubeChannelId: '',
-      status: 'approved',
+      youtubeChannelId: 'NEEDS_VERIFICATION',
+      status: 'pending',
       featured: false,
   },
   ]
