@@ -3,8 +3,15 @@ import { useSearchParams, Link } from "react-router-dom"
 import { VIDEOS } from "../data/videos"
 import { APPROVED_CREATORS, CREATOR_MAP } from "../data/creators"
 import { CATEGORY_MAP } from "../data/categories"
+import { FRANCHISES, FRANCHISE_MAP } from "../data/franchises"
 import { useVideoModal } from "../context/VideoModalContext"
 import { Analytics } from "../utils/analytics"
+
+// Franchise quick-search suggestions — top franchises shown when search is empty
+const SUGGESTED_FRANCHISES = [
+  'tensura', 're-zero', 'one-piece', 'berserk', 'jjk',
+  'overlord', 'dragon-ball', 'demon-slayer', 'chainsaw-man', 'frieren',
+]
 
 function hasRealThumbnail(videoId) {
   if (!videoId) return false
@@ -73,6 +80,18 @@ function VideoResult({ video }) {
             <span className="text-xs text-text-secondary ml-auto">{video.publishedAt}</span>
           </div>
         )}
+        {video.franchise && video.franchise !== 'multi' && FRANCHISE_MAP[video.franchise] && (
+          <div className="mt-1.5 flex flex-wrap gap-1">
+            <span className="text-xs bg-accent/10 text-accent border border-accent/20 px-1.5 py-0.5 rounded font-medium">
+              {FRANCHISE_MAP[video.franchise].shortLabel}
+            </span>
+            {(video.tags || []).slice(0, 2).map(tag => (
+              <span key={tag} className="text-xs bg-white/5 text-text-secondary border border-border-dim px-1.5 py-0.5 rounded">
+                {tag}
+              </span>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   )
@@ -112,13 +131,16 @@ export default function Search() {
   const [inputValue, setInputValue] = useState(searchParams.get("q") || "")
   const query = searchParams.get("q") || ""
 
-  // Fire analytics when query changes (i.e. after submit)
   const videoResults = useMemo(() => {
     if (!query.trim()) return []
     const q = query.toLowerCase()
     return VIDEOS.filter(v =>
       v.title.toLowerCase().includes(q) ||
-      v.category.toLowerCase().includes(q) || (v.franchise||"").toLowerCase().includes(q) || (v.tags||[]).some(t=>t.toLowerCase().includes(q)) ||
+      v.category.toLowerCase().includes(q) ||
+      (v.franchise || "").toLowerCase().includes(q) ||
+      (FRANCHISE_MAP[v.franchise]?.label || "").toLowerCase().includes(q) ||
+      (FRANCHISE_MAP[v.franchise]?.shortLabel || "").toLowerCase().includes(q) ||
+      (v.tags || []).some(t => t.toLowerCase().includes(q)) ||
       (CREATOR_MAP[v.creatorId]?.name || "").toLowerCase().includes(q)
     )
   }, [query])
@@ -134,7 +156,6 @@ export default function Search() {
     )
   }, [query])
 
-  // Track search when results change (query changed)
   useEffect(() => {
     if (query.trim()) {
       Analytics.searchPerformed(query, videoResults.length, creatorResults.length)
@@ -148,8 +169,27 @@ export default function Search() {
     }
   }
 
+  function handleFranchiseSuggest(franchiseId) {
+    const franchise = FRANCHISE_MAP[franchiseId]
+    if (!franchise) return
+    const label = franchise.shortLabel
+    setInputValue(label)
+    setSearchParams({ q: label })
+  }
+
   const hasResults = videoResults.length > 0 || creatorResults.length > 0
   const hasQuery = query.trim().length > 0
+
+  // Group video results by franchise for richer display
+  const resultFranchises = useMemo(() => {
+    if (!hasResults) return []
+    const seen = new Set()
+    return videoResults
+      .filter(v => v.franchise && v.franchise !== 'multi' && !seen.has(v.franchise) && seen.add(v.franchise))
+      .map(v => FRANCHISE_MAP[v.franchise])
+      .filter(Boolean)
+      .slice(0, 5)
+  }, [videoResults, hasResults])
 
   return (
     <div className="min-h-screen">
@@ -165,12 +205,47 @@ export default function Search() {
               type="search"
               value={inputValue}
               onChange={e => setInputValue(e.target.value)}
-              placeholder="Search by title, series, creator..."
+              placeholder="Search by title, franchise, creator, or tag..."
               className="form-input flex-1"
               autoFocus
             />
             <button type="submit" className="btn-primary shrink-0 px-6">Search</button>
           </form>
+
+          {/* Franchise suggestion chips — shown only when no active query */}
+          {!hasQuery && (
+            <div className="mt-5">
+              <p className="text-text-secondary text-xs mb-2.5 font-semibold uppercase tracking-wider">Browse by Franchise</p>
+              <div className="flex flex-wrap gap-2">
+                {SUGGESTED_FRANCHISES.map(id => {
+                  const f = FRANCHISE_MAP[id]
+                  if (!f) return null
+                  return (
+                    <button
+                      key={id}
+                      onClick={() => handleFranchiseSuggest(id)}
+                      className="text-xs px-3 py-1.5 rounded-full border border-border-dim text-text-secondary hover:border-accent/40 hover:text-accent transition-all font-semibold"
+                    >
+                      {f.emoji && <span className="mr-1">{f.emoji}</span>}{f.shortLabel}
+                    </button>
+                  )
+                })}
+              </div>
+            </div>
+          )}
+
+          {/* Franchise facets shown alongside results */}
+          {hasQuery && resultFranchises.length > 0 && (
+            <div className="mt-4 flex flex-wrap gap-2 items-center">
+              <span className="text-text-secondary text-xs">Franchises found:</span>
+              {resultFranchises.map(f => (
+                <span key={f.id} className="text-xs bg-accent/10 text-accent border border-accent/20 px-2 py-0.5 rounded font-semibold">
+                  {f.emoji && <span className="mr-1">{f.emoji}</span>}{f.shortLabel}
+                </span>
+              ))}
+            </div>
+          )}
+
           {hasQuery && (
             <p className="text-text-secondary text-sm mt-3">
               {hasResults
@@ -200,7 +275,7 @@ export default function Search() {
             <div className="flex flex-wrap gap-2 justify-center mt-6">
               <Link to="/category/anime" className="btn-outline text-sm">Anime</Link>
               <Link to="/category/manga" className="btn-outline text-sm">Manga</Link>
-              <Link to="/category/novels" className="btn-outline text-sm">Light Novels</Link>
+              <Link to="/category/light-novel" className="btn-outline text-sm">Light Novels</Link>
             </div>
           </div>
         )}
