@@ -148,7 +148,7 @@ export const VIDEOS = [
 // YABOYРOSHI — Seasonal Episode Reactions
 // ════════════════════════════════════════════════════════════
 { id: 'YBR_RZ_s4ep9', title: 'Re:Zero Season 4 Episode 9 REACTION — This Changed Everything', creatorId: 'yaboyRoshi', category: 'anime', franchise: 're-zero', tags: ['episode-review'], section: 'trending', publishedAt: '2026-05-30' },
-{ id: 'YBR_RZ_s4ep8', title: 'Re:Zero Season 4 Episode 8 REACTION — 's Darkest Hour', creatorId: 'yaboyRoshi', category: 'anime', franchise: 're-zero', tags: ['episode-review'], section: 'latest', publishedAt: '2026-05-23' },
+{ id: 'YBR_RZ_s4ep8', title: "Re:Zero Season 4 Episode 8 REACTION — Subaru's Darkest Hour", creatorId: 'yaboyRoshi', category: 'anime', franchise: 're-zero', tags: ['episode-review'], section: 'latest', publishedAt: '2026-05-23' },
 { id: 'YBR_JJK_ep24', title: 'Jujutsu Kaisen Season 3 Episode 24 REACTION — Sukuna vs Gojo Finale', creatorId: 'yaboyRoshi', category: 'anime', franchise: 'jjk', tags: ['episode-review', 'fight-breakdown'], section: 'trending', publishedAt: '2026-05-20' },
 { id: 'YBR_JJK_ep23', title: 'Jujutsu Kaisen Season 3 Episode 23 REACTION — The Culling Game Ends', creatorId: 'yaboyRoshi', category: 'anime', franchise: 'jjk', tags: ['episode-review'], section: 'latest', publishedAt: '2026-05-13' },
 { id: 'YBR_BLEACH_ep28', title: 'Bleach TYBW Episode 28 REACTION — Yhwach's Final Form', creatorId: 'yaboyRoshi', category: 'anime', franchise: 'bleach', tags: ['episode-review', 'fight-breakdown'], section: 'featured', publishedAt: '2026-05-05' },
@@ -209,14 +209,14 @@ export const VIDEOS = [
 // FOXCLOVER — Anime Essays (Frieren focus)
 // ════════════════════════════════════════════════════════════
 { id: 'FC_FR_elf', title: 'Why Frieren Hits Different — An Essay on Immortality and Loss', creatorId: 'foxclover', category: 'anime', franchise: 'frieren', tags: ['essay', 'analysis'], section: 'trending', publishedAt: '2026-05-18' },
-{ id: 'FC_FR_anime', title: 'Frieren Beyond Journey's End — The Anime That Changed Everything', creatorId: 'foxclover', category: 'anime', franchise: 'frieren', tags: ['review', 'essay'], section: 'featured', publishedAt: '2026-04-01' },
+{ id: 'FC_FR_anime', title: "Frieren Beyond Journey's End — The Anime That Changed Everything", creatorId: 'foxclover', category: 'anime', franchise: 'frieren', tags: ['review', 'essay'], section: 'featured', publishedAt: '2026-04-01' },
 { id: 'FC_slice', title: 'Slow Anime Is Not Boring Anime — A Defense of Atmosphere', creatorId: 'foxclover', category: 'anime', franchise: 'multi', tags: ['essay', 'analysis'], section: 'hidden-gem', publishedAt: '2026-03-08' },
 
 // ════════════════════════════════════════════════════════════
 // ISEKAI EXPLAINED — LN Source Material Coverage
 // ════════════════════════════════════════════════════════════
-{ id: 'IE_OVL_ainz', title: 'Ainz Ooal Gown's REAL Plan — Overlord LN Ending Explained', creatorId: 'isekaiExplained', category: 'light-novel', franchise: 'overlord', tags: ['ln-review', 'lore'], section: 'trending', publishedAt: '2026-05-20' },
-{ id: 'IE_MT_powers', title: 'Mushoku Tensei — Rudeus's Full Power Progression (All LN Volumes)', creatorId: 'isekaiExplained', category: 'light-novel', franchise: 'mushoku-tensei', tags: ['ln-review', 'power-scaling'], section: 'featured', publishedAt: '2026-04-28' },
+{ id: 'IE_OVL_ainz', title: "Ainz Ooal Gown's REAL Plan — Overlord LN Ending Explained", creatorId: 'isekaiExplained', category: 'light-novel', franchise: 'overlord', tags: ['ln-review', 'lore'], section: 'trending', publishedAt: '2026-05-20' },
+{ id: 'IE_MT_powers', title: "Mushoku Tensei — Rudeus's Full Power Progression (All LN Volumes)", creatorId: 'isekaiExplained', category: 'light-novel', franchise: 'mushoku-tensei', tags: ['ln-review', 'power-scaling'], section: 'featured', publishedAt: '2026-04-28' },
 { id: 'IE_REZERO_ln', title: 'Re:Zero LN vs Anime — The Most Important Differences', creatorId: 'isekaiExplained', category: 'light-novel', franchise: 're-zero', tags: ['ln-review', 'analysis'], section: 'latest', publishedAt: '2026-05-25' },
 { id: 'IE_COTE_year2', title: 'Classroom of the Elite Year 2 LN — The Full Story Explained', creatorId: 'isekaiExplained', category: 'light-novel', franchise: 'cote', tags: ['ln-review', 'lore'], section: 'hidden-gem', publishedAt: '2026-03-18' },
 
@@ -235,7 +235,7 @@ export const VIDEOS = [
 { id: 'GG_frieren_essay', title: 'Frieren and The Slow Death of the Isekai', creatorId: 'gigguk', category: 'anime', franchise: 'frieren', tags: ['essay', 'analysis'], section: 'featured', publishedAt: '2025-11-22' },
 
 // Mother's Basement — Frieren OP/ED + JJK
-{ id: 'MB_frieren_op', title: 'What Frieren's OP Tells You About Death Before It Happens', creatorId: 'mothersbasement', category: 'anime', franchise: 'frieren', tags: ['analysis', 'essay'], section: 'featured', publishedAt: '2025-10-30' },
+{ id: 'MB_frieren_op', title: "What Frieren's OP Tells You About Death Before It Happens", creatorId: 'mothersbasement', category: 'anime', franchise: 'frieren', tags: ['analysis', 'essay'], section: 'featured', publishedAt: '2025-10-30' },
 { id: 'MB_jjk_s3op', title: 'JJK Season 3 Opening — Every Hidden Detail Explained', creatorId: 'mothersbasement', category: 'anime', franchise: 'jjk', tags: ['analysis'], section: 'trending', publishedAt: '2026-04-05' },
 
 // Totally Not Mark — Frieren + Bleach
@@ -244,15 +244,15 @@ export const VIDEOS = [
 { id: 'TNM_bleach_review', title: 'Bleach: A Massive Review — From Soul Society to TYBW', creatorId: 'totallynotmark', category: 'anime', franchise: 'bleach', tags: ['review', 'analysis'], section: 'hidden-gem', publishedAt: '2026-02-14' },
 
 // Anime Balls Deep — Overlord + Frieren LN
-{ id: 'ABD_OVL_momonga', title: 'The TERRIFYING Truth About Ainz's True Plan | Overlord Complete Story', creatorId: 'animeballsdeep', category: 'light-novel', franchise: 'overlord', tags: ['lore', 'ln-review'], section: 'trending', publishedAt: '2026-05-22' },
-{ id: 'ABD_MT_rudy', title: 'Rudeus Greyrat's Complete Story | Mushoku Tensei LN All Volumes', creatorId: 'animeballsdeep', category: 'light-novel', franchise: 'mushoku-tensei', tags: ['lore', 'ln-review'], section: 'featured', publishedAt: '2026-04-30' },
+{ id: 'ABD_OVL_momonga', title: "The TERRIFYING Truth About Ainz's True Plan | Overlord Complete Story", creatorId: 'animeballsdeep', category: 'light-novel', franchise: 'overlord', tags: ['lore', 'ln-review'], section: 'trending', publishedAt: '2026-05-22' },
+{ id: 'ABD_MT_rudy', title: "Rudeus Greyrat's Complete Story | Mushoku Tensei LN All Volumes", creatorId: 'animeballsdeep', category: 'light-novel', franchise: 'mushoku-tensei', tags: ['lore', 'ln-review'], section: 'featured', publishedAt: '2026-04-30' },
 
 // Glass Reflection — Bleach + JJK
 { id: 'GR_bleach_tybw', title: 'Bleach: Thousand Year Blood War — Is It Actually Good?', creatorId: 'glassreflection', category: 'anime', franchise: 'bleach', tags: ['review', 'analysis'], section: 'featured', publishedAt: '2026-03-28' },
 { id: 'GR_jjk_s3', title: 'JJK Season 3 First Impressions — The Culling Game Begins', creatorId: 'glassreflection', category: 'anime', franchise: 'jjk', tags: ['review', 'season-roundup'], section: 'latest', publishedAt: '2026-04-15' },
 
 // The Anime Man — Overlord LN + Mushoku Tensei
-{ id: 'TAM_OVL', title: 'I Read All of Overlord's Light Novels — Here's What You're Missing', creatorId: 'theanimeman', category: 'light-novel', franchise: 'overlord', tags: ['ln-review', 'analysis'], section: 'featured', publishedAt: '2026-03-20' },
+{ id: 'TAM_OVL', title: "I Read All of Overlord's Light Novels — Here's What You're Missing", creatorId: 'theanimeman', category: 'light-novel', franchise: 'overlord', tags: ['ln-review', 'analysis'], section: 'featured', publishedAt: '2026-03-20' },
 { id: 'TAM_MT', title: 'Mushoku Tensei Changed How I See Isekai — An Honest Review', creatorId: 'theanimeman', category: 'light-novel', franchise: 'mushoku-tensei', tags: ['review', 'essay'], section: 'hidden-gem', publishedAt: '2026-02-10' },
 
 
@@ -312,8 +312,8 @@ export const VIDEOS = [
 // EVANGELION — Franchise Activation (Sprint 5.3)
 // ════════════════════════════════════════════════════════════
 { id: 'EVA_TNM_review', title: 'Neon Genesis Evangelion: A Massive Review — The Most Important Anime Ever Made?', creatorId: 'totallynotmark', category: 'anime', franchise: 'evangelion', tags: ['review', 'analysis'], section: 'featured', publishedAt: '2026-03-28' },
-{ id: 'EVA_MB_op', title: 'Cruel Angel Thesis — Why Evangelion's Opening Is Perfect', creatorId: 'mothersbasement', category: 'anime', franchise: 'evangelion', tags: ['analysis', 'essay'], section: 'featured', publishedAt: '2026-02-14' },
-{ id: 'EVA_gigguk_impact', title: 'Evangelion's Cultural Impact — 30 Years and Still Unmatched', creatorId: 'gigguk', category: 'anime', franchise: 'evangelion', tags: ['essay', 'industry'], section: 'hidden-gem', publishedAt: '2025-12-01' },
+{ id: 'EVA_MB_op', title: "Cruel Angel Thesis — Why Evangelion's Opening Is Perfect", creatorId: 'mothersbasement', category: 'anime', franchise: 'evangelion', tags: ['analysis', 'essay'], section: 'featured', publishedAt: '2026-02-14' },
+{ id: 'EVA_gigguk_impact', title: "Evangelion's Cultural Impact — 30 Years and Still Unmatched", creatorId: 'gigguk', category: 'anime', franchise: 'evangelion', tags: ['essay', 'industry'], section: 'hidden-gem', publishedAt: '2025-12-01' },
 { id: 'EVA_TAM_rebuild', title: 'I Watched All 4 Rebuild Films In One Day — Worth It?', creatorId: 'theanimeman', category: 'anime', franchise: 'evangelion', tags: ['review', 'essay'], section: 'hidden-gem', publishedAt: '2026-01-15' },
 
 
