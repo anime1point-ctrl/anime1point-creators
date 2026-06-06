@@ -5,12 +5,9 @@ import { CATEGORY_MAP } from '../data/categories'
 import { CREATOR_MAP } from '../data/creators'
 import { FRANCHISE_MAP } from '../data/franchises'
 import { useVideoModal } from '../context/VideoModalContext'
+import { isRealYouTubeId } from '../utils/youtube'
 
 const PAGE_SIZE = 6
-
-function isRealYouTubeId(id) {
-  return /^[A-Za-z0-9_\-]{11}$/.test(id) && !id.includes('_vid_')
-}
 
 function VideoCard({ video }) {
   const { openModal } = useVideoModal()
