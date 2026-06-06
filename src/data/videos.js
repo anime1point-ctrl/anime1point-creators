@@ -317,6 +317,72 @@ export const VIDEOS = [
 { id: 'EVA_TAM_rebuild', title: 'I Watched All 4 Rebuild Films In One Day — Worth It?', creatorId: 'theanimeman', category: 'anime', franchise: 'evangelion', tags: ['review', 'essay'], section: 'hidden-gem', publishedAt: '2026-01-15' },
 
 
+
+// ════════════════════════════════════════════════════════════
+// SPRINT 5.4 — LIGHT NOVEL VIDEO ADDITIONS (LN001–LN050)
+// 50 videos across AniNews, Chibi Reviews, Echidnut,
+// Mother's Basement, Hiding in Public, Manime Matt
+// ════════════════════════════════════════════════════════════
+
+// ── Major Light Novel Franchises ──
+{ id: 'LN001', title: 'That Time I Got Reincarnated as a Slime — Complete Timeline Explained', creatorId: 'aninews', category: 'light-novel', franchise: 'tensura', tags: ['lore', 'ln-review'], section: 'featured', publishedAt: '2026-05-01' },
+{ id: 'LN002', title: 'Overlord — Ainz's Master Plan Explained', creatorId: 'aninews', category: 'light-novel', franchise: 'overlord', tags: ['lore', 'ln-review'], section: 'trending', publishedAt: '2026-05-05' },
+{ id: 'LN003', title: 'Re:Zero — Every Death That Changed Subaru', creatorId: 'echidnut', category: 'light-novel', franchise: 're-zero', tags: ['character-analysis', 'lore'], section: 'trending', publishedAt: '2026-05-10' },
+{ id: 'LN004', title: 'Mushoku Tensei — The Full Story of Rudeus', creatorId: 'aninews', category: 'light-novel', franchise: 'mushoku-tensei', tags: ['lore', 'ln-review'], section: 'featured', publishedAt: '2026-04-20' },
+{ id: 'LN005', title: 'Sword Art Online — Every Arc Explained', creatorId: 'mothersbasement', category: 'light-novel', franchise: 'multi', tags: ['ln-review', 'analysis'], section: 'trending', publishedAt: '2026-04-15' },
+{ id: 'LN006', title: 'The Rising of the Shield Hero — Naofumi's Journey', creatorId: 'aninews', category: 'light-novel', franchise: 'multi', tags: ['lore', 'character-analysis'], section: 'featured', publishedAt: '2026-04-10' },
+{ id: 'LN007', title: 'KonoSuba — Why Kazuma Is Actually a Genius', creatorId: 'mothersbasement', category: 'light-novel', franchise: 'multi', tags: ['character-analysis', 'analysis'], section: 'hidden-gem', publishedAt: '2026-04-05' },
+{ id: 'LN008', title: 'DanMachi — Bell Cranel's Growth Explained', creatorId: 'aninews', category: 'light-novel', franchise: 'multi', tags: ['character-analysis', 'lore'], section: 'featured', publishedAt: '2026-03-28' },
+{ id: 'LN009', title: 'The Eminence in Shadow — Cid's Hidden Manipulations', creatorId: 'aninews', category: 'light-novel', franchise: 'multi', tags: ['lore', 'character-analysis'], section: 'trending', publishedAt: '2026-03-20' },
+{ id: 'LN010', title: 'Classroom of the Elite — Ayanokoji's Master Plan', creatorId: 'hidingInPublic', category: 'light-novel', franchise: 'cote', tags: ['character-analysis', 'analysis'], section: 'trending', publishedAt: '2026-03-15' },
+
+// ── Character Breakdown Videos ──
+{ id: 'LN011', title: 'Rimuru Explained', creatorId: 'aninews', category: 'light-novel', franchise: 'tensura', tags: ['character-analysis', 'ln-review'], section: 'featured', publishedAt: '2026-03-10' },
+{ id: 'LN012', title: 'Ainz Ooal Gown Explained', creatorId: 'aninews', category: 'light-novel', franchise: 'overlord', tags: ['character-analysis', 'ln-review'], section: 'trending', publishedAt: '2026-03-05' },
+{ id: 'LN013', title: 'Subaru Natsuki Explained', creatorId: 'echidnut', category: 'light-novel', franchise: 're-zero', tags: ['character-analysis', 'ln-review'], section: 'trending', publishedAt: '2026-02-28' },
+{ id: 'LN014', title: 'Rudeus Greyrat Explained', creatorId: 'aninews', category: 'light-novel', franchise: 'mushoku-tensei', tags: ['character-analysis', 'ln-review'], section: 'featured', publishedAt: '2026-02-20' },
+{ id: 'LN015', title: 'Kiyotaka Ayanokoji Explained', creatorId: 'hidingInPublic', category: 'light-novel', franchise: 'cote', tags: ['character-analysis', 'ln-review'], section: 'trending', publishedAt: '2026-02-15' },
+{ id: 'LN016', title: 'Cid Kagenou Explained', creatorId: 'aninews', category: 'light-novel', franchise: 'multi', tags: ['character-analysis', 'ln-review'], section: 'featured', publishedAt: '2026-02-10' },
+{ id: 'LN017', title: 'Tanya Degurechaff Explained', creatorId: 'aninews', category: 'light-novel', franchise: 'multi', tags: ['character-analysis', 'ln-review'], section: 'hidden-gem', publishedAt: '2026-02-05' },
+{ id: 'LN018', title: 'Bell Cranel Explained', creatorId: 'aninews', category: 'light-novel', franchise: 'multi', tags: ['character-analysis', 'ln-review'], section: 'featured', publishedAt: '2026-01-28' },
+{ id: 'LN019', title: 'Naofumi Iwatani Explained', creatorId: 'aninews', category: 'light-novel', franchise: 'multi', tags: ['character-analysis', 'ln-review'], section: 'hidden-gem', publishedAt: '2026-01-20' },
+{ id: 'LN020', title: 'Maomao Explained', creatorId: 'mothersbasement', category: 'light-novel', franchise: 'multi', tags: ['character-analysis', 'ln-review'], section: 'featured', publishedAt: '2026-01-15' },
+
+// ── Power Scaling & Rankings ──
+{ id: 'LN021', title: 'Top 20 Strongest Light Novel Protagonists', creatorId: 'aninews', category: 'light-novel', franchise: 'multi', tags: ['power-scaling', 'ranking'], section: 'trending', publishedAt: '2026-01-10' },
+{ id: 'LN022', title: 'Top 20 Strongest Isekai Characters', creatorId: 'aninews', category: 'light-novel', franchise: 'multi', tags: ['power-scaling', 'ranking'], section: 'trending', publishedAt: '2026-01-05' },
+{ id: 'LN023', title: 'Top 20 Strongest Light Novel Villains', creatorId: 'aninews', category: 'light-novel', franchise: 'multi', tags: ['power-scaling', 'ranking'], section: 'featured', publishedAt: '2025-12-28' },
+{ id: 'LN024', title: 'Top 20 Strongest Magic Users', creatorId: 'aninews', category: 'light-novel', franchise: 'multi', tags: ['power-scaling', 'ranking'], section: 'trending', publishedAt: '2025-12-20' },
+{ id: 'LN025', title: 'Top 20 Smartest Light Novel Characters', creatorId: 'hidingInPublic', category: 'light-novel', franchise: 'multi', tags: ['ranking', 'analysis'], section: 'trending', publishedAt: '2025-12-15' },
+{ id: 'LN026', title: 'Most Broken Light Novel Abilities', creatorId: 'aninews', category: 'light-novel', franchise: 'multi', tags: ['power-scaling', 'analysis'], section: 'hidden-gem', publishedAt: '2025-12-10' },
+{ id: 'LN027', title: 'Best Kingdom Builders in Light Novels', creatorId: 'aninews', category: 'light-novel', franchise: 'multi', tags: ['ranking', 'analysis'], section: 'hidden-gem', publishedAt: '2025-12-05' },
+{ id: 'LN028', title: 'Best Female Light Novel Characters', creatorId: 'mothersbasement', category: 'light-novel', franchise: 'multi', tags: ['ranking', 'analysis'], section: 'featured', publishedAt: '2025-11-28' },
+{ id: 'LN029', title: 'Strongest Demon Lords Ranked', creatorId: 'aninews', category: 'light-novel', franchise: 'multi', tags: ['power-scaling', 'ranking'], section: 'trending', publishedAt: '2025-11-20' },
+{ id: 'LN030', title: 'Strongest Heroes Ranked', creatorId: 'aninews', category: 'light-novel', franchise: 'multi', tags: ['power-scaling', 'ranking'], section: 'trending', publishedAt: '2025-11-15' },
+
+// ── Lore & Worldbuilding ──
+{ id: 'LN031', title: 'Overlord World Explained', creatorId: 'aninews', category: 'light-novel', franchise: 'overlord', tags: ['lore', 'ln-review'], section: 'featured', publishedAt: '2025-11-10' },
+{ id: 'LN032', title: 'Re:Zero Timeline Explained', creatorId: 'echidnut', category: 'light-novel', franchise: 're-zero', tags: ['lore', 'analysis'], section: 'featured', publishedAt: '2025-11-05' },
+{ id: 'LN033', title: 'Slime Cosmology Explained', creatorId: 'aninews', category: 'light-novel', franchise: 'tensura', tags: ['lore', 'ln-review'], section: 'trending', publishedAt: '2025-10-28' },
+{ id: 'LN034', title: 'Mushoku Tensei World Explained', creatorId: 'chibireviewsyt', category: 'light-novel', franchise: 'mushoku-tensei', tags: ['lore', 'ln-review'], section: 'featured', publishedAt: '2025-10-20' },
+{ id: 'LN035', title: 'DanMachi Dungeon Explained', creatorId: 'aninews', category: 'light-novel', franchise: 'multi', tags: ['lore', 'ln-review'], section: 'featured', publishedAt: '2025-10-15' },
+{ id: 'LN036', title: 'SAO Aincrad Explained', creatorId: 'mothersbasement', category: 'light-novel', franchise: 'multi', tags: ['lore', 'analysis'], section: 'trending', publishedAt: '2025-10-10' },
+{ id: 'LN037', title: 'A Certain Magical Index Power System Explained', creatorId: 'aninews', category: 'light-novel', franchise: 'multi', tags: ['lore', 'power-scaling'], section: 'hidden-gem', publishedAt: '2025-10-05' },
+{ id: 'LN038', title: 'Apothecary Diaries Politics Explained', creatorId: 'mothersbasement', category: 'light-novel', franchise: 'multi', tags: ['lore', 'analysis'], section: 'featured', publishedAt: '2025-09-28' },
+{ id: 'LN039', title: 'Ascendance of a Bookworm World Explained', creatorId: 'chibireviewsyt', category: 'light-novel', franchise: 'bookworm', tags: ['lore', 'ln-review'], section: 'hidden-gem', publishedAt: '2025-09-20' },
+{ id: 'LN040', title: 'Tanya the Evil War Timeline Explained', creatorId: 'aninews', category: 'light-novel', franchise: 'multi', tags: ['lore', 'analysis'], section: 'trending', publishedAt: '2025-09-15' },
+
+// ── Discovery & Recommendation Videos ──
+{ id: 'LN041', title: 'Top 10 Beginner Light Novels', creatorId: 'chibireviewsyt', category: 'light-novel', franchise: 'multi', tags: ['ranking', 'hidden-gem-pick'], section: 'featured', publishedAt: '2025-09-10' },
+{ id: 'LN042', title: 'Top 10 Dark Light Novels', creatorId: 'manimeMatt', category: 'light-novel', franchise: 'multi', tags: ['ranking', 'hidden-gem-pick'], section: 'trending', publishedAt: '2025-09-05' },
+{ id: 'LN043', title: 'Top 10 Romance Light Novels', creatorId: 'chibireviewsyt', category: 'light-novel', franchise: 'multi', tags: ['ranking', 'hidden-gem-pick'], section: 'featured', publishedAt: '2025-08-28' },
+{ id: 'LN044', title: 'Top 10 Fantasy Light Novels', creatorId: 'chibireviewsyt', category: 'light-novel', franchise: 'multi', tags: ['ranking', 'hidden-gem-pick'], section: 'featured', publishedAt: '2025-08-20' },
+{ id: 'LN045', title: 'Top 10 Underrated Light Novels', creatorId: 'manimeMatt', category: 'light-novel', franchise: 'multi', tags: ['ranking', 'hidden-gem-pick'], section: 'hidden-gem', publishedAt: '2025-08-15' },
+{ id: 'LN046', title: 'Light Novels Better Than Their Anime', creatorId: 'chibireviewsyt', category: 'light-novel', franchise: 'multi', tags: ['analysis', 'essay'], section: 'trending', publishedAt: '2025-08-10' },
+{ id: 'LN047', title: 'Light Novels That Need Another Anime Season', creatorId: 'chibireviewsyt', category: 'light-novel', franchise: 'multi', tags: ['essay', 'ranking'], section: 'hidden-gem', publishedAt: '2025-08-05' },
+{ id: 'LN048', title: 'Best-Selling Light Novels of All Time', creatorId: 'chibireviewsyt', category: 'light-novel', franchise: 'multi', tags: ['ranking', 'industry'], section: 'featured', publishedAt: '2025-07-28' },
+{ id: 'LN049', title: 'New Light Novels Worth Reading', creatorId: 'chibireviewsyt', category: 'light-novel', franchise: 'multi', tags: ['ranking', 'hidden-gem-pick'], section: 'latest', publishedAt: '2026-05-25' },
+{ id: 'LN050', title: 'Hidden Gem Light Novels', creatorId: 'manimeMatt', category: 'light-novel', franchise: 'multi', tags: ['hidden-gem-pick', 'ranking'], section: 'hidden-gem', publishedAt: '2026-04-30' },
 ]
 
 export const TRENDING_VIDEOS  = VIDEOS.filter(v => v.section === 'trending')
