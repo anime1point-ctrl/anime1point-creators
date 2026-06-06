@@ -4,7 +4,7 @@
 //
 // franchise: canonical id from franchises.js ('multi' for cross-franchise content)
 // tags:      1-4 ids from tags.js (format + topic descriptors)
-//
+//h
 // Section editorial meaning:
 // trending    → High-performing, viral or widely discussed content
 // latest      → Recent uploads from the past few weeks
@@ -142,7 +142,7 @@ export const VIDEOS = [
 { id: 'TK_OP_ch1157', title: 'One Piece Chapter 1157 BREAKDOWN — Luffy vs The World!', creatorId: 'tekking101', category: 'manga', franchise: 'one-piece', tags: ['chapter-review', 'fight-breakdown'], section: 'latest', publishedAt: '2026-05-18' },
 { id: 'TK_OP_ch1156', title: 'One Piece Chapter 1156 BREAKDOWN — Brook Awakening EXPLAINED', creatorId: 'tekking101', category: 'manga', franchise: 'one-piece', tags: ['chapter-review', 'power-scaling'], section: 'latest', publishedAt: '2026-05-11' },
 { id: 'TK_OP_theory1', title: 'The REAL Secret of the Ancient Weapons | One Piece Theory', creatorId: 'tekking101', category: 'manga', franchise: 'one-piece', tags: ['theory', 'lore'], section: 'featured', publishedAt: '2026-04-20' },
-{ id: 'TK_OP_theory2', title: 'Joy Boy's TRUE Identity — Everything We Know | One Piece', creatorId: 'tekking101', category: 'manga', franchise: 'one-piece', tags: ['lore', 'theory'], section: 'hidden-gem', publishedAt: '2026-03-10' },
+{ id: 'TK_OP_theory2', title: "Joy Boy's TRUE Identity — Everything We Know | One Piece", creatorId: 'tekking101', category: 'manga', franchise: 'one-piece', tags: ['lore', 'theory'], section: 'hidden-gem', publishedAt: '2026-03-10' },
 
 // ════════════════════════════════════════════════════════════
 // YABOYРOSHI — Seasonal Episode Reactions
