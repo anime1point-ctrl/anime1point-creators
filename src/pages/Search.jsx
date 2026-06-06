@@ -3,9 +3,10 @@ import { useSearchParams, Link } from "react-router-dom"
 import { VIDEOS } from "../data/videos"
 import { APPROVED_CREATORS, CREATOR_MAP } from "../data/creators"
 import { CATEGORY_MAP } from "../data/categories"
-import { FRANCHISES, FRANCHISE_MAP } from "../data/franchises"
+import { FRANCHISE_MAP } from "../data/franchises"
 import { useVideoModal } from "../context/VideoModalContext"
 import { Analytics } from "../utils/analytics"
+import { isRealYouTubeId } from "../utils/youtube"
 
 // Franchise quick-search suggestions — top franchises shown when search is empty
 const SUGGESTED_FRANCHISES = [
@@ -13,18 +14,12 @@ const SUGGESTED_FRANCHISES = [
   'overlord', 'dragon-ball', 'demon-slayer', 'chainsaw-man', 'frieren',
 ]
 
-function hasRealThumbnail(videoId) {
-  if (!videoId) return false
-  if (videoId.includes("_vid_")) return false
-  return /^[A-Za-z0-9_\-]{11}$/.test(videoId)
-}
-
 // ── Video Result Card ─────────────────────────────────────────
 function VideoResult({ video }) {
   const { openModal } = useVideoModal()
   const creator = CREATOR_MAP[video.creatorId]
   const [imgError, setImgError] = useState(false)
-  const showThumb = hasRealThumbnail(video.id) && !imgError
+  const showThumb = isRealYouTubeId(video.id) && !imgError
   const badgeCategory = video.category === "light-novel" ? "novels" : video.category
 
   function handleClick() {
