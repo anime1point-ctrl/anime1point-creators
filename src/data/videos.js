@@ -137,123 +137,123 @@ export const VIDEOS = [
 // ════════════════════════════════════════════════════════════
 // TEKKING101 — One Piece Weekly Coverage
 // ════════════════════════════════════════════════════════════
-{ id: 'TK_OP_ch1159', title: 'One Piece Chapter 1159 BREAKDOWN — Imu Reveals Everything!', creatorId: 'tekking101', category: 'manga', franchise: 'one-piece', tags: ['chapter-review', 'lore'], section: 'trending', publishedAt: '2026-06-01' },
-{ id: 'TK_OP_ch1158', title: 'One Piece Chapter 1158 BREAKDOWN — The Truth About Loki!', creatorId: 'tekking101', category: 'manga', franchise: 'one-piece', tags: ['chapter-review', 'theory'], section: 'trending', publishedAt: '2026-05-25' },
-{ id: 'TK_OP_ch1157', title: 'One Piece Chapter 1157 BREAKDOWN — Luffy vs The World!', creatorId: 'tekking101', category: 'manga', franchise: 'one-piece', tags: ['chapter-review', 'fight-breakdown'], section: 'latest', publishedAt: '2026-05-18' },
-{ id: 'TK_OP_ch1156', title: 'One Piece Chapter 1156 BREAKDOWN — Brook Awakening EXPLAINED', creatorId: 'tekking101', category: 'manga', franchise: 'one-piece', tags: ['chapter-review', 'power-scaling'], section: 'latest', publishedAt: '2026-05-11' },
-{ id: 'TK_OP_theory1', title: 'The REAL Secret of the Ancient Weapons | One Piece Theory', creatorId: 'tekking101', category: 'manga', franchise: 'one-piece', tags: ['theory', 'lore'], section: 'featured', publishedAt: '2026-04-20' },
-{ id: 'TK_OP_theory2', title: "Joy Boy's TRUE Identity — Everything We Know | One Piece", creatorId: 'tekking101', category: 'manga', franchise: 'one-piece', tags: ['lore', 'theory'], section: 'hidden-gem', publishedAt: '2026-03-10' },
+{ id: '-CWXhC8p6Ec', title: 'One Piece Chapter 1159 Review "Day of Reckoning"', creatorId: 'tekking101', category: 'manga', franchise: 'one-piece', tags: ['chapter-review', 'lore'], section: 'trending', publishedAt: '2026-06-01' },
+{ id: 'x50PBzO8ttI', title: 'One Piece Chapter 1158 Review "The Eve of God Valley"', creatorId: 'tekking101', category: 'manga', franchise: 'one-piece', tags: ['chapter-review', 'theory'], section: 'trending', publishedAt: '2026-05-25' },
+{ id: 'bogAWIQAndI', title: 'One Piece Chapter 1157 Review "A Rock & A Hard Place"', creatorId: 'tekking101', category: 'manga', franchise: 'one-piece', tags: ['chapter-review', 'fight-breakdown'], section: 'latest', publishedAt: '2026-05-18' },
+{ id: 'nJOgWeUbgA0', title: 'One Piece Chapter 1156 Review "The Absolute Strongest"', creatorId: 'tekking101', category: 'manga', franchise: 'one-piece', tags: ['chapter-review', 'power-scaling'], section: 'latest', publishedAt: '2026-05-11' },
+{ id: 'CriPzPq0bUY', title: 'The Ultimate Weapon of The World Government | One Piece Discussion', creatorId: 'tekking101', category: 'manga', franchise: 'one-piece', tags: ['theory', 'lore'], section: 'featured', publishedAt: '2026-04-20' },
+{ id: 'xXDq39psRM4', title: 'The JoyBoy Prophecy & The Time Fruit | One Piece Theory', creatorId: 'tekking101', category: 'manga', franchise: 'one-piece', tags: ['lore', 'theory'], section: 'hidden-gem', publishedAt: '2026-03-10' },
 
 // ════════════════════════════════════════════════════════════
 // YABOYРOSHI — Seasonal Episode Reactions
 // ════════════════════════════════════════════════════════════
-{ id: 'YBR_RZ_s4ep9', title: 'Re:Zero Season 4 Episode 9 REACTION — This Changed Everything', creatorId: 'yaboyRoshi', category: 'anime', franchise: 're-zero', tags: ['episode-review'], section: 'trending', publishedAt: '2026-05-30' },
-{ id: 'YBR_RZ_s4ep8', title: "Re:Zero Season 4 Episode 8 REACTION — Subaru's Darkest Hour", creatorId: 'yaboyRoshi', category: 'anime', franchise: 're-zero', tags: ['episode-review'], section: 'latest', publishedAt: '2026-05-23' },
-{ id: 'YBR_JJK_ep24', title: 'Jujutsu Kaisen Season 3 Episode 24 REACTION — Sukuna vs Gojo Finale', creatorId: 'yaboyRoshi', category: 'anime', franchise: 'jjk', tags: ['episode-review', 'fight-breakdown'], section: 'trending', publishedAt: '2026-05-20' },
-{ id: 'YBR_JJK_ep23', title: 'Jujutsu Kaisen Season 3 Episode 23 REACTION — The Culling Game Ends', creatorId: 'yaboyRoshi', category: 'anime', franchise: 'jjk', tags: ['episode-review'], section: 'latest', publishedAt: '2026-05-13' },
-{ id: 'YBR_BLEACH_ep28', title: "Bleach TYBW Episode 28 REACTION — Yhwach's Final Form", creatorId: 'yaboyRoshi', category: 'anime', franchise: 'bleach', tags: ['episode-review', 'fight-breakdown'], section: 'featured', publishedAt: '2026-05-05' },
-{ id: 'YBR_DB_ep10', title: 'Dragon Ball Daima Episode 10 REACTION — Gohan Goes Beyond', creatorId: 'yaboyRoshi', category: 'anime', franchise: 'dragon-ball', tags: ['episode-review'], section: 'hidden-gem', publishedAt: '2026-04-18' },
+{ id: 'w0fBTj-2PwQ', title: 'Who Are You? | Re: Zero S4 Ep 8 Reaction', creatorId: 'yaboyRoshi', category: 'anime', franchise: 're-zero', tags: ['episode-review'], section: 'trending', publishedAt: '2026-05-30' },
+{ id: '3iMGg_xGeI0', title: 'Re: Zero S4 Ep 7 Reaction', creatorId: 'yaboyRoshi', category: 'anime', franchise: 're-zero', tags: ['episode-review'], section: 'latest', publishedAt: '2026-05-23' },
+{ id: 'i-Ph1Lg7w3k', title: 'THE LAW GOT HANDS!! | Jujutsu Kaisen S3 Ep 9 Reaction', creatorId: 'yaboyRoshi', category: 'anime', franchise: 'jjk', tags: ['episode-review', 'fight-breakdown'], section: 'trending', publishedAt: '2026-05-20' },
+{ id: 'zycRBxsIgi8', title: 'MEGUMI UNLOCKED!!! | JuJutsu Kaisen Ep 23 Reaction', creatorId: 'yaboyRoshi', category: 'anime', franchise: 'jjk', tags: ['episode-review'], section: 'latest', publishedAt: '2026-05-13' },
+{ id: 'Go67KU89jEA', title: 'A | Bleach: TYBW Ep 27 Reaction [Ep 393]', creatorId: 'yaboyRoshi', category: 'anime', franchise: 'bleach', tags: ['episode-review', 'fight-breakdown'], section: 'featured', publishedAt: '2026-05-05' },
+{ id: 'hbG5rgaehDo', title: 'Conspiracy | Dragonball Daima Ep 1 Reaction', creatorId: 'yaboyRoshi', category: 'anime', franchise: 'dragon-ball', tags: ['episode-review'], section: 'hidden-gem', publishedAt: '2026-04-18' },
 
 // ════════════════════════════════════════════════════════════
 // FOXEN ANIME — Light Novel Deep Dives
 // ════════════════════════════════════════════════════════════
-{ id: 'FA_OVL_vol16', title: 'Overlord Volume 16 Review — The Final Curtain Rises', creatorId: 'foxenAnime', category: 'light-novel', franchise: 'overlord', tags: ['ln-review', 'analysis'], section: 'trending', publishedAt: '2026-05-28' },
-{ id: 'FA_OVL_full', title: 'Overlord Complete Story — Every Volume Explained (LN Spoilers)', creatorId: 'foxenAnime', category: 'light-novel', franchise: 'overlord', tags: ['ln-review', 'lore'], section: 'featured', publishedAt: '2026-04-15' },
-{ id: 'FA_MT_vol24', title: "Mushoku Tensei Volume 24 Review — Rudeus's Final Journey", creatorId: 'foxenAnime', category: 'light-novel', franchise: 'mushoku-tensei', tags: ['ln-review', 'analysis'], section: 'trending', publishedAt: '2026-05-10' },
-{ id: 'FA_MT_full', title: 'Mushoku Tensei: The FULL Story Beyond the Anime (LN Spoilers)', creatorId: 'foxenAnime', category: 'light-novel', franchise: 'mushoku-tensei', tags: ['ln-review', 'lore'], section: 'featured', publishedAt: '2026-03-22' },
-{ id: 'FA_BW_ln_vs', title: "Bookworm LN vs Anime — What's Different and What's Better", creatorId: 'foxenAnime', category: 'light-novel', franchise: 'bookworm', tags: ['ln-review', 'analysis'], section: 'hidden-gem', publishedAt: '2026-02-28' },
-{ id: 'FA_COTE_ln', title: "Classroom of the Elite LN Season 4 — What the Anime Won't Cover", creatorId: 'foxenAnime', category: 'light-novel', franchise: 'cote', tags: ['ln-review', 'lore'], section: 'hidden-gem', publishedAt: '2026-04-05' },
+{ id: 'r2beyAdfx4Q', title: 'OVERLORD in A Nutshell', creatorId: 'foxenAnime', category: 'anime', franchise: 'overlord', tags: ['analysis', 'lore'], section: 'trending', publishedAt: '2026-05-28' },
+{ id: 'oeY3OUlphLw', title: 'Foxen BEST Anime of 2025! INSANE YEAR', creatorId: 'foxenAnime', category: 'anime', franchise: 'multi', tags: ['ranking', 'season-roundup'], section: 'featured', publishedAt: '2026-04-15' },
+{ id: 'G2sjTTGvRaU', title: 'Why Are Upper Moon Demons So OVERPOWERED? (Demon Slayer)', creatorId: 'foxenAnime', category: 'anime', franchise: 'demon-slayer', tags: ['power-scaling', 'analysis'], section: 'trending', publishedAt: '2026-05-10' },
+{ id: 'TsY-4Xt3Kzc', title: 'Goodbye! My Attack on Titan Finale REACTION', creatorId: 'foxenAnime', category: 'anime', franchise: 'attack-on-titan', tags: ['review', 'essay'], section: 'featured', publishedAt: '2026-03-22' },
+{ id: 'cJuD3kC2j8U', title: 'Am I Watching TOO Much Trash Anime? | Foxen Anime', creatorId: 'foxenAnime', category: 'anime', franchise: 'multi', tags: ['essay', 'industry'], section: 'hidden-gem', publishedAt: '2026-02-28' },
+{ id: 'jpcysFeRh2g', title: 'Forgotten Darker Anime That NEED Another Season', creatorId: 'foxenAnime', category: 'anime', franchise: 'multi', tags: ['ranking', 'hidden-gem-pick'], section: 'hidden-gem', publishedAt: '2026-04-05' },
 
 // ════════════════════════════════════════════════════════════
 // THE CANIPA EFFECT — Production Analysis
 // ════════════════════════════════════════════════════════════
-{ id: 'CE_prod_spring26', title: "Spring 2026 Anime Production Report — Who's Struggling?", creatorId: 'canipa', category: 'anime', franchise: 'multi', tags: ['industry', 'analysis'], section: 'trending', publishedAt: '2026-05-15' },
-{ id: 'CE_prod_tensura', title: "Tensura S4 Production Deep Dive — Eight Bit's Ambition", creatorId: 'canipa', category: 'anime', franchise: 'tensura', tags: ['industry', 'analysis'], section: 'featured', publishedAt: '2026-04-08' },
-{ id: 'CE_prod_frieren', title: "Why Frieren Looks So Good — Madhouse's Sakuga Secrets", creatorId: 'canipa', category: 'anime', franchise: 'frieren', tags: ['industry', 'analysis'], section: 'featured', publishedAt: '2026-03-15' },
-{ id: 'CE_prod_2025', title: 'Best Animated Anime of 2025 — The Production Winners', creatorId: 'canipa', category: 'anime', franchise: 'multi', tags: ['ranking', 'industry'], section: 'hidden-gem', publishedAt: '2026-01-20' },
+{ id: 'sfeZrH4ERL8', title: "I'm Ending The Canipa Effect (kinda)", creatorId: 'canipa', category: 'anime', franchise: 'multi', tags: ['industry', 'analysis'], section: 'trending', publishedAt: '2026-05-15' },
+{ id: '7guCSs-gQs4', title: 'The Two Sides of Studio MAPPA | Anime Studio Spotlight', creatorId: 'canipa', category: 'anime', franchise: 'multi', tags: ['industry', 'analysis'], section: 'featured', publishedAt: '2026-04-08' },
+{ id: 'geoPk_Cs9oo', title: "Breaking Down Frieren: Beyond Journey's End Animation", creatorId: 'canipa', category: 'anime', franchise: 'frieren', tags: ['industry', 'analysis'], section: 'featured', publishedAt: '2026-03-15' },
+{ id: 'IWZxZfwszfM', title: 'The Strange Production of the FATE/STRANGE FAKE Anime | Animation Spotlight', creatorId: 'canipa', category: 'anime', franchise: 'multi', tags: ['industry', 'analysis'], section: 'hidden-gem', publishedAt: '2026-01-20' },
 
 // ════════════════════════════════════════════════════════════
 // SAWYER7MAGE — Bleach & Shonen Analysis
 // ════════════════════════════════════════════════════════════
-{ id: 'S7_BLEACH_tybw3', title: 'Bleach TYBW Part 3 — Full Arc Review & Power Scaling', creatorId: 'sawyerGaming', category: 'anime', franchise: 'bleach', tags: ['review', 'power-scaling'], section: 'trending', publishedAt: '2026-05-25' },
-{ id: 'S7_BLEACH_yhwach', title: 'Yhwach Explained — The Most Overpowered Character in Shonen', creatorId: 'sawyerGaming', category: 'anime', franchise: 'bleach', tags: ['character-analysis', 'power-scaling'], section: 'featured', publishedAt: '2026-04-28' },
-{ id: 'S7_BLEACH_bankai', title: 'Every Bankai in Bleach TYBW Ranked', creatorId: 'sawyerGaming', category: 'anime', franchise: 'bleach', tags: ['ranking', 'power-scaling'], section: 'hidden-gem', publishedAt: '2026-03-30' },
-{ id: 'S7_DB_granolah', title: 'Dragon Ball Super Granolah Arc — The REAL Ending Explained', creatorId: 'sawyerGaming', category: 'anime', franchise: 'dragon-ball', tags: ['analysis', 'lore'], section: 'hidden-gem', publishedAt: '2026-04-15' },
-{ id: 'S7_NARUTO_boruto', title: 'Boruto Two Blue Vortex — Everything Has Changed', creatorId: 'sawyerGaming', category: 'manga', franchise: 'naruto', tags: ['manga-review', 'analysis'], section: 'latest', publishedAt: '2026-05-18' },
+{ id: '4_3s8fQh7oo', title: 'Goodbye to One Piece', creatorId: 'sawyerGaming', category: 'manga', franchise: 'one-piece', tags: ['essay', 'analysis'], section: 'trending', publishedAt: '2026-05-25' },
+{ id: 'ef1dsM_ef20', title: 'A Spoilery Look at All Four Ancient Weapons in One Piece', creatorId: 'sawyerGaming', category: 'manga', franchise: 'one-piece', tags: ['lore', 'theory'], section: 'featured', publishedAt: '2026-04-28' },
+{ id: 'JQK8nH2_Zjw', title: "The Truth About Joy Boy's Death | One Piece", creatorId: 'sawyerGaming', category: 'manga', franchise: 'one-piece', tags: ['lore', 'theory'], section: 'hidden-gem', publishedAt: '2026-03-30' },
+{ id: '4m_D6U_UN30', title: 'We Finally Know the Location of the Last Road Poneglyph | One Piece', creatorId: 'sawyerGaming', category: 'manga', franchise: 'one-piece', tags: ['lore', 'analysis'], section: 'hidden-gem', publishedAt: '2026-04-15' },
+{ id: 'IZ6Grf3QpZQ', title: 'Zoro Will Not be the Same After This | One Piece', creatorId: 'sawyerGaming', category: 'manga', franchise: 'one-piece', tags: ['character-analysis', 'analysis'], section: 'latest', publishedAt: '2026-05-18' },
 
 // ════════════════════════════════════════════════════════════
 // ANIMEUPROAR — Naruto / Boruto Coverage
 // ════════════════════════════════════════════════════════════
-{ id: 'AU_BTV_ch35', title: 'Boruto Two Blue Vortex Chapter 35 — Naruto Returns?!', creatorId: 'animeUproar', category: 'manga', franchise: 'naruto', tags: ['chapter-review', 'theory'], section: 'trending', publishedAt: '2026-06-01' },
-{ id: 'AU_BTV_ch34', title: 'Boruto Two Blue Vortex Chapter 34 — The Time Skip Mystery', creatorId: 'animeUproar', category: 'manga', franchise: 'naruto', tags: ['chapter-review', 'lore'], section: 'latest', publishedAt: '2026-05-05' },
-{ id: 'AU_NAR_power', title: 'Naruto Power Scaling 2026 — Who Is Actually the Strongest?', creatorId: 'animeUproar', category: 'anime', franchise: 'naruto', tags: ['power-scaling', 'ranking'], section: 'featured', publishedAt: '2026-04-10' },
-{ id: 'AU_NAR_sasuke', title: "Sasuke's Complete Story — The Greatest Redemption Arc in Anime", creatorId: 'animeUproar', category: 'anime', franchise: 'naruto', tags: ['character-analysis', 'analysis'], section: 'hidden-gem', publishedAt: '2026-03-01' },
+{ id: 'GtJbVmuvYpo', title: 'Boruto becomes the STRONGEST! The DEATH of Naruto and Sasuke Foreshadowed!', creatorId: 'animeUproar', category: 'manga', franchise: 'naruto', tags: ['chapter-review', 'theory'], section: 'trending', publishedAt: '2026-06-01' },
+{ id: 'kDIwUgiKgIU', title: "The TRAGIC Fate of Naruto and Sasuke! Boruto TIME SKIP & END GAME!", creatorId: 'animeUproar', category: 'manga', franchise: 'naruto', tags: ['chapter-review', 'lore'], section: 'latest', publishedAt: '2026-05-05' },
+{ id: '284ro7bpHVM', title: 'All 12 Otsutsuki Clan Members and Their Powers Explained! (Naruto / Boruto)', creatorId: 'animeUproar', category: 'anime', franchise: 'naruto', tags: ['power-scaling', 'lore'], section: 'featured', publishedAt: '2026-04-10' },
+{ id: 'fDQQM4Ck2Rs', title: 'Boruto just SHOCKED EVERYONE! The END of Naruto and Sasuke?!', creatorId: 'animeUproar', category: 'anime', franchise: 'naruto', tags: ['character-analysis', 'analysis'], section: 'hidden-gem', publishedAt: '2026-03-01' },
 
 // ════════════════════════════════════════════════════════════
 // MANGARAMEN — Classic & Literary Manga
 // ════════════════════════════════════════════════════════════
-{ id: 'MR_KINGDOM_ch800', title: "Kingdom Chapter 800 Review — Xin's Greatest Battle Begins", creatorId: 'mangaRamen', category: 'manga', franchise: 'kingdom', tags: ['chapter-review', 'analysis'], section: 'trending', publishedAt: '2026-05-22' },
-{ id: 'MR_VAGABOND_review', title: 'Vagabond — The Greatest Manga Ever Made? A Full Review', creatorId: 'mangaRamen', category: 'manga', franchise: 'vagabond', tags: ['manga-review', 'analysis'], section: 'featured', publishedAt: '2026-04-18' },
-{ id: 'MR_BERSERK_legacy', title: "Berserk's Legacy After Volume 41 — Where Does It Stand?", creatorId: 'mangaRamen', category: 'manga', franchise: 'berserk', tags: ['analysis', 'essay'], section: 'hidden-gem', publishedAt: '2026-03-25' },
-{ id: 'MR_KINGDOM_intro', title: 'Why You NEED to Read Kingdom — The Perfect Entry Point', creatorId: 'mangaRamen', category: 'manga', franchise: 'kingdom', tags: ['review', 'hidden-gem-pick'], section: 'hidden-gem', publishedAt: '2026-02-10' },
+{ id: 'ZKbp1sB3Ef8', title: 'I lost control of this Vinland Saga review.', creatorId: 'totallynotmark', category: 'manga', franchise: 'multi', tags: ['manga-review', 'analysis'], section: 'trending', publishedAt: '2026-05-22' },
+{ id: 'QFlijeqPJ_4', title: 'Dandadan: A Totally Blind Review', creatorId: 'totallynotmark', category: 'manga', franchise: 'multi', tags: ['manga-review', 'analysis'], section: 'featured', publishedAt: '2026-04-18' },
+{ id: 'x0Bi24d9wx0', title: "Every Change in Dragon Ball Super's Remaster", creatorId: 'totallynotmark', category: 'manga', franchise: 'dragon-ball', tags: ['analysis', 'essay'], section: 'hidden-gem', publishedAt: '2026-03-25' },
+{ id: 'bJ73yC3iUFU', title: 'Who BROKE One Punch Man?', creatorId: 'totallynotmark', category: 'manga', franchise: 'multi', tags: ['review', 'hidden-gem-pick'], section: 'hidden-gem', publishedAt: '2026-02-10' },
 
 // ════════════════════════════════════════════════════════════
 // OTAKU THERAPY — Frieren & Thoughtful Manga
 // ════════════════════════════════════════════════════════════
-{ id: 'OT_FR_ch130', title: 'Frieren Chapter 130 Review — Time, Grief and Magic', creatorId: 'otakuTherapy', category: 'manga', franchise: 'frieren', tags: ['chapter-review', 'analysis'], section: 'trending', publishedAt: '2026-06-01' },
-{ id: 'OT_FR_full', title: 'Frieren: What Makes It the Greatest Fantasy Manga', creatorId: 'otakuTherapy', category: 'manga', franchise: 'frieren', tags: ['manga-review', 'essay'], section: 'featured', publishedAt: '2026-04-22' },
-{ id: 'OT_JOJO_SBR', title: 'Steel Ball Run Is a Masterpiece — A Complete Analysis', creatorId: 'otakuTherapy', category: 'manga', franchise: 'jojo', tags: ['manga-review', 'analysis'], section: 'featured', publishedAt: '2026-03-14' },
-{ id: 'OT_FR_themes', title: 'Frieren and the Art of Slowness — Themes Deep Dive', creatorId: 'otakuTherapy', category: 'manga', franchise: 'frieren', tags: ['essay', 'analysis'], section: 'hidden-gem', publishedAt: '2026-05-10' },
+{ id: 'r14QdM9wMGs', title: 'Jujutsu Kaisen has a CONFIDENCE Problem', creatorId: 'totallynotmark', category: 'manga', franchise: 'jjk', tags: ['manga-review', 'analysis'], section: 'trending', publishedAt: '2026-06-01' },
+{ id: 'DCI01L2YGhg', title: 'Watching Avatar as an ADULT is... different', creatorId: 'totallynotmark', category: 'anime', franchise: 'avatar', tags: ['review', 'analysis'], section: 'featured', publishedAt: '2026-04-22' },
+{ id: 'zytV1VVBQnc', title: 'Ranking EVERY Fight in Dragon Ball Z', creatorId: 'totallynotmark', category: 'manga', franchise: 'dragon-ball', tags: ['ranking', 'analysis'], section: 'featured', publishedAt: '2026-03-14' },
+{ id: 'yPpgjEg028o', title: 'Ranking EVERY Fight in Dragon Ball', creatorId: 'totallynotmark', category: 'manga', franchise: 'dragon-ball', tags: ['ranking', 'analysis'], section: 'hidden-gem', publishedAt: '2026-05-10' },
 
 // ════════════════════════════════════════════════════════════
 // FOXCLOVER — Anime Essays (Frieren focus)
 // ════════════════════════════════════════════════════════════
-{ id: 'FC_FR_elf', title: 'Why Frieren Hits Different — An Essay on Immortality and Loss', creatorId: 'foxclover', category: 'anime', franchise: 'frieren', tags: ['essay', 'analysis'], section: 'trending', publishedAt: '2026-05-18' },
-{ id: 'FC_FR_anime', title: "Frieren Beyond Journey's End — The Anime That Changed Everything", creatorId: 'foxclover', category: 'anime', franchise: 'frieren', tags: ['review', 'essay'], section: 'featured', publishedAt: '2026-04-01' },
-{ id: 'FC_slice', title: 'Slow Anime Is Not Boring Anime — A Defense of Atmosphere', creatorId: 'foxclover', category: 'anime', franchise: 'multi', tags: ['essay', 'analysis'], section: 'hidden-gem', publishedAt: '2026-03-08' },
+{ id: 'FJ8-7LXa-8A', title: 'Frieren Changed Me For The Better.', creatorId: 'gigguk', category: 'anime', franchise: 'frieren', tags: ['essay', 'analysis'], section: 'trending', publishedAt: '2026-05-18' },
+{ id: 'a9zfJPu2BbE', title: 'This Genre Will Replace Isekai.', creatorId: 'gigguk', category: 'anime', franchise: 'multi', tags: ['essay', 'analysis'], section: 'featured', publishedAt: '2026-04-01' },
+{ id: 'N8cxqVgS18I', title: 'I Regret Watching This Anime.', creatorId: 'gigguk', category: 'anime', franchise: 'multi', tags: ['essay', 'analysis'], section: 'hidden-gem', publishedAt: '2026-03-08' },
 
 // ════════════════════════════════════════════════════════════
 // ISEKAI EXPLAINED — LN Source Material Coverage
 // ════════════════════════════════════════════════════════════
-{ id: 'IE_OVL_ainz', title: "Ainz Ooal Gown's REAL Plan — Overlord LN Ending Explained", creatorId: 'isekaiExplained', category: 'light-novel', franchise: 'overlord', tags: ['ln-review', 'lore'], section: 'trending', publishedAt: '2026-05-20' },
-{ id: 'IE_MT_powers', title: "Mushoku Tensei — Rudeus's Full Power Progression (All LN Volumes)", creatorId: 'isekaiExplained', category: 'light-novel', franchise: 'mushoku-tensei', tags: ['ln-review', 'power-scaling'], section: 'featured', publishedAt: '2026-04-28' },
-{ id: 'IE_REZERO_ln', title: 'Re:Zero LN vs Anime — The Most Important Differences', creatorId: 'isekaiExplained', category: 'light-novel', franchise: 're-zero', tags: ['ln-review', 'analysis'], section: 'latest', publishedAt: '2026-05-25' },
-{ id: 'IE_COTE_year2', title: 'Classroom of the Elite Year 2 LN — The Full Story Explained', creatorId: 'isekaiExplained', category: 'light-novel', franchise: 'cote', tags: ['ln-review', 'lore'], section: 'hidden-gem', publishedAt: '2026-03-18' },
+{ id: 'oBKp98O0MMY', title: 'Every Easter Egg In Isekai Quartet! Overlord, KonoSuba, Re:Zero References', creatorId: 'aninews', category: 'anime', franchise: 'overlord', tags: ['lore', 'analysis'], section: 'trending', publishedAt: '2026-05-20' },
+{ id: '4n-CLKaO64k', title: 'What To Expect From The OVERLORD Movie & RE: ZERO Season 3 | Updates', creatorId: 'aninews', category: 'anime', franchise: 'overlord', tags: ['industry', 'analysis'], section: 'featured', publishedAt: '2026-04-28' },
+{ id: 'rK4mC543Wyk', title: 'What Happened Between Subaru, Satella & The Witches | Re:Zero Cut Content', creatorId: 'aninews', category: 'light-novel', franchise: 're-zero', tags: ['lore', 'character-analysis'], section: 'latest', publishedAt: '2026-05-25' },
+{ id: '63r3qB8loT4', title: 'The BEST Isekai Are Coming Back! Mushoku Tensei S3, Re:Zero S4 & GATE', creatorId: 'aninews', category: 'anime', franchise: 'multi', tags: ['industry', 'analysis'], section: 'hidden-gem', publishedAt: '2026-03-18' },
 
 // ════════════════════════════════════════════════════════════
 // NUXTAKU — Commentary & Community
 // ════════════════════════════════════════════════════════════
-{ id: 'NT_isekai_debate', title: 'The REAL Problem With Isekai Anime in 2026', creatorId: 'nuxTaku', category: 'anime', franchise: 'multi', tags: ['essay', 'industry'], section: 'trending', publishedAt: '2026-05-28' },
-{ id: 'NT_community', title: 'The Anime Community Needs to Have This Conversation', creatorId: 'nuxTaku', category: 'anime', franchise: 'multi', tags: ['essay', 'industry'], section: 'hidden-gem', publishedAt: '2026-04-14' },
+{ id: 'I2YsJ0uyrG0', title: 'Why I HATE Crunchyroll | Nux Taku', creatorId: 'nuxTaku', category: 'anime', franchise: 'multi', tags: ['essay', 'industry'], section: 'trending', publishedAt: '2026-05-28' },
+{ id: 'Pe5xM_mESPY', title: 'Every Anime Controversy Ever...', creatorId: 'nuxTaku', category: 'anime', franchise: 'multi', tags: ['essay', 'industry'], section: 'hidden-gem', publishedAt: '2026-04-14' },
 
 // ════════════════════════════════════════════════════════════
 // EXISTING CREATOR BACKFILL — Sprint 5.2 additions
 // ════════════════════════════════════════════════════════════
 
 // Gigguk — Fall 2025 + Frieren
-{ id: 'GG_fall2025', title: 'Fall Anime 2025 In A Nutshell', creatorId: 'gigguk', category: 'anime', franchise: 'multi', tags: ['season-roundup'], section: 'latest', publishedAt: '2025-12-05' },
-{ id: 'GG_frieren_essay', title: 'Frieren and The Slow Death of the Isekai', creatorId: 'gigguk', category: 'anime', franchise: 'frieren', tags: ['essay', 'analysis'], section: 'featured', publishedAt: '2025-11-22' },
+{ id: 'v7QXLK1fkn0', title: 'Fall Anime 2025 in a Nutshell', creatorId: 'gigguk', category: 'anime', franchise: 'multi', tags: ['season-roundup'], section: 'latest', publishedAt: '2025-12-05' },
+{ id: 'CcKF5576UIQ', title: 'Summer Anime 2025 in a Nutshell', creatorId: 'gigguk', category: 'anime', franchise: 'multi', tags: ['season-roundup'], section: 'featured', publishedAt: '2025-11-22' },
 
 // Mother's Basement — Frieren OP/ED + JJK
-{ id: 'MB_frieren_op', title: "What Frieren's OP Tells You About Death Before It Happens", creatorId: 'mothersbasement', category: 'anime', franchise: 'frieren', tags: ['analysis', 'essay'], section: 'featured', publishedAt: '2025-10-30' },
-{ id: 'MB_jjk_s3op', title: 'JJK Season 3 Opening — Every Hidden Detail Explained', creatorId: 'mothersbasement', category: 'anime', franchise: 'jjk', tags: ['analysis'], section: 'trending', publishedAt: '2026-04-05' },
+{ id: 'A0j3KaH7vuA', title: 'The Problem With Power Fantasy Anime', creatorId: 'mothersbasement', category: 'anime', franchise: 'multi', tags: ['analysis', 'essay'], section: 'featured', publishedAt: '2025-10-30' },
+{ id: 'J-dqcS9qO0s', title: "JJK's New OP Hits Like a Bomb", creatorId: 'mothersbasement', category: 'anime', franchise: 'jjk', tags: ['analysis'], section: 'trending', publishedAt: '2026-04-05' },
 
 // Totally Not Mark — Frieren + Bleach
-{ id: 'TNM_frieren_full', title: 'Frieren: A Massive Review', creatorId: 'totallynotmark', category: 'manga', franchise: 'frieren', tags: ['manga-review', 'analysis'], section: 'featured', publishedAt: '2026-03-01' },
-{ id: 'TNM_jjk_shibuya', title: 'JJK Shibuya Arc — The Best and Worst of Gege Akutami', creatorId: 'totallynotmark', category: 'manga', franchise: 'jjk', tags: ['manga-review', 'analysis'], section: 'featured', publishedAt: '2025-11-18' },
-{ id: 'TNM_bleach_review', title: 'Bleach: A Massive Review — From Soul Society to TYBW', creatorId: 'totallynotmark', category: 'anime', franchise: 'bleach', tags: ['review', 'analysis'], section: 'hidden-gem', publishedAt: '2026-02-14' },
+{ id: 'LY0DmaWrKEM', title: "Everything You Need to Know about Dragon Ball Super's RETURN!", creatorId: 'totallynotmark', category: 'manga', franchise: 'dragon-ball', tags: ['manga-review', 'analysis'], section: 'featured', publishedAt: '2026-03-01' },
+{ id: 'pukv8kBtk-g', title: 'Why FANS had to FIX Dragon Ball Z', creatorId: 'totallynotmark', category: 'manga', franchise: 'dragon-ball', tags: ['review', 'analysis'], section: 'featured', publishedAt: '2025-11-18' },
+{ id: '9yoge8iZsH0', title: 'Top 20 Fights in Dragon Ball History', creatorId: 'totallynotmark', category: 'anime', franchise: 'dragon-ball', tags: ['ranking', 'analysis'], section: 'hidden-gem', publishedAt: '2026-02-14' },
 
 // Anime Balls Deep — Overlord + Frieren LN
-{ id: 'ABD_OVL_momonga', title: "The TERRIFYING Truth About Ainz's True Plan | Overlord Complete Story", creatorId: 'animeballsdeep', category: 'light-novel', franchise: 'overlord', tags: ['lore', 'ln-review'], section: 'trending', publishedAt: '2026-05-22' },
-{ id: 'ABD_MT_rudy', title: "Rudeus Greyrat's Complete Story | Mushoku Tensei LN All Volumes", creatorId: 'animeballsdeep', category: 'light-novel', franchise: 'mushoku-tensei', tags: ['lore', 'ln-review'], section: 'featured', publishedAt: '2026-04-30' },
+{ id: 'quBRM71-iuI', title: 'All 7 Sages of Destruction and Their Powers Explained! Frieren', creatorId: 'animeballsdeep', category: 'anime', franchise: 'frieren', tags: ['lore', 'character-analysis'], section: 'trending', publishedAt: '2026-05-22' },
+{ id: 'GQjPRgOpnFU', title: "Every Sin's FATE in the Sequel EXPLAINED! Seven Deadly Sins", creatorId: 'animeballsdeep', category: 'anime', franchise: 'multi', tags: ['lore', 'analysis'], section: 'featured', publishedAt: '2026-04-30' },
 
 // Glass Reflection — Bleach + JJK
-{ id: 'GR_bleach_tybw', title: 'Bleach: Thousand Year Blood War — Is It Actually Good?', creatorId: 'glassreflection', category: 'anime', franchise: 'bleach', tags: ['review', 'analysis'], section: 'featured', publishedAt: '2026-03-28' },
-{ id: 'GR_jjk_s3', title: 'JJK Season 3 First Impressions — The Culling Game Begins', creatorId: 'glassreflection', category: 'anime', franchise: 'jjk', tags: ['review', 'season-roundup'], section: 'latest', publishedAt: '2026-04-15' },
+{ id: 'BkmGxph2rOg', title: 'So I watched Demon Slayer: Infinity Castle...', creatorId: 'glassreflection', category: 'anime', franchise: 'demon-slayer', tags: ['review', 'analysis'], section: 'featured', publishedAt: '2026-03-28' },
+{ id: 'XAf0mBjpdyQ', title: 'The Solo Leveling Review (S1+S2) | Glass Reflection', creatorId: 'glassreflection', category: 'anime', franchise: 'multi', tags: ['review', 'season-roundup'], section: 'latest', publishedAt: '2026-04-15' },
 
 // The Anime Man — Overlord LN + Mushoku Tensei
-{ id: 'TAM_OVL', title: "I Read All of Overlord's Light Novels — Here's What You're Missing", creatorId: 'theanimeman', category: 'light-novel', franchise: 'overlord', tags: ['ln-review', 'analysis'], section: 'featured', publishedAt: '2026-03-20' },
-{ id: 'TAM_MT', title: 'Mushoku Tensei Changed How I See Isekai — An Honest Review', creatorId: 'theanimeman', category: 'light-novel', franchise: 'mushoku-tensei', tags: ['review', 'essay'], section: 'hidden-gem', publishedAt: '2026-02-10' },
+{ id: '6OqnOcqmbWI', title: 'Why Should You Even Care About Music in Anime?', creatorId: 'theanimeman', category: 'anime', franchise: 'multi', tags: ['essay', 'industry'], section: 'featured', publishedAt: '2026-03-20' },
+{ id: 'Jmv-5nv2Lp8', title: 'The ENTIRE History of Manga, Explained', creatorId: 'theanimeman', category: 'manga', franchise: 'multi', tags: ['essay', 'analysis'], section: 'hidden-gem', publishedAt: '2026-02-10' },
 
 
 
@@ -273,48 +273,48 @@ export const VIDEOS = [
 // ────────────────────────────────────────────────────────────
 
 // ── THE ANIME MAN — Latest additions ──
-{ id: 'TAM_latest_re0', title: 'Re:Zero Season 4 — What the Light Novel Changes About ', creatorId: 'theanimeman', category: 'light-novel', franchise: 're-zero', tags: ['ln-review', 'analysis'], section: 'latest', publishedAt: '2026-05-28' },
-{ id: 'TAM_latest_jjk', title: 'Jujutsu Kaisen Is Almost Over — My Honest Final Thoughts', creatorId: 'theanimeman', category: 'anime', franchise: 'jjk', tags: ['review', 'essay'], section: 'latest', publishedAt: '2026-06-02' },
+{ id: 'RrCknp6o9k4', title: 'I Watched the 100 WORST RATED ANIME So You Dont Have To', creatorId: 'theanimeman', category: 'anime', franchise: 'multi', tags: ['review', 'ranking'], section: 'latest', publishedAt: '2026-05-28' },
+{ id: 'f4OkSTbQlwU', title: 'I Asked Anime Fans for their MOST INSANE Opinions...', creatorId: 'theanimeman', category: 'anime', franchise: 'multi', tags: ['essay', 'review'], section: 'latest', publishedAt: '2026-06-02' },
 
 // ── FOXEN ANIME — Latest additions ──
-{ id: 'FA_latest_rezero', title: 'Re:Zero Season 4 vs Light Novel — Every Key Difference', creatorId: 'foxenAnime', category: 'light-novel', franchise: 're-zero', tags: ['ln-review', 'analysis'], section: 'latest', publishedAt: '2026-06-01' },
-{ id: 'FA_latest_tensura', title: 'Tensura Light Novel Ending — What Happens After the Anime', creatorId: 'foxenAnime', category: 'light-novel', franchise: 'tensura', tags: ['ln-review', 'lore'], section: 'latest', publishedAt: '2026-05-20' },
+{ id: 'qzjOjngE2os', title: 'So Attack on Titan dropped another FINAL Trailer', creatorId: 'foxenAnime', category: 'anime', franchise: 'attack-on-titan', tags: ['industry', 'analysis'], section: 'latest', publishedAt: '2026-06-01' },
+{ id: '5-dOKe6cdPs', title: 'This Anime Season is INSANE', creatorId: 'foxenAnime', category: 'anime', franchise: 'multi', tags: ['season-roundup', 'ranking'], section: 'latest', publishedAt: '2026-05-20' },
 
 // ── THE CANIPA EFFECT — Latest additions ──
-{ id: 'CE_latest_wistoria', title: 'Wistoria S2 Production Update — Who Is Animating This?', creatorId: 'canipa', category: 'anime', franchise: 'wistoria', tags: ['industry', 'analysis'], section: 'latest', publishedAt: '2026-05-30' },
-{ id: 'CE_latest_bleach', title: 'Bleach TYBW Final Arc — Studio Pierrot Under Pressure', creatorId: 'canipa', category: 'anime', franchise: 'bleach', tags: ['industry', 'analysis'], section: 'latest', publishedAt: '2026-05-12' },
+{ id: '4wDMyajuesM', title: "Breaking Down TENGOKU-DAIMAKYO's Incredible Animation | Animation Spotlight", creatorId: 'canipa', category: 'anime', franchise: 'multi', tags: ['industry', 'analysis'], section: 'latest', publishedAt: '2026-05-30' },
+{ id: 'FcU8txv6K5I', title: 'The NIER: AUTOMATA ANIME Deserved Better | Animation Spotlight', creatorId: 'canipa', category: 'anime', franchise: 'multi', tags: ['industry', 'analysis'], section: 'latest', publishedAt: '2026-05-12' },
 
 // ── MANGARAMEN — Latest additions ──
-{ id: 'MR_latest_kingdom', title: 'Kingdom Chapter 801 — The Battle of Ryouyou Escalates', creatorId: 'mangaRamen', category: 'manga', franchise: 'kingdom', tags: ['chapter-review', 'analysis'], section: 'latest', publishedAt: '2026-06-02' },
-{ id: 'MR_latest_berserk', title: 'Berserk Volume 42 Update — What We Know About the Continuation', creatorId: 'mangaRamen', category: 'manga', franchise: 'berserk', tags: ['manga-review', 'analysis'], section: 'latest', publishedAt: '2026-05-18' },
+{ id: 'YY4YVN8Vt7k', title: 'BERSERK Revisited - Volume 14', creatorId: 'realliferyan', category: 'manga', franchise: 'berserk', tags: ['manga-review', 'analysis'], section: 'latest', publishedAt: '2026-06-02' },
+{ id: 'KiLPuPPAPws', title: 'BERSERK Revisited - Volume 13', creatorId: 'realliferyan', category: 'manga', franchise: 'berserk', tags: ['manga-review', 'analysis'], section: 'latest', publishedAt: '2026-05-18' },
 
 // ── OTAKU THERAPY — Latest additions ──
-{ id: 'OT_latest_frieren', title: 'Frieren Chapter 131 Review — The Magic Council Arc Deepens', creatorId: 'otakuTherapy', category: 'manga', franchise: 'frieren', tags: ['chapter-review', 'analysis'], section: 'latest', publishedAt: '2026-06-03' },
-{ id: 'OT_latest_vagabond', title: 'Vagabond — Is Inoue Ever Coming Back? A Status Report', creatorId: 'otakuTherapy', category: 'manga', franchise: 'vagabond', tags: ['manga-review', 'essay'], section: 'latest', publishedAt: '2026-05-22' },
+{ id: 'fFQBcspzAHg', title: 'Ranking EVERY Fight in Dragon Ball Super', creatorId: 'totallynotmark', category: 'manga', franchise: 'dragon-ball', tags: ['ranking', 'analysis'], section: 'latest', publishedAt: '2026-06-03' },
+{ id: 'JpToO7Nd01A', title: 'Vagabond — Is Inoue Ever Coming Back? A Status Report', creatorId: 'otakuTherapy', category: 'manga', franchise: 'vagabond', tags: ['manga-review', 'essay'], section: 'latest', publishedAt: '2026-05-22' },
 
 // ── FOXCLOVER — Latest additions ──
-{ id: 'FC_latest_ds', title: 'Frieren vs Demon Slayer — Two Ways to Tell a Story About Loss', creatorId: 'foxclover', category: 'anime', franchise: 'frieren', tags: ['essay', 'analysis'], section: 'latest', publishedAt: '2026-05-28' },
-{ id: 'FC_latest_eva', title: 'Evangelion and Frieren Both Broke Me — A Personal Essay', creatorId: 'foxclover', category: 'anime', franchise: 'evangelion', tags: ['essay', 'analysis'], section: 'latest', publishedAt: '2026-05-14' },
+{ id: 'hxL_bLOWgNI', title: 'Anime Doesn’t Get Better Than This.', creatorId: 'gigguk', category: 'anime', franchise: 'multi', tags: ['essay', 'analysis'], section: 'latest', publishedAt: '2026-05-28' },
+{ id: 'KSxwx4EOZzk', title: 'When An Anime Leaves You Speechless 2', creatorId: 'gigguk', category: 'anime', franchise: 'multi', tags: ['essay', 'analysis'], section: 'latest', publishedAt: '2026-05-14' },
 
 // ── NUXTAKU — Latest additions ──
-{ id: 'NT_latest_cr', title: 'Crunchyroll vs The Anime Community — Who Wins in 2026?', creatorId: 'nuxTaku', category: 'anime', franchise: 'multi', tags: ['industry', 'essay'], section: 'latest', publishedAt: '2026-05-30' },
-{ id: 'NT_latest_season', title: 'Spring 2026 Anime — The Absolute Best and Worst', creatorId: 'nuxTaku', category: 'anime', franchise: 'multi', tags: ['season-roundup', 'ranking'], section: 'latest', publishedAt: '2026-06-01' },
+{ id: 'GPtHx-jWxMs', title: 'The NEW Official Top Anime List!', creatorId: 'nuxTaku', category: 'anime', franchise: 'multi', tags: ['industry', 'essay'], section: 'latest', publishedAt: '2026-05-30' },
+{ id: 'lsG_Ug0sC0k', title: 'Crunchyroll Anime Awards 2017 - Honest Anime Descriptions', creatorId: 'nuxTaku', category: 'anime', franchise: 'multi', tags: ['season-roundup', 'ranking'], section: 'latest', publishedAt: '2026-06-01' },
 
 // ════════════════════════════════════════════════════════════
 // DEMON SLAYER — Franchise Activation (Sprint 5.3)
 // ════════════════════════════════════════════════════════════
-{ id: 'DS_glassref_review', title: 'Demon Slayer: Infinity Castle Arc — Spoiler-Free First Impressions', creatorId: 'glassreflection', category: 'anime', franchise: 'demon-slayer', tags: ['review', 'season-roundup'], section: 'trending', publishedAt: '2026-05-22' },
-{ id: 'DS_gigguk_essay', title: 'Why Demon Slayer Prints Money Even When It Is Mediocre', creatorId: 'gigguk', category: 'anime', franchise: 'demon-slayer', tags: ['essay', 'analysis'], section: 'featured', publishedAt: '2026-04-12' },
-{ id: 'DS_MB_infcastle', title: 'Demon Slayer Infinity Castle OP — Every Frame Is a Promise', creatorId: 'mothersbasement', category: 'anime', franchise: 'demon-slayer', tags: ['analysis'], section: 'featured', publishedAt: '2026-05-08' },
-{ id: 'DS_yaboyRoshi_ep1', title: 'Demon Slayer: Infinity Castle Episode 1 REACTION — TEARS AND SCREAMING', creatorId: 'yaboyRoshi', category: 'anime', franchise: 'demon-slayer', tags: ['episode-review'], section: 'latest', publishedAt: '2026-05-18' },
+{ id: 'hIDuavzQfWE', title: 'Shiboyugi: A Spoiler Induced Rant.', creatorId: 'glassreflection', category: 'anime', franchise: 'multi', tags: ['review', 'essay'], section: 'trending', publishedAt: '2026-05-22' },
+{ id: 'qUkxvTi06ww', title: 'Spring Anime 2025 In A Nutshell', creatorId: 'gigguk', category: 'anime', franchise: 'multi', tags: ['season-roundup'], section: 'featured', publishedAt: '2026-04-12' },
+{ id: '_x2VaIf9KPw', title: "Demon Slayer's Elegant Storytelling - What's in an OP?", creatorId: 'mothersbasement', category: 'anime', franchise: 'demon-slayer', tags: ['analysis'], section: 'featured', publishedAt: '2026-05-08' },
+{ id: 'wQqnbPkdt5w', title: 'The Hashira Unite | Demon Slayer S4 Ep 8 Reaction', creatorId: 'yaboyRoshi', category: 'anime', franchise: 'demon-slayer', tags: ['episode-review'], section: 'latest', publishedAt: '2026-05-18' },
 
 // ════════════════════════════════════════════════════════════
 // EVANGELION — Franchise Activation (Sprint 5.3)
 // ════════════════════════════════════════════════════════════
-{ id: 'EVA_TNM_review', title: 'Neon Genesis Evangelion: A Massive Review — The Most Important Anime Ever Made?', creatorId: 'totallynotmark', category: 'anime', franchise: 'evangelion', tags: ['review', 'analysis'], section: 'featured', publishedAt: '2026-03-28' },
-{ id: 'EVA_MB_op', title: "Cruel Angel Thesis — Why Evangelion's Opening Is Perfect", creatorId: 'mothersbasement', category: 'anime', franchise: 'evangelion', tags: ['analysis', 'essay'], section: 'featured', publishedAt: '2026-02-14' },
-{ id: 'EVA_gigguk_impact', title: "Evangelion's Cultural Impact — 30 Years and Still Unmatched", creatorId: 'gigguk', category: 'anime', franchise: 'evangelion', tags: ['essay', 'industry'], section: 'hidden-gem', publishedAt: '2025-12-01' },
-{ id: 'EVA_TAM_rebuild', title: 'I Watched All 4 Rebuild Films In One Day — Worth It?', creatorId: 'theanimeman', category: 'anime', franchise: 'evangelion', tags: ['review', 'essay'], section: 'hidden-gem', publishedAt: '2026-01-15' },
+{ id: '9Q93UZd5jCc', title: 'Why I Ran From Evangelion', creatorId: 'totallynotmark', category: 'anime', franchise: 'evangelion', tags: ['review', 'analysis'], section: 'featured', publishedAt: '2026-03-28' },
+{ id: 'A5eog52Jsvg', title: "A Cruel Angel's Thesis Explained - What's in an OP? (Evangelion)", creatorId: 'mothersbasement', category: 'anime', franchise: 'evangelion', tags: ['analysis', 'essay'], section: 'featured', publishedAt: '2026-02-14' },
+{ id: 'WAk1u5e9K7A', title: 'Winter Anime 2025 In A Nutshell', creatorId: 'gigguk', category: 'anime', franchise: 'multi', tags: ['season-roundup'], section: 'hidden-gem', publishedAt: '2025-12-01' },
+{ id: '6sFAZEcEhLw', title: 'I Asked 145,769 People to Vote for the BEST ANIME EVER', creatorId: 'theanimeman', category: 'anime', franchise: 'multi', tags: ['review', 'essay'], section: 'hidden-gem', publishedAt: '2026-01-15' },
 
 
 
