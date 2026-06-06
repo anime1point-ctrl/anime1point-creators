@@ -56,7 +56,7 @@ export default function AdminHomeSections() {
       <p className="text-text-secondary text-sm mb-8">Configure which sections appear on the homepage and in what order.</p>
 
       <div className="space-y-4">
-        {sections.sort((a, b) => a.order - b.order).map((section, index) => (
+        {[...sections].sort((a, b) => a.order - b.order).map((section, index) => (
           <div key={section.id} className={`card flex flex-col sm:flex-row sm:items-center gap-4 ${!section.enabled ? 'opacity-50' : ''}`}>
             <div className="flex items-center gap-2 shrink-0">
               <button onClick={() => moveUp(index)} disabled={index === 0}
