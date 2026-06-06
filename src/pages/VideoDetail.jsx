@@ -3,6 +3,7 @@ import { VIDEOS } from '../data/videos'
 import { CREATOR_MAP } from '../data/creators'
 import { CATEGORY_MAP } from '../data/categories'
 import { FRANCHISE_MAP } from '../data/franchises'
+import { isRealYouTubeId } from '../utils/youtube'
 
 // ── Related video scoring ─────────────────────────────────────
 // Priority order:
@@ -62,6 +63,12 @@ function RelatedVideoCard({ video, current }) {
   )
 }
 
+const STATUS_BADGE = {
+  'anime1point': { label: 'ANIME1POINT CREATOR', className: 'text-xs px-2.5 py-1 rounded-full font-semibold bg-gradient-to-r from-purple/30 to-accent/30 text-accent border border-accent/40' },
+  'featured': { label: 'FEATURED CREATOR', className: 'text-xs px-2.5 py-1 rounded-full font-semibold bg-gold/20 text-gold border border-gold/30' },
+  'rising': { label: 'RISING CREATOR', className: 'text-xs px-2.5 py-1 rounded-full font-semibold bg-green-500/20 text-green-400 border border-green-500/30' },
+}
+
 export default function VideoDetail() {
   const { id } = useParams()
   const video = VIDEOS.find(v => v.id === id)
@@ -84,6 +91,9 @@ export default function VideoDetail() {
     )
   }
 
+  const isEmbeddable = isRealYouTubeId(id)
+  const badge = creator ? STATUS_BADGE[creator.creatorStatus] : null
+
   return (
     <div className="min-h-screen">
       <div className="max-w-7xl mx-auto px-4 py-8">
@@ -95,14 +105,38 @@ export default function VideoDetail() {
           {/* Main Video */}
           <div className="flex-1 min-w-0">
             <div className="aspect-video bg-black rounded-xl overflow-hidden mb-5">
-              <iframe
-                src={`https://www.youtube.com/embed/${id}?rel=0&modestbranding=1`}
-                className="w-full h-full"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                title={video.title}
-              />
+              {isEmbeddable ? (
+                <iframe
+                  src={`https://www.youtube.com/embed/${id}?rel=0&modestbranding=1`}
+                  className="w-full h-full"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  title={video.title}
+                />
+              ) : (
+                <div className="w-full h-full flex flex-col items-center justify-center gap-4 px-6 text-center"
+                  style={{ background: 'linear-gradient(135deg,#0d0d1a,#1a0a2e)' }}>
+                  <div className="text-5xl">&#9654;</div>
+                  <div>
+                    <p className="font-orbitron font-black text-lg text-text-primary mb-2">{video.title}</p>
+                    {creator && (
+                      <p className="text-text-secondary text-sm mb-4">by {creator.name}</p>
+                    )}
+                    <p className="text-text-secondary text-sm mb-6 max-w-sm mx-auto">
+                      Visit the creator's YouTube channel to watch this video.
+                    </p>
+                    <a
+                      href={creator?.youtubeUrl || `https://www.youtube.com/results?search_query=${encodeURIComponent(video.title)}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn-primary text-sm"
+                    >
+                      Watch on YouTube
+                    </a>
+                  </div>
+                </div>
+              )}
             </div>
 
             {/* Title & Meta */}
@@ -135,7 +169,7 @@ export default function VideoDetail() {
                     <Link to={`/creator/${creator.id}`} className="font-orbitron font-black text-sm text-text-primary hover:text-accent transition-colors">
                       {creator.name}
                     </Link>
-                    {creator.official && <span className="text-xs px-1.5 py-0.5 bg-gold/20 text-gold border border-gold/30 rounded font-semibold">OFFICIAL</span>}
+                    {badge && <span className={badge.className}>{badge.label}</span>}
                   </div>
                   <p className="text-text-secondary text-xs mb-2">{creator.handle}</p>
                   <p className="text-text-secondary text-xs leading-relaxed line-clamp-2">{creator.bio}</p>
