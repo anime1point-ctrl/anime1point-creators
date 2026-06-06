@@ -2,18 +2,13 @@ import { createContext, useContext, useState, useCallback, useMemo } from 'react
 import { CREATOR_MAP } from '../data/creators'
 import { VIDEOS } from '../data/videos'
 import { Analytics } from '../utils/analytics'
+import { isRealYouTubeId } from '../utils/youtube'
 
 const VideoModalContext = createContext(null)
 
-function hasRealYouTubeId(videoId) {
-  if (!videoId) return false
-  if (videoId.includes('_vid_')) return false
-  return /^[A-Za-z0-9_\-]{11}$/.test(videoId)
-}
-
 /**
  * Score related videos:
- *   +5 same creator, +3 same category, +1 same section
+ * +5 same creator, +3 same category, +1 same section
  * Returns top N, excluding current video.
  */
 function getRelatedVideos(current, limit = 3) {
@@ -35,7 +30,7 @@ function getRelatedVideos(current, limit = 3) {
 function RelatedThumb({ video, onOpen }) {
   const creator = CREATOR_MAP[video.creatorId]
   const [imgErr, setImgErr] = useState(false)
-  const showThumb = hasRealYouTubeId(video.id) && !imgErr
+  const showThumb = isRealYouTubeId(video.id) && !imgErr
   return (
     <button
       onClick={() => onOpen(video)}
@@ -84,7 +79,7 @@ export function VideoModalProvider({ children }) {
     document.body.style.overflow = ''
   }, [])
 
-  const isEmbeddable = modal ? hasRealYouTubeId(modal.videoId) : false
+  const isEmbeddable = modal ? isRealYouTubeId(modal.videoId) : false
   const creator = modal
     ? Object.values(CREATOR_MAP).find(c => c.name === modal.creatorName) || null
     : null
