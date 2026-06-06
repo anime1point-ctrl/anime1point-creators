@@ -7,16 +7,29 @@ import { getHomeSections } from '../data/homeSections'
 import { useVideoModal } from '../context/VideoModalContext'
 import { Analytics } from '../utils/analytics'
 import { isRealYouTubeId } from '../utils/youtube'
+import { trackVideoClick, getVideoClickCount, hasWatched, addToWatchHistory } from '../utils/watchHistory'
+
+function formatCount(n) {
+  if (n >= 1_000_000) return (n / 1_000_000).toFixed(1) + 'M'
+  if (n >= 1_000) return (n / 1_000).toFixed(1) + 'K'
+  return String(n)
+}
 
 function VideoCard({ video, priority = false }) {
   const { openModal } = useVideoModal()
   const creator = CREATOR_MAP[video.creatorId]
   const [imgError, setImgError] = useState(false)
+  const [watched, setWatched] = useState(() => hasWatched(video.id))
+  const [clickCount, setClickCount] = useState(() => getVideoClickCount(video.id))
   const showThumb = isRealYouTubeId(video.id) && !imgError
   const categoryLabel = CATEGORY_MAP[video.category]?.label || video.category
   const badgeCategory = video.category === 'light-novel' ? 'novels' : video.category
 
   function handleOpen() {
+    trackVideoClick(video.id)
+    addToWatchHistory(video)
+    setWatched(true)
+    setClickCount(prev => prev + 1)
     Analytics.videoOpened(video.id, video.title, creator ? creator.name : '')
     openModal(video.id, video.title, creator ? creator.name : '')
   }
@@ -44,11 +57,31 @@ function VideoCard({ video, priority = false }) {
             <span className="text-white text-xs opacity-50">Video Coming Soon</span>
           </div>
         )}
+
+        {/* Hover play overlay */}
         <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all flex items-center justify-center">
           <span className="text-white text-3xl opacity-0 group-hover:opacity-100 transition-opacity drop-shadow-lg">&#9654;</span>
         </div>
+
+        {/* Category badge — top-left */}
         <span className={`absolute top-2 left-2 badge-${badgeCategory}`}>{categoryLabel}</span>
+
+        {/* Watched badge — top-right, shown after first click */}
+        {watched && (
+          <span className="absolute top-2 right-2 flex items-center gap-1 bg-green-500/90 text-white text-[10px] font-bold px-2 py-0.5 rounded-full backdrop-blur-sm leading-none">
+            &#10003; Watched
+          </span>
+        )}
+
+        {/* Play count bar — bottom, shown after first click */}
+        {clickCount > 0 && (
+          <div className="absolute bottom-0 left-0 right-0 flex items-center gap-1.5 px-2.5 py-1 bg-black/70 backdrop-blur-sm text-white text-[11px] font-semibold">
+            <span className="opacity-60">&#9654;</span>
+            <span>{formatCount(clickCount)} {clickCount === 1 ? 'play' : 'plays'}</span>
+          </div>
+        )}
       </div>
+
       <h3 className="text-sm font-semibold text-text-primary line-clamp-2 group-hover:text-accent transition-colors mb-2">
         {video.title}
       </h3>
@@ -150,7 +183,7 @@ function Hero() {
           <span className="highlight">All In One Place</span>
         </h1>
         <p className="text-text-secondary text-base md:text-lg max-w-xl mx-auto mb-8">
-          Curated videos from the top Anime, Manga, and Light Novel creators on YouTube — discovered, organised, and ready to watch.
+          Curated videos from the top Anime, Manga, and Light Novel creators on YouTube &mdash; discovered, organised, and ready to watch.
         </p>
         <form onSubmit={handleSearch} className="flex gap-2 max-w-lg mx-auto mb-8">
           <input type="search" value={q} onChange={e => setQ(e.target.value)} placeholder="Search videos, series, creators..." className="form-input flex-1" />
