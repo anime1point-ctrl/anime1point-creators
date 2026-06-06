@@ -1,15 +1,15 @@
 /**
- * CREATORS — Anime1Point Creators Hub
- * Sprint 5.3: Launch-readiness fixes — creator status, flags, channel IDs
+ * CREATORS â Anime1Point Creators Hub
+ * Sprint 5.3: Launch-readiness fixes â creator status, flags, channel IDs
  *
  * creatorStatus: "anime1point" | "featured" | "rising"
- * featuredVideoIds: array — first entry shown as hero on profile page
+ * featuredVideoIds: array â first entry shown as hero on profile page
  */
 export const CREATORS = [
 
-  // ════════════════════════════════════════════════════════════
+  // ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
   // PLATFORM CREATOR
-  // ════════════════════════════════════════════════════════════
+  // ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
   {
       id: 'anime1point',
       name: 'Anime1Point',
@@ -18,7 +18,7 @@ export const CREATORS = [
       category: 'anime',
       avatar: 'A1',
       avatarGradient: 'linear-gradient(135deg,#e63946,#7b2fff)',
-      bio: "The flagship Anime1Point channel. Focused on That Time I Got Reincarnated as a Slime (Tensura) Season 4 — episode reviews, English Dub reactions, manga breakdowns, character analysis and lore deep dives.",
+      bio: "The flagship Anime1Point channel. Focused on That Time I Got Reincarnated as a Slime (Tensura) Season 4 â episode reviews, English Dub reactions, manga breakdowns, character analysis and lore deep dives.",
       tags: ['Tensura Season 4', 'Episode Reviews', 'English Dub', 'Manga Breakdown', 'Lore Deep Dives'],
       featuredVideoIds: ['_4xtVj881w4', 'nyJ_8jVKJKc', 'ommA4DBy5RQ'],
       youtubeUrl: 'https://www.youtube.com/@anime1point',
@@ -27,9 +27,9 @@ export const CREATORS = [
       featured: true,
   },
 
-  // ════════════════════════════════════════════════════════════
-  // FEATURED CREATORS — TIER 1 (Sprint 4 originals)
-  // ════════════════════════════════════════════════════════════
+  // ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+  // FEATURED CREATORS â TIER 1 (Sprint 4 originals)
+  // ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
   {
       id: 'gigguk',
       name: 'Gigguk',
@@ -70,7 +70,7 @@ export const CREATORS = [
       category: 'anime',
       avatar: 'MB',
       avatarGradient: 'linear-gradient(135deg,#0f3460,#533483)',
-      bio: "Deep analysis of anime openings, endings, and storytelling. Geoff Thew breaks down what makes anime great with technical precision — from sakuga animation to narrative structure and symbolism.",
+      bio: "Deep analysis of anime openings, endings, and storytelling. Geoff Thew breaks down what makes anime great with technical precision â from sakuga animation to narrative structure and symbolism.",
       tags: ['OP/ED Analysis', 'Anime Analysis', 'Storytelling', 'Sakuga', 'Seasonal Coverage'],
       featuredVideoIds: ['1RRL4Bv3DSM', 'wtMM_sLZFMQ', 'LTwWZPmpoc0'],
       youtubeUrl: 'https://www.youtube.com/@mothersbasement',
@@ -134,7 +134,7 @@ export const CREATORS = [
       category: 'manga',
       avatar: 'RR',
       avatarGradient: 'linear-gradient(135deg,#373B44,#4286f4)',
-      bio: "In-depth manga reading vlogs and chapter reviews. Best known for the Berserk Revisited series — a volume-by-volume journey through one of manga's greatest masterpieces alongside film and pop culture analysis.",
+      bio: "In-depth manga reading vlogs and chapter reviews. Best known for the Berserk Revisited series â a volume-by-volume journey through one of manga's greatest masterpieces alongside film and pop culture analysis.",
       tags: ['Berserk', 'Manga Reviews', 'Reading Vlogs', 'Chapter Analysis', 'Classic Manga'],
       featuredVideoIds: ['0_Keq4SgSOI', 'Ec9xELfuDwE', 'c2kdmDkXtsc'],
       youtubeUrl: 'https://www.youtube.com/@RealLifeRyan',
@@ -166,7 +166,7 @@ export const CREATORS = [
       category: 'anime',
       avatar: 'BD',
       avatarGradient: 'linear-gradient(135deg,#141E30,#243B55)',
-      bio: "The deepest lore dives on YouTube. Covering the complete stories behind Tensura, One Piece, Naruto, and more — including light novel content beyond the anime. Essential viewing for fans who want the full picture.",
+      bio: "The deepest lore dives on YouTube. Covering the complete stories behind Tensura, One Piece, Naruto, and more â including light novel content beyond the anime. Essential viewing for fans who want the full picture.",
       tags: ['Tensura Lore', 'One Piece', 'Story Analysis', 'Light Novel Spoilers', 'Complete Story'],
       featuredVideoIds: ['ov7rqWJlB1s', 'gvjoXIawoRE', 'xGVVM5aE98I'],
       youtubeUrl: 'https://www.youtube.com/@AnimeBallsDeep',
@@ -182,7 +182,7 @@ export const CREATORS = [
       category: 'anime',
       avatar: 'BS',
       avatarGradient: 'linear-gradient(135deg,#4a0000,#cc0000)',
-      bio: "Champion of overlooked and classic anime. BobSamurai digs through decades of anime history to surface hidden gems most fans have never heard of — from 1960s classics to underrated 2000s series.",
+      bio: "Champion of overlooked and classic anime. BobSamurai digs through decades of anime history to surface hidden gems most fans have never heard of â from 1960s classics to underrated 2000s series.",
       tags: ['Hidden Gems', 'Classic Anime', 'Overlooked Series', 'Retro Anime', 'Anime History'],
       featuredVideoIds: ['-FkMyZn5jeE', 'wzNjhsstG4g', 'ToTZ6ssJGT0'],
       youtubeUrl: 'https://www.youtube.com/@BobSamurai',
@@ -191,9 +191,9 @@ export const CREATORS = [
       featured: false,
   },
 
-  // ════════════════════════════════════════════════════════════
-  // FEATURED CREATORS — TIER 2 (Sprint 5.2 additions)
-  // ════════════════════════════════════════════════════════════
+  // ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+  // FEATURED CREATORS â TIER 2 (Sprint 5.2 additions)
+  // ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
   {
       id: 'tekking101',
       name: 'Tekking101',
@@ -234,7 +234,7 @@ export const CREATORS = [
       category: 'light-novel',
       avatar: 'FA',
       avatarGradient: 'linear-gradient(135deg,#f7971e,#ffd200)',
-      bio: "The definitive light novel coverage channel. Foxen Anime goes beyond the anime to break down what happens in the source material for Overlord, Mushoku Tensei, Tensura, and more — essential for LN readers and anime fans curious about what comes next.",
+      bio: "The definitive light novel coverage channel. Foxen Anime goes beyond the anime to break down what happens in the source material for Overlord, Mushoku Tensei, Tensura, and more â essential for LN readers and anime fans curious about what comes next.",
       tags: ['Light Novels', 'Overlord', 'Mushoku Tensei', 'LN Spoilers', 'Source Material'],
       featuredVideoIds: ['FA_OVL_vol16', 'FA_MT_vol24', 'FA_OVL_full'],
       youtubeUrl: 'https://www.youtube.com/@FoxenAnime',
@@ -250,7 +250,7 @@ export const CREATORS = [
       category: 'anime',
       avatar: 'CE',
       avatarGradient: 'linear-gradient(135deg,#1c1c2e,#a855f7)',
-      bio: "The definitive source for anime production analysis. Callum covers studio pipelines, animation director interviews, pre-production reports, and the stories behind how anime gets made — indispensable for industry enthusiasts.",
+      bio: "The definitive source for anime production analysis. Callum covers studio pipelines, animation director interviews, pre-production reports, and the stories behind how anime gets made â indispensable for industry enthusiasts.",
       tags: ['Production Analysis', 'Studio Coverage', 'Sakuga', 'Industry', 'Behind The Scenes'],
       featuredVideoIds: ['CE_prod_spring26', 'CE_prod_frieren', 'CE_prod_tensura'],
       youtubeUrl: 'https://www.youtube.com/@TheCanipa',
@@ -282,7 +282,7 @@ export const CREATORS = [
       category: 'anime',
       avatar: 'NT',
       avatarGradient: 'linear-gradient(135deg,#8e2de2,#4a00e0)',
-      bio: "Anime commentary, community events, and cultural deep dives with a comedic edge. NuxTaku covers everything from seasonal highlights to fandom history and internet drama — always entertaining, always opinionated.",
+      bio: "Anime commentary, community events, and cultural deep dives with a comedic edge. NuxTaku covers everything from seasonal highlights to fandom history and internet drama â always entertaining, always opinionated.",
       tags: ['Anime Commentary', 'Community', 'Fandom', 'Cultural Deep Dives', 'Entertainment'],
       featuredVideoIds: ['NT_isekai_debate', 'NT_community'],
       youtubeUrl: 'https://www.youtube.com/@NuxTaku',
@@ -307,9 +307,9 @@ export const CREATORS = [
       featured: true,
   },
 
-  // ════════════════════════════════════════════════════════════
-  // RISING CREATORS — Sprint 5.2 additions
-  // ════════════════════════════════════════════════════════════
+  // ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+  // RISING CREATORS â Sprint 5.2 additions
+  // ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
   {
       id: 'mangaRamen',
       name: 'MangaRamen',
@@ -318,7 +318,7 @@ export const CREATORS = [
       category: 'manga',
       avatar: 'MR',
       avatarGradient: 'linear-gradient(135deg,#e96c57,#f7b733)',
-      bio: "Serious manga criticism for serious manga readers. MangaRamen covers Kingdom, Vagabond, Berserk, and the best of classic and modern manga — bringing a literary perspective to the medium's greatest works.",
+      bio: "Serious manga criticism for serious manga readers. MangaRamen covers Kingdom, Vagabond, Berserk, and the best of classic and modern manga â bringing a literary perspective to the medium's greatest works.",
       tags: ['Kingdom', 'Vagabond', 'Classic Manga', 'Manga Criticism', 'Long-Form Reviews'],
       featuredVideoIds: ['MR_KINGDOM_ch800', 'MR_VAGABOND_review', 'MR_BERSERK_legacy'],
       youtubeUrl: 'https://www.youtube.com/@MangaRamen',
@@ -334,7 +334,7 @@ export const CREATORS = [
       category: 'manga',
       avatar: 'OT',
       avatarGradient: 'linear-gradient(135deg,#005c97,#363795)',
-      bio: "Thoughtful manga analysis focused on storytelling, themes, and artistic merit. Specialises in Frieren, JoJo, and literary manga that reward deep reading — perfect for fans who want more than a plot summary.",
+      bio: "Thoughtful manga analysis focused on storytelling, themes, and artistic merit. Specialises in Frieren, JoJo, and literary manga that reward deep reading â perfect for fans who want more than a plot summary.",
       tags: ['Frieren', 'JoJo', 'Manga Analysis', 'Storytelling', 'Literary Manga'],
       featuredVideoIds: ['OT_FR_ch130', 'OT_FR_full', 'OT_JOJO_SBR'],
       youtubeUrl: 'https://www.youtube.com/@OtakuTherapy',
@@ -366,7 +366,7 @@ export const CREATORS = [
       category: 'anime',
       avatar: 'FC',
       avatarGradient: 'linear-gradient(135deg,#11998e,#38ef7d)',
-      bio: "Emotional, beautifully written essays on slice-of-life and fantasy anime. Foxclover specialises in Frieren, Dungeon Meshi, and anime that prioritise character and atmosphere — a must-follow for fans of thoughtful, reflective content.",
+      bio: "Emotional, beautifully written essays on slice-of-life and fantasy anime. Foxclover specialises in Frieren, Dungeon Meshi, and anime that prioritise character and atmosphere â a must-follow for fans of thoughtful, reflective content.",
       tags: ['Frieren', 'Slice of Life', 'Anime Essays', 'Fantasy', 'Character Studies'],
       featuredVideoIds: ['FC_FR_elf', 'FC_FR_anime'],
       youtubeUrl: 'https://www.youtube.com/@Foxclover',
@@ -382,7 +382,7 @@ export const CREATORS = [
       category: 'light-novel',
       avatar: 'IE',
       avatarGradient: 'linear-gradient(135deg,#2980b9,#2c3e50)',
-      bio: "The light novel specialists. Isekai Explained covers Overlord, Mushoku Tensei, Bookworm, Re:Zero, and the full depth of the LN landscape — going far beyond what the anime adapts to give readers and viewers the complete story.",
+      bio: "The light novel specialists. Isekai Explained covers Overlord, Mushoku Tensei, Bookworm, Re:Zero, and the full depth of the LN landscape â going far beyond what the anime adapts to give readers and viewers the complete story.",
       tags: ['Light Novels', 'Isekai', 'Overlord', 'Mushoku Tensei', 'Re:Zero LN'],
       featuredVideoIds: ['IE_OVL_ainz', 'IE_MT_powers', 'IE_REZERO_ln'],
       youtubeUrl: 'https://www.youtube.com/@IsekaiExplained',
@@ -398,7 +398,7 @@ export const CREATORS = [
       category: 'anime',
       avatar: 'AS',
       avatarGradient: 'linear-gradient(135deg,#f953c6,#b91d73)',
-      bio: "Breaking anime news and seasonal first impressions delivered fast. Anime Senpai covers announcements, trailers, and seasonal previews — the quickest way to stay current with what's coming in anime.",
+      bio: "Breaking anime news and seasonal first impressions delivered fast. Anime Senpai covers announcements, trailers, and seasonal previews â the quickest way to stay current with what's coming in anime.",
       tags: ['Anime News', 'First Impressions', 'Seasonal Preview', 'Trailers', 'Announcements'],
       featuredVideoIds: [],
       youtubeUrl: 'https://www.youtube.com/@AnimeSenpai',
@@ -414,7 +414,7 @@ export const CREATORS = [
       category: 'anime',
       avatar: 'PF',
       avatarGradient: 'linear-gradient(135deg,#e91e8c,#f7c948)',
-      bio: "A rising voice covering shojo, josei, and romance anime with critical depth. PedaFan brings much-needed balance to the anime discourse — exploring stories, art, and emotional beats that too many channels overlook.",
+      bio: "A rising voice covering shojo, josei, and romance anime with critical depth. PedaFan brings much-needed balance to the anime discourse â exploring stories, art, and emotional beats that too many channels overlook.",
       tags: ['Shojo', 'Josei', 'Romance Anime', 'Anime Reviews', 'Underrepresented Genres'],
       featuredVideoIds: [],
       youtubeUrl: 'https://www.youtube.com/@PedaFan',
@@ -422,7 +422,76 @@ export const CREATORS = [
       status: 'pending',
       featured: false,
   },
-  ]
+  
+// ════════════════════════════════════════════════════════════
+// SPRINT 5.4 — LIGHT NOVEL CREATOR ADDITIONS
+// AniNews, Echidnut, Hiding in Public, Manime Matt
+// ════════════════════════════════════════════════════════════
+{
+id: 'aninews',
+name: 'AniNews',
+handle: '@AniNews',
+creatorStatus: 'rising',
+category: 'light-novel',
+avatar: 'AN',
+avatarGradient: 'linear-gradient(135deg,#0f2027,#203a43,#2c5364)',
+bio: 'Deep-dive light novel coverage for Overlord, Re:Zero, Mushoku Tensei, and Tensura. AniNews regularly covers LN cut content, novel-only material, timelines, and character analysis that goes far beyond the anime adaptation.',
+tags: ['Light Novels', 'Overlord', 'Re:Zero', 'Mushoku Tensei', 'LN Cut Content'],
+featuredVideoIds: ['LN002', 'LN004', 'LN021'],
+youtubeUrl: 'https://www.youtube.com/@AniNews',
+youtubeChannelId: 'NEEDS_VERIFICATION',
+status: 'approved',
+featured: false,
+},
+{
+id: 'echidnut',
+name: 'Echidnut',
+handle: '@Echidnut',
+creatorStatus: 'rising',
+category: 'light-novel',
+avatar: 'EC',
+avatarGradient: 'linear-gradient(135deg,#1a1a2e,#c94b4b)',
+bio: 'The go-to channel for Re:Zero lore, timelines, and deep character analysis. Echidnut specialises in the Re:Zero light novel universe — covering every death, route, and story detail far beyond what the anime shows.',
+tags: ['Re:Zero', 'LN Lore', 'Character Analysis', 'Timelines', 'Re:Zero Spoilers'],
+featuredVideoIds: ['LN003', 'LN013', 'LN032'],
+youtubeUrl: 'https://www.youtube.com/@Echidnut',
+youtubeChannelId: 'NEEDS_VERIFICATION',
+status: 'approved',
+featured: false,
+},
+{
+id: 'hidingInPublic',
+name: 'Hiding in Public',
+handle: '@HidinginPublic',
+creatorStatus: 'rising',
+category: 'light-novel',
+avatar: 'HP',
+avatarGradient: 'linear-gradient(135deg,#2c3e50,#3498db)',
+bio: 'Deep character breakdowns and psychological analysis of light novel protagonists. Best known for Classroom of the Elite and Eminence in Shadow — bringing a philosophical and analytical lens to the most complex LN characters.',
+tags: ['Character Analysis', 'CotE', 'Eminence in Shadow', 'Philosophy', 'LN Deep Dives'],
+featuredVideoIds: ['LN010', 'LN015', 'LN025'],
+youtubeUrl: 'https://www.youtube.com/@HidinginPublic',
+youtubeChannelId: 'NEEDS_VERIFICATION',
+status: 'approved',
+featured: false,
+},
+{
+id: 'manimeMatt',
+name: 'Manime Matt',
+handle: '@ManimeMatt',
+creatorStatus: 'rising',
+category: 'light-novel',
+avatar: 'MM',
+avatarGradient: 'linear-gradient(135deg,#373B44,#4286f4)',
+bio: 'Light novel reviews and reading recommendations for every type of reader. Manime Matt covers hidden gems, dark novels, and titles that deserve far more attention — essential viewing for anyone looking to start or expand their LN library.',
+tags: ['LN Reviews', 'Recommendations', 'Hidden Gems', 'Dark Light Novels', 'Reading Lists'],
+featuredVideoIds: ['LN042', 'LN045', 'LN050'],
+youtubeUrl: 'https://www.youtube.com/@ManimeMatt',
+youtubeChannelId: 'NEEDS_VERIFICATION',
+status: 'approved',
+featured: false,
+},
+]
 
 export const APPROVED_CREATORS = CREATORS.filter(c => c.status === 'approved')
 export const FEATURED_CREATORS = CREATORS.filter(c => c.featured)
