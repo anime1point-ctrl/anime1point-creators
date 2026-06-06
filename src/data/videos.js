@@ -151,7 +151,7 @@ export const VIDEOS = [
 { id: 'YBR_RZ_s4ep8', title: "Re:Zero Season 4 Episode 8 REACTION — Subaru's Darkest Hour", creatorId: 'yaboyRoshi', category: 'anime', franchise: 're-zero', tags: ['episode-review'], section: 'latest', publishedAt: '2026-05-23' },
 { id: 'YBR_JJK_ep24', title: 'Jujutsu Kaisen Season 3 Episode 24 REACTION — Sukuna vs Gojo Finale', creatorId: 'yaboyRoshi', category: 'anime', franchise: 'jjk', tags: ['episode-review', 'fight-breakdown'], section: 'trending', publishedAt: '2026-05-20' },
 { id: 'YBR_JJK_ep23', title: 'Jujutsu Kaisen Season 3 Episode 23 REACTION — The Culling Game Ends', creatorId: 'yaboyRoshi', category: 'anime', franchise: 'jjk', tags: ['episode-review'], section: 'latest', publishedAt: '2026-05-13' },
-{ id: 'YBR_BLEACH_ep28', title: 'Bleach TYBW Episode 28 REACTION — Yhwach's Final Form', creatorId: 'yaboyRoshi', category: 'anime', franchise: 'bleach', tags: ['episode-review', 'fight-breakdown'], section: 'featured', publishedAt: '2026-05-05' },
+{ id: 'YBR_BLEACH_ep28', title: "Bleach TYBW Episode 28 REACTION — Yhwach's Final Form", creatorId: 'yaboyRoshi', category: 'anime', franchise: 'bleach', tags: ['episode-review', 'fight-breakdown'], section: 'featured', publishedAt: '2026-05-05' },
 { id: 'YBR_DB_ep10', title: 'Dragon Ball Daima Episode 10 REACTION — Gohan Goes Beyond', creatorId: 'yaboyRoshi', category: 'anime', franchise: 'dragon-ball', tags: ['episode-review'], section: 'hidden-gem', publishedAt: '2026-04-18' },
 
 // ════════════════════════════════════════════════════════════
@@ -159,17 +159,17 @@ export const VIDEOS = [
 // ════════════════════════════════════════════════════════════
 { id: 'FA_OVL_vol16', title: 'Overlord Volume 16 Review — The Final Curtain Rises', creatorId: 'foxenAnime', category: 'light-novel', franchise: 'overlord', tags: ['ln-review', 'analysis'], section: 'trending', publishedAt: '2026-05-28' },
 { id: 'FA_OVL_full', title: 'Overlord Complete Story — Every Volume Explained (LN Spoilers)', creatorId: 'foxenAnime', category: 'light-novel', franchise: 'overlord', tags: ['ln-review', 'lore'], section: 'featured', publishedAt: '2026-04-15' },
-{ id: 'FA_MT_vol24', title: 'Mushoku Tensei Volume 24 Review — Rudeus's Final Journey', creatorId: 'foxenAnime', category: 'light-novel', franchise: 'mushoku-tensei', tags: ['ln-review', 'analysis'], section: 'trending', publishedAt: '2026-05-10' },
+{ id: 'FA_MT_vol24', title: "Mushoku Tensei Volume 24 Review — Rudeus's Final Journey", creatorId: 'foxenAnime', category: 'light-novel', franchise: 'mushoku-tensei', tags: ['ln-review', 'analysis'], section: 'trending', publishedAt: '2026-05-10' },
 { id: 'FA_MT_full', title: 'Mushoku Tensei: The FULL Story Beyond the Anime (LN Spoilers)', creatorId: 'foxenAnime', category: 'light-novel', franchise: 'mushoku-tensei', tags: ['ln-review', 'lore'], section: 'featured', publishedAt: '2026-03-22' },
-{ id: 'FA_BW_ln_vs', title: 'Bookworm LN vs Anime — What's Different and What's Better', creatorId: 'foxenAnime', category: 'light-novel', franchise: 'bookworm', tags: ['ln-review', 'analysis'], section: 'hidden-gem', publishedAt: '2026-02-28' },
-{ id: 'FA_COTE_ln', title: 'Classroom of the Elite LN Season 4 — What the Anime Won't Cover', creatorId: 'foxenAnime', category: 'light-novel', franchise: 'cote', tags: ['ln-review', 'lore'], section: 'hidden-gem', publishedAt: '2026-04-05' },
+{ id: 'FA_BW_ln_vs', title: "Bookworm LN vs Anime — What's Different and What's Better", creatorId: 'foxenAnime', category: 'light-novel', franchise: 'bookworm', tags: ['ln-review', 'analysis'], section: 'hidden-gem', publishedAt: '2026-02-28' },
+{ id: 'FA_COTE_ln', title: "Classroom of the Elite LN Season 4 — What the Anime Won't Cover", creatorId: 'foxenAnime', category: 'light-novel', franchise: 'cote', tags: ['ln-review', 'lore'], section: 'hidden-gem', publishedAt: '2026-04-05' },
 
 // ════════════════════════════════════════════════════════════
 // THE CANIPA EFFECT — Production Analysis
 // ════════════════════════════════════════════════════════════
-{ id: 'CE_prod_spring26', title: 'Spring 2026 Anime Production Report — Who's Struggling?', creatorId: 'canipa', category: 'anime', franchise: 'multi', tags: ['industry', 'analysis'], section: 'trending', publishedAt: '2026-05-15' },
-{ id: 'CE_prod_tensura', title: 'Tensura S4 Production Deep Dive — Eight Bit's Ambition', creatorId: 'canipa', category: 'anime', franchise: 'tensura', tags: ['industry', 'analysis'], section: 'featured', publishedAt: '2026-04-08' },
-{ id: 'CE_prod_frieren', title: 'Why Frieren Looks So Good — Madhouse's Sakuga Secrets', creatorId: 'canipa', category: 'anime', franchise: 'frieren', tags: ['industry', 'analysis'], section: 'featured', publishedAt: '2026-03-15' },
+{ id: 'CE_prod_spring26', title: "Spring 2026 Anime Production Report — Who's Struggling?", creatorId: 'canipa', category: 'anime', franchise: 'multi', tags: ['industry', 'analysis'], section: 'trending', publishedAt: '2026-05-15' },
+{ id: 'CE_prod_tensura', title: "Tensura S4 Production Deep Dive — Eight Bit's Ambition", creatorId: 'canipa', category: 'anime', franchise: 'tensura', tags: ['industry', 'analysis'], section: 'featured', publishedAt: '2026-04-08' },
+{ id: 'CE_prod_frieren', title: "Why Frieren Looks So Good — Madhouse's Sakuga Secrets", creatorId: 'canipa', category: 'anime', franchise: 'frieren', tags: ['industry', 'analysis'], section: 'featured', publishedAt: '2026-03-15' },
 { id: 'CE_prod_2025', title: 'Best Animated Anime of 2025 — The Production Winners', creatorId: 'canipa', category: 'anime', franchise: 'multi', tags: ['ranking', 'industry'], section: 'hidden-gem', publishedAt: '2026-01-20' },
 
 // ════════════════════════════════════════════════════════════
@@ -187,14 +187,14 @@ export const VIDEOS = [
 { id: 'AU_BTV_ch35', title: 'Boruto Two Blue Vortex Chapter 35 — Naruto Returns?!', creatorId: 'animeUproar', category: 'manga', franchise: 'naruto', tags: ['chapter-review', 'theory'], section: 'trending', publishedAt: '2026-06-01' },
 { id: 'AU_BTV_ch34', title: 'Boruto Two Blue Vortex Chapter 34 — The Time Skip Mystery', creatorId: 'animeUproar', category: 'manga', franchise: 'naruto', tags: ['chapter-review', 'lore'], section: 'latest', publishedAt: '2026-05-05' },
 { id: 'AU_NAR_power', title: 'Naruto Power Scaling 2026 — Who Is Actually the Strongest?', creatorId: 'animeUproar', category: 'anime', franchise: 'naruto', tags: ['power-scaling', 'ranking'], section: 'featured', publishedAt: '2026-04-10' },
-{ id: 'AU_NAR_sasuke', title: 'Sasuke's Complete Story — The Greatest Redemption Arc in Anime', creatorId: 'animeUproar', category: 'anime', franchise: 'naruto', tags: ['character-analysis', 'analysis'], section: 'hidden-gem', publishedAt: '2026-03-01' },
+{ id: 'AU_NAR_sasuke', title: "Sasuke's Complete Story — The Greatest Redemption Arc in Anime", creatorId: 'animeUproar', category: 'anime', franchise: 'naruto', tags: ['character-analysis', 'analysis'], section: 'hidden-gem', publishedAt: '2026-03-01' },
 
 // ════════════════════════════════════════════════════════════
 // MANGARAMEN — Classic & Literary Manga
 // ════════════════════════════════════════════════════════════
-{ id: 'MR_KINGDOM_ch800', title: 'Kingdom Chapter 800 Review — Xin's Greatest Battle Begins', creatorId: 'mangaRamen', category: 'manga', franchise: 'kingdom', tags: ['chapter-review', 'analysis'], section: 'trending', publishedAt: '2026-05-22' },
+{ id: 'MR_KINGDOM_ch800', title: "Kingdom Chapter 800 Review — Xin's Greatest Battle Begins", creatorId: 'mangaRamen', category: 'manga', franchise: 'kingdom', tags: ['chapter-review', 'analysis'], section: 'trending', publishedAt: '2026-05-22' },
 { id: 'MR_VAGABOND_review', title: 'Vagabond — The Greatest Manga Ever Made? A Full Review', creatorId: 'mangaRamen', category: 'manga', franchise: 'vagabond', tags: ['manga-review', 'analysis'], section: 'featured', publishedAt: '2026-04-18' },
-{ id: 'MR_BERSERK_legacy', title: 'Berserk's Legacy After Volume 41 — Where Does It Stand?', creatorId: 'mangaRamen', category: 'manga', franchise: 'berserk', tags: ['analysis', 'essay'], section: 'hidden-gem', publishedAt: '2026-03-25' },
+{ id: 'MR_BERSERK_legacy', title: "Berserk's Legacy After Volume 41 — Where Does It Stand?", creatorId: 'mangaRamen', category: 'manga', franchise: 'berserk', tags: ['analysis', 'essay'], section: 'hidden-gem', publishedAt: '2026-03-25' },
 { id: 'MR_KINGDOM_intro', title: 'Why You NEED to Read Kingdom — The Perfect Entry Point', creatorId: 'mangaRamen', category: 'manga', franchise: 'kingdom', tags: ['review', 'hidden-gem-pick'], section: 'hidden-gem', publishedAt: '2026-02-10' },
 
 // ════════════════════════════════════════════════════════════
