@@ -148,7 +148,7 @@ export const VIDEOS = [
 // YABOYРOSHI — Seasonal Episode Reactions
 // ════════════════════════════════════════════════════════════
 { id: 'YBR_RZ_s4ep9', title: 'Re:Zero Season 4 Episode 9 REACTION — This Changed Everything', creatorId: 'yaboyRoshi', category: 'anime', franchise: 're-zero', tags: ['episode-review'], section: 'trending', publishedAt: '2026-05-30' },
-{ id: 'YBR_RZ_s4ep8', title: 'Re:Zero Season 4 Episode 8 REACTION — Subaru's Darkest Hour', creatorId: 'yaboyRoshi', category: 'anime', franchise: 're-zero', tags: ['episode-review'], section: 'latest', publishedAt: '2026-05-23' },
+{ id: 'YBR_RZ_s4ep8', title: 'Re:Zero Season 4 Episode 8 REACTION — 's Darkest Hour', creatorId: 'yaboyRoshi', category: 'anime', franchise: 're-zero', tags: ['episode-review'], section: 'latest', publishedAt: '2026-05-23' },
 { id: 'YBR_JJK_ep24', title: 'Jujutsu Kaisen Season 3 Episode 24 REACTION — Sukuna vs Gojo Finale', creatorId: 'yaboyRoshi', category: 'anime', franchise: 'jjk', tags: ['episode-review', 'fight-breakdown'], section: 'trending', publishedAt: '2026-05-20' },
 { id: 'YBR_JJK_ep23', title: 'Jujutsu Kaisen Season 3 Episode 23 REACTION — The Culling Game Ends', creatorId: 'yaboyRoshi', category: 'anime', franchise: 'jjk', tags: ['episode-review'], section: 'latest', publishedAt: '2026-05-13' },
 { id: 'YBR_BLEACH_ep28', title: 'Bleach TYBW Episode 28 REACTION — Yhwach's Final Form', creatorId: 'yaboyRoshi', category: 'anime', franchise: 'bleach', tags: ['episode-review', 'fight-breakdown'], section: 'featured', publishedAt: '2026-05-05' },
@@ -273,7 +273,7 @@ export const VIDEOS = [
 // ────────────────────────────────────────────────────────────
 
 // ── THE ANIME MAN — Latest additions ──
-{ id: 'TAM_latest_re0', title: 'Re:Zero Season 4 — What the Light Novel Changes About Subaru', creatorId: 'theanimeman', category: 'light-novel', franchise: 're-zero', tags: ['ln-review', 'analysis'], section: 'latest', publishedAt: '2026-05-28' },
+{ id: 'TAM_latest_re0', title: 'Re:Zero Season 4 — What the Light Novel Changes About ', creatorId: 'theanimeman', category: 'light-novel', franchise: 're-zero', tags: ['ln-review', 'analysis'], section: 'latest', publishedAt: '2026-05-28' },
 { id: 'TAM_latest_jjk', title: 'Jujutsu Kaisen Is Almost Over — My Honest Final Thoughts', creatorId: 'theanimeman', category: 'anime', franchise: 'jjk', tags: ['review', 'essay'], section: 'latest', publishedAt: '2026-06-02' },
 
 // ── FOXEN ANIME — Latest additions ──
