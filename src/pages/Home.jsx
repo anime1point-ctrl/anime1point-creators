@@ -6,19 +6,13 @@ import { CATEGORY_MAP } from '../data/categories'
 import { getHomeSections } from '../data/homeSections'
 import { useVideoModal } from '../context/VideoModalContext'
 import { Analytics } from '../utils/analytics'
-
-// Returns true only for real 11-char YouTube video IDs (not placeholder IDs)
-function hasRealThumbnail(videoId) {
-  if (!videoId) return false
-  if (videoId.includes('_vid_')) return false
-  return /^[A-Za-z0-9_\-]{11}$/.test(videoId)
-}
+import { isRealYouTubeId } from '../utils/youtube'
 
 function VideoCard({ video, priority = false }) {
   const { openModal } = useVideoModal()
   const creator = CREATOR_MAP[video.creatorId]
   const [imgError, setImgError] = useState(false)
-  const showThumb = hasRealThumbnail(video.id) && !imgError
+  const showThumb = isRealYouTubeId(video.id) && !imgError
   const categoryLabel = CATEGORY_MAP[video.category]?.label || video.category
   const badgeCategory = video.category === 'light-novel' ? 'novels' : video.category
 
@@ -193,4 +187,4 @@ export default function Home() {
       })}
     </div>
   )
-                          }
+}
