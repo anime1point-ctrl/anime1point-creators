@@ -1,4 +1,4 @@
-—import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { CREATOR_MAP } from '../data/creators'
 import { VIDEOS } from '../data/videos'
