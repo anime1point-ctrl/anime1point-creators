@@ -426,6 +426,91 @@ export const VIDEOS = [
 { id: 'CICdWFyiNU8', title: 'The New Isekai That Changed The Game (My Life as a Villainess)', creatorId: 'manimeMatt', category: 'light-novel', franchise: 'multi', tags: ['ln-review', 'hidden-gem-pick'], section: 'hidden-gem', publishedAt: '2021-11-05' },
 { id: '-6RFln08ox0', title: 'Classroom of The Elite and Escapism', creatorId: 'manimeMatt', category: 'light-novel', franchise: 'cote', tags: ['ln-review', 'analysis'], section: 'hidden-gem', publishedAt: '2022-08-30' },
 { id: 'nu6yyd6Etyc', title: 'Why You Should Watch EroManga-Sensei (Satire) - LN Comedy Guide', creatorId: 'manimeMatt', category: 'light-novel', franchise: 'multi', tags: ['ln-review', 'essay'], section: 'hidden-gem', publishedAt: '2021-04-18' },
+
+  // ════════════════════════════════════════════════════════════
+  // SPRINT 5.6 — SEINEN, ECCHI & DRAMA — 60 NEW VIDEOS
+  // 20 anime + 20 manga + 20 light-novel
+  // New & existing creators — giving a platform to rising voices
+  // ════════════════════════════════════════════════════════════
+
+  // ── ANIME — SEINEN ───────────────────────────────────────────
+  { id: '1qk1BoGRM7c', title: 'Stop Sleeping on Vinland Saga.', creatorId: 'gigguk', category: 'anime', franchise: 'multi', tags: ['essay', 'analysis'], section: 'trending', publishedAt: '2020-09-05' },
+{ id: 'Z7BH6YQeWoI', title: 'I Met the Legendary Author of Vinland Saga', creatorId: 'gigguk', category: 'anime', franchise: 'multi', tags: ['essay', 'industry'], section: 'featured', publishedAt: '2023-10-02' },
+{ id: 'H1B1drKq1wI', title: 'Fullmetal Alchemist: Brotherhood - REVIEW', creatorId: 'danielGreene', category: 'anime', franchise: 'multi', tags: ['review', 'analysis'], section: 'featured', publishedAt: '2021-03-14' },
+{ id: 'nHtA0nuIH-o', title: 'Parasyte Is Horrendous fun!', creatorId: 'danielGreene', category: 'anime', franchise: 'multi', tags: ['review', 'hidden-gem-pick'], section: 'hidden-gem', publishedAt: '2022-06-20' },
+{ id: 'UY_6d79zNcU', title: 'Why you SHOULD Watch Seinen Anime (Vinland Saga, Berserk)', creatorId: 'hyacinthReviews', category: 'anime', franchise: 'multi', tags: ['essay', 'analysis'], section: 'hidden-gem', publishedAt: '2023-04-10' },
+{ id: 'AlSjlg1dWWE', title: 'Vinland Saga - Anime Review [SS-Tier] [Action] [Viking] [Deep Plot]', creatorId: 'myAnimeEncyclopedia', category: 'anime', franchise: 'multi', tags: ['review', 'analysis'], section: 'hidden-gem', publishedAt: '2023-07-22' },
+{ id: '688Zvpho1vG', title: 'Are Seinen Anime Better Than Shonen?', creatorId: 'bobsamurai', category: 'anime', franchise: 'multi', tags: ['essay', 'analysis'], section: 'featured', publishedAt: '2021-11-08' },
+{ id: 'jP2kiSAD6w0', title: 'Why Parasyte is an Underrated Masterpiece \u2014 The Greatest Philosophy In Anime', creatorId: 'animeballsdeep', category: 'anime', franchise: 'multi', tags: ['analysis', 'essay'], section: 'trending', publishedAt: '2022-08-14' },
+{ id: 'RkyRU52khr0', title: 'The BEST advice from Vinland Saga', creatorId: 'scamboliReviews', category: 'anime', franchise: 'multi', tags: ['analysis', 'essay'], section: 'hidden-gem', publishedAt: '2023-09-01' },
+{ id: '9HC13nBIS7g', title: 'The King of Shonen \u2014 Fullmetal Alchemist Brotherhood', creatorId: 'scamboliReviews', category: 'anime', franchise: 'multi', tags: ['review', 'analysis'], section: 'trending', publishedAt: '2022-11-20' },
+
+  // ── ANIME — ECCHI ─────────────────────────────────────────────
+{ id: 'sJ6CUhwqvAo', title: 'Is Ecchi In Anime A Problem? | Ask Brandon', creatorId: 'ahbrandon', category: 'anime', franchise: 'multi', tags: ['essay', 'industry'], section: 'trending', publishedAt: '2022-04-05' },
+{ id: 'dQiwNdadEsY', title: 'Funniest Anime You Have NOT Seen | Hidden & Best Comedy Anime', creatorId: 'foxenAnime', category: 'anime', franchise: 'multi', tags: ['ranking', 'hidden-gem-pick'], section: 'hidden-gem', publishedAt: '2021-09-08' },
+{ id: 'ogW7xRRxK0w', title: 'This Anime is Terrible and I Can\'t Stop Watching it', creatorId: 'scamboliReviews', category: 'anime', franchise: 'multi', tags: ['review', 'essay'], section: 'hidden-gem', publishedAt: '2023-02-14' },
+{ id: 'qalaDO4ogps', title: 'What\'s Worse: Ecchi or Shoujo Trash Anime?', creatorId: 'manimeMatt', category: 'anime', franchise: 'multi', tags: ['essay', 'review'], section: 'hidden-gem', publishedAt: '2022-07-03' },
+{ id: 'XySt1Xdq3oE', title: 'Your Favorite Isekai Probably Copied Mushoku Tensei', creatorId: 'scamboliReviews', category: 'anime', franchise: 'mushoku-tensei', tags: ['analysis', 'essay'], section: 'trending', publishedAt: '2023-05-22' },
+{ id: 'ymUJgnUKXo8', title: "The Horse Girl Anime Shouldn't Go This Hard", creatorId: 'gigguk', category: 'anime', franchise: 'multi', tags: ['essay'], section: 'hidden-gem', publishedAt: '2025-11-05' },
+{ id: '_b4fw4QTiY0', title: 'DEATH NOTE - RANT REVIEW', creatorId: 'danielGreene', category: 'anime', franchise: 'multi', tags: ['review', 'analysis'], section: 'trending', publishedAt: '2020-11-05' },
+{ id: '4UK_PdRWRYQ', title: 'Why I Love Bad Anime', creatorId: 'gigguk', category: 'anime', franchise: 'multi', tags: ['essay', 'review'], section: 'hidden-gem', publishedAt: '2020-03-15' },
+{ id: 'hzmlshfODSM', title: 'Does Love in Anime Give You Impossible Expectations?', creatorId: 'foxenAnime', category: 'anime', franchise: 'multi', tags: ['essay', 'industry'], section: 'hidden-gem', publishedAt: '2022-02-14' },
+
+  // ── ANIME — DRAMA ─────────────────────────────────────────────
+{ id: 'zF-BQh9YZjo', title: 'Banana Fish [WATCH or NOT]', creatorId: 'mudanTV', category: 'anime', franchise: 'multi', tags: ['review', 'hidden-gem-pick'], section: 'featured', publishedAt: '2022-09-15' },
+{ id: 'SHZWDsPs7Qw', title: 'The ENTIRE Story Of Banana Fish In 88 Minutes', creatorId: 'jaranime', category: 'anime', franchise: 'multi', tags: ['analysis', 'lore'], section: 'hidden-gem', publishedAt: '2023-03-20' },
+
+  // ── MANGA — SEINEN ────────────────────────────────────────────
+{ id: 'uQRIjdWvex8', title: 'BERSERK: A Massive Review', creatorId: 'totallynotmark', category: 'manga', franchise: 'berserk', tags: ['manga-review', 'analysis'], section: 'trending', publishedAt: '2021-05-20' },
+{ id: 'ZKbp1sB3Ef8', title: 'I lost control of this Vinland Saga review.', creatorId: 'totallynotmark', category: 'manga', franchise: 'multi', tags: ['manga-review', 'analysis'], section: 'featured', publishedAt: '2026-05-22' },
+{ id: 'I78K8lDKAnI', title: 'The Best Seinen Manga that isn\'t Berserk, Vagabond, or Vinland Saga!', creatorId: 'seinenMosaic', category: 'manga', franchise: 'multi', tags: ['ranking', 'hidden-gem-pick'], section: 'trending', publishedAt: '2025-08-15' },
+{ id: 'vHesm8i2c94', title: 'Top 10 Underrated Manga You MUST Read in 2025!', creatorId: 'seinenMosaic', category: 'manga', franchise: 'multi', tags: ['ranking', 'hidden-gem-pick'], section: 'featured', publishedAt: '2025-03-22' },
+{ id: '59wLn_COfoo', title: '5 Underrated Seinen Manga To Read (Finished)', creatorId: 'delusional675', category: 'manga', franchise: 'multi', tags: ['ranking', 'hidden-gem-pick'], section: 'hidden-gem', publishedAt: '2024-11-10' },
+{ id: 'vOi8HR1virQ', title: 'Should You Read: MONSTER', creatorId: 'seinenMosaic', category: 'manga', franchise: 'multi', tags: ['manga-review', 'hidden-gem-pick'], section: 'hidden-gem', publishedAt: '2025-01-18' },
+{ id: 'DJwt57ew5FQ', title: 'What Makes These Manga Special?', creatorId: 'delusional675', category: 'manga', franchise: 'multi', tags: ['analysis', 'manga-review'], section: 'hidden-gem', publishedAt: '2024-07-04' },
+{ id: 'qRBSBzj7DS0', title: 'Tidal Wave of Darkness \u2014 Berserk Vol. 20 & 21 Review', creatorId: 'danielGreene', category: 'manga', franchise: 'berserk', tags: ['manga-review', 'analysis'], section: 'featured', publishedAt: '2023-08-28' },
+{ id: 'gSBNqjrc_dk', title: 'Determination and Departure \u2014 Berserk Vol. 21 Review', creatorId: 'danielGreene', category: 'manga', franchise: 'berserk', tags: ['manga-review', 'analysis'], section: 'latest', publishedAt: '2023-10-10' },
+{ id: 'Q6hZkZyx6KU', title: '3 Underrated Seinen Manga You MUST Read | Completed Hidden Gems in 2026', creatorId: 'delusional675', category: 'manga', franchise: 'multi', tags: ['ranking', 'hidden-gem-pick'], section: 'trending', publishedAt: '2026-01-15' },
+
+  // ── MANGA — ECCHI ─────────────────────────────────────────────
+{ id: 'nu6yyd6Etyc', title: 'Why You Should Watch EroManga-Sensei (Satire)', creatorId: 'manimeMatt', category: 'manga', franchise: 'multi', tags: ['essay', 'review'], section: 'hidden-gem', publishedAt: '2021-04-18' },
+{ id: 'Eh_nK2r6I3w', title: 'Why Isekai, Harem & Ecchi Light Novels Sell So Well', creatorId: 'manimeMatt', category: 'manga', franchise: 'multi', tags: ['analysis', 'industry'], section: 'hidden-gem', publishedAt: '2022-05-12' },
+{ id: 'hzmlshfODSM', title: 'Does Love in Anime Give You Impossible Expectations?', creatorId: 'foxenAnime', category: 'manga', franchise: 'multi', tags: ['essay', 'analysis'], section: 'hidden-gem', publishedAt: '2022-02-14' },
+{ id: 'CjFjbAwJwwc', title: 'Goodbye Horimiya! Did Best Romance Anime Deliver?', creatorId: 'foxenAnime', category: 'manga', franchise: 'multi', tags: ['review', 'analysis'], section: 'featured', publishedAt: '2021-03-27' },
+{ id: 'AwNevpfQDOg', title: 'Mysterious Girlfriend X \u2014 Romance, Comedy Review | BobSamurai', creatorId: 'bobsamurai', category: 'manga', franchise: 'multi', tags: ['review', 'hidden-gem-pick'], section: 'hidden-gem', publishedAt: '2015-10-10' },
+
+  // ── MANGA — DRAMA ─────────────────────────────────────────────
+{ id: 'kssXuu0J8XQ', title: 'Is BANANA FISH Worth Binging?!', creatorId: 'mudanTV', category: 'manga', franchise: 'multi', tags: ['review', 'hidden-gem-pick'], section: 'trending', publishedAt: '2022-10-05' },
+{ id: 'QXMDOUa3R68', title: 'Horimiya Manga Review', creatorId: 'totallynotmark', category: 'manga', franchise: 'multi', tags: ['manga-review', 'analysis'], section: 'featured', publishedAt: '2021-08-05' },
+{ id: '42n_xUqYyn0', title: 'Goodnight PunPun Crushed Me', creatorId: 'realliferyan', category: 'manga', franchise: 'multi', tags: ['manga-review', 'hidden-gem-pick'], section: 'trending', publishedAt: '2024-02-18' },
+{ id: '2iIF7tlbApw', title: 'The AKIRA Manga Is More INSANE Than You Can Imagine', creatorId: 'realliferyan', category: 'manga', franchise: 'multi', tags: ['manga-review', 'analysis'], section: 'featured', publishedAt: '2024-05-12' },
+{ id: 'MXaU8NF_soc', title: 'How Seinen Manga Shapes Must-Watch Anime Adaptations', creatorId: 'seinenMosaic', category: 'manga', franchise: 'multi', tags: ['analysis', 'industry'], section: 'hidden-gem', publishedAt: '2025-06-10' },
+
+  // ── LIGHT NOVEL — SEINEN ─────────────────────────────────────
+{ id: 'QceeYYpGNZ8', title: 'Goblin Slayer Light Novel Review', creatorId: 'belmakor19', category: 'light-novel', franchise: 'multi', tags: ['ln-review', 'analysis'], section: 'featured', publishedAt: '2022-03-14' },
+{ id: '83rhfB3Iq8Y', title: 'Goblin Slayer \u2014 Yen Press \u2014 Light Novel Review', creatorId: 'otakuRR', category: 'light-novel', franchise: 'multi', tags: ['ln-review', 'hidden-gem-pick'], section: 'hidden-gem', publishedAt: '2021-11-07' },
+{ id: 'jJ3Es3vtQgU', title: 'Goblin Slayer Volume 1 Light Novel Review', creatorId: 'belmakor19', category: 'light-novel', franchise: 'multi', tags: ['ln-review', 'analysis'], section: 'hidden-gem', publishedAt: '2021-09-20' },
+{ id: 'rJv6-GMWOPc', title: 'Mushoku Tensei \u2014 A Deep Look Into the World History Lore', creatorId: 'foxenAnime', category: 'light-novel', franchise: 'mushoku-tensei', tags: ['lore', 'ln-review'], section: 'trending', publishedAt: '2025-10-28' },
+{ id: 'eCik7GTUvEc', title: 'Mushoku Tensei \u2014 Dark History of Demon Wars & Rudeus Full Story', creatorId: 'aninews', category: 'light-novel', franchise: 'mushoku-tensei', tags: ['lore', 'ln-review'], section: 'featured', publishedAt: '2026-04-20' },
+{ id: 'DPkhqd3NaLs', title: 'How Ainz Accidentally Started A Cult \u2014 Overlord Hidden Character Moments', creatorId: 'aninews', category: 'light-novel', franchise: 'overlord', tags: ['character-analysis', 'lore'], section: 'trending', publishedAt: '2026-02-15' },
+{ id: 'mDePH-0F2fc', title: 'How Strong Is Jaldabaoth Compared To Ainz \u2014 Overlord Power Analysis', creatorId: 'aninews', category: 'light-novel', franchise: 'overlord', tags: ['power-scaling', 'character-analysis'], section: 'featured', publishedAt: '2026-02-10' },
+{ id: 'GrH5x7dZjq8', title: 'The Level 100 Opponent That Made Ainz Panic \u2014 Overlord Movie Cut Content', creatorId: 'aninews', category: 'light-novel', franchise: 'overlord', tags: ['power-scaling', 'lore'], section: 'hidden-gem', publishedAt: '2025-12-05' },
+{ id: '-6RFln08ox0', title: 'Classroom of The Elite and Escapism', creatorId: 'manimeMatt', category: 'light-novel', franchise: 'cote', tags: ['ln-review', 'analysis'], section: 'trending', publishedAt: '2022-08-30' },
+{ id: 'TEbErOYk8_o', title: 'Rating Every Light Novel I\'ve Ever Read', creatorId: 'belmakor19', category: 'light-novel', franchise: 'multi', tags: ['ranking', 'ln-review'], section: 'featured', publishedAt: '2023-06-18' },
+
+  // ── LIGHT NOVEL — ECCHI ───────────────────────────────────────
+{ id: 'CICdWFyiNU8', title: 'The New Isekai That Changed The Game (My Life as a Villainess)', creatorId: 'manimeMatt', category: 'light-novel', franchise: 'multi', tags: ['ln-review', 'hidden-gem-pick'], section: 'hidden-gem', publishedAt: '2021-11-05' },
+{ id: 'Oe8_cU5vANw', title: 'Top 10 Slice of Life Anime \u2014 Ranked', creatorId: 'manimeMatt', category: 'light-novel', franchise: 'multi', tags: ['ranking', 'hidden-gem-pick'], section: 'hidden-gem', publishedAt: '2022-01-10' },
+{ id: 'BoCysCn0ZmU', title: 'The Eminence in Shadow \u2014 How Cid Was Isekai-ed & The Ending Explained', creatorId: 'aninews', category: 'light-novel', franchise: 'multi', tags: ['lore', 'ln-review'], section: 'featured', publishedAt: '2026-04-10' },
+{ id: '-YT6BE4UX_0', title: 'The Eminence in Shadow \u2014 Why Cid Is The Most OP Isekai Protagonist', creatorId: 'aninews', category: 'light-novel', franchise: 'multi', tags: ['character-analysis', 'power-scaling'], section: 'trending', publishedAt: '2026-03-20' },
+{ id: 'V6jxToNFBlc', title: 'That Time I Got Reincarnated as a Slime \u2014 How Magic Works Explained', creatorId: 'aninews', category: 'light-novel', franchise: 'tensura', tags: ['lore', 'analysis'], section: 'hidden-gem', publishedAt: '2026-04-05' },
+
+  // ── LIGHT NOVEL — DRAMA ───────────────────────────────────────
+{ id: 'LTS1MblNzsU', title: 'The Best Anime Episode of All Time \u2014 A Re:Zero Essay', creatorId: 'echidnut', category: 'light-novel', franchise: 're-zero', tags: ['essay', 'analysis'], section: 'featured', publishedAt: '2025-11-28' },
+{ id: '9aTUr_3SgzM', title: 'Re:Zero \u2014 Butterfly Dream: The Lust IF Story Explained', creatorId: 'echidnut', category: 'light-novel', franchise: 're-zero', tags: ['lore', 'analysis'], section: 'featured', publishedAt: '2025-11-05' },
+{ id: 'L2sFXPc_-Aw', title: 'The Key Deaths That Shaped Subaru \u2014 Re:Zero Season 3 Deep Dive', creatorId: 'echidnut', category: 'light-novel', franchise: 're-zero', tags: ['character-analysis', 'analysis'], section: 'trending', publishedAt: '2025-12-15' },
+{ id: 'N_btfSHOdb8', title: "Subaru's Most Insane Loop Was Darker Than You Think \u2014 Re:Zero LN", creatorId: 'aninews', category: 'light-novel', franchise: 're-zero', tags: ['lore', 'character-analysis'], section: 'hidden-gem', publishedAt: '2025-12-10' },
+{ id: 'DPTvWczQXhc', title: 'Re:Zero \u2014 The Brutal Twist That Changes Everything For Subaru', creatorId: 'aninews', category: 'light-novel', franchise: 're-zero', tags: ['lore', 'character-analysis'], section: 'trending', publishedAt: '2025-10-10' },
 ]
 
 export const TRENDING_VIDEOS  = VIDEOS.filter(v => v.section === 'trending')
