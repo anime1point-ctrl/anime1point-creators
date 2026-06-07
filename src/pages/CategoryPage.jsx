@@ -80,7 +80,7 @@ export default function CategoryPage() {
   const category = CATEGORY_MAP[slug]
   if (!category) return <Navigate to="/" replace />
 
-  const categoryVideos = VIDEOS.filter(v => v.category === slug)
+  const categoryVideos = [...VIDEOS].filter(v => v.category === slug).sort((a, b) => b.publishedAt.localeCompare(a.publishedAt))
 
   // Derive franchises that actually have videos in this category (sorted by count)
   const franchisesInCategory = useMemo(() => {
