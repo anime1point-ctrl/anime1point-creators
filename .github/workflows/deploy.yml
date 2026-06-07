@@ -27,6 +27,16 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Copy static HTML pages into dist
+        run: |
+          cp viewers.html dist/viewers.html
+          cp creators.html dist/creators.html
+          cp about.html dist/about.html
+          cp directory.html dist/directory.html
+          cp admin.html dist/admin.html
+          cp creator-profile.html dist/creator-profile.html
+          cp style.css dist/style.css
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
