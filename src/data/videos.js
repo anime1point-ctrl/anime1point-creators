@@ -382,6 +382,50 @@ export const VIDEOS = [
 { id: 'FwRg2oxNcb0', title: 'Re:Zero Complete Recap — Everything You Need To Know', creatorId: 'aninews', category: 'light-novel', franchise: 're-zero', tags: ['ln-review', 'lore'], section: 'featured', publishedAt: '2025-07-28' },
 { id: 'aJtg4yX_uWE', title: 'Re:Zero — What Happened To Subaru? Season 4 Episode 7 Deep Dive', creatorId: 'echidnut', category: 'light-novel', franchise: 're-zero', tags: ['lore', 'analysis'], section: 'latest', publishedAt: '2026-05-25' },
 { id: 'gWBdRBQQa7M', title: 'Sentenced To Be A Hero Finale — The Dark Truth Behind Being A Hero', creatorId: 'aninews', category: 'light-novel', franchise: 'multi', tags: ['lore', 'ln-review'], section: 'hidden-gem', publishedAt: '2026-04-30' },
+
+  // ════════════════════════════════════════════════════════════
+  // SPRINT 5.5 — ROMANCE, SLICE OF LIFE & COMEDY ADDITIONS
+  // Genres: romance, slice-of-life, comedy — across anime, manga, light-novel
+  // ════════════════════════════════════════════════════════════
+
+  // ── ANIME — ROMANCE ──────────────────────────────────────────
+  { id: 'o31VNNrasbE', title: 'She Doesn\'t Love You.', creatorId: 'gigguk', category: 'anime', franchise: 'multi', tags: ['essay', 'review'], section: 'trending', publishedAt: '2021-08-10' },
+{ id: '5lJaKoMf6As', title: 'The Perfect Anime', creatorId: 'gigguk', category: 'anime', franchise: 'multi', tags: ['essay', 'analysis'], section: 'featured', publishedAt: '2020-07-28' },
+{ id: 'lYWpeAUiFCo', title: 'The Unrivalled Genius of Kaguya-Sama: Love Is War', creatorId: 'mothersbasement', category: 'anime', franchise: 'multi', tags: ['analysis', 'essay'], section: 'featured', publishedAt: '2019-07-21' },
+{ id: 'SsI9KE7GBzQ', title: 'Why We Love My Dress-Up Darling', creatorId: 'mothersbasement', category: 'anime', franchise: 'multi', tags: ['analysis', 'review'], section: 'hidden-gem', publishedAt: '2022-04-15' },
+{ id: 'M1YVw_ispK4', title: 'GR Anime Review: My Teen Romantic Comedy SNAFU', creatorId: 'glassreflection', category: 'anime', franchise: 'multi', tags: ['review'], section: 'hidden-gem', publishedAt: '2013-10-05' },
+{ id: '2D1dCIqB_UE', title: 'So I\'m Watching My Dress Up Darling...', creatorId: 'glassreflection', category: 'anime', franchise: 'multi', tags: ['review', 'hidden-gem-pick'], section: 'hidden-gem', publishedAt: '2022-03-28' },
+{ id: 'btq0VKk8raY', title: 'Making The ULTIMATE Romance Anime Tier List (ft. Emirichu & Daidus)', creatorId: 'theanimeman', category: 'anime', franchise: 'multi', tags: ['ranking', 'review'], section: 'trending', publishedAt: '2019-06-22' },
+{ id: 'batGbkibi8s', title: 'The Hilarious Beauty of Kaguya-sama: Love is War', creatorId: 'ahbrandon', category: 'anime', franchise: 'multi', tags: ['review', 'analysis'], section: 'featured', publishedAt: '2022-07-14' },
+{ id: 'CjFjbAwJwwc', title: 'Goodbye Horimiya! Did Best Romance Anime Deliver? Horimiya Finale', creatorId: 'foxenAnime', category: 'anime', franchise: 'multi', tags: ['review', 'season-roundup'], section: 'trending', publishedAt: '2021-03-27' },
+{ id: 'QjCd-90c8no', title: 'The Garden of Words - Romance - Anime Review #38', creatorId: 'bobsamurai', category: 'anime', franchise: 'multi', tags: ['review', 'hidden-gem-pick'], section: 'hidden-gem', publishedAt: '2015-08-10' },
+
+  // ── ANIME — SLICE OF LIFE ────────────────────────────────────
+{ id: 'i2JRMfqvQj0', title: 'What\'s in an OP? \u2013 How Nichijou Gets You Ready to Laugh', creatorId: 'mothersbasement', category: 'anime', franchise: 'multi', tags: ['analysis', 'essay'], section: 'hidden-gem', publishedAt: '2017-08-12' },
+{ id: 'QeMqqqOEf0A', title: 'Why you Need Nichijou in your Life | GR Anime Review', creatorId: 'glassreflection', category: 'anime', franchise: 'multi', tags: ['review', 'hidden-gem-pick'], section: 'hidden-gem', publishedAt: '2021-07-15' },
+{ id: '7qZmSeZsEnI', title: 'Anime to Watch When Life Has Got You Down | Glass Reflection', creatorId: 'glassreflection', category: 'anime', franchise: 'multi', tags: ['ranking', 'hidden-gem-pick'], section: 'hidden-gem', publishedAt: '2020-04-18' },
+{ id: 'pAM6mBHNRcQ', title: 'The Anime That\'s Chill, Fluffy, and Upbeat\u2026 Until It\'s Not.', creatorId: 'glassreflection', category: 'anime', franchise: 'multi', tags: ['review', 'hidden-gem-pick'], section: 'latest', publishedAt: '2025-11-10' },
+{ id: 'ecjr4jLwTQE', title: 'Top 5 Funniest Slice-of-life Anime Series Ever', creatorId: 'theanimeman', category: 'anime', franchise: 'multi', tags: ['ranking', 'hidden-gem-pick'], section: 'featured', publishedAt: '2016-04-02' },
+{ id: 'qu5hcev_R4A', title: 'Top 10 Mature Slice of Life Anime', creatorId: 'bobsamurai', category: 'anime', franchise: 'multi', tags: ['ranking', 'hidden-gem-pick'], section: 'featured', publishedAt: '2016-10-22' },
+{ id: '1FSWoZJoV1c', title: 'Genshiken Anime & Manga - Slice of Life, Comedy Anime Review', creatorId: 'bobsamurai', category: 'anime', franchise: 'multi', tags: ['review', 'hidden-gem-pick'], section: 'hidden-gem', publishedAt: '2014-02-14' },
+
+  // ── ANIME — COMEDY ──────────────────────────────────────────
+{ id: '-KQBCsDSNr8', title: 'What\'s in an OP? - Konosuba\'s Lovable Idiots', creatorId: 'mothersbasement', category: 'anime', franchise: 'multi', tags: ['analysis', 'essay'], section: 'hidden-gem', publishedAt: '2018-03-05' },
+{ id: 'dQiwNdadEsY', title: 'Funniest Anime You Have NOT Seen | Hidden & Best Comedy Anime', creatorId: 'foxenAnime', category: 'anime', franchise: 'multi', tags: ['ranking', 'hidden-gem-pick'], section: 'hidden-gem', publishedAt: '2021-09-08' },
+{ id: 'E-7rKdlkDR4', title: 'What if Konosuba Was Chill', creatorId: 'mothersbasement', category: 'anime', franchise: 'multi', tags: ['analysis', 'essay'], section: 'hidden-gem', publishedAt: '2020-11-14' },
+
+  // ── MANGA — ROMANCE / SLICE OF LIFE / COMEDY ─────────────────
+{ id: '8eXSXksUS7A', title: 'Top 5 Romance Anime of All Time! - Viewer Choice | BobSamurai Reviews', creatorId: 'bobsamurai', category: 'manga', franchise: 'multi', tags: ['ranking', 'review'], section: 'trending', publishedAt: '2013-02-13' },
+{ id: 'nAGQ-nvk104', title: 'My Little Monster - Romance Comedy - Anime Review #89', creatorId: 'bobsamurai', category: 'manga', franchise: 'multi', tags: ['review', 'hidden-gem-pick'], section: 'hidden-gem', publishedAt: '2016-07-18' },
+{ id: 'SQfHRrIh9kA', title: 'The World God Only Knows - Romance Comedy Review', creatorId: 'bobsamurai', category: 'manga', franchise: 'multi', tags: ['review', 'hidden-gem-pick'], section: 'hidden-gem', publishedAt: '2014-06-25' },
+{ id: 'AwNevpfQDOg', title: 'Anime Review: Mysterious Girlfriend X - Romance, Comedy | BobSamurai Reviews', creatorId: 'bobsamurai', category: 'manga', franchise: 'multi', tags: ['review', 'hidden-gem-pick'], section: 'hidden-gem', publishedAt: '2015-10-10' },
+
+  // ── LIGHT NOVEL — ROMANCE / SLICE OF LIFE / COMEDY ───────────
+{ id: 'Mr_khwOmTuQ', title: 'Mushoku Tensei = Anime of The Year.', creatorId: 'echidnut', category: 'light-novel', franchise: 'mushoku-tensei', tags: ['ln-review', 'analysis'], section: 'featured', publishedAt: '2021-06-25' },
+{ id: 'VxIypPO5AdA', title: 'Frieren vs Mushoku Tensei', creatorId: 'echidnut', category: 'light-novel', franchise: 'mushoku-tensei', tags: ['analysis', 'essay'], section: 'trending', publishedAt: '2024-03-18' },
+{ id: 'CICdWFyiNU8', title: 'The New Isekai That Changed The Game (My Life as a Villainess)', creatorId: 'manimeMatt', category: 'light-novel', franchise: 'multi', tags: ['ln-review', 'hidden-gem-pick'], section: 'hidden-gem', publishedAt: '2021-11-05' },
+{ id: '-6RFln08ox0', title: 'Classroom of The Elite and Escapism', creatorId: 'manimeMatt', category: 'light-novel', franchise: 'cote', tags: ['ln-review', 'analysis'], section: 'hidden-gem', publishedAt: '2022-08-30' },
+{ id: 'nu6yyd6Etyc', title: 'Why You Should Watch EroManga-Sensei (Satire) - LN Comedy Guide', creatorId: 'manimeMatt', category: 'light-novel', franchise: 'multi', tags: ['ln-review', 'essay'], section: 'hidden-gem', publishedAt: '2021-04-18' },
 ]
 
 export const TRENDING_VIDEOS  = VIDEOS.filter(v => v.section === 'trending')
