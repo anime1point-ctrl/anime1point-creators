@@ -57,23 +57,15 @@ function VideoCard({ video, priority = false }) {
             <span className="text-white text-xs opacity-50">Video Coming Soon</span>
           </div>
         )}
-
-        {/* Hover play overlay */}
         <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all flex items-center justify-center">
           <span className="text-white text-3xl opacity-0 group-hover:opacity-100 transition-opacity drop-shadow-lg">&#9654;</span>
         </div>
-
-        {/* Category badge — top-left */}
         <span className={`absolute top-2 left-2 badge-${badgeCategory}`}>{categoryLabel}</span>
-
-        {/* Watched badge — top-right, shown after first click */}
         {watched && (
           <span className="absolute top-2 right-2 flex items-center gap-1 bg-green-500/90 text-white text-[10px] font-bold px-2 py-0.5 rounded-full backdrop-blur-sm leading-none">
             &#10003; Watched
           </span>
         )}
-
-        {/* Play count bar — bottom, shown after first click */}
         {clickCount > 0 && (
           <div className="absolute bottom-0 left-0 right-0 flex items-center gap-1.5 px-2.5 py-1 bg-black/70 backdrop-blur-sm text-white text-[11px] font-semibold">
             <span className="opacity-60">&#9654;</span>
@@ -81,7 +73,6 @@ function VideoCard({ video, priority = false }) {
           </div>
         )}
       </div>
-
       <h3 className="text-sm font-semibold text-text-primary line-clamp-2 group-hover:text-accent transition-colors mb-2">
         {video.title}
       </h3>
@@ -160,6 +151,70 @@ function FeaturedCreatorsSection({ maxItems = 6 }) {
   )
 }
 
+// ── Join Banner — shown below hero ────────────────────────────────────────────
+function JoinBanner() {
+  return (
+    <section className="border-b border-border-dim bg-bg-card">
+      <div className="max-w-7xl mx-auto px-4 py-10">
+        <div className="text-center mb-6">
+          <span className="section-tag">Get Involved</span>
+          <h2 className="font-orbitron font-black text-xl text-text-primary mt-3">Join the Anime1Point Community</h2>
+          <p className="text-text-secondary text-sm mt-2 max-w-xl mx-auto">
+            Whether you create anime content or just love watching it — there's a place for you here.
+          </p>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-3xl mx-auto">
+          {/* Creator card */}
+          <a
+            href="creators.html"
+            className="group flex flex-col gap-3 p-6 rounded-xl border border-accent/30 bg-accent/5 hover:bg-accent/10 transition-all hover:border-accent/60 hover:shadow-lg hover:shadow-accent/10"
+          >
+            <div className="flex items-center gap-3">
+              <span className="text-3xl">&#127909;</span>
+              <div>
+                <p className="font-orbitron font-black text-base text-accent">Join as Creator</p>
+                <p className="text-text-secondary text-xs">YouTube channel required</p>
+              </div>
+            </div>
+            <ul className="text-text-secondary text-xs space-y-1.5 flex-1">
+              <li className="flex items-start gap-2"><span className="text-accent mt-0.5">&#10003;</span> Live video feed from your YouTube channel</li>
+              <li className="flex items-start gap-2"><span className="text-accent mt-0.5">&#10003;</span> Real-time views, likes &amp; thumbnails on our platform</li>
+              <li className="flex items-start gap-2"><span className="text-accent mt-0.5">&#10003;</span> Your own creator profile page</li>
+              <li className="flex items-start gap-2"><span className="text-accent mt-0.5">&#10003;</span> API key encrypted — never exposed publicly</li>
+            </ul>
+            <span className="text-xs font-semibold text-accent group-hover:underline flex items-center gap-1 mt-1">
+              Apply now &#8594;
+            </span>
+          </a>
+
+          {/* Viewer card */}
+          <a
+            href="viewers.html"
+            className="group flex flex-col gap-3 p-6 rounded-xl border border-purple/30 bg-purple/5 hover:bg-purple/10 transition-all hover:border-purple/60 hover:shadow-lg hover:shadow-purple/10"
+          >
+            <div className="flex items-center gap-3">
+              <span className="text-3xl">&#128065;</span>
+              <div>
+                <p className="font-orbitron font-black text-base text-purple">Join as Viewer</p>
+                <p className="text-text-secondary text-xs">Free — Google, Email or Phone</p>
+              </div>
+            </div>
+            <ul className="text-text-secondary text-xs space-y-1.5 flex-1">
+              <li className="flex items-start gap-2"><span className="text-purple mt-0.5">&#10003;</span> Save your watch history across devices</li>
+              <li className="flex items-start gap-2"><span className="text-purple mt-0.5">&#10003;</span> Build a personal favourites list</li>
+              <li className="flex items-start gap-2"><span className="text-purple mt-0.5">&#10003;</span> Rate and comment on videos</li>
+              <li className="flex items-start gap-2"><span className="text-purple mt-0.5">&#10003;</span> Get notified when new creators go live</li>
+            </ul>
+            <span className="text-xs font-semibold text-purple group-hover:underline flex items-center gap-1 mt-1">
+              Create free account &#8594;
+            </span>
+          </a>
+        </div>
+      </div>
+    </section>
+  )
+}
+
 function Hero() {
   const navigate = useNavigate()
   const [q, setQ] = useState('')
@@ -214,6 +269,8 @@ export default function Home() {
   return (
     <div className="min-h-screen">
       <Hero />
+      {/* Join banner — visible immediately below the hero */}
+      <JoinBanner />
       {sections.map(section => {
         if (section.id === 'featured') return <FeaturedCreatorsSection key={section.id} maxItems={section.maxItems} />
         return <VideoSection key={section.id} section={section} videos={sectionVideos[section.id] || TRENDING_VIDEOS} />
