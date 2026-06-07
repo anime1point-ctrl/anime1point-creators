@@ -21,14 +21,18 @@ import {
   getFirestore, doc, setDoc, getDoc, serverTimestamp
 } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js';
 
-// ── Firebase init ──────────────────────────────────────────────────────────
+// ── Firebase config ────────────────────────────────────────────────────────
+// IMPORTANT: Replace the values below with your real Firebase project config.
+// Find them at: Firebase Console → Project Settings → Your apps → SDK setup
+// The apiKey here is safe to be public — Firestore security rules protect your data.
 const firebaseConfig = {
-  apiKey:            "AIzaSyD_replace_with_your_real_firebase_api_key",
+  apiKey:            "REPLACE_WITH_FIREBASE_API_KEY",
   authDomain:        "anime1point-hub.firebaseapp.com",
   projectId:         "anime1point-hub",
   storageBucket:     "anime1point-hub.appspot.com",
-  messagingSenderId: "000000000000",
-  appId:             "1:000000000000:web:replace_with_real_app_id",
+  messagingSenderId: "REPLACE_WITH_SENDER_ID",
+  appId:             "REPLACE_WITH_APP_ID",
+  measurementId:     "REPLACE_WITH_MEASUREMENT_ID",
 };
 const app  = initializeApp(firebaseConfig);
 const auth = getAuth(app);
@@ -43,19 +47,24 @@ let currentUser = null;
 onAuthStateChanged(auth, async user => {
   currentUser = user;
   if (user) {
-    // Check if already submitted
-    const snap = await getDoc(doc(db, 'creators', user.uid));
-    if (snap.exists()) {
-      showAlreadySubmitted(user.displayName || user.email, snap.data().status);
-    } else {
-      showStep(2);
+    // Check creatorApplications first (new collection), then creators (legacy)
+    const appSnap = await getDoc(doc(db, 'creatorApplications', user.uid));
+    if (appSnap.exists()) {
+      showAlreadySubmitted(user.displayName || user.email, appSnap.data().status);
+      return;
     }
+    const creatorSnap = await getDoc(doc(db, 'creators', user.uid));
+    if (creatorSnap.exists()) {
+      showAlreadySubmitted(user.displayName || user.email, creatorSnap.data().status);
+      return;
+    }
+    showStep(2);
   }
 });
 
 // ── Step management ────────────────────────────────────────────────────────
 function showStep(n) {
-  document.getElementById('step-auth').style.display   = n === 1 ? 'block' : 'none';
+  document.getElementById('step-auth').style.display    = n === 1 ? 'block' : 'none';
   document.getElementById('step-channel').style.display = n === 2 ? 'block' : 'none';
   document.getElementById('step-success').style.display = n === 3 ? 'block' : 'none';
 }
@@ -68,6 +77,7 @@ function showAlreadySubmitted(name, status) {
   document.getElementById('success-status').textContent =
     status === 'approved' ? 'Your channel is LIVE on the platform!' :
     status === 'pending'  ? 'Your application is under review (2-3 business days).' :
+    status === 'rejected' ? 'Your application was not approved. Contact us to learn more.' :
     'Application status: ' + status;
 }
 
@@ -80,16 +90,18 @@ window.signInWithGoogle = async function() {
     await signInWithPopup(auth, googleProvider);
     // onAuthStateChanged handles the rest
   } catch(err) {
-    btn.disabled = false; btn.innerHTML = '<span style="color:#4285F4;font-weight:900;">G</span> &nbsp;Continue with Google';
-    showError(err.code === 'auth/popup-closed-by-user' ? 'Popup closed — please try again.' : err.message);
+    btn.disabled = false;
+    btn.innerHTML = '<span style="color:#4285F4;font-weight:900;">G</span>&nbsp;&nbsp;Continue with Google';
+    showError(err.code === 'auth/popup-closed-by-user'
+      ? 'Popup closed — please try again.' : err.message);
   }
 };
 
-// ── Email Sign-Up ──────────────────────────────────────────────────────────
+// ── Email Sign-Up / Sign-In ────────────────────────────────────────────────
 window.handleEmailAuth = async function(e) {
   e.preventDefault(); clearError();
-  const mode = document.getElementById('auth-mode').value;
-  const name = document.getElementById('f-name').value.trim();
+  const mode  = document.getElementById('auth-mode').value;
+  const name  = document.getElementById('f-name').value.trim();
   const email = document.getElementById('f-email').value.trim();
   const pass  = document.getElementById('f-pass').value;
   const conf  = document.getElementById('f-confirm').value;
@@ -98,7 +110,8 @@ window.handleEmailAuth = async function(e) {
   if (mode === 'signup' && pass !== conf) { showError('Passwords do not match.'); return; }
   if (pass.length < 8) { showError('Password must be at least 8 characters.'); return; }
 
-  btn.disabled = true; btn.textContent = mode === 'signup' ? 'Creating account...' : 'Signing in...';
+  btn.disabled = true;
+  btn.textContent = mode === 'signup' ? 'Creating account...' : 'Signing in...';
   try {
     if (mode === 'signup') {
       const cred = await createUserWithEmailAndPassword(auth, email, pass);
@@ -108,14 +121,15 @@ window.handleEmailAuth = async function(e) {
     }
     // onAuthStateChanged handles the rest
   } catch(err) {
-    btn.disabled = false; btn.textContent = mode === 'signup' ? 'Create Account' : 'Sign In';
+    btn.disabled = false;
+    btn.textContent = mode === 'signup' ? 'Create Account' : 'Sign In';
     const msgs = {
       'auth/email-already-in-use': 'Email already registered — try signing in.',
-      'auth/invalid-email': 'Please enter a valid email address.',
-      'auth/weak-password': 'Password too weak — use at least 8 characters.',
-      'auth/user-not-found': 'No account found with this email.',
-      'auth/wrong-password': 'Incorrect password.',
-      'auth/invalid-credential': 'Invalid email or password.',
+      'auth/invalid-email':        'Please enter a valid email address.',
+      'auth/weak-password':        'Password too weak — use at least 8 characters.',
+      'auth/user-not-found':       'No account found with this email.',
+      'auth/wrong-password':       'Incorrect password.',
+      'auth/invalid-credential':   'Invalid email or password.',
     };
     showError(msgs[err.code] || err.message);
   }
@@ -123,18 +137,21 @@ window.handleEmailAuth = async function(e) {
 
 // ── Toggle Sign-In / Sign-Up ───────────────────────────────────────────────
 window.toggleAuthMode = function() {
-  const mode = document.getElementById('auth-mode').value;
+  const mode    = document.getElementById('auth-mode').value;
   const newMode = mode === 'signup' ? 'login' : 'signup';
   document.getElementById('auth-mode').value = newMode;
-  document.getElementById('name-group').style.display   = newMode === 'signup' ? 'block' : 'none';
+  document.getElementById('name-group').style.display    = newMode === 'signup' ? 'block' : 'none';
   document.getElementById('confirm-group').style.display = newMode === 'signup' ? 'block' : 'none';
-  document.getElementById('btn-email').textContent = newMode === 'signup' ? 'Create Creator Account' : 'Sign In';
-  document.getElementById('auth-toggle-text').textContent = newMode === 'signup'
-    ? 'Already have an account? Sign in' : "Don't have an account? Create one";
+  document.getElementById('btn-email').textContent =
+    newMode === 'signup' ? 'Create Creator Account' : 'Sign In';
+  document.getElementById('auth-toggle-text').textContent =
+    newMode === 'signup' ? 'Already have an account? Sign in' : "Don't have an account? Create one";
   clearError();
 };
 
 // ── Step 2: Submit Channel Details ─────────────────────────────────────────
+// Applications go to 'creatorApplications/{uid}' (pending moderation queue).
+// On approval the admin copies them to 'creators/{uid}' (live feed collection).
 window.submitChannel = async function(e) {
   e.preventDefault(); clearError();
   if (!currentUser) { showError('Please sign in first.'); return; }
@@ -151,8 +168,10 @@ window.submitChannel = async function(e) {
   btn.disabled = true; btn.textContent = 'Submitting securely...';
 
   try {
-    // 1. Save public profile to Firestore (NO API key here)
-    await setDoc(doc(db, 'creators', currentUser.uid), {
+    // 1. Write the pending application to 'creatorApplications' (NOT 'creators')
+    //    This keeps the moderation queue completely separate from live creator data.
+    //    The 'creators' collection only gets a document when an admin approves.
+    const applicationData = {
       uid:         currentUser.uid,
       name:        currentUser.displayName || document.getElementById('f-creator-name').value.trim(),
       email:       currentUser.email,
@@ -166,9 +185,16 @@ window.submitChannel = async function(e) {
       status:      'pending',
       createdAt:   serverTimestamp(),
       updatedAt:   serverTimestamp(),
-    }, { merge: true });
+    };
 
-    // 2. Send API key to Cloud Function for encrypted storage
+    // Store slug if provided
+    const slug = document.getElementById('f-creator-slug').value.trim();
+    if (slug) applicationData.slug = slug;
+
+    await setDoc(doc(db, 'creatorApplications', currentUser.uid), applicationData, { merge: true });
+
+    // 2. Send the API key to Cloud Function for encrypted storage
+    //    The key goes to 'creatorApplications' until the application is approved.
     const idToken = await currentUser.getIdToken();
     const cfRes = await fetch(CF_BASE + '/storeCreatorApiKey', {
       method:  'POST',
@@ -181,13 +207,9 @@ window.submitChannel = async function(e) {
       throw new Error(err.error || 'Failed to store API key securely.');
     }
 
-    // 3. Register the slug mapping so the React app can look up by creator ID
-    const slug = document.getElementById('f-creator-slug').value.trim() ||
-                 currentUser.uid;
-    await setDoc(doc(db, 'creatorSlugs', slug), { uid: currentUser.uid });
-
+    // 3. Show success
     showStep(3);
-    document.getElementById('success-name').textContent = currentUser.displayName || currentUser.email;
+    document.getElementById('success-name').textContent   = currentUser.displayName || currentUser.email;
     document.getElementById('success-status').textContent = 'Your application is under review (2-3 business days).';
   } catch(err) {
     btn.disabled = false; btn.textContent = 'Submit Creator Application';
@@ -263,7 +285,7 @@ function clearError() {
     <div class="form-card">
       <div class="info-box" style="margin-bottom:2rem;">
         <h4>&#128337; 3-Step Process</h4>
-        <p>1&nbsp;&nbsp;Create your creator account &nbsp;→&nbsp; 2&nbsp;&nbsp;Add your YouTube channel details &nbsp;→&nbsp; 3&nbsp;&nbsp;Admin reviews and approves (2–3 days)</p>
+        <p>1&nbsp;&nbsp;Create your creator account &nbsp;&#8594;&nbsp; 2&nbsp;&nbsp;Add your YouTube channel details &nbsp;&#8594;&nbsp; 3&nbsp;&nbsp;Admin reviews and approves (2-3 days)</p>
       </div>
 
       <div id="auth-error" class="error-msg" style="display:none;background:rgba(230,57,70,0.1);border:1px solid rgba(230,57,70,0.4);color:#ff8891;padding:10px 14px;border-radius:8px;margin-bottom:1rem;font-size:0.9rem;"></div>
@@ -272,7 +294,8 @@ function clearError() {
       <div id="step-auth">
         <h3 style="margin-bottom:1.5rem;color:var(--accent2);">Step 1 — Create Your Creator Account</h3>
 
-        <button id="btn-google" onclick="signInWithGoogle()" class="form-submit" style="background:#fff;color:#111;border:2px solid #ddd;display:flex;align-items:center;justify-content:center;gap:12px;font-size:1rem;margin-bottom:1.5rem;">
+        <button id="btn-google" onclick="signInWithGoogle()" class="form-submit"
+          style="background:#fff;color:#111;border:2px solid #ddd;display:flex;align-items:center;justify-content:center;gap:12px;font-size:1rem;margin-bottom:1.5rem;">
           <span style="color:#4285F4;font-weight:900;font-size:1.2rem;">G</span>&nbsp;Continue with Google
         </button>
 
@@ -304,7 +327,8 @@ function clearError() {
           <button type="submit" id="btn-email" class="form-submit">Create Creator Account</button>
         </form>
         <p style="text-align:center;margin-top:1rem;font-size:0.85rem;">
-          <button onclick="toggleAuthMode()" id="auth-toggle-text" style="background:none;border:none;color:var(--accent2);cursor:pointer;text-decoration:underline;font-size:0.85rem;font-family:inherit;">
+          <button onclick="toggleAuthMode()" id="auth-toggle-text"
+            style="background:none;border:none;color:var(--accent2);cursor:pointer;text-decoration:underline;font-size:0.85rem;font-family:inherit;">
             Already have an account? Sign in
           </button>
         </p>
@@ -336,7 +360,7 @@ function clearError() {
           <div class="form-group">
             <label>YouTube Channel ID *</label>
             <input type="text" id="f-channel-id" placeholder="UCxxxxxxxxxxxxxxxxxxxxxx" required>
-            <p class="form-hint">Find at <a href="https://www.youtube.com/account_advanced" target="_blank" style="color:var(--accent2);">YouTube &rarr; Settings &rarr; Advanced settings</a>. Starts with <strong>UC</strong>.</p>
+            <p class="form-hint">Find at <a href="https://www.youtube.com/account_advanced" target="_blank" style="color:var(--accent2);">YouTube &#8594; Settings &#8594; Advanced settings</a>. Starts with <strong>UC</strong>.</p>
           </div>
 
           <!-- API KEY — critical field -->
@@ -350,7 +374,7 @@ function clearError() {
               <ol style="margin-top:0.5rem;padding-left:1.25rem;line-height:1.8;font-size:0.85rem;color:var(--text-secondary);">
                 <li>Go to <a href="https://console.cloud.google.com/" target="_blank" style="color:var(--accent2);">Google Cloud Console</a> and create a free project.</li>
                 <li>Enable the <strong>YouTube Data API v3</strong>.</li>
-                <li>Go to <strong>Credentials &rarr; Create Credentials &rarr; API Key</strong>.</li>
+                <li>Go to <strong>Credentials &#8594; Create Credentials &#8594; API Key</strong>.</li>
                 <li>(Recommended) Restrict the key to YouTube Data API v3 only.</li>
               </ol>
             </div>
