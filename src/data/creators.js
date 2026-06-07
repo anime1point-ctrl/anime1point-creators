@@ -491,10 +491,6 @@ youtubeChannelId: 'NEEDS_VERIFICATION',
 status: 'approved',
 featured: false,
 },
-]
-
-export const APPROVED_CREATORS = CREATORS.filter(c => c.status === 'approved')
-export const FEATURED_CREATORS = CREATORS.filter(c => c.featured)
 
 // ════════════════════════════════════════════════════════════
 // SPRINT 5.6 — SEINEN, ECCHI & DRAMA CREATOR ADDITIONS
@@ -660,5 +656,9 @@ export const FEATURED_CREATORS = CREATORS.filter(c => c.featured)
         status: 'approved',
         featured: false,
     },
+      ]
+
+  export const APPROVED_CREATORS = CREATORS.filter(c => c.status === 'approved')
+  export const FEATURED_CREATORS = CREATORS.filter(c => c.featured)
 export const RISING_CREATORS = CREATORS.filter(c => c.creatorStatus === 'rising')
 export const CREATOR_MAP = Object.fromEntries(CREATORS.map(c => [c.id, c]))
