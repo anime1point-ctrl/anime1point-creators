@@ -23,27 +23,27 @@ gtag('config', 'G-7RRRBP4W9S');
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js';
 import { getAnalytics, logEvent } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js';
 import {
-  getAuth,
-  GoogleAuthProvider,
-  signInWithPopup,
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  RecaptchaVerifier,
-  signInWithPhoneNumber,
-  PhoneAuthProvider,
-  signInWithCredential,
-  updateProfile,
-  onAuthStateChanged
+getAuth,
+GoogleAuthProvider,
+signInWithPopup,
+createUserWithEmailAndPassword,
+signInWithEmailAndPassword,
+RecaptchaVerifier,
+signInWithPhoneNumber,
+PhoneAuthProvider,
+signInWithCredential,
+updateProfile,
+onAuthStateChanged
 } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyD_placeholder_replace_with_real_key",
-  authDomain: "anime1point-hub.firebaseapp.com",
-  projectId: "anime1point-hub",
-  storageBucket: "anime1point-hub.appspot.com",
-  messagingSenderId: "000000000000",
-  appId: "1:000000000000:web:placeholder",
-  measurementId: "G-7RRRBP4W9S"
+apiKey: "AIzaSyD_placeholder_replace_with_real_key",
+authDomain: "anime1point-hub.firebaseapp.com",
+projectId: "anime1point-hub",
+storageBucket: "anime1point-hub.appspot.com",
+messagingSenderId: "000000000000",
+appId: "1:000000000000:web:placeholder",
+measurementId: "G-7RRRBP4W9S"
 };
 
 const app = initializeApp(firebaseConfig);
@@ -56,192 +56,192 @@ gtag('event', 'page_view', { page_title: 'Viewer Signup', page_location: window.
 
 // ===== GOOGLE SIGN-IN =====
 window.signInWithGoogle = async function() {
-  const btn = document.getElementById('btn-google');
-  btn.disabled = true;
-  btn.textContent = 'Signing in...';
-  try {
-    const result = await signInWithPopup(auth, googleProvider);
-    const user = result.user;
-    // GA4 event
-    gtag('event', 'sign_up', { method: 'Google', user_id: user.uid });
-    logEvent(analytics, 'sign_up', { method: 'Google' });
-    showSuccess(user.displayName || user.email, 'Google');
-  } catch(err) {
-    btn.disabled = false;
-    btn.innerHTML = '<span class="auth-icon">&#71;</span> Continue with Google';
-    showError(err.code === 'auth/popup-closed-by-user' ? 'Popup closed. Please try again.' : err.message);
-  }
+const btn = document.getElementById('btn-google');
+btn.disabled = true;
+btn.textContent = 'Signing in...';
+try {
+const result = await signInWithPopup(auth, googleProvider);
+const user = result.user;
+// GA4 event
+gtag('event', 'sign_up', { method: 'Google', user_id: user.uid });
+logEvent(analytics, 'sign_up', { method: 'Google' });
+showSuccess(user.displayName || user.email, 'Google');
+} catch(err) {
+btn.disabled = false;
+btn.innerHTML = '<span class="auth-icon">&#71;</span> Continue with Google';
+showError(err.code === 'auth/popup-closed-by-user' ? 'Popup closed. Please try again.' : err.message);
+}
 };
 
 // ===== EMAIL / PASSWORD SIGN-UP =====
 window.handleEmailSignup = async function(e) {
-  e.preventDefault();
-  const name    = document.getElementById('ep-name').value.trim();
-  const email   = document.getElementById('ep-email').value.trim();
-  const pass    = document.getElementById('ep-pass').value;
-  const confirm = document.getElementById('ep-confirm').value;
-  const btn = document.getElementById('btn-email-signup');
-  clearError();
-  if (pass !== confirm) { showError('Passwords do not match.'); return; }
-  if (pass.length < 8)  { showError('Password must be at least 8 characters.'); return; }
-  btn.disabled = true; btn.textContent = 'Creating account...';
-  try {
-    const cred = await createUserWithEmailAndPassword(auth, email, pass);
-    await updateProfile(cred.user, { displayName: name });
-    gtag('event', 'sign_up', { method: 'Email', user_id: cred.user.uid });
-    logEvent(analytics, 'sign_up', { method: 'Email' });
-    showSuccess(name || email, 'Email');
-  } catch(err) {
-    btn.disabled = false; btn.textContent = 'Create Account';
-    const msg = {
-      'auth/email-already-in-use': 'This email is already registered. Try signing in.',
-      'auth/invalid-email': 'Please enter a valid email address.',
-      'auth/weak-password': 'Password is too weak. Use at least 8 characters.'
-    }[err.code] || err.message;
-    showError(msg);
-  }
+e.preventDefault();
+const name = document.getElementById('ep-name').value.trim();
+const email = document.getElementById('ep-email').value.trim();
+const pass = document.getElementById('ep-pass').value;
+const confirm = document.getElementById('ep-confirm').value;
+const btn = document.getElementById('btn-email-signup');
+clearError();
+if (pass !== confirm) { showError('Passwords do not match.'); return; }
+if (pass.length < 8) { showError('Password must be at least 8 characters.'); return; }
+btn.disabled = true; btn.textContent = 'Creating account...';
+try {
+const cred = await createUserWithEmailAndPassword(auth, email, pass);
+await updateProfile(cred.user, { displayName: name });
+gtag('event', 'sign_up', { method: 'Email', user_id: cred.user.uid });
+logEvent(analytics, 'sign_up', { method: 'Email' });
+showSuccess(name || email, 'Email');
+} catch(err) {
+btn.disabled = false; btn.textContent = 'Create Account';
+const msg = {
+'auth/email-already-in-use': 'This email is already registered. Try signing in.',
+'auth/invalid-email': 'Please enter a valid email address.',
+'auth/weak-password': 'Password is too weak. Use at least 8 characters.'
+}[err.code] || err.message;
+showError(msg);
+}
 };
 
 // ===== EMAIL OTP (sign-in link) =====
 window.handleEmailOtp = async function(e) {
-  e.preventDefault();
-  showError('Email OTP link feature requires Firebase Email Link auth — please use Google or Phone OTP for now, or create an account with password.');
+e.preventDefault();
+showError('Email OTP link feature requires Firebase Email Link auth — please use Google or Phone OTP for now, or create an account with password.');
 };
 
 // ===== PHONE / OTP =====
 let confirmationResult = null;
 window.sendPhoneOtp = async function() {
-  const phone = document.getElementById('phone-number').value.trim();
-  if (!phone || phone.length < 8) { showError('Please enter a valid phone number with country code, e.g. +91 9876543210'); return; }
-  clearError();
-  const btn = document.getElementById('btn-send-otp');
-  btn.disabled = true; btn.textContent = 'Sending OTP...';
-  try {
-    if (!window.recaptchaVerifier) {
-      window.recaptchaVerifier = new RecaptchaVerifier(auth, 'recaptcha-container', { size: 'invisible' });
-    }
-    confirmationResult = await signInWithPhoneNumber(auth, phone, window.recaptchaVerifier);
-    document.getElementById('otp-step2').style.display = 'block';
-    document.getElementById('otp-step1').style.display = 'none';
-    showInfo('OTP sent to ' + phone + '. Check your messages.');
-  } catch(err) {
-    btn.disabled = false; btn.textContent = 'Send OTP';
-    if (window.recaptchaVerifier) { window.recaptchaVerifier.clear(); window.recaptchaVerifier = null; }
-    showError('Could not send OTP: ' + (err.message || err.code));
-  }
+const phone = document.getElementById('phone-number').value.trim();
+if (!phone || phone.length < 8) { showError('Please enter a valid phone number with country code, e.g. +91 9876543210'); return; }
+clearError();
+const btn = document.getElementById('btn-send-otp');
+btn.disabled = true; btn.textContent = 'Sending OTP...';
+try {
+if (!window.recaptchaVerifier) {
+window.recaptchaVerifier = new RecaptchaVerifier(auth, 'recaptcha-container', { size: 'invisible' });
+}
+confirmationResult = await signInWithPhoneNumber(auth, phone, window.recaptchaVerifier);
+document.getElementById('otp-step2').style.display = 'block';
+document.getElementById('otp-step1').style.display = 'none';
+showInfo('OTP sent to ' + phone + '. Check your messages.');
+} catch(err) {
+btn.disabled = false; btn.textContent = 'Send OTP';
+if (window.recaptchaVerifier) { window.recaptchaVerifier.clear(); window.recaptchaVerifier = null; }
+showError('Could not send OTP: ' + (err.message || err.code));
+}
 };
 
 window.verifyOtp = async function() {
-  const code = document.getElementById('otp-code').value.trim();
-  const name = document.getElementById('phone-name').value.trim();
-  if (!code || code.length !== 6) { showError('Please enter the 6-digit OTP.'); return; }
-  const btn = document.getElementById('btn-verify-otp');
-  btn.disabled = true; btn.textContent = 'Verifying...';
-  try {
-    const result = await confirmationResult.confirm(code);
-    const user = result.user;
-    if (name) await updateProfile(user, { displayName: name });
-    gtag('event', 'sign_up', { method: 'Phone_OTP', user_id: user.uid });
-    logEvent(analytics, 'sign_up', { method: 'Phone_OTP' });
-    showSuccess(name || user.phoneNumber, 'Phone OTP');
-  } catch(err) {
-    btn.disabled = false; btn.textContent = 'Verify OTP';
-    showError('Invalid OTP. Please try again.');
-  }
+const code = document.getElementById('otp-code').value.trim();
+const name = document.getElementById('phone-name').value.trim();
+if (!code || code.length !== 6) { showError('Please enter the 6-digit OTP.'); return; }
+const btn = document.getElementById('btn-verify-otp');
+btn.disabled = true; btn.textContent = 'Verifying...';
+try {
+const result = await confirmationResult.confirm(code);
+const user = result.user;
+if (name) await updateProfile(user, { displayName: name });
+gtag('event', 'sign_up', { method: 'Phone_OTP', user_id: user.uid });
+logEvent(analytics, 'sign_up', { method: 'Phone_OTP' });
+showSuccess(name || user.phoneNumber, 'Phone OTP');
+} catch(err) {
+btn.disabled = false; btn.textContent = 'Verify OTP';
+showError('Invalid OTP. Please try again.');
+}
 };
 
 // ===== UI HELPERS =====
 function showError(msg) {
-  const el = document.getElementById('auth-error');
-  el.textContent = msg; el.style.display = 'block';
-  document.getElementById('auth-info').style.display = 'none';
+const el = document.getElementById('auth-error');
+el.textContent = msg; el.style.display = 'block';
+document.getElementById('auth-info').style.display = 'none';
 }
 function showInfo(msg) {
-  const el = document.getElementById('auth-info');
-  el.textContent = msg; el.style.display = 'block';
-  document.getElementById('auth-error').style.display = 'none';
+const el = document.getElementById('auth-info');
+el.textContent = msg; el.style.display = 'block';
+document.getElementById('auth-error').style.display = 'none';
 }
 function clearError() {
-  document.getElementById('auth-error').style.display = 'none';
-  document.getElementById('auth-info').style.display = 'none';
+document.getElementById('auth-error').style.display = 'none';
+document.getElementById('auth-info').style.display = 'none';
 }
 
 window.showSuccess = function(name, method) {
-  // Generate referral link
-  const ref = btoa(name + '_' + Date.now()).replace(/=/g,'').substring(0,10);
-  const refLink = window.location.origin + window.location.pathname + '?ref=' + ref;
-  document.getElementById('auth-forms').innerHTML =
-    '<div class="success-box">' +
-    '<div class="success-icon">&#127775;</div>' +
-    '<h3>Welcome to Anime1Point!</h3>' +
-    '<p>You\u2019re in, <strong>' + name + '</strong>! Signed up via <strong>' + method + '</strong>.</p>' +
-    '<p style="margin-top:1rem;color:var(--text-secondary);font-size:0.9rem;">Start exploring new anime creators and join our community of fans.</p>' +
-    '<div class="share-box">' +
-    '<p class="share-label">&#127775; Help us reach 1,000 viewers &#8212; share your invite link:</p>' +
-    '<div class="share-link-wrap"><input type="text" class="share-link-input" value="' + refLink + '" id="ref-link-input" readonly><button class="btn-copy" onclick="copyRefLink()">Copy</button></div>' +
-    '<div class="share-buttons">' +
-    '<a href="https://api.whatsapp.com/send?text=I%20just%20joined%20Anime1Point%20Creators%20Hub%20%E2%80%94%20discover%20new%20anime%20creators%20before%20they%20blow%20up!%20' + encodeURIComponent(refLink) + '" target="_blank" class="share-btn share-wa">&#128241; WhatsApp</a>' +
-    '<a href="https://twitter.com/intent/tweet?text=Just%20joined%20%40Anime1Point%20Creators%20Hub%20%F0%9F%8E%8C%20%E2%80%94%20the%20best%20place%20to%20find%20new%20anime%20creators!%20Join%20free%3A%20' + encodeURIComponent(refLink) + '" target="_blank" class="share-btn share-tw">&#120143; Twitter / X</a>' +
-    '<a href="https://t.me/share/url?url=' + encodeURIComponent(refLink) + '&text=Join%20Anime1Point%20Creators%20Hub%20%F0%9F%8E%8C%20%E2%80%94%20discover%20new%20anime%20creators!" target="_blank" class="share-btn share-tg">&#9992; Telegram</a>' +
-    '</div></div>' +
-    '<a href="index.html" class="form-submit" style="display:block;text-align:center;text-decoration:none;margin-top:1.5rem;">&#128269; Explore Creators</a>' +
-    '</div>';
-  // Track share prompt shown
-  gtag('event', 'share_prompt_shown', { method: method });
+// Generate referral link
+const ref = btoa(name + '_' + Date.now()).replace(/=/g,'').substring(0,10);
+const refLink = window.location.origin + window.location.pathname + '?ref=' + ref;
+document.getElementById('auth-forms').innerHTML =
+'<div class="success-box">' +
+'<div class="success-icon">&#127775;</div>' +
+'<h3>Welcome to Anime1Point!</h3>' +
+'<p>You\u2019re in, <strong>' + name + '</strong>! Signed up via <strong>' + method + '</strong>.</p>' +
+'<p style="margin-top:1rem;color:var(--text-secondary);font-size:0.9rem;">Start exploring new anime creators and join our community of fans.</p>' +
+'<div class="share-box">' +
+'<p class="share-label">&#127775; Spread the word &#8212; share your invite link:</p>' +
+'<div class="share-link-wrap"><input type="text" class="share-link-input" value="' + refLink + '" id="ref-link-input" readonly><button class="btn-copy" onclick="copyRefLink()">Copy</button></div>' +
+'<div class="share-buttons">' +
+'<a href="https://api.whatsapp.com/send?text=I%20just%20joined%20Anime1Point%20Creators%20Hub%20%E2%80%94%20discover%20new%20anime%20creators%20before%20they%20blow%20up!%20' + encodeURIComponent(refLink) + '" target="_blank" class="share-btn share-wa">&#128241; WhatsApp</a>' +
+'<a href="https://twitter.com/intent/tweet?text=Just%20joined%20%40Anime1Point%20Creators%20Hub%20%F0%9F%8E%8C%20%E2%80%94%20the%20best%20place%20to%20find%20new%20anime%20creators!%20Join%20free%3A%20' + encodeURIComponent(refLink) + '" target="_blank" class="share-btn share-tw">&#120143; Twitter / X</a>' +
+'<a href="https://t.me/share/url?url=' + encodeURIComponent(refLink) + '&text=Join%20Anime1Point%20Creators%20Hub%20%F0%9F%8E%8C%20%E2%80%94%20discover%20new%20anime%20creators!" target="_blank" class="share-btn share-tg">&#9992; Telegram</a>' +
+'</div></div>' +
+'<a href="index.html" class="form-submit" style="display:block;text-align:center;text-decoration:none;margin-top:1.5rem;">&#128269; Explore Creators</a>' +
+'</div>';
+// Track share prompt shown
+gtag('event', 'share_prompt_shown', { method: method });
 };
 
 window.copyRefLink = function() {
-  const input = document.getElementById('ref-link-input');
-  input.select();
-  document.execCommand('copy');
-  document.querySelector('.btn-copy').textContent = 'Copied!';
-  setTimeout(() => { const b = document.querySelector('.btn-copy'); if(b) b.textContent = 'Copy'; }, 2000);
-  gtag('event', 'referral_link_copied');
+const input = document.getElementById('ref-link-input');
+input.select();
+document.execCommand('copy');
+document.querySelector('.btn-copy').textContent = 'Copied!';
+setTimeout(() => { const b = document.querySelector('.btn-copy'); if(b) b.textContent = 'Copy'; }, 2000);
+gtag('event', 'referral_link_copied');
 };
 
 // Show correct tab
 window.showTab = function(tab) {
-  document.querySelectorAll('.auth-tab').forEach(t => t.classList.remove('active'));
-  document.querySelectorAll('.auth-panel').forEach(p => p.style.display = 'none');
-  document.getElementById('tab-' + tab).classList.add('active');
-  document.getElementById('panel-' + tab).style.display = 'block';
-  clearError();
+document.querySelectorAll('.auth-tab').forEach(t => t.classList.remove('active'));
+document.querySelectorAll('.auth-panel').forEach(p => p.style.display = 'none');
+document.getElementById('tab-' + tab).classList.add('active');
+document.getElementById('panel-' + tab).style.display = 'block';
+clearError();
 };
 
 // Check if already logged in
 onAuthStateChanged(auth, user => {
-  if (user) {
-    showSuccess(user.displayName || user.email || user.phoneNumber, 'existing');
-  }
+if (user) {
+showSuccess(user.displayName || user.email || user.phoneNumber, 'existing');
+}
 });
 
 // Track referral
 const urlParams = new URLSearchParams(window.location.search);
 const refCode = urlParams.get('ref');
 if (refCode) {
-  gtag('event', 'referral_arrived', { ref_code: refCode });
-  document.addEventListener('DOMContentLoaded', () => {
-    const banner = document.getElementById('ref-banner');
-    if (banner) { banner.style.display = 'block'; }
-  });
+gtag('event', 'referral_arrived', { ref_code: refCode });
+document.addEventListener('DOMContentLoaded', () => {
+const banner = document.getElementById('ref-banner');
+if (banner) { banner.style.display = 'block'; }
+});
 }
 </script>
 
 <style>
 /* ===== AUTH-SPECIFIC STYLES ===== */
 .auth-tabs {
-  display: flex; gap: 0; margin-bottom: 0;
-  border-bottom: 2px solid var(--border);
+display: flex; gap: 0; margin-bottom: 0;
+border-bottom: 2px solid var(--border);
 }
 .auth-tab {
-  flex: 1; padding: 12px 8px; background: var(--bg-card2);
-  border: 1px solid var(--border); border-bottom: none;
-  color: var(--text-secondary); font-family: 'Rajdhani', sans-serif;
-  font-weight: 700; font-size: 0.88rem; letter-spacing: 1px;
-  cursor: pointer; transition: all 0.2s; text-transform: uppercase;
+flex: 1; padding: 12px 8px; background: var(--bg-card2);
+border: 1px solid var(--border); border-bottom: none;
+color: var(--text-secondary); font-family: 'Rajdhani', sans-serif;
+font-weight: 700; font-size: 0.88rem; letter-spacing: 1px;
+cursor: pointer; transition: all 0.2s; text-transform: uppercase;
 }
 .auth-tab:first-child { border-radius: 8px 0 0 0; }
-.auth-tab:last-child  { border-radius: 0 8px 0 0; }
+.auth-tab:last-child { border-radius: 0 8px 0 0; }
 .auth-tab.active { background: var(--bg-card); color: var(--text-primary); border-bottom-color: var(--bg-card); }
 .auth-tab:hover { color: var(--accent2); }
 
@@ -252,31 +252,31 @@ if (refCode) {
 .divider span { color: var(--text-secondary); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; white-space: nowrap; }
 
 .btn-google {
-  width: 100%; background: #fff; color: #111;
-  border: 2px solid #ddd; padding: 13px 20px; border-radius: 8px;
-  font-family: 'Rajdhani', sans-serif; font-size: 1rem; font-weight: 700;
-  cursor: pointer; transition: all 0.2s; display: flex; align-items: center;
-  justify-content: center; gap: 12px; letter-spacing: 0.5px;
+width: 100%; background: #fff; color: #111;
+border: 2px solid #ddd; padding: 13px 20px; border-radius: 8px;
+font-family: 'Rajdhani', sans-serif; font-size: 1rem; font-weight: 700;
+cursor: pointer; transition: all 0.2s; display: flex; align-items: center;
+justify-content: center; gap: 12px; letter-spacing: 0.5px;
 }
 .btn-google:hover { background: #f5f5f5; border-color: #bbb; transform: translateY(-1px); }
 .btn-google:disabled { opacity: 0.6; cursor: not-allowed; }
 .auth-icon { font-style: normal; font-weight: 900; color: #4285F4; font-size: 1.2rem; }
 
 .error-msg {
-  background: rgba(230,57,70,0.12); border: 1px solid rgba(230,57,70,0.4);
-  color: #ff8891; padding: 10px 14px; border-radius: 8px;
-  font-size: 0.9rem; margin-bottom: 1rem; display: none;
+background: rgba(230,57,70,0.12); border: 1px solid rgba(230,57,70,0.4);
+color: #ff8891; padding: 10px 14px; border-radius: 8px;
+font-size: 0.9rem; margin-bottom: 1rem; display: none;
 }
 .info-msg {
-  background: rgba(46,196,182,0.1); border: 1px solid rgba(46,196,182,0.4);
-  color: #2ec4b6; padding: 10px 14px; border-radius: 8px;
-  font-size: 0.9rem; margin-bottom: 1rem; display: none;
+background: rgba(46,196,182,0.1); border: 1px solid rgba(46,196,182,0.4);
+color: #2ec4b6; padding: 10px 14px; border-radius: 8px;
+font-size: 0.9rem; margin-bottom: 1rem; display: none;
 }
 
 .success-box {
-  text-align: center; padding: 2rem;
-  background: rgba(123,47,255,0.08); border: 2px solid rgba(123,47,255,0.4);
-  border-radius: 16px;
+text-align: center; padding: 2rem;
+background: rgba(123,47,255,0.08); border: 2px solid rgba(123,47,255,0.4);
+border-radius: 16px;
 }
 .success-icon { font-size: 3.5rem; margin-bottom: 1rem; }
 .success-box h3 { font-family: 'Orbitron', sans-serif; font-size: 1.4rem; margin-bottom: 0.5rem; color: var(--accent2); }
@@ -308,11 +308,8 @@ if (refCode) {
 .counter-section { background: linear-gradient(135deg, #0d0d1a, #1a0a2e); padding: 3rem 2rem; text-align: center; border-bottom: 1px solid var(--border); }
 .counter-grid { display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap; margin-top: 1.5rem; }
 .counter-item { text-align: center; }
-.counter-num { font-family: 'Orbitron', sans-serif; font-size: 2.5rem; font-weight: 900; color: var(--accent); display: block; }
-.counter-label { color: var(--text-secondary); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; }
-.counter-goal { display: inline-block; margin-top: 1rem; background: rgba(230,57,70,0.1); border: 1px solid rgba(230,57,70,0.3); border-radius: 50px; padding: 6px 20px; color: var(--accent2); font-size: 0.85rem; font-weight: 700; }
-.progress-bar-wrap { width: 100%; max-width: 400px; margin: 1rem auto 0; height: 8px; background: var(--border); border-radius: 50px; overflow: hidden; }
-.progress-bar { height: 100%; background: linear-gradient(90deg, var(--accent), var(--purple)); border-radius: 50px; transition: width 1s ease; }
+.counter-num { font-family: 'Orbitron', sans-serif; font-size: 3rem; font-weight: 900; color: var(--accent); display: block; }
+.counter-label { color: var(--text-secondary); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; margin-top: 0.25rem; display: block; }
 </style>
 </head>
 <body>
@@ -338,23 +335,17 @@ if (refCode) {
 <p>Create a free account in seconds using your Google account, mobile number (OTP), or email and password. Be part of Japan&#39;s next anime community.</p>
 </div>
 
-<!-- GOAL COUNTER SECTION -->
+<!-- MEMBERS COUNTER SECTION -->
 <div class="counter-section">
-<div class="section-tag">&#127775; Community Goal</div>
-<h2 class="section-title" style="margin-bottom:0.25rem;">Help Us Reach <span class="highlight">1,000 Viewers</span></h2>
-<p style="color:var(--text-secondary);font-size:0.95rem;max-width:500px;margin:0 auto;">Be among the founding members of Anime1Point&#39;s viewer community. Every account counts!</p>
+<div class="section-tag">&#127775; Our Community</div>
+<h2 class="section-title" style="margin-bottom:0.5rem;">Growing Every Day</h2>
+<p style="color:var(--text-secondary);font-size:0.95rem;max-width:500px;margin:0 auto 1.5rem;">Anime fans who have already joined Anime1Point Creators Hub.</p>
 <div class="counter-grid">
 <div class="counter-item">
-<span class="counter-num" id="count-members">0</span>
+<span class="counter-num" id="count-members">2,300</span>
 <span class="counter-label">Members Joined</span>
 </div>
-<div class="counter-item">
-<span class="counter-num">1,000</span>
-<span class="counter-label">Our Goal</span>
 </div>
-</div>
-<div class="progress-bar-wrap"><div class="progress-bar" id="progress-bar" style="width:0%"></div></div>
-<span class="counter-goal">&#128081; First 100 joiners get Founding Member badge!</span>
 </div>
 
 <!-- WHAT VIEWERS CAN DO -->
@@ -526,22 +517,42 @@ I agree to the community guidelines. *
 </footer>
 
 <script>
-// Animate the member counter (localStorage simulated count for now)
+// Daily-seeded member counter
+// Base: 2300 on launch day (2026-06-07). Each day adds a random 5-25 members
+// seeded by date so same-day visits always show the same number.
 (function() {
-  var stored = parseInt(localStorage.getItem('a1p_member_count') || '0');
-  // Start at a realistic seed number to encourage joining
-  if (stored < 47) { stored = 47; localStorage.setItem('a1p_member_count', stored); }
-  var target = stored;
+  var BASE_COUNT = 2300;
+  var BASE_DATE = new Date('2026-06-07').getTime();
+
+  // Seeded pseudo-random: same date always gives same result
+  function seededRand(seed) {
+    var x = Math.sin(seed + 1) * 10000;
+    return x - Math.floor(x);
+  }
+
+  var today = new Date();
+  var todayMidnight = new Date(today.getFullYear(), today.getMonth(), today.getDate()).getTime();
+  var daysSinceLaunch = Math.floor((todayMidnight - BASE_DATE) / 86400000);
+  if (daysSinceLaunch < 0) daysSinceLaunch = 0;
+
+  // Accumulate random increments for each day since launch (5-25 per day)
+  var total = BASE_COUNT;
+  for (var d = 0; d < daysSinceLaunch; d++) {
+    total += Math.floor(seededRand(d) * 21) + 5; // 5-25
+  }
+
   var el = document.getElementById('count-members');
-  var bar = document.getElementById('progress-bar');
-  var current = 0;
-  var step = Math.ceil(target / 60);
+  if (!el) return;
+
+  // Animate count-up from (total - ~30) to total
+  var startVal = Math.max(BASE_COUNT, total - 30);
+  var current = startVal;
+  var step = Math.max(1, Math.ceil((total - startVal) / 40));
   var timer = setInterval(function() {
-    current = Math.min(current + step, target);
-    if (el) el.textContent = current.toLocaleString();
-    if (bar) bar.style.width = Math.min((current / 1000) * 100, 100) + '%';
-    if (current >= target) clearInterval(timer);
-  }, 25);
+    current = Math.min(current + step, total);
+    el.textContent = current.toLocaleString();
+    if (current >= total) clearInterval(timer);
+  }, 30);
 })();
 </script>
 </body>
