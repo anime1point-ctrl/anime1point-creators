@@ -1,37 +1,28 @@
-rules_version = '2';
+—rules_version = '2';
 // ─────────────────────────────────────────────────────────────────────────────
 // Firestore Security Rules — Anime1Point Creators Hub
 //
 // COLLECTION ARCHITECTURE:
-//   creatorApplications/{uid}  — Pending/rejected/approved applications queue
-//   creators/{uid}             — Live approved creators (feeds active)
-//   creatorSlugs/{slug}        — Public slug → uid mapping (read by React SPA)
-//   viewers/{uid}              — Viewer profiles (Google/Email/OTP users)
+// creatorApplications/{uid}          — Moderation queue
+// creators/{uid}                     — Live approved creators
+// creatorSlugs/{slug}                — Public slug → uid mapping
+// viewers/{uid}                      — Viewer profiles
+// creatorRatings/{creatorId_viewerUid} — One rating per viewer per creator
 //
-// HOW TO DEPLOY:
-//   Option A (recommended): Firebase CLI
-//     firebase deploy --only firestore:rules --project anime1point-hub
-//
-//   Option B: Firebase Console
-//     Firestore Database → Rules → paste this file content → Publish
+// DEPLOY:
+//   firebase deploy --only firestore:rules --project anime1point-hub
 // ─────────────────────────────────────────────────────────────────────────────
 
 service cloud.firestore {
   match /databases/{database}/documents {
 
-    // ── Helper: is the caller signed in? ────────────────────────────────────
+    // ── Helpers ──────────────────────────────────────────────────────────────
     function signedIn() {
       return request.auth != null;
     }
-
-    // ── Helper: is this the caller's own document? ───────────────────────────
     function isOwner(uid) {
       return signedIn() && request.auth.uid == uid;
     }
-
-    // ── Helper: check that a field is NOT being written ──────────────────────
-    // Used to prevent creators from writing their own encrypted API key field.
-    // The encrypted key is written by the Cloud Function (server-side) only.
     function notWritingField(field) {
       return !(field in request.resource.data);
     }
@@ -39,65 +30,74 @@ service cloud.firestore {
     // =========================================================================
     // creatorApplications/{uid}
     // =========================================================================
-    // - Creators can CREATE and UPDATE their own application.
-    // - Creators CANNOT write the encrypted API key field (server-side only).
-    // - Creators CANNOT change their own status field (admin only).
-    // - Creators can READ their own application (to check status).
-    // - No one else can read applications (prevents data scraping).
     match /creatorApplications/{uid} {
-      // Creator can read their own application (e.g. to check status)
       allow read: if isOwner(uid);
-
-      // Creator can create their application
       allow create: if isOwner(uid)
-        && notWritingField('youtubeApiKeyEncrypted')
-        && notWritingField('hasApiKey')
-        && request.resource.data.status == 'pending'
-        && request.resource.data.uid == request.auth.uid;
-
-      // Creator can update their own application (e.g. edit channel details)
-      // but cannot change status or the encrypted API key directly.
+                    && notWritingField('youtubeApiKeyEncrypted')
+                    && notWritingField('hasApiKey')
+                    && request.resource.data.status == 'pending'
+                    && request.resource.data.uid == request.auth.uid;
       allow update: if isOwner(uid)
-        && notWritingField('youtubeApiKeyEncrypted')
-        && notWritingField('hasApiKey')
-        && (!('status' in request.resource.data)
-            || request.resource.data.status == resource.data.status);
-
-      // Deny all other operations (admin uses Cloud Functions / Admin SDK)
+                    && notWritingField('youtubeApiKeyEncrypted')
+                    && notWritingField('hasApiKey')
+                    && (!('status' in request.resource.data)
+                        || request.resource.data.status == resource.data.status);
       allow delete: if false;
     }
 
     // =========================================================================
     // creators/{uid}
     // =========================================================================
-    // - Public READ allowed (so React SPA can load creator profiles).
-    //   The encrypted API key is opaque (encrypted) — safe to return.
-    // - WRITES only allowed by server-side (Cloud Functions / Admin SDK).
-    //   Creators and viewers cannot write to this collection.
+    // Public READ — React SPA needs this for profile pages.
+    // The ratingAverage / ratingCount fields are written here by the
+    // submitRating Cloud Function (Admin SDK) — not by the client.
+    // Client writes are disabled entirely; all mutations go via Cloud Functions.
     match /creators/{uid} {
-      // Public read — React SPA needs this to load live creator profiles
       allow read: if true;
-
-      // No client-side writes — admin dashboard uses Admin SDK (bypasses rules)
       allow write: if false;
     }
 
     // =========================================================================
     // creatorSlugs/{slug}
     // =========================================================================
-    // - Public READ (React SPA looks up slug → uid to show live feed badge).
-    // - No client-side writes (admin dashboard uses Admin SDK).
     match /creatorSlugs/{slug} {
-      allow read:  if true;
+      allow read: if true;
       allow write: if false;
     }
 
     // =========================================================================
     // viewers/{uid}
     // =========================================================================
-    // - Viewers can read and write only their own profile.
     match /viewers/{uid} {
       allow read, write: if isOwner(uid);
+    }
+
+    // =========================================================================
+    // creatorRatings/{docId}
+    // docId format: {creatorId}_{viewerUid}
+    //
+    // READ rules:
+    //   - Anyone can read aggregate stats (ratingAverage/ratingCount)
+    //     from the creator document (not from here).
+    //   - A viewer can read their own rating doc to know if they've rated.
+    //     The docId encodes both IDs, so we extract viewerUid from the path.
+    //
+    // WRITE rules:
+    //   - Writes go through the submitRating Cloud Function (Admin SDK).
+    //   - Client-side direct writes are blocked.
+    //     This ensures the aggregate on the creator document is always updated
+    //     atomically in the same transaction as the rating write.
+    // =========================================================================
+    match /creatorRatings/{docId} {
+      // Allow a viewer to read their own rating (to pre-fill the star UI)
+      // The docId is {creatorId}_{viewerUid}. We split on the last underscore
+      // by checking that the doc's viewerUid field matches the caller.
+      allow read: if signedIn()
+                  && resource != null
+                  && resource.data.viewerUid == request.auth.uid;
+
+      // All writes go through the Cloud Function (Admin SDK bypasses rules)
+      allow write: if false;
     }
 
     // =========================================================================
