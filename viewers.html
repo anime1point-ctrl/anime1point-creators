@@ -27,11 +27,8 @@ getAuth,
 GoogleAuthProvider,
 signInWithPopup,
 createUserWithEmailAndPassword,
-signInWithEmailAndPassword,
 RecaptchaVerifier,
 signInWithPhoneNumber,
-PhoneAuthProvider,
-signInWithCredential,
 updateProfile,
 onAuthStateChanged
 } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js';
@@ -51,7 +48,6 @@ const analytics = getAnalytics(app);
 const auth = getAuth(app);
 const googleProvider = new GoogleAuthProvider();
 
-// Track page view for viewer signup
 gtag('event', 'page_view', { page_title: 'Viewer Signup', page_location: window.location.href });
 
 // ===== GOOGLE SIGN-IN =====
@@ -62,7 +58,6 @@ btn.textContent = 'Signing in...';
 try {
 const result = await signInWithPopup(auth, googleProvider);
 const user = result.user;
-// GA4 event
 gtag('event', 'sign_up', { method: 'Google', user_id: user.uid });
 logEvent(analytics, 'sign_up', { method: 'Google' });
 showSuccess(user.displayName || user.email, 'Google');
@@ -100,12 +95,6 @@ const msg = {
 }[err.code] || err.message;
 showError(msg);
 }
-};
-
-// ===== EMAIL OTP (sign-in link) =====
-window.handleEmailOtp = async function(e) {
-e.preventDefault();
-showError('Email OTP link feature requires Firebase Email Link auth — please use Google or Phone OTP for now, or create an account with password.');
 };
 
 // ===== PHONE / OTP =====
@@ -167,7 +156,6 @@ document.getElementById('auth-info').style.display = 'none';
 }
 
 window.showSuccess = function(name, method) {
-// Generate referral link
 const ref = btoa(name + '_' + Date.now()).replace(/=/g,'').substring(0,10);
 const refLink = window.location.origin + window.location.pathname + '?ref=' + ref;
 document.getElementById('auth-forms').innerHTML =
@@ -175,7 +163,7 @@ document.getElementById('auth-forms').innerHTML =
 '<div class="success-icon">&#127775;</div>' +
 '<h3>Welcome to Anime1Point!</h3>' +
 '<p>You\u2019re in, <strong>' + name + '</strong>! Signed up via <strong>' + method + '</strong>.</p>' +
-'<p style="margin-top:1rem;color:var(--text-secondary);font-size:0.9rem;">Start exploring new anime creators and join our community of fans.</p>' +
+'<p style="margin-top:1rem;color:var(--text-secondary);font-size:0.9rem;">Start exploring new anime creators below.</p>' +
 '<div class="share-box">' +
 '<p class="share-label">&#127775; Spread the word &#8212; share your invite link:</p>' +
 '<div class="share-link-wrap"><input type="text" class="share-link-input" value="' + refLink + '" id="ref-link-input" readonly><button class="btn-copy" onclick="copyRefLink()">Copy</button></div>' +
@@ -186,7 +174,6 @@ document.getElementById('auth-forms').innerHTML =
 '</div></div>' +
 '<a href="index.html" class="form-submit" style="display:block;text-align:center;text-decoration:none;margin-top:1.5rem;">&#128269; Explore Creators</a>' +
 '</div>';
-// Track share prompt shown
 gtag('event', 'share_prompt_shown', { method: method });
 };
 
@@ -199,7 +186,6 @@ setTimeout(() => { const b = document.querySelector('.btn-copy'); if(b) b.textCo
 gtag('event', 'referral_link_copied');
 };
 
-// Show correct tab
 window.showTab = function(tab) {
 document.querySelectorAll('.auth-tab').forEach(t => t.classList.remove('active'));
 document.querySelectorAll('.auth-panel').forEach(p => p.style.display = 'none');
@@ -208,14 +194,10 @@ document.getElementById('panel-' + tab).style.display = 'block';
 clearError();
 };
 
-// Check if already logged in
 onAuthStateChanged(auth, user => {
-if (user) {
-showSuccess(user.displayName || user.email || user.phoneNumber, 'existing');
-}
+if (user) { showSuccess(user.displayName || user.email || user.phoneNumber, 'existing'); }
 });
 
-// Track referral
 const urlParams = new URLSearchParams(window.location.search);
 const refCode = urlParams.get('ref');
 if (refCode) {
@@ -244,7 +226,6 @@ cursor: pointer; transition: all 0.2s; text-transform: uppercase;
 .auth-tab:last-child { border-radius: 0 8px 0 0; }
 .auth-tab.active { background: var(--bg-card); color: var(--text-primary); border-bottom-color: var(--bg-card); }
 .auth-tab:hover { color: var(--accent2); }
-
 .auth-panel { padding-top: 1.5rem; }
 
 .divider { display: flex; align-items: center; gap: 1rem; margin: 1.25rem 0; }
@@ -272,7 +253,6 @@ background: rgba(46,196,182,0.1); border: 1px solid rgba(46,196,182,0.4);
 color: #2ec4b6; padding: 10px 14px; border-radius: 8px;
 font-size: 0.9rem; margin-bottom: 1rem; display: none;
 }
-
 .success-box {
 text-align: center; padding: 2rem;
 background: rgba(123,47,255,0.08); border: 2px solid rgba(123,47,255,0.4);
@@ -290,26 +270,32 @@ border-radius: 16px;
 .btn-copy:hover { background: #c62836; }
 .share-buttons { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
 .share-btn { padding: 10px 18px; border-radius: 8px; font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 0.9rem; text-decoration: none; transition: all 0.2s; letter-spacing: 0.5px; }
-.share-wa { background: #25d366; color: #fff; }
-.share-wa:hover { background: #1aad53; }
-.share-tw { background: #000; color: #fff; }
-.share-tw:hover { background: #222; }
-.share-tg { background: #229ed9; color: #fff; }
-.share-tg:hover { background: #1a7fb5; }
-
+.share-wa { background: #25d366; color: #fff; } .share-wa:hover { background: #1aad53; }
+.share-tw { background: #000; color: #fff; } .share-tw:hover { background: #222; }
+.share-tg { background: #229ed9; color: #fff; } .share-tg:hover { background: #1a7fb5; }
 .ref-banner { display:none; background: rgba(244,162,97,0.12); border: 1px solid rgba(244,162,97,0.4); border-radius: 10px; padding: 12px 16px; margin-bottom: 1.5rem; color: var(--accent2); font-size: 0.9rem; font-weight: 600; text-align: center; }
-
 .otp-row { display: flex; gap: 10px; }
 .otp-row input { flex: 1; }
 .btn-otp { background: var(--purple); color: #fff; border: none; border-radius: 8px; padding: 12px 18px; font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 0.95rem; cursor: pointer; transition: all 0.2s; white-space: nowrap; }
 .btn-otp:hover { background: #6620dd; }
 .btn-otp:disabled { opacity: 0.6; cursor: not-allowed; }
 
+/* Counter */
 .counter-section { background: linear-gradient(135deg, #0d0d1a, #1a0a2e); padding: 3rem 2rem; text-align: center; border-bottom: 1px solid var(--border); }
-.counter-grid { display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap; margin-top: 1.5rem; }
-.counter-item { text-align: center; }
 .counter-num { font-family: 'Orbitron', sans-serif; font-size: 3rem; font-weight: 900; color: var(--accent); display: block; }
 .counter-label { color: var(--text-secondary); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; margin-top: 0.25rem; display: block; }
+
+/* Feature cards — honest features */
+.features-section { background: var(--bg-card); text-align: center; padding: 4rem 2rem; }
+.features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; max-width: 1000px; margin: 2.5rem auto 0; text-align: left; }
+.feature-card { background: var(--bg-card2); border: 1px solid var(--border); border-radius: 14px; padding: 1.75rem; transition: border-color 0.2s, transform 0.2s; }
+.feature-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+.feature-card-icon { font-size: 2rem; margin-bottom: 1rem; display: block; }
+.feature-card h3 { font-family: 'Orbitron', sans-serif; font-size: 0.95rem; color: var(--text-primary); margin-bottom: 0.6rem; letter-spacing: 0.5px; }
+.feature-card p { color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6; margin: 0; }
+.feature-card .feature-tag { display: inline-block; margin-top: 1rem; font-size: 0.72rem; font-weight: 700; font-family: 'Rajdhani', sans-serif; letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 10px; border-radius: 50px; }
+.tag-live { background: rgba(46,196,182,0.12); color: #2ec4b6; border: 1px solid rgba(46,196,182,0.3); }
+.tag-coming { background: rgba(244,162,97,0.12); color: var(--accent2); border: 1px solid rgba(244,162,97,0.3); }
 </style>
 </head>
 <body>
@@ -340,25 +326,61 @@ border-radius: 16px;
 <div class="section-tag">&#127775; Our Community</div>
 <h2 class="section-title" style="margin-bottom:0.5rem;">Growing Every Day</h2>
 <p style="color:var(--text-secondary);font-size:0.95rem;max-width:500px;margin:0 auto 1.5rem;">Anime fans who have already joined Anime1Point Creators Hub.</p>
-<div class="counter-grid">
-<div class="counter-item">
+<div style="text-align:center;">
 <span class="counter-num" id="count-members">2,300</span>
 <span class="counter-label">Members Joined</span>
 </div>
 </div>
+
+<!-- WHAT VIEWERS CAN ACTUALLY DO -->
+<section class="features-section">
+<div class="section-tag">&#9989; What You Get</div>
+<h2 class="section-title">Real features.<br><span class="highlight">No empty promises.</span></h2>
+
+<div class="features-grid">
+
+<div class="feature-card">
+<span class="feature-card-icon">&#128269;</span>
+<h3>Discover Creators</h3>
+<p>Browse our curated directory of new and upcoming anime content creators — sorted by category and genre. Find your next favourite channel before it blows up.</p>
+<span class="feature-tag tag-live">&#10003; Live Now</span>
 </div>
 
-<!-- WHAT VIEWERS CAN DO -->
-<section style="background: var(--bg-card); text-align: center; padding: 4rem 2rem;">
-<div class="section-tag">&#9989; Viewer Privileges</div>
-<h2 class="section-title">What You Can Do</h2>
-<div class="categories-grid" style="max-width: 1000px; margin: 0 auto;">
-<div class="cat-card"><div class="cat-icon">&#128269;</div><h3>Discover Creators</h3><p>Browse new and upcoming anime content creators sorted by category, genre and ratings. Find your next favourite channel before it blows up.</p></div>
-<div class="cat-card"><div class="cat-icon">&#11088;</div><h3>Rate Content</h3><p>Give star ratings to creators and their videos. Your ratings help surface the best content and reward great creators.</p></div>
-<div class="cat-card"><div class="cat-icon">&#128172;</div><h3>Comment &amp; Engage</h3><p>Leave comments on creator profiles and videos. Share your thoughts and help build the anime content community.</p></div>
-<div class="cat-card"><div class="cat-icon">&#128276;</div><h3>Get Notified</h3><p>Follow your favourite new creators and get notified when they post new content. Never miss an upload from a rising star.</p></div>
-<div class="cat-card"><div class="cat-icon">&#128081;</div><h3>Earn Recognition</h3><p>Active viewers earn badges and recognition in the community. Top reviewers get featured on the platform.</p></div>
-<div class="cat-card"><div class="cat-icon">&#127920;</div><h3>It&#39;s Free</h3><p>Viewer accounts are completely free. No subscriptions, no paywalls. Just pure anime content discovery.</p></div>
+<div class="feature-card">
+<span class="feature-card-icon">&#9654;&#65039;</span>
+<h3>Watch Latest Videos</h3>
+<p>Every creator&#39;s newest YouTube uploads load directly on their profile page — thumbnails, view counts and all. No redirects needed.</p>
+<span class="feature-tag tag-live">&#10003; Live Now</span>
+</div>
+
+<div class="feature-card">
+<span class="feature-card-icon">&#11088;</span>
+<h3>Rate Creators</h3>
+<p>Leave a star rating on any creator&#39;s profile. Ratings are stored on our platform and help surface the best channels to other viewers.</p>
+<span class="feature-tag tag-coming">&#9679; Coming Soon</span>
+</div>
+
+<div class="feature-card">
+<span class="feature-card-icon">&#128218;</span>
+<h3>Build Your Watchlist</h3>
+<p>Save creators you want to follow. Your personal watchlist lives in your account so you always know where to go next.</p>
+<span class="feature-tag tag-coming">&#9679; Coming Soon</span>
+</div>
+
+<div class="feature-card">
+<span class="feature-card-icon">&#128680;</span>
+<h3>First to Know</h3>
+<p>Viewer accounts see newly approved creators before anyone else. Be the first to discover the next big anime channel on the platform.</p>
+<span class="feature-tag tag-live">&#10003; Live Now</span>
+</div>
+
+<div class="feature-card">
+<span class="feature-card-icon">&#127881;</span>
+<h3>Always Free</h3>
+<p>Viewer accounts are completely free. No subscriptions, no paywalls, no catch. Just pure anime content discovery — forever.</p>
+<span class="feature-tag tag-live">&#10003; Live Now</span>
+</div>
+
 </div>
 </section>
 
@@ -371,27 +393,22 @@ border-radius: 16px;
 <div class="form-section">
 <div class="form-card" id="auth-forms">
 
-<!-- Referral banner -->
 <div class="ref-banner" id="ref-banner">&#127775; You were invited by a friend! Welcome to Anime1Point Creators Hub.</div>
-
-<!-- Error / Info messages -->
 <div class="error-msg" id="auth-error"></div>
 <div class="info-msg" id="auth-info"></div>
 
-<!-- Google Sign-In -->
 <button class="btn-google" id="btn-google" onclick="signInWithGoogle()">
 <span class="auth-icon">G</span> Continue with Google
 </button>
 
 <div class="divider"><span>or choose another method</span></div>
 
-<!-- TABS -->
 <div class="auth-tabs">
 <button class="auth-tab active" id="tab-email" onclick="showTab('email')">&#128140; Email</button>
 <button class="auth-tab" id="tab-phone" onclick="showTab('phone')">&#128241; Mobile OTP</button>
 </div>
 
-<!-- EMAIL / PASSWORD PANEL -->
+<!-- EMAIL PANEL -->
 <div class="auth-panel" id="panel-email">
 <form onsubmit="handleEmailSignup(event)">
 <div class="form-group">
@@ -424,14 +441,14 @@ border-radius: 16px;
 <div class="form-group" style="display:flex;align-items:flex-start;gap:10px;">
 <input type="checkbox" id="ep-terms" required style="width:auto;margin-top:4px;accent-color:var(--accent);">
 <label for="ep-terms" style="text-transform:none;letter-spacing:0;font-size:0.9rem;color:var(--text-secondary);">
-I agree to the community guidelines and will be respectful when rating and commenting on creator content. *
+I agree to the community guidelines and will be respectful when engaging with creator content. *
 </label>
 </div>
 <button type="submit" class="form-submit" id="btn-email-signup">&#128065; Create Account</button>
 </form>
 </div>
 
-<!-- PHONE OTP PANEL -->
+<!-- PHONE PANEL -->
 <div class="auth-panel" id="panel-phone" style="display:none;">
 <div id="otp-step1">
 <div class="form-group">
@@ -444,11 +461,10 @@ I agree to the community guidelines and will be respectful when rating and comme
 <input type="tel" id="phone-number" placeholder="+91 9876543210" required>
 <button type="button" class="btn-otp" id="btn-send-otp" onclick="sendPhoneOtp()">Send OTP</button>
 </div>
-<p class="form-hint">Enter your number with country code. Example: +91 for India, +1 for USA.</p>
+<p class="form-hint">Example: +91 for India, +1 for USA.</p>
 </div>
 <div id="recaptcha-container"></div>
 </div>
-
 <div id="otp-step2" style="display:none;">
 <div class="form-group">
 <label>Enter 6-Digit OTP *</label>
@@ -460,18 +476,15 @@ I agree to the community guidelines and will be respectful when rating and comme
 </div>
 <button type="button" onclick="document.getElementById('otp-step2').style.display='none';document.getElementById('otp-step1').style.display='block';" style="background:none;border:none;color:var(--text-secondary);cursor:pointer;font-size:0.85rem;text-decoration:underline;">Wrong number? Go back</button>
 </div>
-
 <div class="form-group" style="margin-top:1rem;display:flex;align-items:flex-start;gap:10px;">
 <input type="checkbox" id="phone-terms" required style="width:auto;margin-top:4px;accent-color:var(--accent);">
-<label for="phone-terms" style="text-transform:none;letter-spacing:0;font-size:0.9rem;color:var(--text-secondary);">
-I agree to the community guidelines. *
-</label>
+<label for="phone-terms" style="text-transform:none;letter-spacing:0;font-size:0.9rem;color:var(--text-secondary);">I agree to the community guidelines. *</label>
 </div>
 </div>
 
-</div><!-- /#auth-forms -->
-</div><!-- /.form-card -->
-</div><!-- /.form-section -->
+</div>
+</div>
+</div>
 </section>
 
 <!-- COMMUNITY GUIDELINES -->
@@ -479,8 +492,8 @@ I agree to the community guidelines. *
 <div class="info-box">
 <h4>&#128214; Community Guidelines</h4>
 <ul>
-<li>Be respectful and constructive in your comments and ratings.</li>
-<li>Rate content honestly based on quality, effort and creativity.</li>
+<li>Be respectful and constructive when engaging with creators and their content.</li>
+<li>Rate creators honestly based on quality, effort and creativity.</li>
 <li>No spam, harassment or hate speech of any kind.</li>
 <li>Support new creators &#8212; remember, everyone starts from zero.</li>
 <li>Content must relate to Anime, Manga or Light Novels.</li>
@@ -517,34 +530,18 @@ I agree to the community guidelines. *
 </footer>
 
 <script>
-// Daily-seeded member counter
-// Base: 2300 on launch day (2026-06-07). Each day adds a random 5-25 members
-// seeded by date so same-day visits always show the same number.
+// Daily-seeded member counter — base 2300 on 2026-06-07, +5-25 per day
 (function() {
   var BASE_COUNT = 2300;
   var BASE_DATE = new Date('2026-06-07').getTime();
-
-  // Seeded pseudo-random: same date always gives same result
-  function seededRand(seed) {
-    var x = Math.sin(seed + 1) * 10000;
-    return x - Math.floor(x);
-  }
-
+  function seededRand(seed) { var x = Math.sin(seed + 1) * 10000; return x - Math.floor(x); }
   var today = new Date();
   var todayMidnight = new Date(today.getFullYear(), today.getMonth(), today.getDate()).getTime();
-  var daysSinceLaunch = Math.floor((todayMidnight - BASE_DATE) / 86400000);
-  if (daysSinceLaunch < 0) daysSinceLaunch = 0;
-
-  // Accumulate random increments for each day since launch (5-25 per day)
+  var daysSinceLaunch = Math.max(0, Math.floor((todayMidnight - BASE_DATE) / 86400000));
   var total = BASE_COUNT;
-  for (var d = 0; d < daysSinceLaunch; d++) {
-    total += Math.floor(seededRand(d) * 21) + 5; // 5-25
-  }
-
+  for (var d = 0; d < daysSinceLaunch; d++) { total += Math.floor(seededRand(d) * 21) + 5; }
   var el = document.getElementById('count-members');
   if (!el) return;
-
-  // Animate count-up from (total - ~30) to total
   var startVal = Math.max(BASE_COUNT, total - 30);
   var current = startVal;
   var step = Math.max(1, Math.ceil((total - startVal) / 40));
