@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Join as Viewer | Anime1Point Creators Hub</title>
+<meta name="description" content="Create a free viewer account on Anime1Point Creators Hub. Sign up with Google, mobile OTP or email/password. Discover new anime creators!">
+<link rel="stylesheet" href="style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
+
+<!-- Google Analytics 4 | G-7RRRBP4W9S -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7RRRBP4W9S"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){ dataLayer.push(arguments); }
+gtag('js', new Date());
+gtag('config', 'G-7RRRBP4W9S');
+</script>
+
+<!-- Firebase SDK -->
+<script type="module">
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js';
+import { getAnalytics, logEvent } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js';
+import {
+  getAuth,
+  GoogleAuthProvider,
+  signInWithPopup,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  RecaptchaVerifier,
+  signInWithPhoneNumber,
+  PhoneAuthProvider,
+  signInWithCredential,
+  updateProfile,
+  onAuthStateChanged
+} from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js';
+
+const firebaseConfig = {
+  apiKey: "AIzaSyD_placeholder_replace_with_real_key",
+  authDomain: "anime1point-hub.firebaseapp.com",
+  projectId: "anime1point-hub",
+  storageBucket: "anime1point-hub.appspot.com",
+  messagingSenderId: "000000000000",
+  appId: "1:000000000000:web:placeholder",
+  measurementId: "G-7RRRBP4W9S"
+};
+
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+const auth = getAuth(app);
+const googleProvider = new GoogleAuthProvider();
+
+// Track page view for viewer signup
+gtag('event', 'page_view', { page_title: 'Viewer Signup', page_location: window.location.href });
+
+// ===== GOOGLE SIGN-IN =====
+window.signInWithGoogle = async function() {
+  const btn = document.getElementById('btn-google');
+  btn.disabled = true;
+  btn.textContent = 'Signing in...';
+  try {
+    const result = await signInWithPopup(auth, googleProvider);
+    const user = result.user;
+    // GA4 event
+    gtag('event', 'sign_up', { method: 'Google', user_id: user.uid });
+    logEvent(analytics, 'sign_up', { method: 'Google' });
+    showSuccess(user.displayName || user.email, 'Google');
+  } catch(err) {
+    btn.disabled = false;
+    btn.innerHTML = '<span class="auth-icon">&#71;</span> Continue with Google';
+    showError(err.code === 'auth/popup-closed-by-user' ? 'Popup closed. Please try again.' : err.message);
+  }
+};
+
+// ===== EMAIL / PASSWORD SIGN-UP =====
+window.handleEmailSignup = async function(e) {
+  e.preventDefault();
+  const name    = document.getElementById('ep-name').value.trim();
+  const email   = document.getElementById('ep-email').value.trim();
+  const pass    = document.getElementById('ep-pass').value;
+  const confirm = document.getElementById('ep-confirm').value;
+  const btn = document.getElementById('btn-email-signup');
+  clearError();
+  if (pass !== confirm) { showError('Passwords do not match.'); return; }
+  if (pass.length < 8)  { showError('Password must be at least 8 characters.'); return; }
+  btn.disabled = true; btn.textContent = 'Creating account...';
+  try {
+    const cred = await createUserWithEmailAndPassword(auth, email, pass);
+    await updateProfile(cred.user, { displayName: name });
+    gtag('event', 'sign_up', { method: 'Email', user_id: cred.user.uid });
+    logEvent(analytics, 'sign_up', { method: 'Email' });
+    showSuccess(name || email, 'Email');
+  } catch(err) {
+    btn.disabled = false; btn.textContent = 'Create Account';
+    const msg = {
+      'auth/email-already-in-use': 'This email is already registered. Try signing in.',
+      'auth/invalid-email': 'Please enter a valid email address.',
+      'auth/weak-password': 'Password is too weak. Use at least 8 characters.'
+    }[err.code] || err.message;
+    showError(msg);
+  }
+};
+
+// ===== EMAIL OTP (sign-in link) =====
+window.handleEmailOtp = async function(e) {
+  e.preventDefault();
+  showError('Email OTP link feature requires Firebase Email Link auth — please use Google or Phone OTP for now, or create an account with password.');
+};
+
+// ===== PHONE / OTP =====
+let confirmationResult = null;
+window.sendPhoneOtp = async function() {
+  const phone = document.getElementById('phone-number').value.trim();
+  if (!phone || phone.length < 8) { showError('Please enter a valid phone number with country code, e.g. +91 9876543210'); return; }
+  clearError();
+  const btn = document.getElementById('btn-send-otp');
+  btn.disabled = true; btn.textContent = 'Sending OTP...';
+  try {
+    if (!window.recaptchaVerifier) {
+      window.recaptchaVerifier = new RecaptchaVerifier(auth, 'recaptcha-container', { size: 'invisible' });
+    }
+    confirmationResult = await signInWithPhoneNumber(auth, phone, window.recaptchaVerifier);
+    document.getElementById('otp-step2').style.display = 'block';
+    document.getElementById('otp-step1').style.display = 'none';
+    showInfo('OTP sent to ' + phone + '. Check your messages.');
+  } catch(err) {
+    btn.disabled = false; btn.textContent = 'Send OTP';
+    if (window.recaptchaVerifier) { window.recaptchaVerifier.clear(); window.recaptchaVerifier = null; }
+    showError('Could not send OTP: ' + (err.message || err.code));
+  }
+};
+
+window.verifyOtp = async function() {
+  const code = document.getElementById('otp-code').value.trim();
+  const name = document.getElementById('phone-name').value.trim();
+  if (!code || code.length !== 6) { showError('Please enter the 6-digit OTP.'); return; }
+  const btn = document.getElementById('btn-verify-otp');
+  btn.disabled = true; btn.textContent = 'Verifying...';
+  try {
+    const result = await confirmationResult.confirm(code);
+    const user = result.user;
+    if (name) await updateProfile(user, { displayName: name });
+    gtag('event', 'sign_up', { method: 'Phone_OTP', user_id: user.uid });
+    logEvent(analytics, 'sign_up', { method: 'Phone_OTP' });
+    showSuccess(name || user.phoneNumber, 'Phone OTP');
+  } catch(err) {
+    btn.disabled = false; btn.textContent = 'Verify OTP';
+    showError('Invalid OTP. Please try again.');
+  }
+};
+
+// ===== UI HELPERS =====
+function showError(msg) {
+  const el = document.getElementById('auth-error');
+  el.textContent = msg; el.style.display = 'block';
+  document.getElementById('auth-info').style.display = 'none';
+}
+function showInfo(msg) {
+  const el = document.getElementById('auth-info');
+  el.textContent = msg; el.style.display = 'block';
+  document.getElementById('auth-error').style.display = 'none';
+}
+function clearError() {
+  document.getElementById('auth-error').style.display = 'none';
+  document.getElementById('auth-info').style.display = 'none';
+}
+
+window.showSuccess = function(name, method) {
+  // Generate referral link
+  const ref = btoa(name + '_' + Date.now()).replace(/=/g,'').substring(0,10);
+  const refLink = window.location.origin + window.location.pathname + '?ref=' + ref;
+  document.getElementById('auth-forms').innerHTML =
+    '<div class="success-box">' +
+    '<div class="success-icon">&#127775;</div>' +
+    '<h3>Welcome to Anime1Point!</h3>' +
+    '<p>You\u2019re in, <strong>' + name + '</strong>! Signed up via <strong>' + method + '</strong>.</p>' +
+    '<p style="margin-top:1rem;color:var(--text-secondary);font-size:0.9rem;">Start exploring new anime creators and join our community of fans.</p>' +
+    '<div class="share-box">' +
+    '<p class="share-label">&#127775; Help us reach 1,000 viewers &#8212; share your invite link:</p>' +
+    '<div class="share-link-wrap"><input type="text" class="share-link-input" value="' + refLink + '" id="ref-link-input" readonly><button class="btn-copy" onclick="copyRefLink()">Copy</button></div>' +
+    '<div class="share-buttons">' +
+    '<a href="https://api.whatsapp.com/send?text=I%20just%20joined%20Anime1Point%20Creators%20Hub%20%E2%80%94%20discover%20new%20anime%20creators%20before%20they%20blow%20up!%20' + encodeURIComponent(refLink) + '" target="_blank" class="share-btn share-wa">&#128241; WhatsApp</a>' +
+    '<a href="https://twitter.com/intent/tweet?text=Just%20joined%20%40Anime1Point%20Creators%20Hub%20%F0%9F%8E%8C%20%E2%80%94%20the%20best%20place%20to%20find%20new%20anime%20creators!%20Join%20free%3A%20' + encodeURIComponent(refLink) + '" target="_blank" class="share-btn share-tw">&#120143; Twitter / X</a>' +
+    '<a href="https://t.me/share/url?url=' + encodeURIComponent(refLink) + '&text=Join%20Anime1Point%20Creators%20Hub%20%F0%9F%8E%8C%20%E2%80%94%20discover%20new%20anime%20creators!" target="_blank" class="share-btn share-tg">&#9992; Telegram</a>' +
+    '</div></div>' +
+    '<a href="index.html" class="form-submit" style="display:block;text-align:center;text-decoration:none;margin-top:1.5rem;">&#128269; Explore Creators</a>' +
+    '</div>';
+  // Track share prompt shown
+  gtag('event', 'share_prompt_shown', { method: method });
+};
+
+window.copyRefLink = function() {
+  const input = document.getElementById('ref-link-input');
+  input.select();
+  document.execCommand('copy');
+  document.querySelector('.btn-copy').textContent = 'Copied!';
+  setTimeout(() => { const b = document.querySelector('.btn-copy'); if(b) b.textContent = 'Copy'; }, 2000);
+  gtag('event', 'referral_link_copied');
+};
+
+// Show correct tab
+window.showTab = function(tab) {
+  document.querySelectorAll('.auth-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.auth-panel').forEach(p => p.style.display = 'none');
+  document.getElementById('tab-' + tab).classList.add('active');
+  document.getElementById('panel-' + tab).style.display = 'block';
+  clearError();
+};
+
+// Check if already logged in
+onAuthStateChanged(auth, user => {
+  if (user) {
+    showSuccess(user.displayName || user.email || user.phoneNumber, 'existing');
+  }
+});
+
+// Track referral
+const urlParams = new URLSearchParams(window.location.search);
+const refCode = urlParams.get('ref');
+if (refCode) {
+  gtag('event', 'referral_arrived', { ref_code: refCode });
+  document.addEventListener('DOMContentLoaded', () => {
+    const banner = document.getElementById('ref-banner');
+    if (banner) { banner.style.display = 'block'; }
+  });
+}
+</script>
+
+<style>
+/* ===== AUTH-SPECIFIC STYLES ===== */
+.auth-tabs {
+  display: flex; gap: 0; margin-bottom: 0;
+  border-bottom: 2px solid var(--border);
+}
+.auth-tab {
+  flex: 1; padding: 12px 8px; background: var(--bg-card2);
+  border: 1px solid var(--border); border-bottom: none;
+  color: var(--text-secondary); font-family: 'Rajdhani', sans-serif;
+  font-weight: 700; font-size: 0.88rem; letter-spacing: 1px;
+  cursor: pointer; transition: all 0.2s; text-transform: uppercase;
+}
+.auth-tab:first-child { border-radius: 8px 0 0 0; }
+.auth-tab:last-child  { border-radius: 0 8px 0 0; }
+.auth-tab.active { background: var(--bg-card); color: var(--text-primary); border-bottom-color: var(--bg-card); }
+.auth-tab:hover { color: var(--accent2); }
+
+.auth-panel { padding-top: 1.5rem; }
+
+.divider { display: flex; align-items: center; gap: 1rem; margin: 1.25rem 0; }
+.divider::before, .divider::after { content:''; flex:1; height:1px; background: var(--border); }
+.divider span { color: var(--text-secondary); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; white-space: nowrap; }
+
+.btn-google {
+  width: 100%; background: #fff; color: #111;
+  border: 2px solid #ddd; padding: 13px 20px; border-radius: 8px;
+  font-family: 'Rajdhani', sans-serif; font-size: 1rem; font-weight: 700;
+  cursor: pointer; transition: all 0.2s; display: flex; align-items: center;
+  justify-content: center; gap: 12px; letter-spacing: 0.5px;
+}
+.btn-google:hover { background: #f5f5f5; border-color: #bbb; transform: translateY(-1px); }
+.btn-google:disabled { opacity: 0.6; cursor: not-allowed; }
+.auth-icon { font-style: normal; font-weight: 900; color: #4285F4; font-size: 1.2rem; }
+
+.error-msg {
+  background: rgba(230,57,70,0.12); border: 1px solid rgba(230,57,70,0.4);
+  color: #ff8891; padding: 10px 14px; border-radius: 8px;
+  font-size: 0.9rem; margin-bottom: 1rem; display: none;
+}
+.info-msg {
+  background: rgba(46,196,182,0.1); border: 1px solid rgba(46,196,182,0.4);
+  color: #2ec4b6; padding: 10px 14px; border-radius: 8px;
+  font-size: 0.9rem; margin-bottom: 1rem; display: none;
+}
+
+.success-box {
+  text-align: center; padding: 2rem;
+  background: rgba(123,47,255,0.08); border: 2px solid rgba(123,47,255,0.4);
+  border-radius: 16px;
+}
+.success-icon { font-size: 3.5rem; margin-bottom: 1rem; }
+.success-box h3 { font-family: 'Orbitron', sans-serif; font-size: 1.4rem; margin-bottom: 0.5rem; color: var(--accent2); }
+.success-box p { color: var(--text-secondary); font-size: 0.95rem; }
+
+.share-box { margin-top: 2rem; background: var(--bg-card2); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; text-align: left; }
+.share-label { color: var(--accent2); font-weight: 700; font-size: 0.95rem; margin-bottom: 1rem; text-align: center; }
+.share-link-wrap { display: flex; gap: 8px; margin-bottom: 1rem; }
+.share-link-input { flex: 1; background: var(--bg-dark); border: 1px solid var(--border); border-radius: 6px; color: var(--text-secondary); padding: 10px 12px; font-size: 0.8rem; font-family: 'Rajdhani', sans-serif; }
+.btn-copy { background: var(--accent); color: #fff; border: none; border-radius: 6px; padding: 10px 16px; font-family: 'Rajdhani', sans-serif; font-weight: 700; cursor: pointer; font-size: 0.9rem; white-space: nowrap; transition: background 0.2s; }
+.btn-copy:hover { background: #c62836; }
+.share-buttons { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
+.share-btn { padding: 10px 18px; border-radius: 8px; font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 0.9rem; text-decoration: none; transition: all 0.2s; letter-spacing: 0.5px; }
+.share-wa { background: #25d366; color: #fff; }
+.share-wa:hover { background: #1aad53; }
+.share-tw { background: #000; color: #fff; }
+.share-tw:hover { background: #222; }
+.share-tg { background: #229ed9; color: #fff; }
+.share-tg:hover { background: #1a7fb5; }
+
+.ref-banner { display:none; background: rgba(244,162,97,0.12); border: 1px solid rgba(244,162,97,0.4); border-radius: 10px; padding: 12px 16px; margin-bottom: 1.5rem; color: var(--accent2); font-size: 0.9rem; font-weight: 600; text-align: center; }
+
+.otp-row { display: flex; gap: 10px; }
+.otp-row input { flex: 1; }
+.btn-otp { background: var(--purple); color: #fff; border: none; border-radius: 8px; padding: 12px 18px; font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 0.95rem; cursor: pointer; transition: all 0.2s; white-space: nowrap; }
+.btn-otp:hover { background: #6620dd; }
+.btn-otp:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.counter-section { background: linear-gradient(135deg, #0d0d1a, #1a0a2e); padding: 3rem 2rem; text-align: center; border-bottom: 1px solid var(--border); }
+.counter-grid { display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap; margin-top: 1.5rem; }
+.counter-item { text-align: center; }
+.counter-num { font-family: 'Orbitron', sans-serif; font-size: 2.5rem; font-weight: 900; color: var(--accent); display: block; }
+.counter-label { color: var(--text-secondary); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; }
+.counter-goal { display: inline-block; margin-top: 1rem; background: rgba(230,57,70,0.1); border: 1px solid rgba(230,57,70,0.3); border-radius: 50px; padding: 6px 20px; color: var(--accent2); font-size: 0.85rem; font-weight: 700; }
+.progress-bar-wrap { width: 100%; max-width: 400px; margin: 1rem auto 0; height: 8px; background: var(--border); border-radius: 50px; overflow: hidden; }
+.progress-bar { height: 100%; background: linear-gradient(90deg, var(--accent), var(--purple)); border-radius: 50px; transition: width 1s ease; }
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+<div class="nav-logo">
+<span class="logo-icon">&#9654;</span>
+<span class="logo-text">Anime1Point <span class="logo-sub">Creators Hub</span></span>
+</div>
+<ul class="nav-links">
+<li><a href="index.html">Home</a></li>
+<li><a href="about.html">How It Works</a></li>
+<li><a href="directory.html">Browse Creators</a></li>
+<li><a href="creators.html">Join as Creator</a></li>
+<li><a href="viewers.html" class="active">Join as Viewer</a></li>
+<li><a href="https://www.youtube.com/@anime1point" target="_blank" class="nav-yt">&#9654; YouTube</a></li>
+</ul>
+</nav>
+
+<div class="page-hero">
+<div class="section-tag">&#128065; For Anime Fans</div>
+<h1>Join as a <span class="highlight">Viewer</span></h1>
+<p>Create a free account in seconds using your Google account, mobile number (OTP), or email and password. Be part of Japan&#39;s next anime community.</p>
+</div>
+
+<!-- GOAL COUNTER SECTION -->
+<div class="counter-section">
+<div class="section-tag">&#127775; Community Goal</div>
+<h2 class="section-title" style="margin-bottom:0.25rem;">Help Us Reach <span class="highlight">1,000 Viewers</span></h2>
+<p style="color:var(--text-secondary);font-size:0.95rem;max-width:500px;margin:0 auto;">Be among the founding members of Anime1Point&#39;s viewer community. Every account counts!</p>
+<div class="counter-grid">
+<div class="counter-item">
+<span class="counter-num" id="count-members">0</span>
+<span class="counter-label">Members Joined</span>
+</div>
+<div class="counter-item">
+<span class="counter-num">1,000</span>
+<span class="counter-label">Our Goal</span>
+</div>
+</div>
+<div class="progress-bar-wrap"><div class="progress-bar" id="progress-bar" style="width:0%"></div></div>
+<span class="counter-goal">&#128081; First 100 joiners get Founding Member badge!</span>
+</div>
+
+<!-- WHAT VIEWERS CAN DO -->
+<section style="background: var(--bg-card); text-align: center; padding: 4rem 2rem;">
+<div class="section-tag">&#9989; Viewer Privileges</div>
+<h2 class="section-title">What You Can Do</h2>
+<div class="categories-grid" style="max-width: 1000px; margin: 0 auto;">
+<div class="cat-card"><div class="cat-icon">&#128269;</div><h3>Discover Creators</h3><p>Browse new and upcoming anime content creators sorted by category, genre and ratings. Find your next favourite channel before it blows up.</p></div>
+<div class="cat-card"><div class="cat-icon">&#11088;</div><h3>Rate Content</h3><p>Give star ratings to creators and their videos. Your ratings help surface the best content and reward great creators.</p></div>
+<div class="cat-card"><div class="cat-icon">&#128172;</div><h3>Comment &amp; Engage</h3><p>Leave comments on creator profiles and videos. Share your thoughts and help build the anime content community.</p></div>
+<div class="cat-card"><div class="cat-icon">&#128276;</div><h3>Get Notified</h3><p>Follow your favourite new creators and get notified when they post new content. Never miss an upload from a rising star.</p></div>
+<div class="cat-card"><div class="cat-icon">&#128081;</div><h3>Earn Recognition</h3><p>Active viewers earn badges and recognition in the community. Top reviewers get featured on the platform.</p></div>
+<div class="cat-card"><div class="cat-icon">&#127920;</div><h3>It&#39;s Free</h3><p>Viewer accounts are completely free. No subscriptions, no paywalls. Just pure anime content discovery.</p></div>
+</div>
+</section>
+
+<!-- SIGN-UP FORM SECTION -->
+<section style="background: var(--bg-dark); padding: 4rem 2rem;" id="signup">
+<div class="section-tag" style="display:block;text-align:center;">&#128274; Create Your Account</div>
+<h2 class="section-title" style="text-align:center;">Sign Up Free</h2>
+<p style="text-align:center;color:var(--text-secondary);margin-bottom:2.5rem;">Choose how you want to join &#8212; Google, Mobile OTP or Email &amp; Password.</p>
+
+<div class="form-section">
+<div class="form-card" id="auth-forms">
+
+<!-- Referral banner -->
+<div class="ref-banner" id="ref-banner">&#127775; You were invited by a friend! Welcome to Anime1Point Creators Hub.</div>
+
+<!-- Error / Info messages -->
+<div class="error-msg" id="auth-error"></div>
+<div class="info-msg" id="auth-info"></div>
+
+<!-- Google Sign-In -->
+<button class="btn-google" id="btn-google" onclick="signInWithGoogle()">
+<span class="auth-icon">G</span> Continue with Google
+</button>
+
+<div class="divider"><span>or choose another method</span></div>
+
+<!-- TABS -->
+<div class="auth-tabs">
+<button class="auth-tab active" id="tab-email" onclick="showTab('email')">&#128140; Email</button>
+<button class="auth-tab" id="tab-phone" onclick="showTab('phone')">&#128241; Mobile OTP</button>
+</div>
+
+<!-- EMAIL / PASSWORD PANEL -->
+<div class="auth-panel" id="panel-email">
+<form onsubmit="handleEmailSignup(event)">
+<div class="form-group">
+<label>Your Name *</label>
+<input type="text" id="ep-name" placeholder="Display name visible to others" required minlength="2">
+</div>
+<div class="form-group">
+<label>Email Address *</label>
+<input type="email" id="ep-email" placeholder="your@email.com" required>
+<p class="form-hint">Used only for account-related notifications.</p>
+</div>
+<div class="form-group">
+<label>Password *</label>
+<input type="password" id="ep-pass" placeholder="At least 8 characters" required minlength="8">
+</div>
+<div class="form-group">
+<label>Confirm Password *</label>
+<input type="password" id="ep-confirm" placeholder="Repeat your password" required minlength="8">
+</div>
+<div class="form-group">
+<label>Favourite Anime Genre</label>
+<select id="ep-genre">
+<option value="">Optional &#8212; helps us recommend creators</option>
+<option>Isekai</option><option>Shonen</option><option>Shojo</option><option>Seinen</option>
+<option>Mecha</option><option>Romance</option><option>Horror / Dark Fantasy</option>
+<option>Action / Adventure</option><option>Slice of Life</option><option>Sports</option>
+<option>Manga Adaptation</option><option>Light Novel Adaptation</option>
+</select>
+</div>
+<div class="form-group" style="display:flex;align-items:flex-start;gap:10px;">
+<input type="checkbox" id="ep-terms" required style="width:auto;margin-top:4px;accent-color:var(--accent);">
+<label for="ep-terms" style="text-transform:none;letter-spacing:0;font-size:0.9rem;color:var(--text-secondary);">
+I agree to the community guidelines and will be respectful when rating and commenting on creator content. *
+</label>
+</div>
+<button type="submit" class="form-submit" id="btn-email-signup">&#128065; Create Account</button>
+</form>
+</div>
+
+<!-- PHONE OTP PANEL -->
+<div class="auth-panel" id="panel-phone" style="display:none;">
+<div id="otp-step1">
+<div class="form-group">
+<label>Your Name *</label>
+<input type="text" id="phone-name" placeholder="Display name visible to others" required minlength="2">
+</div>
+<div class="form-group">
+<label>Mobile Number with Country Code *</label>
+<div class="otp-row">
+<input type="tel" id="phone-number" placeholder="+91 9876543210" required>
+<button type="button" class="btn-otp" id="btn-send-otp" onclick="sendPhoneOtp()">Send OTP</button>
+</div>
+<p class="form-hint">Enter your number with country code. Example: +91 for India, +1 for USA.</p>
+</div>
+<div id="recaptcha-container"></div>
+</div>
+
+<div id="otp-step2" style="display:none;">
+<div class="form-group">
+<label>Enter 6-Digit OTP *</label>
+<div class="otp-row">
+<input type="number" id="otp-code" placeholder="123456" maxlength="6" required style="letter-spacing:6px;font-size:1.3rem;font-family:'Orbitron',sans-serif;">
+<button type="button" class="btn-otp" id="btn-verify-otp" onclick="verifyOtp()">Verify</button>
+</div>
+<p class="form-hint">OTP sent to your mobile. Valid for 5 minutes.</p>
+</div>
+<button type="button" onclick="document.getElementById('otp-step2').style.display='none';document.getElementById('otp-step1').style.display='block';" style="background:none;border:none;color:var(--text-secondary);cursor:pointer;font-size:0.85rem;text-decoration:underline;">Wrong number? Go back</button>
+</div>
+
+<div class="form-group" style="margin-top:1rem;display:flex;align-items:flex-start;gap:10px;">
+<input type="checkbox" id="phone-terms" required style="width:auto;margin-top:4px;accent-color:var(--accent);">
+<label for="phone-terms" style="text-transform:none;letter-spacing:0;font-size:0.9rem;color:var(--text-secondary);">
+I agree to the community guidelines. *
+</label>
+</div>
+</div>
+
+</div><!-- /#auth-forms -->
+</div><!-- /.form-card -->
+</div><!-- /.form-section -->
+</section>
+
+<!-- COMMUNITY GUIDELINES -->
+<section style="padding: 3rem 2rem; max-width: 700px; margin: 0 auto;">
+<div class="info-box">
+<h4>&#128214; Community Guidelines</h4>
+<ul>
+<li>Be respectful and constructive in your comments and ratings.</li>
+<li>Rate content honestly based on quality, effort and creativity.</li>
+<li>No spam, harassment or hate speech of any kind.</li>
+<li>Support new creators &#8212; remember, everyone starts from zero.</li>
+<li>Content must relate to Anime, Manga or Light Novels.</li>
+</ul>
+</div>
+</section>
+
+<!-- FEATURED CHANNEL -->
+<section style="text-align:center;padding:3rem 2rem;background:linear-gradient(135deg,#0d0d1a,#1a0a2e);">
+<div class="section-tag">&#11088; Don&#39;t Miss</div>
+<h2 class="section-title">Start with <span class="highlight">Anime1Point</span></h2>
+<p style="color:var(--text-secondary);max-width:600px;margin:0 auto 2rem;">While you explore new creators, check out the platform&#39;s flagship channel &#8212; Anime1Point on YouTube.</p>
+<a href="https://www.youtube.com/@anime1point" target="_blank" class="btn-yt" style="display:inline-block;">&#9654; Visit Anime1Point on YouTube</a>
+</section>
+
+<footer class="footer">
+<div class="footer-top">
+<div class="footer-brand">
+<span class="logo-icon">&#9654;</span>
+<span class="logo-text">Anime1Point Creators Hub</span>
+</div>
+<div class="footer-links">
+<a href="index.html">Home</a>
+<a href="about.html">How It Works</a>
+<a href="creators.html">Creators</a>
+<a href="viewers.html">Viewers</a>
+<a href="https://www.youtube.com/@anime1point" target="_blank">YouTube</a>
+</div>
+</div>
+<div class="footer-bottom">
+<p>&copy; 2026 Anime1Point (Anime One Point) &#8212; All Rights Reserved</p>
+<p class="footer-sub">A platform by Anime1Point for the anime community</p>
+</div>
+</footer>
+
+<script>
+// Animate the member counter (localStorage simulated count for now)
+(function() {
+  var stored = parseInt(localStorage.getItem('a1p_member_count') || '0');
+  // Start at a realistic seed number to encourage joining
+  if (stored < 47) { stored = 47; localStorage.setItem('a1p_member_count', stored); }
+  var target = stored;
+  var el = document.getElementById('count-members');
+  var bar = document.getElementById('progress-bar');
+  var current = 0;
+  var step = Math.ceil(target / 60);
+  var timer = setInterval(function() {
+    current = Math.min(current + step, target);
+    if (el) el.textContent = current.toLocaleString();
+    if (bar) bar.style.width = Math.min((current / 1000) * 100, 100) + '%';
+    if (current >= target) clearInterval(timer);
+  }, 25);
+})();
+</script>
+</body>
+</html>
