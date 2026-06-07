@@ -45,7 +45,7 @@ export default function Navbar() {
           </span>
         </Link>
 
-        {/* Expanding search bar (desktop) */}
+        {/* Desktop nav */}
         {searchOpen ? (
           <form onSubmit={handleSearchSubmit} className="hidden md:flex flex-1 max-w-md gap-2">
             <input
@@ -66,10 +66,11 @@ export default function Navbar() {
             </button>
           </form>
         ) : (
-          <nav className="hidden md:flex items-center gap-5">
+          <nav className="hidden md:flex items-center gap-4">
             {NAV_LINKS.map(({ to, label, end }) => (
               <NavLink key={to} to={to} end={end} className={linkClass}>{label}</NavLink>
             ))}
+
             {/* Search icon */}
             <button
               onClick={() => setSearchOpen(true)}
@@ -78,6 +79,26 @@ export default function Navbar() {
             >
               &#128269;
             </button>
+
+            {/* Divider */}
+            <span className="h-5 w-px bg-border-dim opacity-60" />
+
+            {/* Join as Creator — links to static creators.html */}
+            <a
+              href="creators.html"
+              className="text-xs font-semibold px-3 py-1.5 rounded-lg border border-accent/50 text-accent hover:bg-accent/10 transition-colors whitespace-nowrap"
+            >
+              &#127909; Join as Creator
+            </a>
+
+            {/* Join as Viewer — links to static viewers.html */}
+            <a
+              href="viewers.html"
+              className="text-xs font-semibold px-3 py-1.5 rounded-lg border border-purple/50 text-purple hover:bg-purple/10 transition-colors whitespace-nowrap"
+            >
+              &#128065; Join as Viewer
+            </a>
+
             <a
               href="https://www.youtube.com/@anime1point"
               target="_blank"
@@ -117,6 +138,21 @@ export default function Navbar() {
           <Link to="/search" className="text-text-secondary hover:text-text-primary text-sm" onClick={() => setMenuOpen(false)}>
             &#128269; Search
           </Link>
+          <hr className="border-border-dim" />
+          <a
+            href="creators.html"
+            className="text-sm font-semibold text-accent hover:text-accent/80 transition-colors"
+            onClick={() => setMenuOpen(false)}
+          >
+            &#127909; Join as Creator
+          </a>
+          <a
+            href="viewers.html"
+            className="text-sm font-semibold text-purple hover:text-purple/80 transition-colors"
+            onClick={() => setMenuOpen(false)}
+          >
+            &#128065; Join as Viewer
+          </a>
           <a
             href="https://www.youtube.com/@anime1point"
             target="_blank"
@@ -129,4 +165,4 @@ export default function Navbar() {
       )}
     </header>
   )
-        }
+}
